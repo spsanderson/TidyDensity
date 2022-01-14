@@ -1,0 +1,18 @@
+template:
+  params:
+    bootswatch: flatly
+    #ganalytics: G-3393M45M1X
+
+navbar:
+  title: "TidyDensity"
+  left:
+    - icon: "fa-home"
+      href: index.html
+    - text: "Getting Started"
+      href: articles/getting-started.html
+    - text: "Function Reference"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+
+reference:
