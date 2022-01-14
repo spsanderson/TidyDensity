@@ -90,17 +90,31 @@
 <span class="co">## basic example code</span></code></pre></div>
 <p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span>
-<span class="co">#&gt;      speed           dist       </span>
-<span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span>
-<span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span>
-<span class="co">#&gt;  Median :15.0   Median : 36.00  </span>
-<span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span>
-<span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span>
-<span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></code></pre></div>
+<code class="sourceCode R"><span class="va">rand</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
+<span class="va">rand</span>
+<span class="co">#&gt;   [1] -1.078521797 -1.370724426 -0.748654279  0.174024667  0.774463336</span>
+<span class="co">#&gt;   [6] -0.010168086 -0.459938870 -0.808099824 -0.855023881  0.077827136</span>
+<span class="co">#&gt;  [11]  1.095847667  1.921344351  1.141005107 -0.479744761  0.812086506</span>
+<span class="co">#&gt;  [16] -0.591540997 -0.764382106 -1.728709295  0.646425082  1.319772109</span>
+<span class="co">#&gt;  [21]  1.243231040 -0.723585924  0.816550248 -0.134567028 -1.801376947</span>
+<span class="co">#&gt;  [26]  0.567037841 -1.022186005 -0.894755385  0.290636751 -0.059829286</span>
+<span class="co">#&gt;  [31] -1.062107465 -1.080158522 -0.916792447  0.331755198  0.812153319</span>
+<span class="co">#&gt;  [36] -0.520801870  0.216547089  0.746199782  0.347071062 -0.126987465</span>
+<span class="co">#&gt;  [41]  0.909119194 -0.405680363  0.834243117 -0.239982006 -1.925678082</span>
+<span class="co">#&gt;  [46] -0.232264532 -0.212492594 -0.001754325  0.179960631  0.141562926</span>
+<span class="co">#&gt;  [51]  0.474481435  0.757495203  0.726137353 -0.195018404  0.165664008</span>
+<span class="co">#&gt;  [56]  2.010882434 -0.439788308 -0.892276532 -0.177273078 -0.213038598</span>
+<span class="co">#&gt;  [61] -0.428773857 -0.723279250  0.689629786  0.619145734 -1.081910313</span>
+<span class="co">#&gt;  [66]  0.899336838 -1.586976113  0.861037512  1.001865598 -1.161356940</span>
+<span class="co">#&gt;  [71] -1.068135672  0.686549307 -0.074411301 -2.555174124 -0.426264603</span>
+<span class="co">#&gt;  [76] -1.231657263 -0.408797256 -0.078141460  0.710391650 -1.183273291</span>
+<span class="co">#&gt;  [81]  0.327416012  0.204930031  1.167025981 -0.514915456 -1.675229641</span>
+<span class="co">#&gt;  [86] -0.212498091 -0.153385092 -1.351532260  0.848389852  0.165647195</span>
+<span class="co">#&gt;  [91] -1.534539089  0.178333113 -0.241560256  0.669682580  0.275014454</span>
+<span class="co">#&gt;  [96] -1.320368516  0.630935444  0.413098458  1.016453666  0.776901264</span></code></pre></div>
 <p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code><a href="https://devtools.r-lib.org/reference/build_rmd.html" class="external-link">devtools::build_readme()</a></code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/v1/examples" class="external-link uri">https://github.com/r-lib/actions/tree/v1/examples</a>.</p>
 <p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
+<p><img src="reference/figures/README-plot_density-1.png" width="100%"></p>
 <p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
 </div>
 </div>
