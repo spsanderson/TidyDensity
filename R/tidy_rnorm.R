@@ -14,12 +14,66 @@
 #' @param .num_walks The number of randomly generated simulations you want.
 #'
 #' @examples
+#' tidy_rnorm()
 #'
 #' @return
+#' A tibble of randomly generated data
 #'
 #' @export
 #'
 
-tidy_rnorm <- function(.n = 50, .mean = 0, .sd = 0, .num_walks = 1){
-    return(.n)
+tidy_rnorm <- function(.n = 50, .mean = 0, .sd = 1, .num_walks = 1){
+
+    # Tidyeval ----
+    n         <- as.integer(.n)
+    num_walks <- as.integer(.num_walks)
+    mu  <- as.numeric(.mean)
+    std <- as.numeric(.sd)
+
+    # Checks ----
+    if(!is.integer(n) | n < 0){
+        rlang::abort(
+            "The parameters '.n' must be of class integer. Please pass a whole
+            number like 50 or 100. It must be greater than 0."
+        )
+    }
+
+    if(!is.integer(num_walks) | num_walks < 0){
+        rlang::abort(
+            "The parameter `.num_walks' must be of class integer. Please pass a
+            whole number like 50 or 100. It must be greater than 0."
+        )
+    }
+
+    if(!is.numeric(mu)){
+        rlang::abort(
+            "The parameters of '.mean' and '.sd' must be of class numeric.
+            Please pass a numer like 1 or 1.1 etc."
+        )
+    }
+
+    if(!is.numeric(std)){
+        rlang::abort(
+            "The parameters of '.mean' and '.sd' must be of class numeric.
+            Please pass a numer like 1 or 1.1 etc."
+        )
+    }
+
+    x <- seq(1, num_walks, 1)
+
+    df <- dplyr::tibble(rand_walk = x) %>%
+        dplyr::group_by(rand_walk) %>%
+        dplyr::mutate(data = list(stats::rnorm(n, mu, std))) %>%
+        tidyr::unnest(data) %>%
+        dplyr::ungroup()
+
+    # Attach descriptive attributes to tibble
+    attr(df, ".mean") <- .mean
+    attr(df, ".sd") <- .sd
+    attr(df, ".n") <- .n
+    attr(df, ".num_walks") <- .num_walks
+
+    # Return final result as function output
+    return(df)
+
 }
