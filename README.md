@@ -58,6 +58,22 @@ example workflow can be found here:
 
 You can also embed plots, for example:
 
+``` r
+library(dplyr)
+library(ggplot2)
+
+dens_obj <- density(rand)
+tidy_density_tbl <- as_tibble(dens_obj[(c("x","y"))])
+
+tidy_density_tbl %>%
+    ggplot(mapping = aes(x = x, y = y)) +
+    geom_line() +
+    theme_minimal() +
+    labs(
+        title = "Plot of dens_obj"
+    )
+```
+
 <img src="man/figures/README-plot_density-1.png" width="100%" />
 
 In that case, don’t forget to commit and push the resulting figure
