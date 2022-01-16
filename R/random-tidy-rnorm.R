@@ -4,7 +4,8 @@
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @details
+#' @details This function uses the underlying `stats::rnorm()` function to generate
+#' data from the given parameters.
 #'
 #' @description
 #'
@@ -17,7 +18,7 @@
 #' tidy_rnorm()
 #'
 #' @return
-#' A tibble of randomly generated data
+#' A tibble of randomly generated.
 #'
 #' @export
 #'
