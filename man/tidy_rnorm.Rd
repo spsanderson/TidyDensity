@@ -4,7 +4,7 @@
 \alias{tidy_rnorm}
 \title{Tidy Gaussian}
 \usage{
-tidy_rnorm(.n = 50, .mean = 0, .sd = 0, .num_walks = 1)
+tidy_rnorm(.n = 50, .mean = 0, .sd = 1, .num_walks = 1)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -16,7 +16,7 @@ tidy_rnorm(.n = 50, .mean = 0, .sd = 0, .num_walks = 1)
 \item{.num_walks}{The number of randomly generated simulations you want.}
 }
 \value{
-
+A tibble of randomly generated data
 }
 \description{
 
@@ -25,6 +25,7 @@ tidy_rnorm(.n = 50, .mean = 0, .sd = 0, .num_walks = 1)
 
 }
 \examples{
+tidy_rnorm()
 
 }
 \author{
