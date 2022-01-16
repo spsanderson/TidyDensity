@@ -63,8 +63,9 @@ tidy_rnorm <- function(.n = 50, .mean = 0, .sd = 1, .num_walks = 1){
 
     df <- dplyr::tibble(rand_walk = x) %>%
         dplyr::group_by(rand_walk) %>%
-        dplyr::mutate(data = list(stats::rnorm(n, mu, std))) %>%
-        tidyr::unnest(data) %>%
+        dplyr::mutate(x = list(1:n)) %>%
+        dplyr::mutate(y = list(stats::rnorm(n, mu, std))) %>%
+        tidyr::unnest(cols = c(x,y)) %>%
         dplyr::ungroup()
 
     # Attach descriptive attributes to tibble
