@@ -16,7 +16,8 @@ Imports:
     rlang (>= 0.4.11),
     dplyr,
     ggplot2,
-    plotly
+    plotly,
+    tidyr
 Suggests: 
     rmarkdown,
     knitr,
