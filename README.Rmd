@@ -48,13 +48,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(TidyDensity)
-## basic example code
-```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r rnorm}
-rand <- rnorm(n = 10000, mean = 0, sd = 0)
+rand <- tidy_rnorm(.n = 100, .num_walks = 30)
 head(rand)
 ```
 
@@ -66,16 +61,15 @@ You can also embed plots, for example:
 library(dplyr)
 library(ggplot2)
 
-dens_obj <- density(rand)
-tidy_density_tbl <- as_tibble(dens_obj[(c("x","y"))])
-
-tidy_density_tbl %>%
-    ggplot(mapping = aes(x = x, y = y)) +
-    geom_line() +
-    theme_minimal() +
-    labs(
-        title = "Plot of dens_obj"
-    )
+rand %>%
+  ggplot(mapping = aes(x = y, group = rand_walk, color = rand_walk)) +
+  geom_density() +
+  theme_minimal() +
+  labs(
+      title = "Plot of rand",
+      color = "Simulation"
+  ) +
+  theme(legend.position = "none")
 ```
 
 In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

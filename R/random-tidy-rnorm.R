@@ -1,4 +1,4 @@
-#' Tidy Gaussian
+#' Tidy Randomly Generated Gaussian Tibble
 #'
 #' @family Data Generator
 #'
@@ -61,18 +61,20 @@ tidy_rnorm <- function(.n = 50, .mean = 0, .sd = 1, .num_walks = 1){
 
     x <- seq(1, num_walks, 1)
 
-    df <- dplyr::tibble(rand_walk = x) %>%
+    df <- dplyr::tibble(rand_walk = as.factor(x)) %>%
         dplyr::group_by(rand_walk) %>%
         dplyr::mutate(x = list(1:n)) %>%
         dplyr::mutate(y = list(stats::rnorm(n, mu, std))) %>%
         tidyr::unnest(cols = c(x,y)) %>%
         dplyr::ungroup()
 
+
     # Attach descriptive attributes to tibble
     attr(df, ".mean") <- .mean
     attr(df, ".sd") <- .sd
     attr(df, ".n") <- .n
     attr(df, ".num_walks") <- .num_walks
+    attr(df, "tibble_type") <- "tidy_gaussian"
 
     # Return final result as function output
     return(df)

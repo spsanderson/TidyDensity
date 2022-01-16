@@ -38,16 +38,18 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(TidyDensity)
-## basic example code
-```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-rand <- rnorm(n = 10000, mean = 0, sd = 0)
+rand <- tidy_rnorm(.n = 100, .num_walks = 30)
 head(rand)
-#> [1] 0 0 0 0 0 0
+#> # A tibble: 6 x 3
+#>   rand_walk     x      y
+#>   <fct>     <int>  <dbl>
+#> 1 1             1 -0.448
+#> 2 1             2  0.574
+#> 3 1             3  0.800
+#> 4 1             4  1.23 
+#> 5 1             5 -0.921
+#> 6 1             6  1.35
 ```
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
@@ -62,16 +64,15 @@ You can also embed plots, for example:
 library(dplyr)
 library(ggplot2)
 
-dens_obj <- density(rand)
-tidy_density_tbl <- as_tibble(dens_obj[(c("x","y"))])
-
-tidy_density_tbl %>%
-    ggplot(mapping = aes(x = x, y = y)) +
-    geom_line() +
-    theme_minimal() +
-    labs(
-        title = "Plot of dens_obj"
-    )
+rand %>%
+  ggplot(mapping = aes(x = y, group = rand_walk, color = rand_walk)) +
+  geom_density() +
+  theme_minimal() +
+  labs(
+      title = "Plot of rand",
+      color = "Simulation"
+  ) +
+  theme(legend.position = "none")
 ```
 
 <img src="man/figures/README-plot_density-1.png" width="100%" />
