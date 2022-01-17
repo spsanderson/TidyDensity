@@ -4,7 +4,7 @@
 \alias{tidy_rnorm}
 \title{Tidy Randomly Generated Gaussian Tibble}
 \usage{
-tidy_rnorm(.n = 50, .mean = 0, .sd = 1, .num_walks = 1)
+tidy_rnorm(.n = 50, .mean = 0, .sd = 1, .num_sims = 1)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -13,16 +13,17 @@ tidy_rnorm(.n = 50, .mean = 0, .sd = 1, .num_walks = 1)
 
 \item{.sd}{The standard deviation of the randomly generated data.}
 
-\item{.num_walks}{The number of randomly generated simulations you want.}
+\item{.num_sims}{The number of randomly generated simulations you want.}
 }
 \value{
-A tibble of randomly generated data
+A tibble of randomly generated.
 }
 \description{
 
 }
 \details{
-
+This function uses the underlying \code{stats::rnorm()} function to generate
+data from the given parameters.
 }
 \examples{
 tidy_rnorm()

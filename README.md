@@ -39,17 +39,17 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(TidyDensity)
 
-rand <- tidy_rnorm(.n = 100, .num_walks = 30)
+rand <- tidy_rnorm(.n = 100, .num_sims = 30)
 head(rand)
 #> # A tibble: 6 x 3
-#>   rand_walk     x      y
-#>   <fct>     <int>  <dbl>
-#> 1 1             1 -0.448
-#> 2 1             2  0.574
-#> 3 1             3  0.800
-#> 4 1             4  1.23 
-#> 5 1             5 -0.921
-#> 6 1             6  1.35
+#>   sim_number     x      y
+#>   <fct>      <int>  <dbl>
+#> 1 1              1  0.185
+#> 2 1              2 -1.34 
+#> 3 1              3  1.62 
+#> 4 1              4 -0.600
+#> 5 1              5 -0.160
+#> 6 1              6 -1.31
 ```
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
@@ -65,7 +65,7 @@ library(dplyr)
 library(ggplot2)
 
 rand %>%
-  ggplot(mapping = aes(x = y, group = rand_walk, color = rand_walk)) +
+  ggplot(mapping = aes(x = y, group = sim_number, color = sim_number)) +
   geom_density() +
   theme_minimal() +
   labs(

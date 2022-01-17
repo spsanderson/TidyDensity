@@ -49,7 +49,7 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(TidyDensity)
 
-rand <- tidy_rnorm(.n = 100, .num_walks = 30)
+rand <- tidy_rnorm(.n = 100, .num_sims = 30)
 head(rand)
 ```
 
@@ -62,7 +62,7 @@ library(dplyr)
 library(ggplot2)
 
 rand %>%
-  ggplot(mapping = aes(x = y, group = rand_walk, color = rand_walk)) +
+  ggplot(mapping = aes(x = y, group = sim_number, color = sim_number)) +
   geom_density() +
   theme_minimal() +
   labs(
