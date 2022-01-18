@@ -44,21 +44,15 @@ head(tn)
 #> # A tibble: 6 x 6
 #>   sim_number     x      y d_norm p_norm  q_norm
 #>   <fct>      <int>  <dbl>  <dbl>  <dbl>   <dbl>
-#> 1 1              1  0.438  0.362      0 -Inf   
-#> 2 1              2 -0.439  0.362      0   -2.32
-#> 3 1              3 -1.28   0.175      0   -2.05
-#> 4 1              4  1.66   0.101      0   -1.88
-#> 5 1              5  0.769  0.297      0   -1.75
-#> 6 1              6  0.219  0.389      0   -1.64
+#> 1 1              1  1.14  0.208       0 -Inf   
+#> 2 1              2  0.317 0.379       0   -2.32
+#> 3 1              3  1.94  0.0610      0   -2.05
+#> 4 1              4 -0.429 0.364       0   -1.88
+#> 5 1              5  0.183 0.392       0   -1.75
+#> 6 1              6  1.09  0.221       0   -1.64
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
+An example plot of the `tidy_normal` data.
 
 ``` r
 library(dplyr)
