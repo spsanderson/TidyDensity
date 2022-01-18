@@ -1,18 +1,18 @@
-#' Tidy Randomly Generated Gamma Tibble
+#' Tidy Randomly Generated Beta Tibble
 #'
 #' @family Data Generator
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @seealso \url{https://www.statology.org/fit-gamma-distribution-to-dataset-in-r/}
-#' @seealso \url{https://en.wikipedia.org/wiki/Gamma_distribution}
+#' @seealso \url{https://statisticsglobe.com/beta-distribution-in-r-dbeta-pbeta-qbeta-rbeta}
+#' @seealso \url{https://en.wikipedia.org/wiki/Beta_distribution}
 #'
-#' @details This function uses the underlying `stats::rgamma()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [stats::rgamma()]
+#' @details This function uses the underlying `stats::rbeta()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [stats::rbeta()]
 #'
-#' @description This function will generate `n` random points from a gamma
-#' distribution with a user provided, shape, rate, and number of
-#' random simulations to be produced. The function returns a tibble with the
+#' @description This function will generate `n` random points from a beta
+#' distribution with a user provided, `shape1`, `shape2`, `ncp` or `non-centrality parameter`,
+#' and number of random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.
 #'
@@ -29,13 +29,13 @@
 #' -  `q` The values from the resulting q_ function of the distribution family.
 #'
 #' @param .n The number of randomly generated points you want.
-#' @param .shape This is strictly 0 to infinity.
-#' @param .rate The standard deviation of the randomly generated data. This is
-#' strictly from 0 to infinity.
+#' @param .shape1 A non-negative parameter of the Beta distribution.
+#' @param .shape2 A non-negative parameter of the Beta distribution.
+#' @param .ncp The `non-centrality parameter` of the Beta distribution.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_gamma()
+#' tidy_beta()
 #'
 #' @return
 #' A tibble of randomly generated data.
@@ -43,13 +43,14 @@
 #' @export
 #'
 
-tidy_gamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1){
+tidy_beta <- function(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
     num_sims <- as.integer(.num_sims)
-    shp <- .shape
-    rte <- .rate
+    shape1 <- as.numeric(.shape1)
+    shape2 <- as.numeric(.shape2)
+    ncp    <- as.numeric(.ncp)
 
     # Checks ----
     if(!is.integer(n) | n < 0){
@@ -66,17 +67,11 @@ tidy_gamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1){
         )
     }
 
-    if(!is.numeric(shp) | shp < 0){
+    if(!is.numeric(shape1) | !is.numeric(shape2) | !is.numeric(ncp) |
+       shape1 < 0 | shape2 < 0 | ncp < 0){
         rlang::abort(
-            "The parameters of '.shape' and '.rate' must be of class numeric.
+            "The parameters of '.shape1', '.shape2', and 'ncp' must be of class numeric.
             Please pass a numer like 1 or 1.1 etc. and must be greater than 0."
-        )
-    }
-
-    if(!is.numeric(rte) | rte < 0){
-        rlang::abort(
-            "The parameters of '.shape' and '.rate' must be of class numeric.
-            Please pass a numer like 1 or 1.1 etc."
         )
     }
 
@@ -88,22 +83,23 @@ tidy_gamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1){
     df <- dplyr::tibble(sim_number = as.factor(x)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(stats::rgamma(n = n, shape = shp, rate = rte))) %>%
+        dplyr::mutate(y = list(stats::rbeta(n = n, shape1 = shape1, shape2 = shape2, ncp = ncp))) %>%
         dplyr::mutate(d = list(density(unlist(y), n = n)[c("x","y")] %>%
-                                   purrr::set_names("dx","dy") %>%
-                                   dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(stats::pgamma(ps, shape = shp, rate = rte))) %>%
-        dplyr::mutate(q = list(stats::qgamma(qs, shape = shp, rate = rte))) %>%
+                                        purrr::set_names("dx","dy") %>%
+                                        dplyr::as_tibble())) %>%
+        dplyr::mutate(p = list(stats::pbeta(ps, shape1 = shape1, shape2 = shape2, ncp = ncp))) %>%
+        dplyr::mutate(q = list(stats::qbeta(qs, shape1 = shape1, shape2 = shape2, ncp = ncp))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 
 
     # Attach descriptive attributes to tibble
-    attr(df, ".shape") <- .shape
-    attr(df, ".rate") <- .rate
+    attr(df, ".shape1") <- .shape1
+    attr(df, ".shape2") <- .shape2
+    attr(df, ".ncp") <- .ncp
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_gamma"
+    attr(df, "tibble_type") <- "tidy_beta"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 

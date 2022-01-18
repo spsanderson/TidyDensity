@@ -21,3 +21,4 @@ reference:
      contents:
      -  "tidy_normal"
      -  "tidy_gamma"
+     -  "tidy_beta"

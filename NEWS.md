@@ -6,6 +6,7 @@ None
 ## New Features
 1. Fix #1 - Add function `tidy_rnorm()`
 2. Fix #4 - Add function `tidy_gamma()`
+3. Fix #5 - Add function `tidy_beta()`
 
 * Added a `NEWS.md` file to track changes to the package.
 

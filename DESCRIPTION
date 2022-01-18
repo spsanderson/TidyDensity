@@ -17,7 +17,8 @@ Imports:
     dplyr,
     ggplot2,
     plotly,
-    tidyr
+    tidyr,
+    purrr
 Suggests: 
     rmarkdown,
     knitr,
