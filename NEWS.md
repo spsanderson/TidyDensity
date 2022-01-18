@@ -10,6 +10,7 @@ None
 4. Fix #6 - Add function `tidy_poisson()`
 5. Fix #2 - Add function `tidy_autoplot()`
 6. Fix #11 - Add function `tidy_distribution_summary_tbl()`
+7. Fix #10 - Add function `tidy_empirical()`
 
 * Added a `NEWS.md` file to track changes to the package.
 
