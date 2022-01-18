@@ -54,7 +54,8 @@ tidy_gamma()
 
 Other Data Generator: 
 \code{\link{tidy_beta}()},
-\code{\link{tidy_normal}()}
+\code{\link{tidy_normal}()},
+\code{\link{tidy_poisson}()}
 }
 \author{
 Steven P. Sanderson II, MPH

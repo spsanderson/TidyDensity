@@ -49,8 +49,10 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(TidyDensity)
 
-tn <- tidy_normal(.n = 100, .num_sims = 30)
-head(tn)
+tidy_normal()
+tidy_beta()
+tidy_gamma()
+tidy_poisson()
 ```
 
 An example plot of the `tidy_normal` data.
@@ -59,6 +61,7 @@ An example plot of the `tidy_normal` data.
 library(dplyr)
 library(ggplot2)
 
+tn <- tidy_normal(.num_sims = 30)
 tn_mean <- tn %>%
   summarise(grp_mean = mean(y, na.rm = TRUE))
 
@@ -84,5 +87,3 @@ p1 <- tn %>%
 
 p1
 ```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
