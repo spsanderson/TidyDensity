@@ -28,7 +28,7 @@
 #' tidy_normal()
 #'
 #' @return
-#' A tibble of randomly generated.
+#' A tibble of randomly generated data.
 #'
 #' @export
 #'
@@ -63,7 +63,7 @@ tidy_gamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1){
         )
     }
 
-    if(!is.numeric(rte)){
+    if(!is.numeric(rte) | rte < 0){
         rlang::abort(
             "The parameters of '.shape' and '.rate' must be of class numeric.
             Please pass a numer like 1 or 1.1 etc."
@@ -99,5 +99,3 @@ tidy_gamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1){
     return(df)
 
 }
-
-tidy_rgamma()
