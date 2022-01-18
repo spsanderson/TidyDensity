@@ -23,6 +23,7 @@ reference:
      -  "tidy_gamma"
      -  "tidy_beta"
      -  "tidy_poisson"
+     -  "tidy_empirical"
   -  title: Plotting Functions
      desc: Functions that generate plots of the tidy_ distribution functions.
      contents:
