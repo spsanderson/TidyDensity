@@ -7,7 +7,8 @@
 #' @seealso \url{https://data-flair.training/blogs/normal-distribution-in-r/}
 #'
 #' @details This function uses the underlying `stats::rnorm()`, `stats::pnorm()`,
-#' and `stats::qnorm()` functions to generate data from the given parameters.
+#' and `stats::qnorm()` functions to generate data from the given parameters. For
+#' more information please see [stats::rnorm()]
 #'
 #' @description This function will generate `n` random points from a Gaussian
 #' distribution with a user provided, mean, standard deviation and number of
@@ -16,6 +17,16 @@
 #' generated points, the `dnorm`, `pnorm` and `qnorm` data points as well.
 #'
 #' The data is returned un-grouped.
+#'
+#' The columns that are output are:
+#'
+#' -  `sim_number` The current simulation number.
+#' -  `x` The current value of `n` for the current simulation.
+#' -  `y` The randomly generated data point.
+#' -  `dx` The `x` value from the [stats::density()] function.
+#' -  `dy` The `y` value from the [stats::density()] function.
+#' -  `p` The values from the resulting p_ function of the distribution family.
+#' -  `q` The values from the resulting q_ function of the distribution family.
 #'
 #' @param .n The number of randomly generated points you want.
 #' @param .mean The mean of the randomly generated data.
@@ -77,10 +88,12 @@ tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1){
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
         dplyr::mutate(y = list(stats::rnorm(n, mu, std))) %>%
-        dplyr::mutate(d_norm = list(stats::dnorm(unlist(y), mu, std))) %>%
-        dplyr::mutate(p_norm = list(stats::pnorm(ps, mu, std))) %>%
-        dplyr::mutate(q_norm = list(stats::qnorm(qs, mu, std))) %>%
-        tidyr::unnest(cols = c(x, y, d_norm, p_norm, q_norm)) %>%
+        dplyr::mutate(d = list(density(unlist(y), n = n)[c("x","y")] %>%
+                                        purrr::set_names("dx","dy") %>%
+                                        dplyr::as_tibble())) %>%
+        dplyr::mutate(p = list(stats::pnorm(ps, mu, std))) %>%
+        dplyr::mutate(q = list(stats::qnorm(qs, mu, std))) %>%
+        tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 
 
