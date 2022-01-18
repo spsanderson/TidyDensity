@@ -25,7 +25,7 @@
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_normal()
+#' tidy_gamma()
 #'
 #' @return
 #' A tibble of randomly generated data.

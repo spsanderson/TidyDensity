@@ -16,10 +16,10 @@ tidy_normal(.n = 50, .mean = 0, .sd = 1, .num_sims = 1)
 \item{.num_sims}{The number of randomly generated simulations you want.}
 }
 \value{
-A tibble of randomly generated.
+A tibble of randomly generated data.
 }
 \description{
-This function will generate \code{n} randong points from a gaussian
+This function will generate \code{n} random points from a Gaussian
 distribution with a user provided, mean, standard deviation and number of
 random simulations to be produced. The function returns a tibble with the
 simulation number column the x column which corresponds to the n randomly
@@ -37,6 +37,9 @@ tidy_normal()
 }
 \seealso{
 \url{https://data-flair.training/blogs/normal-distribution-in-r/}
+
+Other Data Generator: 
+\code{\link{tidy_gamma}()}
 }
 \author{
 Steven P. Sanderson II, MPH
