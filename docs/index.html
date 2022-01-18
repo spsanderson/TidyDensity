@@ -98,22 +98,72 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/TidyDensity" class="external-link">TidyDensity</a></span><span class="op">)</span>
 
-<span class="va">tn</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.n <span class="op">=</span> <span class="fl">100</span>, .num_sims <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tn</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 7</span>
-<span class="co">#&gt;   sim_number     x      y    dx       dy     p       q</span>
-<span class="co">#&gt;   &lt;fct&gt;      &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 1              1  1.22  -3.14 0.000350     0 -Inf   </span>
-<span class="co">#&gt; 2 1              2  0.409 -3.07 0.000625     0   -2.32</span>
-<span class="co">#&gt; 3 1              3 -1.36  -2.99 0.00108      0   -2.05</span>
-<span class="co">#&gt; 4 1              4 -1.13  -2.92 0.00182      0   -1.88</span>
-<span class="co">#&gt; 5 1              5 -0.857 -2.85 0.00296      0   -1.75</span>
-<span class="co">#&gt; 6 1              6  1.12  -2.78 0.00468      0   -1.64</span></code></pre></div>
+<span class="fu"><a href="reference/tidy_normal.html">tidy_normal</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 50 x 7</span>
+<span class="co">#&gt;    sim_number     x        y    dx       dy         p        q</span>
+<span class="co">#&gt;    &lt;fct&gt;      &lt;int&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 1              1  0.963   -3.71 0.000254 0         -Inf    </span>
+<span class="co">#&gt;  2 1              2 -0.192   -3.58 0.000729 0           -2.05 </span>
+<span class="co">#&gt;  3 1              3  0.758   -3.45 0.00182  0           -1.74 </span>
+<span class="co">#&gt;  4 1              4 -0.00266 -3.31 0.00394  0           -1.54 </span>
+<span class="co">#&gt;  5 1              5 -0.00543 -3.18 0.00740  0           -1.39 </span>
+<span class="co">#&gt;  6 1              6 -0.204   -3.05 0.0121   0           -1.27 </span>
+<span class="co">#&gt;  7 1              7 -0.788   -2.92 0.0171   0           -1.16 </span>
+<span class="co">#&gt;  8 1              8  0.594   -2.78 0.0211   4.18e-284   -1.07 </span>
+<span class="co">#&gt;  9 1              9 -1.51    -2.65 0.0227   1.11e-253   -0.981</span>
+<span class="co">#&gt; 10 1             10 -0.0337  -2.52 0.0213   5.45e-225   -0.901</span>
+<span class="co">#&gt; # ... with 40 more rows</span>
+<span class="fu"><a href="reference/tidy_beta.html">tidy_beta</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 50 x 7</span>
+<span class="co">#&gt;    sim_number     x      y      dx      dy     p      q</span>
+<span class="co">#&gt;    &lt;fct&gt;      &lt;int&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 1              1 0.347  -0.311  0.00441     0 0     </span>
+<span class="co">#&gt;  2 1              2 0.247  -0.279  0.0102      0 0.0204</span>
+<span class="co">#&gt;  3 1              3 0.118  -0.246  0.0220      0 0.0408</span>
+<span class="co">#&gt;  4 1              4 0.444  -0.214  0.0439      0 0.0612</span>
+<span class="co">#&gt;  5 1              5 0.631  -0.182  0.0814      0 0.0816</span>
+<span class="co">#&gt;  6 1              6 0.151  -0.149  0.140       0 0.102 </span>
+<span class="co">#&gt;  7 1              7 0.755  -0.117  0.225       0 0.122 </span>
+<span class="co">#&gt;  8 1              8 0.269  -0.0843 0.338       0 0.143 </span>
+<span class="co">#&gt;  9 1              9 0.0636 -0.0518 0.475       0 0.163 </span>
+<span class="co">#&gt; 10 1             10 0.769  -0.0194 0.628       0 0.184 </span>
+<span class="co">#&gt; # ... with 40 more rows</span>
+<span class="fu"><a href="reference/tidy_gamma.html">tidy_gamma</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 50 x 7</span>
+<span class="co">#&gt;    sim_number     x       y      dx      dy     p      q</span>
+<span class="co">#&gt;    &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 1              1 1.88    -1.15   0.00206     0 0     </span>
+<span class="co">#&gt;  2 1              2 0.774   -0.998  0.00654     0 0.0206</span>
+<span class="co">#&gt;  3 1              3 2.63    -0.849  0.0180      0 0.0417</span>
+<span class="co">#&gt;  4 1              4 0.345   -0.701  0.0429      0 0.0632</span>
+<span class="co">#&gt;  5 1              5 0.0893  -0.552  0.0890      0 0.0852</span>
+<span class="co">#&gt;  6 1              6 0.905   -0.403  0.161       0 0.108 </span>
+<span class="co">#&gt;  7 1              7 2.35    -0.255  0.254       0 0.131 </span>
+<span class="co">#&gt;  8 1              8 0.0225  -0.106  0.354       0 0.154 </span>
+<span class="co">#&gt;  9 1              9 0.00162  0.0425 0.436       0 0.178 </span>
+<span class="co">#&gt; 10 1             10 1.19     0.191  0.483       0 0.203 </span>
+<span class="co">#&gt; # ... with 40 more rows</span>
+<span class="fu"><a href="reference/tidy_poisson.html">tidy_poisson</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 50 x 7</span>
+<span class="co">#&gt;    sim_number     x     y      dx      dy     p     q</span>
+<span class="co">#&gt;    &lt;fct&gt;      &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 1              1     0 -1.37   0.00355     0     0</span>
+<span class="co">#&gt;  2 1              2     1 -1.21   0.00942     0     0</span>
+<span class="co">#&gt;  3 1              3     1 -1.05   0.0222      0     0</span>
+<span class="co">#&gt;  4 1              4     1 -0.892  0.0465      0     0</span>
+<span class="co">#&gt;  5 1              5     0 -0.734  0.0864      0     0</span>
+<span class="co">#&gt;  6 1              6     0 -0.577  0.143       0     0</span>
+<span class="co">#&gt;  7 1              7     1 -0.419  0.209       0     0</span>
+<span class="co">#&gt;  8 1              8     1 -0.261  0.275       0     0</span>
+<span class="co">#&gt;  9 1              9     1 -0.103  0.325       0     0</span>
+<span class="co">#&gt; 10 1             10     2  0.0545 0.352       0     0</span>
+<span class="co">#&gt; # ... with 40 more rows</span></code></pre></div>
 <p>An example plot of the <code>tidy_normal</code> data.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
+<span class="va">tn</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.num_sims <span class="op">=</span> <span class="fl">30</span><span class="op">)</span>
 <span class="va">tn_mean</span> <span class="op">&lt;-</span> <span class="va">tn</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>grp_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
@@ -139,7 +189,6 @@
 
 <span class="va">p1</span></code></pre></div>
 <p><img src="reference/figures/README-plot_density-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
 </div>
 </div>
   </div>
