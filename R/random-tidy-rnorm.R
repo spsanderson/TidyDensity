@@ -29,7 +29,7 @@ tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1){
 
     # Tidyeval ----
     n         <- as.integer(.n)
-    num_walks <- as.integer(.num_sims)
+    num_sims <- as.integer(.num_sims)
     mu  <- as.numeric(.mean)
     std <- as.numeric(.sd)
 
@@ -41,7 +41,7 @@ tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1){
         )
     }
 
-    if(!is.integer(num_walks) | num_walks < 0){
+    if(!is.integer(num_sims) | num_sims < 0){
         rlang::abort(
             "The parameter `.num_sims' must be of class integer. Please pass a
             whole number like 50 or 100. It must be greater than 0."
@@ -62,13 +62,19 @@ tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1){
         )
     }
 
-    x <- seq(1, num_walks, 1)
+    x <- seq(1, num_sims, 1)
+
+    ps <- seq(-n, n-1, 2)
+    qs <- seq(0, 1, (1/(n-1)))
 
     df <- dplyr::tibble(sim_number = as.factor(x)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
         dplyr::mutate(y = list(stats::rnorm(n, mu, std))) %>%
-        tidyr::unnest(cols = c(x,y)) %>%
+        dplyr::mutate(d_norm = list(stats::dnorm(unlist(y), mu, std))) %>%
+        dplyr::mutate(p_norm = list(stats::pnorm(ps, mu, std))) %>%
+        dplyr::mutate(q_norm = list(stats::qnorm(qs, mu, std))) %>%
+        tidyr::unnest(cols = c(x, y, d_norm, p_norm, q_norm)) %>%
         dplyr::ungroup()
 
 
@@ -78,6 +84,8 @@ tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1){
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
     attr(df, "tibble_type") <- "tidy_gaussian"
+    attr(df, "ps") <- ps
+    attr(df, "qs") <- qs
 
     # Return final result as function output
     return(df)
