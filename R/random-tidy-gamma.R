@@ -1,6 +1,6 @@
 
 
-tidy_rgamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1){
+tidy_gamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
