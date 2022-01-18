@@ -8,6 +8,7 @@ None
 2. Fix #4 - Add function `tidy_gamma()`
 3. Fix #5 - Add function `tidy_beta()`
 4. Fix #6 - Add function `tidy_poisson()`
+5. Fix #2 - Add function `tidy_autoplot()`
 
 * Added a `NEWS.md` file to track changes to the package.
 
