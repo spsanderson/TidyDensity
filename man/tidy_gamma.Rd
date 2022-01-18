@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-gamma.R
 \name{tidy_gamma}
 \alias{tidy_gamma}
-\title{Tidy Randomly Generated Gaussian Tibble}
+\title{Tidy Randomly Generated Gamma Tibble}
 \usage{
 tidy_gamma(.n = 50, .shape = 1, .rate = 1, .num_sims = 1)
 }
