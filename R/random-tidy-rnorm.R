@@ -4,6 +4,8 @@
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
+#' @seealso \url{https://data-flair.training/blogs/normal-distribution-in-r/}
+#'
 #' @details This function uses the underlying `stats::rnorm()` function to generate
 #' data from the given parameters.
 #'
@@ -15,7 +17,7 @@
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_rnorm()
+#' tidy_normal()
 #'
 #' @return
 #' A tibble of randomly generated.
@@ -23,7 +25,7 @@
 #' @export
 #'
 
-tidy_rnorm <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1){
+tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1){
 
     # Tidyeval ----
     n         <- as.integer(.n)
