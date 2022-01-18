@@ -26,7 +26,7 @@
 #' tidy_normal()
 #'
 #' @return
-#' A tibble of randomly generated.
+#' A tibble of randomly generated data.
 #'
 #' @export
 #'
