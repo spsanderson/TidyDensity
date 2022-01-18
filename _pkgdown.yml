@@ -16,3 +16,7 @@ navbar:
       href: news/index.html
 
 reference:
+  -  title: Data Generating Functions
+     desc: Functions that generate random data and return tibbles
+     contents:
+     -  "tidy_normal"
