@@ -20,3 +20,4 @@ reference:
      desc: Functions that generate random data and return tibbles
      contents:
      -  "tidy_normal"
+     -  "tidy_gamma"
