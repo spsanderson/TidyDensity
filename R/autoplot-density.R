@@ -18,6 +18,9 @@
 #' -  `probablity`
 #' -  `qq`
 #'
+#' If the number of simulations exceeds 9 then the legend will not print. The plot
+#' subtitle is put together by the attributes of the table passed to the function.
+#'
 #' @param .data The data passed in from a tidy_`distribution` function like
 #' `tidy_normal()`
 #' @param .plot_type This is a quoted string like 'density'
@@ -134,7 +137,6 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
             ) +
             ggplot2::geom_point(size = point_size) +
             ggplot2::geom_line(size = line_size) +
-            ggplot2::geom_jitter() +
             ggplot2::theme_minimal() +
             ggplot2::labs(
                 title = "Probabilty Plot",

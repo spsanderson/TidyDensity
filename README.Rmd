@@ -62,28 +62,12 @@ library(dplyr)
 library(ggplot2)
 
 tn <- tidy_normal(.num_sims = 30)
-tn_mean <- tn %>%
-  summarise(grp_mean = mean(y, na.rm = TRUE))
+tg <- tidy_gamma(.num_sims = 9)
+tb <- tidy_beta(.num_sims = 5)
+tp <- tidy_poisson()
 
-p1 <- tn %>%
-  ggplot(aes(x = y, group = sim_number, color = sim_number)) +
-  geom_density() + 
-  geom_vline(data = tn_mean, aes(xintercept = grp_mean),
-             linetype ="dashed", color = "black") +
-  theme_minimal() + 
-  theme(legend.position = "none") + 
-  labs(
-    title = "Density Distribution", 
-    subtitle = paste0(
-      "Simulations: ", attributes(tn)$.num_sims, 
-      " - mu: ", attributes(tn)$.mean, 
-      " - sd: ", attributes(tn)$.sd, 
-      " - Random Points: ", attributes(tn)$.n
-    ),
-    color = "Simulation",
-    x = "x",
-    y = "Density"
-  )
-
-p1
+tidy_autoplot(tn, .plot_type = "density")
+tidy_autoplot(tg, .plot_type = "quantile")
+tidy_autoplot(tb, .plot_type = "probability")
+tidy_autoplot(tp, .plot_type = "qq")
 ```

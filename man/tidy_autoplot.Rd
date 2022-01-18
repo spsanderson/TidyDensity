@@ -34,6 +34,9 @@ a quoted string of one of the following:
 \item \code{probablity}
 \item \code{qq}
 }
+
+If the number of simulations exceeds 9 then the legend will not print. The plot
+subtitle is put together by the attributes of the table passed to the function.
 }
 \details{
 This function will spit out one of the following plots:
