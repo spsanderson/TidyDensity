@@ -83,7 +83,8 @@ subtitle is put together by the attributes of the table passed to the function.<
   <span class="va">.data</span>,
   .plot_type <span class="op">=</span> <span class="st">"density"</span>,
   .line_size <span class="op">=</span> <span class="fl">0.5</span>,
-  .point_size <span class="op">=</span> <span class="fl">0.5</span>
+  .point_size <span class="op">=</span> <span class="fl">0.5</span>,
+  .interactive <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -98,10 +99,13 @@ subtitle is put together by the attributes of the table passed to the function.<
 <dd><p>The size param ggplot</p></dd>
 <dt>.point_size</dt>
 <dd><p>The line size param for ggplot</p></dd>
+<dt>.interactive</dt>
+<dd><p>A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return an interactive plotly plot.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
+    <p>A ggplot or a plotly plot.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -117,7 +121,9 @@ subtitle is put together by the attributes of the table passed to the function.<
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">tn</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.num_sims <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">tidy_autoplot</span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"density"</span>, .point_size <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span>
+<span class="r-plt img"><img src="tidy_autoplot-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
