@@ -49,8 +49,8 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(TidyDensity)
 
-rand <- tidy_rnorm(.n = 100, .num_sims = 30)
-head(rand)
+tn <- tidy_normal(.n = 100, .num_sims = 30)
+head(tn)
 ```
 
 You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
@@ -61,15 +61,30 @@ You can also embed plots, for example:
 library(dplyr)
 library(ggplot2)
 
-rand %>%
-  ggplot(mapping = aes(x = y, group = sim_number, color = sim_number)) +
-  geom_density() +
-  theme_minimal() +
+tn_mean <- tn %>%
+  summarise(grp_mean = mean(y, na.rm = TRUE))
+
+p1 <- tn %>%
+  ggplot(aes(x = y, group = sim_number, color = sim_number)) +
+  geom_density() + 
+  geom_vline(data = tn_mean, aes(xintercept = grp_mean),
+             linetype ="dashed", color = "black") +
+  theme_minimal() + 
+  theme(legend.position = "none") + 
   labs(
-      title = "Plot of rand",
-      color = "Simulation"
-  ) +
-  theme(legend.position = "none")
+    title = "Density Distribution", 
+    subtitle = paste0(
+      "Simulations: ", attributes(tn)$.num_sims, 
+      " - mu: ", attributes(tn)$.mean, 
+      " - sd: ", attributes(tn)$.sd, 
+      " - Random Points: ", attributes(tn)$.n
+    ),
+    color = "Simulation",
+    x = "x",
+    y = "Density"
+  )
+
+p1
 ```
 
 In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

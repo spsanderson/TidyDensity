@@ -6,10 +6,16 @@
 #'
 #' @seealso \url{https://data-flair.training/blogs/normal-distribution-in-r/}
 #'
-#' @details This function uses the underlying `stats::rnorm()` function to generate
-#' data from the given parameters.
+#' @details This function uses the underlying `stats::rnorm()`, `stats::pnorm()`,
+#' and `stats::qnorm()` functions to generate data from the given parameters.
 #'
-#' @description
+#' @description This function will generate `n` randong points from a gaussian
+#' distribution with a user provided, mean, standard deviation and number of
+#' random simulations to be produced. The function returns a tibble with the
+#' simulation number column the x column which corresponds to the n randomly
+#' generated points, the `dnorm`, `pnorm` and `qnorm` data points as well.
+#'
+#' The data is returned un-grouped.
 #'
 #' @param .n The number of randomly generated points you want.
 #' @param .mean The mean of the randomly generated data.

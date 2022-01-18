@@ -39,17 +39,17 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(TidyDensity)
 
-rand <- tidy_rnorm(.n = 100, .num_sims = 30)
-head(rand)
-#> # A tibble: 6 x 3
-#>   sim_number     x      y
-#>   <fct>      <int>  <dbl>
-#> 1 1              1  0.185
-#> 2 1              2 -1.34 
-#> 3 1              3  1.62 
-#> 4 1              4 -0.600
-#> 5 1              5 -0.160
-#> 6 1              6 -1.31
+tn <- tidy_normal(.n = 100, .num_sims = 30)
+head(tn)
+#> # A tibble: 6 x 6
+#>   sim_number     x      y d_norm p_norm  q_norm
+#>   <fct>      <int>  <dbl>  <dbl>  <dbl>   <dbl>
+#> 1 1              1  0.438  0.362      0 -Inf   
+#> 2 1              2 -0.439  0.362      0   -2.32
+#> 3 1              3 -1.28   0.175      0   -2.05
+#> 4 1              4  1.66   0.101      0   -1.88
+#> 5 1              5  0.769  0.297      0   -1.75
+#> 6 1              6  0.219  0.389      0   -1.64
 ```
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
@@ -64,15 +64,30 @@ You can also embed plots, for example:
 library(dplyr)
 library(ggplot2)
 
-rand %>%
-  ggplot(mapping = aes(x = y, group = sim_number, color = sim_number)) +
-  geom_density() +
-  theme_minimal() +
+tn_mean <- tn %>%
+  summarise(grp_mean = mean(y, na.rm = TRUE))
+
+p1 <- tn %>%
+  ggplot(aes(x = y, group = sim_number, color = sim_number)) +
+  geom_density() + 
+  geom_vline(data = tn_mean, aes(xintercept = grp_mean),
+             linetype ="dashed", color = "black") +
+  theme_minimal() + 
+  theme(legend.position = "none") + 
   labs(
-      title = "Plot of rand",
-      color = "Simulation"
-  ) +
-  theme(legend.position = "none")
+    title = "Density Distribution", 
+    subtitle = paste0(
+      "Simulations: ", attributes(tn)$.num_sims, 
+      " - mu: ", attributes(tn)$.mean, 
+      " - sd: ", attributes(tn)$.sd, 
+      " - Random Points: ", attributes(tn)$.n
+    ),
+    color = "Simulation",
+    x = "x",
+    y = "Density"
+  )
+
+p1
 ```
 
 <img src="man/figures/README-plot_density-1.png" width="100%" />
