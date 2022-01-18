@@ -18,7 +18,8 @@ Imports:
     ggplot2,
     plotly,
     tidyr,
-    purrr
+    purrr,
+    stringr
 Suggests: 
     rmarkdown,
     knitr,
