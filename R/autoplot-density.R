@@ -26,15 +26,21 @@
 #' @param .plot_type This is a quoted string like 'density'
 #' @param .line_size The size param ggplot
 #' @param .point_size The line size param for ggplot
+#' @param .interactive A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+#' will return an interactive plotly plot.
 #'
 #' @examples
+#' tn <- tidy_normal(.num_sims = 5)
+#' tidy_autoplot(tn, .plot_type = "density", .point_size = .1)
 #'
 #' @return
+#' A ggplot or a plotly plot.
 #'
 #' @export
 #'
 
-tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point_size = .5){
+tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point_size = .5,
+                          .interactive = FALSE){
 
     # Plot type ----
     plot_type <- tolower(as.character(.plot_type))
@@ -49,6 +55,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
         rlang::abort("The .data parameter must be a valid data.frame from a `tidy_`
                      distribution function.  ")
     }
+
     if(!"tibble_type" %in% names(atb)){
         rlang::abort("The data passed must come from a `tidy_` distribution function.")
     }
@@ -160,6 +167,10 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
                 color = "Simulation"
             ) +
             ggplot2::theme(legend.position = leg_pos)
+    }
+
+    if(.interactive){
+        plt <- plotly::ggplotly(plt)
     }
 
     # Return ----

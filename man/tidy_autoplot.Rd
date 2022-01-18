@@ -8,7 +8,8 @@ tidy_autoplot(
   .data,
   .plot_type = "density",
   .line_size = 0.5,
-  .point_size = 0.5
+  .point_size = 0.5,
+  .interactive = FALSE
 )
 }
 \arguments{
@@ -20,9 +21,12 @@ tidy_autoplot(
 \item{.line_size}{The size param ggplot}
 
 \item{.point_size}{The line size param for ggplot}
+
+\item{.interactive}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return an interactive plotly plot.}
 }
 \value{
-
+A ggplot or a plotly plot.
 }
 \description{
 This is an autoplotting function that will take in a \code{tidy_}
@@ -48,6 +52,8 @@ This function will spit out one of the following plots:
 }
 }
 \examples{
+tn <- tidy_normal(.num_sims = 5)
+tidy_autoplot(tn, .plot_type = "density", .point_size = .1)
 
 }
 \author{

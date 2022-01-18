@@ -19,7 +19,8 @@ Imports:
     plotly,
     tidyr,
     purrr,
-    stringr
+    stringr,
+    healthyR.ai
 Suggests: 
     rmarkdown,
     knitr,
