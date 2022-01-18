@@ -9,7 +9,7 @@
 #' @details This function uses the underlying `stats::rnorm()`, `stats::pnorm()`,
 #' and `stats::qnorm()` functions to generate data from the given parameters.
 #'
-#' @description This function will generate `n` randong points from a gaussian
+#' @description This function will generate `n` random points from a Gaussian
 #' distribution with a user provided, mean, standard deviation and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
