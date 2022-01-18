@@ -4,8 +4,6 @@
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @seealso \url{https://data-flair.training/blogs/normal-distribution-in-r/}
-#'
 #' @details This function uses the underlying `stats::rnorm()`, `stats::pnorm()`,
 #' and `stats::qnorm()` functions to generate data from the given parameters. For
 #' more information please see [stats::rnorm()]

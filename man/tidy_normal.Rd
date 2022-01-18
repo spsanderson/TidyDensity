@@ -48,8 +48,6 @@ tidy_normal()
 
 }
 \seealso{
-\url{https://data-flair.training/blogs/normal-distribution-in-r/}
-
 Other Data Generator: 
 \code{\link{tidy_beta}()},
 \code{\link{tidy_gamma}()},
