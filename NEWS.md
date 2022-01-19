@@ -15,6 +15,7 @@ None
 9. Fix #14 - Add function `tidy_exponential()`
 10. Fix #15 - Add function `tidy_logistic()`
 11. Fix #16 - Add function `tidy_lognormal()`
+12. Fix #17 - Add function `tidy_weibull()`
 
 * Added a `NEWS.md` file to track changes to the package.
 

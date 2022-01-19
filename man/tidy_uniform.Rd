@@ -56,7 +56,8 @@ Other Data Generator:
 \code{\link{tidy_logisitc}()},
 \code{\link{tidy_lognormal}()},
 \code{\link{tidy_normal}()},
-\code{\link{tidy_poisson}()}
+\code{\link{tidy_poisson}()},
+\code{\link{tidy_weibull}()}
 }
 \author{
 Steven P. Sanderson II, MPH
