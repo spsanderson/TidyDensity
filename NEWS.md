@@ -18,6 +18,7 @@ None
 12. Fix #17 - Add function `tidy_weibull()`
 13. Fix #18 - Add function `tidy_chisquare()`
 14. Fix #19 - Add function `tidy_cauchy()`
+15. Fix #20 - Add function `tidy_hypergeometric()`
 
 * Added a `NEWS.md` file to track changes to the package.
 
