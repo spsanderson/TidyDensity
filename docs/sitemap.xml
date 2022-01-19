@@ -46,7 +46,19 @@
     <loc>/reference/tidy_empirical.html</loc>
   </url>
   <url>
+    <loc>/reference/tidy_exponential.html</loc>
+  </url>
+  <url>
     <loc>/reference/tidy_gamma.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_logisitc.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_logistic.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_lognormal.html</loc>
   </url>
   <url>
     <loc>/reference/tidy_normal.html</loc>
@@ -56,5 +68,11 @@
   </url>
   <url>
     <loc>/reference/tidy_rnorm.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_uniform.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_weibull.html</loc>
   </url>
 </urlset>

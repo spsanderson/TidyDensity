@@ -52,7 +52,7 @@ Other Data Generator:
 \code{\link{tidy_beta}()},
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_gamma}()},
-\code{\link{tidy_logisitc}()},
+\code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},
 \code{\link{tidy_poisson}()},
 \code{\link{tidy_uniform}()},
