@@ -10,7 +10,7 @@
 #' `p`, `d`, and `q` functions. For more information please see [stats::rchisq()]
 #'
 #' @description This function will generate `n` random points from a chisquare
-#' distribution with a user provided, shape, scale, and number of
+#' distribution with a user provided, `.df`, `.ncp`, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.

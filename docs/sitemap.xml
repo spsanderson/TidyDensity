@@ -40,6 +40,12 @@
     <loc>/reference/tidy_beta.html</loc>
   </url>
   <url>
+    <loc>/reference/tidy_cauchy.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_chisquare.html</loc>
+  </url>
+  <url>
     <loc>/reference/tidy_distribution_summary_tbl.html</loc>
   </url>
   <url>
@@ -49,7 +55,13 @@
     <loc>/reference/tidy_exponential.html</loc>
   </url>
   <url>
+    <loc>/reference/tidy_f.html</loc>
+  </url>
+  <url>
     <loc>/reference/tidy_gamma.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_hypergeometric.html</loc>
   </url>
   <url>
     <loc>/reference/tidy_logisitc.html</loc>

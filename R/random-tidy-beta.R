@@ -11,7 +11,7 @@
 #' `p`, `d`, and `q` functions. For more information please see [stats::rbeta()]
 #'
 #' @description This function will generate `n` random points from a beta
-#' distribution with a user provided, `shape1`, `shape2`, `ncp` or `non-centrality parameter`,
+#' distribution with a user provided, `.shape1`, `.shape2`, `.ncp` or `non-centrality parameter`,
 #' and number of random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.

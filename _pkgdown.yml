@@ -32,6 +32,7 @@ reference:
      -  "tidy_chisquare"
      -  "tidy_cauchy"
      -  "tidy_hypergeometric"
+     -  "tidy_f"
   -  title: Plotting Functions
      desc: Functions that generate plots of the tidy_ distribution functions.
      contents:

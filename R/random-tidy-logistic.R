@@ -10,7 +10,7 @@
 #' `p`, `d`, and `q` functions. For more information please see [stats::rlogis()]
 #'
 #' @description This function will generate `n` random points from a logistic
-#' distribution with a user provided, rate, and number of
+#' distribution with a user provided, `.location`, `.scale`, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresonds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.

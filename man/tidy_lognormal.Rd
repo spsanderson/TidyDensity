@@ -20,7 +20,7 @@ A tibble of randomly generated data.
 }
 \description{
 This function will generate \code{n} random points from a lognormal
-distribution with a user provided, meanlog, sdlog, and number of
+distribution with a user provided, \code{.meanlog}, \code{.sdlog}, and number of
 random simulations to be produced. The function returns a tibble with the
 simulation number column the x column which corresponds to the n randomly
 generated points, the \code{d_}, \code{p_} and \code{q_} data points as well.

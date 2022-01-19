@@ -20,7 +20,7 @@ A tibble of randomly generated data.
 }
 \description{
 This function will generate \code{n} random points from a Gaussian
-distribution with a user provided, mean, standard deviation and number of
+distribution with a user provided, \code{.mean}, \code{.sd} - standard deviation and number of
 random simulations to be produced. The function returns a tibble with the
 simulation number column the x column which corresponds to the n randomly
 generated points, the \code{dnorm}, \code{pnorm} and \code{qnorm} data points as well.

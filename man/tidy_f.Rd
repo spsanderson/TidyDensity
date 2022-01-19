@@ -22,7 +22,7 @@ A tibble of randomly generated data.
 }
 \description{
 This function will generate \code{n} random points from a rf
-distribution with a user provided, \code{m},\code{nn}, and \code{k}, and number of random
+distribution with a user provided, \code{df1},\code{df2}, and \code{ncp}, and number of random
 simulations to be produced. The function returns a tibble with the
 simulation number column the x column which corresponds to the n randomly
 generated points, the \code{d_}, \code{p_} and \code{q_} data points as well.
