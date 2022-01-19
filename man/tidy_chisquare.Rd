@@ -53,6 +53,7 @@ Other Data Generator:
 \code{\link{tidy_beta}()},
 \code{\link{tidy_cauchy}()},
 \code{\link{tidy_exponential}()},
+\code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
