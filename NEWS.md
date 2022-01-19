@@ -17,6 +17,7 @@ None
 11. Fix #16 - Add function `tidy_lognormal()`
 12. Fix #17 - Add function `tidy_weibull()`
 13. Fix #18 - Add function `tidy_chisquare()`
+14. Fix #19 - Add function `tidy_cauchy()`
 
 * Added a `NEWS.md` file to track changes to the package.
 

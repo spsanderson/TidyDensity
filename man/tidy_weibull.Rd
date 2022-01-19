@@ -43,7 +43,7 @@ This function uses the underlying \code{stats::rlnorm()}, and its underlying
 \code{p}, \code{d}, and \code{q} functions. For more information please see \code{\link[stats:Lognormal]{stats::rlnorm()}}
 }
 \examples{
-tidy_logisitc()
+tidy_weibull()
 
 }
 \seealso{
@@ -51,6 +51,7 @@ tidy_logisitc()
 
 Other Data Generator: 
 \code{\link{tidy_beta}()},
+\code{\link{tidy_cauchy}()},
 \code{\link{tidy_chisquare}()},
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_gamma}()},

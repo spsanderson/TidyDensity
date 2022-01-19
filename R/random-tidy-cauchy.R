@@ -9,7 +9,7 @@
 #' @details This function uses the underlying `stats::rcauchy()`, and its underlying
 #' `p`, `d`, and `q` functions. For more information please see [stats::rcauchy()]
 #'
-#' @description This function will generate `n` random points from a chisquare
+#' @description This function will generate `n` random points from a cauchy
 #' distribution with a user provided, shape, scale, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
@@ -29,7 +29,7 @@
 #'
 #' @param .n The number of randomly generated points you want.
 #' @param .location The location parameter.
-#' @param .scale The scale parameter
+#' @param .scale The scale parameter, must be greater than or equal to 0.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
@@ -41,13 +41,13 @@
 #' @export
 #'
 
-tidy_chisquare <- function(.n = 50, .df = 1, .ncp = 1, .num_sims = 1){
+tidy_cauchy <- function(.n = 50, .location = 0, .scale = 1, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
     num_sims <- as.integer(.num_sims)
-    df    <- as.numeric(.df)
-    ncp    <- as.numeric(.ncp)
+    location    <- as.numeric(.location)
+    scale    <- as.numeric(.scale)
 
     # Checks ----
     if(!is.integer(n) | n < 0){
@@ -70,8 +70,8 @@ tidy_chisquare <- function(.n = 50, .df = 1, .ncp = 1, .num_sims = 1){
         )
     }
 
-    if(df < 0 | ncp < 0){
-        rlang::abort("The parameters of .df and .ncp must be greater than or equal to 0.")
+    if(scale < 0){
+        rlang::abort("The parameter of .scale must be greater than or equal to 0.")
     }
 
     x <- seq(1, num_sims, 1)
@@ -82,22 +82,22 @@ tidy_chisquare <- function(.n = 50, .df = 1, .ncp = 1, .num_sims = 1){
     df <- dplyr::tibble(sim_number = as.factor(x)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(stats::rcauchy(n = n, df = df, ncp = ncp))) %>%
+        dplyr::mutate(y = list(stats::rcauchy(n = n, location = location, scale = scale))) %>%
         dplyr::mutate(d = list(density(unlist(y), n = n)[c("x","y")] %>%
                                    purrr::set_names("dx","dy") %>%
                                    dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(stats::pchisq(ps,  df = df, ncp = ncp))) %>%
-        dplyr::mutate(q = list(stats::qchisq(qs,  df = df, ncp = ncp))) %>%
+        dplyr::mutate(p = list(stats::pcauchy(ps,  location = location, scale = scale))) %>%
+        dplyr::mutate(q = list(stats::qcauchy(qs,  location = location, scale = scale))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 
 
     # Attach descriptive attributes to tibble
-    attr(df, ".df") <- .df
-    attr(df, ".ncp") <- .ncp
+    attr(df, ".location") <- .location
+    attr(df, ".scale") <- .scale
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_chisquare"
+    attr(df, "tibble_type") <- "tidy_cauchy"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 
