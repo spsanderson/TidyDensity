@@ -49,6 +49,7 @@ tidy_exponential()
 
 Other Data Generator: 
 \code{\link{tidy_beta}()},
+\code{\link{tidy_chisquare}()},
 \code{\link{tidy_gamma}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

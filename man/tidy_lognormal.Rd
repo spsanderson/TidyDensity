@@ -51,6 +51,7 @@ tidy_logisitc()
 
 Other Data Generator: 
 \code{\link{tidy_beta}()},
+\code{\link{tidy_chisquare}()},
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_gamma}()},
 \code{\link{tidy_logistic}()},
