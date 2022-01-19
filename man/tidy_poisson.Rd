@@ -52,7 +52,8 @@ tidy_poisson()
 Other Data Generator: 
 \code{\link{tidy_beta}()},
 \code{\link{tidy_gamma}()},
-\code{\link{tidy_normal}()}
+\code{\link{tidy_normal}()},
+\code{\link{tidy_uniform}()}
 }
 \author{
 Steven P. Sanderson II, MPH
