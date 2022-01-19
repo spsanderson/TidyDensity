@@ -49,6 +49,11 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
 
     # Get the data attributes
     atb <- attributes(.data)
+    ns <- atb$.num_sims
+    ps <- attributes(.data)$ps
+    ps <- rep(ps, ns)
+    qs <- attributes(.data)$qs
+    qs <- rep(qs, ns)
 
     # Checks on data ---
     if(!is.data.frame(.data)){
@@ -122,7 +127,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
         plt <- data_tbl %>%
             ggplot2::ggplot(
                 ggplot2::aes(
-                    x = x, y = q, group = sim_number, color = sim_number
+                    x = qs, y = q, group = sim_number, color = sim_number
                 )
             ) +
             ggplot2::geom_point(size = point_size) +
@@ -139,7 +144,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
         plt <- data_tbl %>%
             ggplot2::ggplot(
                 ggplot2::aes(
-                    x = x, y = p, color = sim_number, group = sim_number
+                    x = ps, y = p, color = sim_number, group = sim_number
                 )
             ) +
             ggplot2::geom_point(size = point_size) +
