@@ -27,6 +27,7 @@ reference:
      -  "tidy_uniform"
      -  "tidy_exponential"
      -  "tidy_logistic"
+     -  "tidy_lognormal"
   -  title: Plotting Functions
      desc: Functions that generate plots of the tidy_ distribution functions.
      contents:
