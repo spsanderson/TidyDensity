@@ -9,7 +9,7 @@
 #' @details This function uses the underlying `stats::rlogis()`, and its underlying
 #' `p`, `d`, and `q` functions. For more information please see [stats::rlogis()]
 #'
-#' @description This function will generate `n` random points from a logisitc
+#' @description This function will generate `n` random points from a logistic
 #' distribution with a user provided, rate, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresonds to the n randomly
@@ -33,7 +33,7 @@
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_logisitc()
+#' tidy_logistic()
 #'
 #' @return
 #' A tibble of randomly generated data.
@@ -41,7 +41,7 @@
 #' @export
 #'
 
-tidy_logisitc <- function(.n = 50, .location = 0, .scale = 1, .num_sims = 1){
+tidy_logistic <- function(.n = 50, .location = 0, .scale = 1, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
@@ -93,7 +93,7 @@ tidy_logisitc <- function(.n = 50, .location = 0, .scale = 1, .num_sims = 1){
     attr(df, ".scale") <- .scale
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_logisitc"
+    attr(df, "tibble_type") <- "tidy_logistic"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 
