@@ -33,7 +33,7 @@
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_logisitc()
+#' tidy_weibull()
 #'
 #' @return
 #' A tibble of randomly generated data.
