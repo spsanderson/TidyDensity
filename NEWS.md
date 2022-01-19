@@ -12,6 +12,7 @@ None
 6. Fix #11 - Add function `tidy_distribution_summary_tbl()`
 7. Fix #10 - Add function `tidy_empirical()`
 8. Fix #13 - Add function `tidy_uniform()`
+9. Fix #14 - Add function `tidy_exponential()`
 
 * Added a `NEWS.md` file to track changes to the package.
 

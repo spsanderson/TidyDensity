@@ -25,6 +25,7 @@ reference:
      -  "tidy_poisson"
      -  "tidy_empirical"
      -  "tidy_uniform"
+     -  "tidy_exponential"
   -  title: Plotting Functions
      desc: Functions that generate plots of the tidy_ distribution functions.
      contents:

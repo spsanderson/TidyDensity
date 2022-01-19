@@ -4,13 +4,13 @@
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @seealso \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3662.htm}
+#' @seealso \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3667.htm}
 #'
-#' @details This function uses the underlying `stats::runif()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [stats::runif()]
+#' @details This function uses the underlying `stats::rexp()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [stats::rexp()]
 #'
-#' @description This function will generate `n` random points from a uniform
-#' distribution with a user provided, min and max values, and number of
+#' @description This function will generate `n` random points from a exponential
+#' distribution with a user provided, rate, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.
@@ -28,12 +28,11 @@
 #' -  `q` The values from the resulting q_ function of the distribution family.
 #'
 #' @param .n The number of randomly generated points you want.
-#' @param .min A lower limit of the distribution.
-#' @param .max An upper limit of the distribution
+#' @param .rate A vector of rates
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_uniform()
+#' tidy_exponential()
 #'
 #' @return
 #' A tibble of randomly generated data.
@@ -41,13 +40,12 @@
 #' @export
 #'
 
-tidy_uniform <- function(.n = 50, .min = 0, .max = 1, .num_sims = 1){
+tidy_exponential <- function(.n = 50, .rate = 1, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
     num_sims <- as.integer(.num_sims)
-    max_val <- as.numeric(.max)
-    min_val <- as.numeric(.min)
+    rate <- as.numeric(.rate)
 
     # Checks ----
     if(!is.integer(n) | n < 0){
@@ -64,10 +62,9 @@ tidy_uniform <- function(.n = 50, .min = 0, .max = 1, .num_sims = 1){
         )
     }
 
-    if(!is.numeric(min_val) | !is.numeric(max_val) | min_val > max_val){
+    if(!is.numeric(rate) | rate < 0){
         rlang::abort(
-            "The parameters of .min and .max should be numeric and max must be
-            greater than or equal to min."
+            "The parameter of rate must be of class numeric and greater than 0."
         )
     }
 
@@ -79,22 +76,21 @@ tidy_uniform <- function(.n = 50, .min = 0, .max = 1, .num_sims = 1){
     df <- dplyr::tibble(sim_number = as.factor(x)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(stats::runif(n = n, min = min_val, max = max_val))) %>%
+        dplyr::mutate(y = list(stats::rexp(n = n, rate = rate))) %>%
         dplyr::mutate(d = list(density(unlist(y), n = n)[c("x","y")] %>%
                                    purrr::set_names("dx","dy") %>%
                                    dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(stats::punif(ps,  min = min_val, max = max_val))) %>%
-        dplyr::mutate(q = list(stats::qunif(qs,  min = min_val, max = max_val))) %>%
+        dplyr::mutate(p = list(stats::pexp(ps,  rate = rate))) %>%
+        dplyr::mutate(q = list(stats::qexp(qs,  rate = rate))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 
 
     # Attach descriptive attributes to tibble
-    attr(df, ".max") <- .max
-    attr(df, ".min") <- .min
+    attr(df, ".rate") <- .rate
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_uniform"
+    attr(df, "tibble_type") <- "tidy_exponential"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 

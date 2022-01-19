@@ -54,6 +54,7 @@ tidy_gamma()
 
 Other Data Generator: 
 \code{\link{tidy_beta}()},
+\code{\link{tidy_exponential}()},
 \code{\link{tidy_normal}()},
 \code{\link{tidy_poisson}()},
 \code{\link{tidy_uniform}()}

@@ -20,7 +20,7 @@ A tibble of randomly generated data.
 }
 \description{
 This function will generate \code{n} random points from a uniform
-distribution with a user provided, shape, rate, and number of
+distribution with a user provided, min and max values, and number of
 random simulations to be produced. The function returns a tibble with the
 simulation number column the x column which corresponds to the n randomly
 generated points, the \code{d_}, \code{p_} and \code{q_} data points as well.
@@ -51,6 +51,7 @@ tidy_uniform()
 
 Other Data Generator: 
 \code{\link{tidy_beta}()},
+\code{\link{tidy_exponential}()},
 \code{\link{tidy_gamma}()},
 \code{\link{tidy_normal}()},
 \code{\link{tidy_poisson}()}
