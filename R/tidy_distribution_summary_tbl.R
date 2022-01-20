@@ -57,8 +57,8 @@ tidy_distribution_summary_tbl <- function(.data){
             std_val = sd(y, na.rm = TRUE),
             min_val = min(y),
             max_val = max(y),
-            skewness = healthyR.ai::hai_skewness_vec(y),
-            kurtosis = healthyR.ai::hai_kurtosis_vec(y),
+            # skewness = healthyR.ai::hai_skewness_vec(y),
+            # kurtosis = healthyR.ai::hai_kurtosis_vec(y),
             range = healthyR.ai::hai_range_statistic(y),
             iqr = stats::IQR(y),
             variance = stats::var(y)

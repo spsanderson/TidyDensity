@@ -10,10 +10,52 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",  
+  fig.width = 8,
+  fig.height = 4.5,
+  fig.align = 'center',
+  out.width = '95%',
+  dpi = 100,
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
 ```{r setup}
 library(TidyDensity)
+```
+
+## Example
+
+This is a basic example which shows you how easy it is to generate data with `{TidyDensity}`:
+
+```{r example}
+library(TidyDensity)
+library(dplyr)
+library(ggplot2)
+
+tidy_normal()
+```
+
+An example plot of the `tidy_normal` data.
+
+```{r plot_density}
+tn <- tidy_normal(.n = 100, .num_sims = 6)
+
+tidy_autoplot(tn, .plot_type = "density")
+tidy_autoplot(tn, .plot_type = "quantile")
+tidy_autoplot(tn, .plot_type = "probability")
+tidy_autoplot(tn, .plot_type = "qq")
+```
+
+We can also take a look at the plots when the number of simulations is greater than
+nine. This will automatically turn off the legend as it will become too noisy.
+
+```{r more_than_nine_simulations}
+tn <- tidy_normal(.n = 100, .num_sims = 20)
+
+tidy_autoplot(tn, .plot_type = "density")
+tidy_autoplot(tn, .plot_type = "quantile")
+tidy_autoplot(tn, .plot_type = "probability")
+tidy_autoplot(tn, .plot_type = "qq")
 ```
