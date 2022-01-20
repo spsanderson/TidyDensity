@@ -67,7 +67,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
 
     if(!attributes(.data)$tibble_type %in% c(
         "tidy_gaussian", "tidy_poisson","tidy_gamma","tidy_beta","tidy_f",
-        "tidy_hypergeometric","tidy_lognormal","tidy_cauchy"
+        "tidy_hypergeometric","tidy_lognormal","tidy_cauchy","tidy_chisquare",
+        "tidy_weibull","tidy_uniform"
     )){
         rlang::abort("The data passed must come from a `tidy_` distribution function.")
     }
@@ -108,6 +109,12 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
             paste0("Mean Log: ", atb$.meanlog, " - SD Log: ", atb$.sdlog)
         } else if(atb$tibble_type == "tidy_cauchy"){
             paste0("Location: ", atb$.location, " - Scale: ", atb$.scale)
+        } else if(atb$tibble_type == "tidy_chisquare"){
+            paste0("DF: ", atb$.df, " - NPC: ", atb$.ncp)
+        } else if(atb$tibble_type == "tidy_weibull"){
+            paste0("Shape: ", atb$.schape, " - Scale: ", atb$.scale)
+        } else if(atb$tibble_type == "tidy_uniform"){
+            paste0("Max: ", atb$.max, " - Min: ", atb$.min)
         }
     )
 
