@@ -86,17 +86,69 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/TidyDensity" class="external-link">TidyDensity</a></span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>This is a basic example which shows you how easy it is to generate data with <a href="https://github.com/spsanderson/TidyDensity" class="external-link">TidyDensity</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/spsanderson/TidyDensity" class="external-link">TidyDensity</a></span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #444444;">==</span> <span style="color: #444444;">Welcome to TidyDensity</span> <span style="color: #444444;">======================================================</span></span>
-<span class="co"><span style="color: #0087D7;">#&gt; If you find this package useful, please leave a star: https://github.com/spsanderson/TidyDensity</span></span>
-<span class="co"><span style="color: #0087D7;">#&gt; If you encounter a bug or want to request an enhancement please file an issue at:</span></span>
-<span class="co"><span style="color: #0087D7;">#&gt;    https://github.com/spsanderson/TidyDensity/issues</span></span>
-<span class="co"><span style="color: #0087D7;">#&gt; Thank you for using TidyDensity!</span></span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+
+<span class="fu"><a href="../reference/tidy_normal.html">tidy_normal</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 50 x 7</span></span>
+<span class="co">#&gt;    sim_number     x        y    dx       dy         p        q</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1              1  1.62    -<span style="color: #BB0000;">3.18</span> 0.000<span style="text-decoration: underline;">456</span> 0   <span style="color: #949494;"> </span>     -<span style="color: #BB0000;">Inf</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1              2 -<span style="color: #BB0000;">0.355</span>   -<span style="color: #BB0000;">3.03</span> 0.001<span style="text-decoration: underline;">45</span>  0   <span style="color: #949494;"> </span>       -<span style="color: #BB0000;">2.05</span> </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1              3 -<span style="color: #BB0000;">0.033</span><span style="color: #BB0000; text-decoration: underline;">0</span>  -<span style="color: #BB0000;">2.88</span> 0.003<span style="text-decoration: underline;">94</span>  0   <span style="color: #949494;"> </span>       -<span style="color: #BB0000;">1.74</span> </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1              4 -<span style="color: #BB0000;">0.625</span>   -<span style="color: #BB0000;">2.73</span> 0.009<span style="text-decoration: underline;">17</span>  0   <span style="color: #949494;"> </span>       -<span style="color: #BB0000;">1.54</span> </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1              5 -<span style="color: #BB0000;">0.390</span>   -<span style="color: #BB0000;">2.57</span> 0.018<span style="text-decoration: underline;">4</span>   0   <span style="color: #949494;"> </span>       -<span style="color: #BB0000;">1.39</span> </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1              6 -<span style="color: #BB0000;">1.46</span>    -<span style="color: #BB0000;">2.42</span> 0.032<span style="text-decoration: underline;">0</span>   0   <span style="color: #949494;"> </span>       -<span style="color: #BB0000;">1.27</span> </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1              7  0.003<span style="text-decoration: underline;">74</span> -<span style="color: #BB0000;">2.27</span> 0.049<span style="text-decoration: underline;">1</span>   0   <span style="color: #949494;"> </span>       -<span style="color: #BB0000;">1.16</span> </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1              8  0.286   -<span style="color: #BB0000;">2.12</span> 0.067<span style="text-decoration: underline;">8</span>   4.18<span style="color: #949494;">e</span><span style="color: #BB0000;">-284</span>   -<span style="color: #BB0000;">1.07</span> </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1              9  0.390   -<span style="color: #BB0000;">1.96</span> 0.086<span style="text-decoration: underline;">5</span>   1.11<span style="color: #949494;">e</span><span style="color: #BB0000;">-253</span>   -<span style="color: #BB0000;">0.981</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1             10  0.203   -<span style="color: #BB0000;">1.81</span> 0.105    5.45<span style="color: #949494;">e</span><span style="color: #BB0000;">-225</span>   -<span style="color: #BB0000;">0.901</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># ... with 40 more rows</span></span></code></pre></div>
+<p>An example plot of the <code>tidy_normal</code> data.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.n <span class="op">=</span> <span class="fl">100</span>, .num_sims <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>
+
+<span class="fu"><a href="../reference/tidy_autoplot.html">tidy_autoplot</a></span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"density"</span><span class="op">)</span></code></pre></div>
+<p><img src="getting-started_files/figure-html/plot_density-1.png" width="95%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tidy_autoplot.html">tidy_autoplot</a></span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></code></pre></div>
+<p><img src="getting-started_files/figure-html/plot_density-2.png" width="95%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tidy_autoplot.html">tidy_autoplot</a></span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"probability"</span><span class="op">)</span></code></pre></div>
+<p><img src="getting-started_files/figure-html/plot_density-3.png" width="95%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tidy_autoplot.html">tidy_autoplot</a></span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"qq"</span><span class="op">)</span></code></pre></div>
+<p><img src="getting-started_files/figure-html/plot_density-4.png" width="95%" style="display: block; margin: auto;"></p>
+<p>We can also take a look at the plots when the number of simulations is greater than nine. This will automatically turn off the legend as it will become too noisy.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.n <span class="op">=</span> <span class="fl">100</span>, .num_sims <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
+
+<span class="fu"><a href="../reference/tidy_autoplot.html">tidy_autoplot</a></span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"density"</span><span class="op">)</span></code></pre></div>
+<p><img src="getting-started_files/figure-html/more_than_nine_simulations-1.png" width="95%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tidy_autoplot.html">tidy_autoplot</a></span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"quantile"</span><span class="op">)</span></code></pre></div>
+<p><img src="getting-started_files/figure-html/more_than_nine_simulations-2.png" width="95%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tidy_autoplot.html">tidy_autoplot</a></span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"probability"</span><span class="op">)</span></code></pre></div>
+<p><img src="getting-started_files/figure-html/more_than_nine_simulations-3.png" width="95%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tidy_autoplot.html">tidy_autoplot</a></span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"qq"</span><span class="op">)</span></code></pre></div>
+<p><img src="getting-started_files/figure-html/more_than_nine_simulations-4.png" width="95%" style="display: block; margin: auto;"></p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
