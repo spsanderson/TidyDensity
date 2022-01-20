@@ -25,11 +25,18 @@ knitr::opts_chunk$set(
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 <!-- badges: end -->
 
-The goal of TidyDensity is to ...
+The goal of `{TidyDensity}` is to make working with random numbers from different
+distributions easy. All `tidy_` distribution functions provide the following
+components:
+
+-   [`r_`]
+-   [`d_`]
+-   [`q_`]
+-   [`p_`]
 
 ## Installation
 
-You can install the released version of TidyDensity from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of `{TidyDensity}` from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("TidyDensity")

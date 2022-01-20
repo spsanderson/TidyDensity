@@ -14,11 +14,18 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 <!-- badges: end -->
 
-The goal of TidyDensity is to …
+The goal of `{TidyDensity}` is to make working with random numbers from
+different distributions easy. All `tidy_` distribution functions provide
+the following components:
+
+-   \[`r_`\]
+-   \[`d_`\]
+-   \[`q_`\]
+-   \[`p_`\]
 
 ## Installation
 
-You can install the released version of TidyDensity from
+You can install the released version of `{TidyDensity}` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
@@ -45,16 +52,16 @@ tidy_normal()
 #> # A tibble: 50 x 7
 #>    sim_number     x      y    dx       dy         p        q
 #>    <fct>      <int>  <dbl> <dbl>    <dbl>     <dbl>    <dbl>
-#>  1 1              1  0.907 -2.99 0.000310 0         -Inf    
-#>  2 1              2 -0.337 -2.86 0.000996 0           -2.05 
-#>  3 1              3  1.70  -2.73 0.00276  0           -1.74 
-#>  4 1              4 -0.173 -2.59 0.00660  0           -1.54 
-#>  5 1              5  1.66  -2.46 0.0137   0           -1.39 
-#>  6 1              6  1.42  -2.33 0.0249   0           -1.27 
-#>  7 1              7 -1.67  -2.20 0.0400   0           -1.16 
-#>  8 1              8  0.253 -2.07 0.0575   4.18e-284   -1.07 
-#>  9 1              9 -0.473 -1.94 0.0756   1.11e-253   -0.981
-#> 10 1             10  0.410 -1.80 0.0933   5.45e-225   -0.901
+#>  1 1              1  1.47  -4.56 0.000194 0         -Inf    
+#>  2 1              2 -0.844 -4.38 0.000547 0           -2.05 
+#>  3 1              3  1.58  -4.21 0.00135  0           -1.74 
+#>  4 1              4  2.27  -4.04 0.00289  0           -1.54 
+#>  5 1              5  1.10  -3.87 0.00542  0           -1.39 
+#>  6 1              6  0.122 -3.70 0.00888  0           -1.27 
+#>  7 1              7  2.43  -3.53 0.0127   0           -1.16 
+#>  8 1              8 -0.605 -3.36 0.0158   4.18e-284   -1.07 
+#>  9 1              9  0.912 -3.19 0.0173   1.11e-253   -0.981
+#> 10 1             10 -0.557 -3.02 0.0167   5.45e-225   -0.901
 #> # ... with 40 more rows
 ```
 
