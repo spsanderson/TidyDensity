@@ -1,6 +1,6 @@
 Package: TidyDensity
 Title: Functions for Tidy Analysis of Randomly Generated Data
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
     person("Steven Sanderson", role = "cph"))
