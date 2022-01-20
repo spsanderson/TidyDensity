@@ -64,9 +64,9 @@ tidy_chisquare <- function(.n = 50, .df = 1, .ncp = 1, .num_sims = 1){
         )
     }
 
-    if(!is.numeric(shape) | !is.numeric(scale)){
+    if(!is.numeric(df) | !is.numeric(ncp)){
         rlang::abort(
-            "The parameter of rate must be of class numeric and greater than 0."
+            "The parameters of .df and .ncp must be of class numeric."
         )
     }
 
