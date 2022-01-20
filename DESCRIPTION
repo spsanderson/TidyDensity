@@ -8,8 +8,8 @@ Description:
     To make it easy to generate random numbers based upon the underlying stats 
     distribution functions. All data is returned in a tidy and structured
     format making working with the data simple and straight forward. Given that the
-    data is returned in a tidy tibble it lends itself to working with the rest of the
-    tidyverse.
+    data is returned in a tidy 'tibble' it lends itself to working with the rest of the
+    'tidyverse'.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
