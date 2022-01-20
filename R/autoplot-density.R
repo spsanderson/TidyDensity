@@ -66,7 +66,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
     }
 
     if(!attributes(.data)$tibble_type %in% c(
-        "tidy_gaussian", "tidy_poisson","tidy_gamma","tidy_beta"
+        "tidy_gaussian", "tidy_poisson","tidy_gamma","tidy_beta","tidy_f",
+        "tidy_hypergeometric","tidy_lognormal","tidy_cauchy"
     )){
         rlang::abort("The data passed must come from a `tidy_` distribution function.")
     }
@@ -99,6 +100,14 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
             paste0("Shape1: ", atb$.shape1, " - Shape2: ", atb$.shape2, " - NCP: ", atb$.ncp)
         } else if(atb$tibble_type == "tidy_poisson"){
             paste0("Lambda: ", atb$.lambda)
+        } else if(atb$tibble_type == "tidy_f"){
+            paste0("DF1: ", atb$.df1, " - DF2: ", atb$.df2, " - NCP: ", atb$.ncp)
+        } else if(atb$tibble_type == "tidy_hypergeometric"){
+            paste0("M: ", atb$.m, " - NN: ", atb$.nn, " - K: ", atb$.k)
+        } else if(atb$tibble_type == "tidy_lognormal"){
+            paste0("Mean Log: ", atb$.meanlog, " - SD Log: ", atb$.sdlog)
+        } else if(atb$tibble_type == "tidy_cauchy"){
+            paste0("Location: ", atb$.location, " - Scale: ", atb$.scale)
         }
     )
 
