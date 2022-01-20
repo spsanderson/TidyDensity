@@ -14,6 +14,7 @@
 #' tidy_empirical(.x = 1:10)
 #'
 #' @return
+#' A tibble
 #'
 #' @export
 #'

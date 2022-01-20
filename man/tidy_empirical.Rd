@@ -10,7 +10,7 @@ tidy_empirical(.x)
 \item{.x}{A vector of numbers}
 }
 \value{
-
+A tibble
 }
 \description{
 This function takes in a single arguemtn of .x a vector and will

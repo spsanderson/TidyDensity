@@ -1,12 +1,12 @@
 Package: TidyDensity
-Title: Functions for tidy analysis of randomly generated data.
+Title: Functions for Tidy Analysis of Randomly Generated Data
 Version: 0.0.0.9000
 Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
     person("Steven Sanderson", role = "cph"))
 Description: 
-    This package will make it easy to generate random numbers based upon
-    the underlying stats functions. All data is returned in a tidy and structured
+    To make it easy to generate random numbers based upon the underlying stats 
+    distribution functions. All data is returned in a tidy and structured
     format making working with the data simple and straight forward. Given that the
     data is returned in a tidy tibble it lends itself to working with the rest of the
     tidyverse.
@@ -29,5 +29,8 @@ Imports:
 Suggests: 
     rmarkdown,
     knitr,
-    roxygen2
+    roxygen2,
+    cli,
+    crayon,
+    rstudioapi
 VignetteBuilder: knitr
