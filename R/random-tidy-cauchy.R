@@ -64,9 +64,9 @@ tidy_cauchy <- function(.n = 50, .location = 0, .scale = 1, .num_sims = 1){
         )
     }
 
-    if(!is.numeric(shape) | !is.numeric(scale)){
+    if(!is.numeric(location) | !is.numeric(scale)){
         rlang::abort(
-            "The parameter of rate must be of class numeric and greater than 0."
+            "The parameters of .location and .scale must be of class numeric and greater than 0."
         )
     }
 
