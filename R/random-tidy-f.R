@@ -28,9 +28,9 @@
 #' -  `q` The values from the resulting q_ function of the distribution family.
 #'
 #' @param .n The number of randomly generated points you want.
-#' @param .df1 The number of white balls in the urn
-#' @param .df2 The number of black balls in the urn
-#' @param .ncp The number of balls drawn fro the urn.
+#' @param .df1 Degrees of freedom, Inf is allowed.
+#' @param .df2 Degrees of freedom, Inf is allowed.
+#' @param .ncp Non-centrality parameter.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples

@@ -9,11 +9,11 @@ tidy_f(.n = 50, .df1 = 1, .df2 = 1, .ncp = 0, .num_sims = 1)
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
 
-\item{.df1}{The number of white balls in the urn}
+\item{.df1}{Degrees of freedom, Inf is allowed.}
 
-\item{.df2}{The number of black balls in the urn}
+\item{.df2}{Degrees of freedom, Inf is allowed.}
 
-\item{.ncp}{The number of balls drawn fro the urn.}
+\item{.ncp}{Non-centrality parameter.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
 }
@@ -45,7 +45,7 @@ This function uses the underlying \code{stats::rf()}, and its underlying
 \code{p}, \code{d}, and \code{q} functions. For more information please see \code{\link[stats:Fdist]{stats::rf()}}
 }
 \examples{
-tidy_rf()
+tidy_f()
 
 }
 \seealso{
