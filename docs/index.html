@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">TidyDensity</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1</span>
       </span>
     </div>
 
@@ -83,13 +83,18 @@
 <div class="page-header"><h1 id="tidydensity-">TidyDensity <img src="reference/figures/tidy_density_logo.png" width="147" height="170" align="right"><a class="anchor" aria-label="anchor" href="#tidydensity-"></a>
 </h1></div>
 <!-- badges: start -->
-<!--[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/TidyDensity)](https://cran.r-project.org/package=TidyDensity) -->
 
-<p>The goal of TidyDensity is to …</p>
+<p>The goal of <a href="https://github.com/spsanderson/TidyDensity" class="external-link">TidyDensity</a> is to make working with random numbers from different distributions easy. All <code>tidy_</code> distribution functions provide the following components:</p>
+<ul>
+<li>[<code>r_</code>]</li>
+<li>[<code>d_</code>]</li>
+<li>[<code>q_</code>]</li>
+<li>[<code>p_</code>]</li>
+</ul>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the released version of TidyDensity from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
+<p>You can install the released version of <a href="https://github.com/spsanderson/TidyDensity" class="external-link">TidyDensity</a> from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"TidyDensity"</span><span class="op">)</span></code></pre></div>
 <p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
@@ -108,18 +113,18 @@
 
 <span class="fu"><a href="reference/tidy_normal.html">tidy_normal</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 50 x 7</span>
-<span class="co">#&gt;    sim_number     x       y    dx       dy         p        q</span>
-<span class="co">#&gt;    &lt;fct&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 1              1 -0.0424 -2.73 0.000280 0         -Inf    </span>
-<span class="co">#&gt;  2 1              2  0.520  -2.60 0.000906 0           -2.05 </span>
-<span class="co">#&gt;  3 1              3  0.748  -2.46 0.00249  0           -1.74 </span>
-<span class="co">#&gt;  4 1              4 -0.0237 -2.32 0.00580  0           -1.54 </span>
-<span class="co">#&gt;  5 1              5  0.228  -2.19 0.0116   0           -1.39 </span>
-<span class="co">#&gt;  6 1              6 -0.914  -2.05 0.0201   0           -1.27 </span>
-<span class="co">#&gt;  7 1              7  0.187  -1.91 0.0310   0           -1.16 </span>
-<span class="co">#&gt;  8 1              8  0.944  -1.78 0.0435   4.18e-284   -1.07 </span>
-<span class="co">#&gt;  9 1              9  0.250  -1.64 0.0570   1.11e-253   -0.981</span>
-<span class="co">#&gt; 10 1             10 -0.125  -1.50 0.0716   5.45e-225   -0.901</span>
+<span class="co">#&gt;    sim_number     x      y    dx       dy         p        q</span>
+<span class="co">#&gt;    &lt;fct&gt;      &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 1              1  1.47  -4.56 0.000194 0         -Inf    </span>
+<span class="co">#&gt;  2 1              2 -0.844 -4.38 0.000547 0           -2.05 </span>
+<span class="co">#&gt;  3 1              3  1.58  -4.21 0.00135  0           -1.74 </span>
+<span class="co">#&gt;  4 1              4  2.27  -4.04 0.00289  0           -1.54 </span>
+<span class="co">#&gt;  5 1              5  1.10  -3.87 0.00542  0           -1.39 </span>
+<span class="co">#&gt;  6 1              6  0.122 -3.70 0.00888  0           -1.27 </span>
+<span class="co">#&gt;  7 1              7  2.43  -3.53 0.0127   0           -1.16 </span>
+<span class="co">#&gt;  8 1              8 -0.605 -3.36 0.0158   4.18e-284   -1.07 </span>
+<span class="co">#&gt;  9 1              9  0.912 -3.19 0.0173   1.11e-253   -0.981</span>
+<span class="co">#&gt; 10 1             10 -0.557 -3.02 0.0167   5.45e-225   -0.901</span>
 <span class="co">#&gt; # ... with 40 more rows</span></code></pre></div>
 <p>An example plot of the <code>tidy_normal</code> data.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -191,6 +196,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=TidyDensity" class="external-link"><img src="http://www.r-pkg.org/badges/version/TidyDensity" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html##experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://makeapullrequest.com" class="external-link"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a></li>
 </ul>
