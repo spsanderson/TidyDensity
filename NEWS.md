@@ -2,8 +2,6 @@
 
 # TidyDensity 0.0.1
 
-# TidyDensity 0.0.0.9000
-
 ## Breaking Changes
 None
 
@@ -25,6 +23,15 @@ None
 15. Fix #20 - Add function `tidy_hypergeometric()`
 16. Fix #21 - Add function `tidy_f()`
 
+## Minor Fixes and Improvements
+None
+
+# TidyDensity 0.0.0.9000
+
+## Breaking Changes
+None
+
+## New Features
 * Added a `NEWS.md` file to track changes to the package.
 
 ## Fixes and Minor Improvements
