@@ -1,5 +1,13 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+
+## New Features
+
+## Fixes and Minor Improvements
+1. Fix #30 - Move `crayong()` and `cli` from Suggests to Imports due to `pillar`
+no longer importing.
+
 # TidyDensity 0.0.1
 
 ## Breaking Changes

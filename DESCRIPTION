@@ -25,12 +25,12 @@ Imports:
     tidyr,
     purrr,
     stringr,
-    healthyR.ai
+    healthyR.ai,
+    cli,
+    crayon
 Suggests: 
     rmarkdown,
     knitr,
     roxygen2,
-    cli,
-    crayon,
     rstudioapi
 VignetteBuilder: knitr
