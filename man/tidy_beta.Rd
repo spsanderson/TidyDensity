@@ -54,6 +54,7 @@ tidy_beta()
 \url{https://en.wikipedia.org/wiki/Beta_distribution}
 
 Other Data Generator: 
+\code{\link{tidy_binomial}()},
 \code{\link{tidy_cauchy}()},
 \code{\link{tidy_chisquare}()},
 \code{\link{tidy_exponential}()},

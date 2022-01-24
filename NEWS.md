@@ -3,6 +3,7 @@
 ## Breaking Changes
 
 ## New Features
+1. Fix #27 - Add function `tidy_binomial()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayong()` and `cli` from Suggests to Imports due to `pillar`
