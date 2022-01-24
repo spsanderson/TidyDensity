@@ -9,7 +9,8 @@ tidy_autoplot(
   .plot_type = "density",
   .line_size = 0.5,
   .point_size = 0.5,
-  .interactive = FALSE
+  .interactive = FALSE,
+  .geom_rug = FALSE
 )
 }
 \arguments{
@@ -24,6 +25,9 @@ tidy_autoplot(
 
 \item{.interactive}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
 will return an interactive plotly plot.}
+
+\item{.geom_rug}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return the use of \code{ggplot2::geom_rug()}}
 }
 \value{
 A ggplot or a plotly plot.
