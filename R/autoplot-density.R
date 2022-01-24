@@ -28,6 +28,8 @@
 #' @param .point_size The line size param for ggplot
 #' @param .interactive A boolean value of TRUE/FALSE, FALSE is the default. TRUE
 #' will return an interactive plotly plot.
+#' @param .geom_rug A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+#' will return the use of `ggplot2::geom_rug()`
 #'
 #' @examples
 #' tn <- tidy_normal(.num_sims = 5)
@@ -40,7 +42,7 @@
 #'
 
 tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point_size = .5,
-                          .interactive = FALSE){
+                          .interactive = FALSE, .geom_rug = FALSE){
 
     # Plot type ----
     plot_type <- tolower(as.character(.plot_type))
@@ -197,6 +199,11 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
                 color = "Simulation"
             ) +
             ggplot2::theme(legend.position = leg_pos)
+    }
+
+    if(.geom_rug){
+        plt <- plt +
+            ggplot2::geom_rug()
     }
 
     if(.interactive){
