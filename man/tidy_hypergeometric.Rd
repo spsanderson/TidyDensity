@@ -62,6 +62,7 @@ Other Data Generator:
 \code{\link{tidy_geometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},
+\code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_normal}()},
 \code{\link{tidy_poisson}()},
 \code{\link{tidy_uniform}()},

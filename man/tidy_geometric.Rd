@@ -37,15 +37,15 @@ The columns that are output are:
 }
 }
 \details{
-This function uses the underlying \code{stats::rexp()}, and its underlying
-\code{p}, \code{d}, and \code{q} functions. For more information please see \code{\link[stats:Exponential]{stats::rexp()}}
+This function uses the underlying \code{stats::rgeom()}, and its underlying
+\code{p}, \code{d}, and \code{q} functions. For more information please see \code{\link[stats:Geometric]{stats::rgeom()}}
 }
 \examples{
 tidy_geometric()
 
 }
 \seealso{
-\url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3667.htm}
+\url{https://en.wikipedia.org/wiki/Geometric_distribution}
 
 Other Data Generator: 
 \code{\link{tidy_beta}()},
@@ -58,6 +58,7 @@ Other Data Generator:
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},
+\code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_normal}()},
 \code{\link{tidy_poisson}()},
 \code{\link{tidy_uniform}()},
