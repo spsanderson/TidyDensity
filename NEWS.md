@@ -5,6 +5,7 @@
 ## New Features
 1. Fix #27 - Add function `tidy_binomial()`
 2. Fix #32 - Add function `tidy_geometric()`
+3. Fix #33 - Add function `tidy_negative_binomial()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`
