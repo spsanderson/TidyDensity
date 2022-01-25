@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Gamma Tibble
+#' Tidy Randomly Generated Gamma Distribution Tibble
 #'
 #' @family Data Generator
 #'

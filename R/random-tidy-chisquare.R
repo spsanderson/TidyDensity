@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Chisquare (Non-Central) Tibble
+#' Tidy Randomly Generated Chisquare (Non-Central) Distribution Tibble
 #'
 #' @family Data Generator
 #'

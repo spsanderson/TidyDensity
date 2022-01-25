@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Weibull Tibble
+#' Tidy Randomly Generated Weibull Distribution Tibble
 #'
 #' @family Data Generator
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-normal.R
 \name{tidy_normal}
 \alias{tidy_normal}
-\title{Tidy Randomly Generated Gaussian Tibble}
+\title{Tidy Randomly Generated Gaussian Distribution Tibble}
 \usage{
 tidy_normal(.n = 50, .mean = 0, .sd = 1, .num_sims = 1)
 }
@@ -56,6 +56,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

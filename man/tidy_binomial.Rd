@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-binomial.R
 \name{tidy_binomial}
 \alias{tidy_binomial}
-\title{Tidy Randomly Generated Binomial Tibble}
+\title{Tidy Randomly Generated Binomial Distribution Tibble}
 \usage{
 tidy_binomial(.n = 50, .size = 0, .prob = 1, .num_sims = 1)
 }
@@ -56,6 +56,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

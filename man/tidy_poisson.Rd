@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-poisson.R
 \name{tidy_poisson}
 \alias{tidy_poisson}
-\title{Tidy Randomly Generated Poisson Tibble}
+\title{Tidy Randomly Generated Poisson Distribution Tibble}
 \usage{
 tidy_poisson(.n = 50, .lambda = 1, .num_sims = 1)
 }
@@ -57,6 +57,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

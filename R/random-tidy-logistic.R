@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Logistic Tibble
+#' Tidy Randomly Generated Logistic Distribution Tibble
 #'
 #' @family Data Generator
 #'

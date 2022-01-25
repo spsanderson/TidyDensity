@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-uniform.R
 \name{tidy_uniform}
 \alias{tidy_uniform}
-\title{Tidy Randomly Generated Uniform Tibble}
+\title{Tidy Randomly Generated Uniform Distribution Tibble}
 \usage{
 tidy_uniform(.n = 50, .min = 0, .max = 1, .num_sims = 1)
 }
@@ -57,6 +57,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

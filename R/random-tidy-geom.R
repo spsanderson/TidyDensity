@@ -1,16 +1,16 @@
-#' Tidy Randomly Generated Lognormal Distribution Tibble
+#' Tidy Randomly Generated Geometric Distribution Tibble
 #'
 #' @family Data Generator
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @seealso \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3669.htm}
+#' @seealso \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3667.htm}
 #'
-#' @details This function uses the underlying `stats::rlnorm()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [stats::rlnorm()]
+#' @details This function uses the underlying `stats::rexp()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [stats::rexp()]
 #'
-#' @description This function will generate `n` random points from a lognormal
-#' distribution with a user provided, `.meanlog`, `.sdlog`, and number of
+#' @description This function will generate `n` random points from a exponential
+#' distribution with a user provided, `.prob`, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.
@@ -28,12 +28,11 @@
 #' -  `q` The values from the resulting q_ function of the distribution family.
 #'
 #' @param .n The number of randomly generated points you want.
-#' @param .meanlog Mean of the distribution on the log scale with default 0
-#' @param .sdlog Standard deviation of the distribution on the log scale with default 1
+#' @param .prob A probability of success in each trial 0 < prob <= 1.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_lognormal()
+#' tidy_geometric()
 #'
 #' @return
 #' A tibble of randomly generated data.
@@ -41,13 +40,12 @@
 #' @export
 #'
 
-tidy_lognormal <- function(.n = 50, .meanlog = 0, .sdlog = 1, .num_sims = 1){
+tidy_geometric <- function(.n = 50, .prob = 1, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
     num_sims <- as.integer(.num_sims)
-    meanlog <- as.numeric(.meanlog)
-    sdlog    <- as.numeric(.sdlog)
+    prob     <- as.numeric(.prob)
 
     # Checks ----
     if(!is.integer(n) | n < 0){
@@ -64,14 +62,11 @@ tidy_lognormal <- function(.n = 50, .meanlog = 0, .sdlog = 1, .num_sims = 1){
         )
     }
 
-    if(!is.numeric(meanlog) | !is.numeric(sdlog)){
+    if(!is.numeric(prob) | prob < 0 | prob > 1){
         rlang::abort(
-            "The parameter of rate must be of class numeric and greater than 0."
+            "The parameter of rate must be of class numeric and 0 < .prob <= 1 must be
+            satisfied."
         )
-    }
-
-    if(sdlog < 0){
-        rlang::abort("The parameter of .sdlog must be greater than or equal to 0.")
     }
 
     x <- seq(1, num_sims, 1)
@@ -82,22 +77,21 @@ tidy_lognormal <- function(.n = 50, .meanlog = 0, .sdlog = 1, .num_sims = 1){
     df <- dplyr::tibble(sim_number = as.factor(x)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(stats::rlnorm(n = n, meanlog = meanlog, sdlog = sdlog))) %>%
+        dplyr::mutate(y = list(stats::rgeom(n = n, prob = prob))) %>%
         dplyr::mutate(d = list(density(unlist(y), n = n)[c("x","y")] %>%
                                    purrr::set_names("dx","dy") %>%
                                    dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(stats::plnorm(ps,  meanlog = meanlog, sdlog = sdlog))) %>%
-        dplyr::mutate(q = list(stats::qlnorm(qs,  meanlog = meanlog, sdlog = sdlog))) %>%
+        dplyr::mutate(p = list(stats::pgeom(ps,  prob = prob))) %>%
+        dplyr::mutate(q = list(stats::qgeom(qs,  prob = prob))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 
 
     # Attach descriptive attributes to tibble
-    attr(df, ".meanlog") <- .meanlog
-    attr(df, ".sdlog") <- .sdlog
+    attr(df, ".prob") <- .prob
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_lognormal"
+    attr(df, "tibble_type") <- "tidy_geometric"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-lognormal.R
 \name{tidy_lognormal}
 \alias{tidy_lognormal}
-\title{Tidy Randomly Generated Lognormal Tibble}
+\title{Tidy Randomly Generated Lognormal Distribution Tibble}
 \usage{
 tidy_lognormal(.n = 50, .meanlog = 0, .sdlog = 1, .num_sims = 1)
 }
@@ -57,6 +57,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_normal}()},

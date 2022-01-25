@@ -10,7 +10,8 @@
         "\nIf you encounter a bug or want to request an enhancement please file an issue at:",
         "\n   https://github.com/spsanderson/TidyDensity/issues",
         "\n",
-        "\nThank you for using TidyDensity"
+        "\nThank you for using TidyDensity!",
+        "\n"
     )
 
     packageStartupMessage(msg)

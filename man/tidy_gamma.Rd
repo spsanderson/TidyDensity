@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-gamma.R
 \name{tidy_gamma}
 \alias{tidy_gamma}
-\title{Tidy Randomly Generated Gamma Tibble}
+\title{Tidy Randomly Generated Gamma Distribution Tibble}
 \usage{
 tidy_gamma(.n = 50, .shape = 1, .rate = 1, .num_sims = 1)
 }
@@ -59,6 +59,7 @@ Other Data Generator:
 \code{\link{tidy_chisquare}()},
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

@@ -4,9 +4,10 @@
 
 ## New Features
 1. Fix #27 - Add function `tidy_binomial()`
+2. Fix #32 - Add function `tidy_geometric()`
 
 ## Fixes and Minor Improvements
-1. Fix #30 - Move `crayong()` and `cli` from Suggests to Imports due to `pillar`
+1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`
 no longer importing.
 
 # TidyDensity 0.0.1

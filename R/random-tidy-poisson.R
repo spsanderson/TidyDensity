@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Poisson Tibble
+#' Tidy Randomly Generated Poisson Distribution Tibble
 #'
 #' @family Data Generator
 #'

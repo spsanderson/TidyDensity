@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Binomial Tibble
+#' Tidy Randomly Generated Binomial Distribution Tibble
 #'
 #' @family Data Generator
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-beta.R
 \name{tidy_beta}
 \alias{tidy_beta}
-\title{Tidy Randomly Generated Beta Tibble}
+\title{Tidy Randomly Generated Beta Distribution Tibble}
 \usage{
 tidy_beta(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1)
 }
@@ -60,6 +60,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

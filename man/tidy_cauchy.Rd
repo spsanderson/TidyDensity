@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-cauchy.R
 \name{tidy_cauchy}
 \alias{tidy_cauchy}
-\title{Tidy Randomly Generated Cauchy Tibble}
+\title{Tidy Randomly Generated Cauchy Distribution Tibble}
 \usage{
 tidy_cauchy(.n = 50, .location = 0, .scale = 1, .num_sims = 1)
 }
@@ -56,6 +56,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

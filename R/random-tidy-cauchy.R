@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Cauchy Tibble
+#' Tidy Randomly Generated Cauchy Distribution Tibble
 #'
 #' @family Data Generator
 #'

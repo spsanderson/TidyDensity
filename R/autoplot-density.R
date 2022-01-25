@@ -71,7 +71,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
         "tidy_gaussian", "tidy_poisson","tidy_gamma","tidy_beta","tidy_f",
         "tidy_hypergeometric","tidy_lognormal","tidy_cauchy","tidy_chisquare",
         "tidy_weibull","tidy_uniform","tidy_logistic","tidy_exponential",
-        "tidy_empirical","tidy_binomial"
+        "tidy_empirical","tidy_binomial","tidy_geometric"
     )){
         rlang::abort("The data passed must come from a `tidy_` distribution function.")
     }
@@ -126,6 +126,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point
             paste0("Empirical - No params")
         } else if(atb$tibble_type == "tidy_binomial"){
             paste0("Size: ", atb$.size, " - Prob: ", atb$.prob)
+        } else if(atb$tibble_type == "tidy_geometric"){
+            paste0("Prob: ", atb$.prob)
         }
     )
 

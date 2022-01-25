@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-logistic.R
 \name{tidy_logistic}
 \alias{tidy_logistic}
-\title{Tidy Randomly Generated Logistic Tibble}
+\title{Tidy Randomly Generated Logistic Distribution Tibble}
 \usage{
 tidy_logistic(.n = 50, .location = 0, .scale = 1, .num_sims = 1)
 }
@@ -57,6 +57,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_lognormal}()},
 \code{\link{tidy_normal}()},

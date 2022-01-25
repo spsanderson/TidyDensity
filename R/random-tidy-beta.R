@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Beta Tibble
+#' Tidy Randomly Generated Beta Distribution Tibble
 #'
 #' @family Data Generator
 #'

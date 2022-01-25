@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Hypergeometric Tibble
+#' Tidy Randomly Generated Hypergeometric Distribution Tibble
 #'
 #' @family Data Generator
 #'

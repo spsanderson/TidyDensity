@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-exponential.R
 \name{tidy_exponential}
 \alias{tidy_exponential}
-\title{Tidy Randomly Generated Exponential Tibble}
+\title{Tidy Randomly Generated Exponential Distribution Tibble}
 \usage{
 tidy_exponential(.n = 50, .rate = 1, .num_sims = 1)
 }
@@ -54,6 +54,7 @@ Other Data Generator:
 \code{\link{tidy_chisquare}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},

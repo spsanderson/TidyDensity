@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Exponential Tibble
+#' Tidy Randomly Generated Exponential Distribution Tibble
 #'
 #' @family Data Generator
 #'

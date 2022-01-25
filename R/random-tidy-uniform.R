@@ -1,4 +1,4 @@
-#' Tidy Randomly Generated Uniform Tibble
+#' Tidy Randomly Generated Uniform Distribution Tibble
 #'
 #' @family Data Generator
 #'

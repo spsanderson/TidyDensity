@@ -2,7 +2,7 @@
 % Please edit documentation in R/random-tidy-hypergeometric.R
 \name{tidy_hypergeometric}
 \alias{tidy_hypergeometric}
-\title{Tidy Randomly Generated Hypergeometric Tibble}
+\title{Tidy Randomly Generated Hypergeometric Distribution Tibble}
 \usage{
 tidy_hypergeometric(.n = 50, .m = 0, .nn = 0, .k = 0, .num_sims = 1)
 }
@@ -59,6 +59,7 @@ Other Data Generator:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},
 \code{\link{tidy_normal}()},
