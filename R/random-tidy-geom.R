@@ -4,10 +4,10 @@
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @seealso \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3667.htm}
+#' @seealso \url{https://en.wikipedia.org/wiki/Geometric_distribution}
 #'
-#' @details This function uses the underlying `stats::rexp()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [stats::rexp()]
+#' @details This function uses the underlying `stats::rgeom()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [stats::rgeom()]
 #'
 #' @description This function will generate `n` random points from a exponential
 #' distribution with a user provided, `.prob`, and number of
