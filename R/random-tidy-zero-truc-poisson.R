@@ -1,6 +1,8 @@
 #' Tidy Randomly Generated Zero Truncated Poisson Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Poisson
+#' @family Zero Truncated Distribution
+#' @family Discrete Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Poisson Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Poisson
+#' @family Discrete Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

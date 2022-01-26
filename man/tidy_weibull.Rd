@@ -63,9 +63,7 @@ Other Data Generator:
 \code{\link{tidy_lognormal}()},
 \code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_normal}()},
-\code{\link{tidy_poisson}()},
-\code{\link{tidy_uniform}()},
-\code{\link{tidy_zero_truncated_poisson}()}
+\code{\link{tidy_uniform}()}
 }
 \author{
 Steven P. Sanderson II, MPH
