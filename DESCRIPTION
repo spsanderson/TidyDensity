@@ -25,7 +25,8 @@ Imports:
     tidyr,
     purrr,
     stringr,
-    healthyR.ai
+    healthyR.ai,
+    actuar
 Suggests: 
     rmarkdown,
     knitr,
