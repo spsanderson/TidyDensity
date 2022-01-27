@@ -8,6 +8,7 @@ tidy_autoplot(
   .data,
   .plot_type = "density",
   .line_size = 0.5,
+  .geom_point = FALSE,
   .point_size = 0.5,
   .geom_rug = FALSE,
   .interactive = FALSE
@@ -20,6 +21,9 @@ tidy_autoplot(
 \item{.plot_type}{This is a quoted string like 'density'}
 
 \item{.line_size}{The size param ggplot}
+
+\item{.geom_point}{A boolean value of TREU/FALSE, FALSE is the default. TRUE
+will return a plot with \code{ggplot2::ggeom_point()}}
 
 \item{.point_size}{The line size param for ggplot}
 

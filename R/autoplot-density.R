@@ -25,6 +25,8 @@
 #' `tidy_normal()`
 #' @param .plot_type This is a quoted string like 'density'
 #' @param .line_size The size param ggplot
+#' @param .geom_point A boolean value of TREU/FALSE, FALSE is the default. TRUE
+#' will return a plot with `ggplot2::ggeom_point()`
 #' @param .point_size The line size param for ggplot
 #' @param .interactive A boolean value of TRUE/FALSE, FALSE is the default. TRUE
 #' will return an interactive plotly plot.
@@ -42,7 +44,8 @@
 #'
 
 tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
-                          .point_size = .5, .geom_rug = FALSE,
+                          .geom_point = FALSE, .point_size = .5,
+                          .geom_rug = FALSE,
                           .interactive = FALSE){
 
     # Plot type ----
@@ -146,9 +149,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
                 ggplot2::aes(x = dx, y = dy, group = sim_number, color = sim_number)
             ) +
             ggplot2::geom_line(size = line_size) +
-            ggplot2::geom_point(size = point_size) +
             ggplot2::theme_minimal() +
-            ggplot2::geom_jitter() +
             ggplot2::labs(
                 title = "Density Plot",
                 subtitle = sub_title,
@@ -162,10 +163,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
                     x = qs, y = q, group = sim_number, color = sim_number
                 )
             ) +
-            ggplot2::geom_point(size = point_size) +
             ggplot2::geom_line(size = line_size) +
             ggplot2::theme_minimal() +
-            ggplot2::geom_jitter() +
             ggplot2::labs(
                 title = "Qantile Plot",
                 subtitle = sub_title,
@@ -179,7 +178,6 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
                     x = ps, y = p, color = sim_number, group = sim_number
                 )
             ) +
-            ggplot2::geom_point(size = point_size) +
             ggplot2::geom_line(size = line_size) +
             ggplot2::theme_minimal() +
             ggplot2::labs(
@@ -209,6 +207,11 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
     if(.geom_rug){
         plt <- plt +
             ggplot2::geom_rug()
+    }
+
+    if((.geom_point) & (!plot_type == "qq")){
+        plt <- plt +
+            ggplot2::geom_point(size = point_size)
     }
 
     if(.interactive){

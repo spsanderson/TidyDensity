@@ -8,11 +8,12 @@
 3. Fix #33 - Add function `tidy_negative_binomial()`
 4. Fix #34 - Add function `tidy_zero_truncated_poisson()`
 5. Fix #35 - Add function `tidy_zero_truncated_geometric()`
-6. Fix #52 - Add parameter `.geom_rug` to `tidy_autoplot()` function
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`
 no longer importing.
+2. Fix #52 - Add parameter `.geom_rug` to `tidy_autoplot()` function
+3. Fix #54 - Add parameter `.geom_point` to `tidy_autoplot()` function
 
 # TidyDensity 0.0.1
 
