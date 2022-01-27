@@ -232,11 +232,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
             )
     }
 
-    if(.geom_jitter & !.geom_point){
-        plt <- plt +
-            ggplot2::geom_point(size = point_size)
-            ggplot2::geom_jitter()
-    } else {
+    if(.geom_jitter) {
         plt <- plt +
             ggplot2::geom_jitter()
     }
