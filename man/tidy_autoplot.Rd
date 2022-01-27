@@ -11,6 +11,7 @@ tidy_autoplot(
   .geom_point = FALSE,
   .point_size = 0.5,
   .geom_rug = FALSE,
+  .geom_smooth = FALSE,
   .interactive = FALSE
 )
 }
@@ -29,6 +30,11 @@ will return a plot with \code{ggplot2::ggeom_point()}}
 
 \item{.geom_rug}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
 will return the use of \code{ggplot2::geom_rug()}}
+
+\item{.geom_smooth}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return the use of \code{ggplot2::geom_smooth()} The aes parameter of group is
+set to FALSE. This ensures a single smoothing band returned with SE also set to
+FALSE. Cole is set to 'black' and linetype is 'dashed'.}
 
 \item{.interactive}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
 will return an interactive plotly plot.}

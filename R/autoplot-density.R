@@ -28,10 +28,14 @@
 #' @param .geom_point A boolean value of TREU/FALSE, FALSE is the default. TRUE
 #' will return a plot with `ggplot2::ggeom_point()`
 #' @param .point_size The line size param for ggplot
-#' @param .interactive A boolean value of TRUE/FALSE, FALSE is the default. TRUE
-#' will return an interactive plotly plot.
 #' @param .geom_rug A boolean value of TRUE/FALSE, FALSE is the default. TRUE
 #' will return the use of `ggplot2::geom_rug()`
+#' @param .geom_smooth A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+#' will return the use of `ggplot2::geom_smooth()` The aes parameter of group is
+#' set to FALSE. This ensures a single smoothing band returned with SE also set to
+#' FALSE. Cole is set to 'black' and linetype is 'dashed'.
+#' @param .interactive A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+#' will return an interactive plotly plot.
 #'
 #' @examples
 #' tn <- tidy_normal(.num_sims = 5)
@@ -45,7 +49,7 @@
 
 tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
                           .geom_point = FALSE, .point_size = .5,
-                          .geom_rug = FALSE,
+                          .geom_rug = FALSE, .geom_smooth = FALSE,
                           .interactive = FALSE){
 
     # Plot type ----
@@ -212,6 +216,18 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
     if((.geom_point) & (!plot_type == "qq")){
         plt <- plt +
             ggplot2::geom_point(size = point_size)
+    }
+
+    if(.geom_smooth){
+        plt <- plt +
+            ggplot2::geom_smooth(
+                ggplot2::aes(
+                    group = FALSE
+                ),
+                se = FALSE,
+                color = "black",
+                linetype = "dashed"
+            )
     }
 
     if(.interactive){

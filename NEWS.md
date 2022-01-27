@@ -14,6 +14,7 @@
 no longer importing.
 2. Fix #52 - Add parameter `.geom_rug` to `tidy_autoplot()` function
 3. Fix #54 - Add parameter `.geom_point` to `tidy_autoplot()` function
+4. Fix #53 - Add parameter `.geom_smooth` to `tidy_autoplot()` function
 
 # TidyDensity 0.0.1
 
