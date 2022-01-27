@@ -11,8 +11,8 @@
 #' @details This function uses the underlying `actuar::rztpois()`, and its underlying
 #' `p`, `d`, and `q` functions. For more information please see [actuar::rztpois()]
 #'
-#' @description This function will generate `n` random points from a Poisson
-#' distribution with a user provided, `.lambda`, and number of
+#' @description This function will generate `n` random points from a Zero Truncated
+#' Poisson distribution with a user provided, `.lambda`, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.

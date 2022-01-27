@@ -17,7 +17,7 @@ tidy_geometric(.n = 50, .prob = 1, .num_sims = 1)
 A tibble of randomly generated data.
 }
 \description{
-This function will generate \code{n} random points from a exponential
+This function will generate \code{n} random points from a geometric
 distribution with a user provided, \code{.prob}, and number of
 random simulations to be produced. The function returns a tibble with the
 simulation number column the x column which corresponds to the n randomly
