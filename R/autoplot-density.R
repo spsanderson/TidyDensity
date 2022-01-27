@@ -25,17 +25,19 @@
 #' `tidy_normal()`
 #' @param .plot_type This is a quoted string like 'density'
 #' @param .line_size The size param ggplot
-#' @param .geom_point A boolean value of TREU/FALSE, FALSE is the default. TRUE
+#' @param .geom_point A Boolean value of TREU/FALSE, FALSE is the default. TRUE
 #' will return a plot with `ggplot2::ggeom_point()`
-#' @param .point_size The line size param for ggplot
-#' @param .geom_rug A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+#' @param .point_size The point size param for ggplot
+#' @param .geom_rug A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
 #' will return the use of `ggplot2::geom_rug()`
-#' @param .geom_smooth A boolean value of TRUE/FALSE, FALSE is the default. TRUE
-#' will return the use of `ggplot2::geom_smooth()` The aes parameter of group is
+#' @param .geom_smooth A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
+#' will return the use of `ggplot2::geom_smooth()` The `aes` parameter of group is
 #' set to FALSE. This ensures a single smoothing band returned with SE also set to
-#' FALSE. Cole is set to 'black' and linetype is 'dashed'.
-#' @param .interactive A boolean value of TRUE/FALSE, FALSE is the default. TRUE
-#' will return an interactive plotly plot.
+#' FALSE. Cole is set to 'black' and `linetype` is 'dashed'.
+#' @param .geom_jitter A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
+#' will return the use of `ggplot2::geom_jitter()`
+#' @param .interactive A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
+#' will return an interactive `plotly` plot.
 #'
 #' @examples
 #' tn <- tidy_normal(.num_sims = 5)
@@ -48,9 +50,9 @@
 #'
 
 tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
-                          .geom_point = FALSE, .point_size = .5,
+                          .geom_point = FALSE, .point_size = 1,
                           .geom_rug = FALSE, .geom_smooth = FALSE,
-                          .interactive = FALSE){
+                          .geom_jitter = FALSE, .interactive = FALSE){
 
     # Plot type ----
     plot_type <- tolower(as.character(.plot_type))
@@ -228,6 +230,15 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
                 color = "black",
                 linetype = "dashed"
             )
+    }
+
+    if(.geom_jitter & !.geom_point){
+        plt <- plt +
+            ggplot2::geom_point(size = point_size)
+            ggplot2::geom_jitter()
+    } else {
+        plt <- plt +
+            ggplot2::geom_jitter()
     }
 
     if(.interactive){
