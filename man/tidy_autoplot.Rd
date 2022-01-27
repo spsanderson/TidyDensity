@@ -9,8 +9,8 @@ tidy_autoplot(
   .plot_type = "density",
   .line_size = 0.5,
   .point_size = 0.5,
-  .interactive = FALSE,
-  .geom_rug = FALSE
+  .geom_rug = FALSE,
+  .interactive = FALSE
 )
 }
 \arguments{
@@ -23,11 +23,11 @@ tidy_autoplot(
 
 \item{.point_size}{The line size param for ggplot}
 
-\item{.interactive}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
-will return an interactive plotly plot.}
-
 \item{.geom_rug}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
 will return the use of \code{ggplot2::geom_rug()}}
+
+\item{.interactive}{A boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return an interactive plotly plot.}
 }
 \value{
 A ggplot or a plotly plot.

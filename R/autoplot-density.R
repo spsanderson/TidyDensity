@@ -41,8 +41,9 @@
 #' @export
 #'
 
-tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5, .point_size = .5,
-                          .interactive = FALSE, .geom_rug = FALSE){
+tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
+                          .point_size = .5, .geom_rug = FALSE,
+                          .interactive = FALSE){
 
     # Plot type ----
     plot_type <- tolower(as.character(.plot_type))
