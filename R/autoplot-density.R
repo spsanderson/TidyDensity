@@ -40,8 +40,11 @@
 #' will return an interactive `plotly` plot.
 #'
 #' @examples
-#' tn <- tidy_normal(.num_sims = 5)
-#' tidy_autoplot(tn, .plot_type = "density", .point_size = .1)
+#' tidy_normal(.num_sims = 5) %>%
+#'   tidy_autoplot()
+#'
+#' tidy_normal(.num_sims = 20) %>%
+#'   tidy_autoplot(.plot_type = "qq")
 #'
 #' @return
 #' A ggplot or a plotly plot.
@@ -82,7 +85,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
         "tidy_hypergeometric","tidy_lognormal","tidy_cauchy","tidy_chisquare",
         "tidy_weibull","tidy_uniform","tidy_logistic","tidy_exponential",
         "tidy_empirical","tidy_binomial","tidy_geometric","tidy_negative_binomial",
-        "tidy_zero_truncated_poisson","tidy_zero_truncated_geometric"
+        "tidy_zero_truncated_poisson","tidy_zero_truncated_geometric",
+        "tidy_zero_truncated_binomial"
     )){
         rlang::abort("The data passed must come from a `tidy_` distribution function.")
     }
@@ -136,7 +140,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
             paste0("Rate: ", atb$.rate)
         } else if(atb$tibble_type == "tidy_empirical"){
             paste0("Empirical - No params")
-        } else if(atb$tibble_type %in% c("tidy_binomial","tidy_negative_binomial")){
+        } else if(atb$tibble_type %in% c("tidy_binomial","tidy_negative_binomial",
+                                         "tidy_zero_truncated_binomial")){
             paste0("Size: ", atb$.size, " - Prob: ", atb$.prob)
         } else if(atb$tibble_type %in% c("tidy_geometric","tidy_zero_truncated_geometric")){
             paste0("Prob: ", atb$.prob)

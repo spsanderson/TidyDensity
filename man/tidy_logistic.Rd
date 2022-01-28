@@ -51,7 +51,6 @@ tidy_logistic()
 
 Other Data Generator: 
 \code{\link{tidy_beta}()},
-\code{\link{tidy_binomial}()},
 \code{\link{tidy_cauchy}()},
 \code{\link{tidy_chisquare}()},
 \code{\link{tidy_exponential}()},
@@ -60,7 +59,6 @@ Other Data Generator:
 \code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_lognormal}()},
-\code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_normal}()},
 \code{\link{tidy_uniform}()},
 \code{\link{tidy_weibull}()}

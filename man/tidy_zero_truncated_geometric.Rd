@@ -48,6 +48,7 @@ tidy_zero_truncated_geometric()
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 
 Other Zero Truncated Distribution: 
+\code{\link{tidy_zero_truncated_binomial}()},
 \code{\link{tidy_zero_truncated_poisson}()}
 }
 \author{

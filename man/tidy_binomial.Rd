@@ -49,23 +49,18 @@ tidy_binomial()
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm}
 
-Other Data Generator: 
-\code{\link{tidy_beta}()},
-\code{\link{tidy_cauchy}()},
-\code{\link{tidy_chisquare}()},
-\code{\link{tidy_exponential}()},
-\code{\link{tidy_f}()},
-\code{\link{tidy_gamma}()},
-\code{\link{tidy_geometric}()},
-\code{\link{tidy_hypergeometric}()},
-\code{\link{tidy_logistic}()},
-\code{\link{tidy_lognormal}()},
+Other Discrete Distribution: 
 \code{\link{tidy_negative_binomial}()},
-\code{\link{tidy_normal}()},
-\code{\link{tidy_uniform}()},
-\code{\link{tidy_weibull}()}
+\code{\link{tidy_poisson}()},
+\code{\link{tidy_zero_truncated_binomial}()},
+\code{\link{tidy_zero_truncated_poisson}()}
+
+Other Binomial: 
+\code{\link{tidy_negative_binomial}()},
+\code{\link{tidy_zero_truncated_binomial}()}
 }
 \author{
 Steven P. Sanderson II, MPH
 }
-\concept{Data Generator}
+\concept{Binomial}
+\concept{Discrete Distribution}

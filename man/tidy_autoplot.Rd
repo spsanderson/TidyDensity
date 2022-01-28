@@ -70,8 +70,11 @@ This function will spit out one of the following plots:
 }
 }
 \examples{
-tn <- tidy_normal(.num_sims = 5)
-tidy_autoplot(tn, .plot_type = "density", .point_size = .1)
+tidy_normal(.num_sims = 5) \%>\%
+  tidy_autoplot()
+
+tidy_normal(.num_sims = 20) \%>\%
+  tidy_autoplot(.plot_type = "qq")
 
 }
 \author{

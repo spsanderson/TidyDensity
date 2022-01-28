@@ -51,10 +51,14 @@ Other Poisson:
 \code{\link{tidy_poisson}()}
 
 Other Zero Truncated Distribution: 
+\code{\link{tidy_zero_truncated_binomial}()},
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Discrete Distribution: 
-\code{\link{tidy_poisson}()}
+\code{\link{tidy_binomial}()},
+\code{\link{tidy_negative_binomial}()},
+\code{\link{tidy_poisson}()},
+\code{\link{tidy_zero_truncated_binomial}()}
 }
 \author{
 Steven P. Sanderson II, MPH

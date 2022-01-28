@@ -2,15 +2,16 @@
 #'
 #' @family Discrete Distribution
 #' @family Binomial
+#' @family Zero Truncated Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @seealso \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm}
+#' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 #'
-#' @details This function uses the underlying `stats::rbinom()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [stats::rbinom()]
+#' @details This function uses the underlying `actuar::rztbinom()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [actuar::rztbinom()]
 #'
-#' @description This function will generate `n` random points from a binomial
+#' @description This function will generate `n` random points from a zero truncated binomial
 #' distribution with a user provided, `.size`, `.prob`, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
@@ -30,11 +31,11 @@
 #'
 #' @param .n The number of randomly generated points you want.
 #' @param .size Number of trials, zero or more.
-#' @param .prob Probability of success on each trial.
+#' @param .prob Probability of success on each trial 0 <= prob <= 1.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_binomial()
+#' tidy_zeo_truncated_binomial()
 #'
 #' @return
 #' A tibble of randomly generated data.
@@ -42,7 +43,7 @@
 #' @export
 #'
 
-tidy_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1){
+tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
@@ -102,7 +103,7 @@ tidy_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1){
     attr(df, ".prob") <- .prob
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_binomial"
+    attr(df, "tibble_type") <- "tidy_zero_truncated_binomial"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 

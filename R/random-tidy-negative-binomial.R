@@ -1,6 +1,8 @@
 #' Tidy Randomly Generated Negative Binomial Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Discrete Distribution
+#' @family Binomial
+#' @family Negative Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
