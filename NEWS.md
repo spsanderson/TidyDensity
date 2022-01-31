@@ -19,6 +19,7 @@ no longer importing.
 5. Fix #55 - Add parameter `.geom_jitter` to `tidy_autoplot()` function
 6. Fix #57 - Fix `tidy_autoplot()` for when the distribution is `tidy_empirical()`
 the legend argument would fail.
+7. Fix #56 - Add attributes of .n and .num_sims (1L for now) to `tidy_empirical()`
 
 # TidyDensity 0.0.1
 

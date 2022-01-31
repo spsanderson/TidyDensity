@@ -65,6 +65,8 @@ tidy_empirical <- function(.x){
         dplyr::mutate(q = q_vec$q)
 
     attr(df, ".x") <- .x
+    attr(df, ".n") <- n
+    attr(df, ".num_sims") <- 1L
     attr(df, "tibble_type") <- "tidy_empirical"
 
     # Return ----
