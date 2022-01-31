@@ -152,7 +152,13 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
     data_tbl <- dplyr::as_tibble(.data)
 
     # Plot logic ----
-    leg_pos <- ifelse(sims > 9, "none", "bottom")
+    leg_pos <- if(atb$tibble_type == "tidy_empirical"){
+        "none"
+    } else if(sims > 9) {
+        "none"
+    } else {
+        "bottom"
+    }
 
     if(plot_type == "density"){
         plt <- data_tbl %>%

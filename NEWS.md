@@ -17,6 +17,8 @@ no longer importing.
 3. Fix #54 - Add parameter `.geom_point` to `tidy_autoplot()` function
 4. Fix #53 - Add parameter `.geom_smooth` to `tidy_autoplot()` function
 5. Fix #55 - Add parameter `.geom_jitter` to `tidy_autoplot()` function
+6. Fix #57 - Fix `tidy_autoplot()` for when the distribution is `tidy_empirical()`
+the legend argument would fail.
 
 # TidyDensity 0.0.1
 
