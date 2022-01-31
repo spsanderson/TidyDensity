@@ -43,7 +43,7 @@ This function uses the underlying \code{actuar::rztbinom()}, and its underlying
 \code{p}, \code{d}, and \code{q} functions. For more information please see \code{\link[actuar:ZeroTruncatedBinomial]{actuar::rztbinom()}}
 }
 \examples{
-tidy_zeo_truncated_binomial()
+tidy_zero_truncated_binomial()
 
 }
 \seealso{

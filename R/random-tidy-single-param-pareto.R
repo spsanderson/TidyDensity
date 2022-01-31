@@ -1,18 +1,17 @@
-#' Tidy Randomly Generated Binomial Distribution Tibble
+#' Tidy Randomly Generated Pareto Single Parameter Distribution Tibble
 #'
-#' @family Discrete Distribution
-#' @family Binomial
-#' @family Zero Truncated Distribution
+#' @family Continuous Distribution
+#' @family Pareto
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 #'
-#' @details This function uses the underlying `actuar::rztbinom()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [actuar::rztbinom()]
+#' @details This function uses the underlying `actuar::rpareto1()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [actuar::rpareto1()]
 #'
-#' @description This function will generate `n` random points from a zero truncated binomial
-#' distribution with a user provided, `.size`, `.prob`, and number of
+#' @description This function will generate `n` random points from a single parameter
+#' pareto distribution with a user provided, `.shape`, `.min`, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.
@@ -30,12 +29,12 @@
 #' -  `q` The values from the resulting q_ function of the distribution family.
 #'
 #' @param .n The number of randomly generated points you want.
-#' @param .size Number of trials, zero or more.
-#' @param .prob Probability of success on each trial 0 <= prob <= 1.
+#' @param .shape Must be positive.
+#' @param .min The lower bound of the support of the distribution.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_zero_truncated_binomial()
+#' tidy_pareto1()
 #'
 #' @return
 #' A tibble of randomly generated data.
@@ -43,13 +42,13 @@
 #' @export
 #'
 
-tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1){
+tidy_pareto1 <- function(.n = 50, .shape = 1, .min = 1, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
     num_sims <- as.integer(.num_sims)
-    size <- as.numeric(.size)
-    prob    <- as.numeric(.prob)
+    shape    <- as.numeric(.shape)
+    min      <- as.numeric(.min)
 
     # Checks ----
     if(!is.integer(n) | n < 0){
@@ -66,18 +65,18 @@ tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sim
         )
     }
 
-    if(!is.numeric(size) | !is.numeric(prob)){
+    if(!is.numeric(shape) | !is.numeric(min)){
         rlang::abort(
-            "The parameters of .size and .prob must be of class numeric and greater than 0."
+            "The parameters of .shape and .min must be of class numeric and greater than 0."
         )
     }
 
-    if(size < 0){
-        rlang::abort("The parameter of .size must be greater than or equal to 0.")
+    if(shape <= 0){
+        rlang::abort("The parameter of .size must be greater than 0.")
     }
 
-    if(prob > 1 | prob < 0){
-        rlang::abort("The parameter of .prob must be 0 <= .prob <= 1")
+    if(min <= 0){
+        rlang::abort("The parameter of .min must be greater than 0")
     }
 
     x <- seq(1, num_sims, 1)
@@ -88,22 +87,22 @@ tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sim
     df <- dplyr::tibble(sim_number = as.factor(x)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(actuar::rztbinom(n = n, size = size, prob = prob))) %>%
+        dplyr::mutate(y = list(actuar::rpareto1(n = n, shape = shape, min = min))) %>%
         dplyr::mutate(d = list(density(unlist(y), n = n)[c("x","y")] %>%
                                    purrr::set_names("dx","dy") %>%
                                    dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(actuar::pztbinom(ps,  size = size, prob = prob))) %>%
-        dplyr::mutate(q = list(actuar::qztbinom(qs,  size = size, prob = prob))) %>%
+        dplyr::mutate(p = list(actuar::ppareto1(ps,  shape = shape, min = min))) %>%
+        dplyr::mutate(q = list(actuar::qpareto1(qs,  shape = shape, min = min))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 
 
     # Attach descriptive attributes to tibble
-    attr(df, ".size") <- .size
-    attr(df, ".prob") <- .prob
+    attr(df, ".shape") <- .shape
+    attr(df, ".min") <- .min
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_zero_truncated_binomial"
+    attr(df, "tibble_type") <- "tidy_pareto_single_parameter"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 
