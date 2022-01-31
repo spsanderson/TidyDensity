@@ -58,7 +58,8 @@ Other Discrete Distribution:
 \code{\link{tidy_binomial}()},
 \code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_poisson}()},
-\code{\link{tidy_zero_truncated_binomial}()}
+\code{\link{tidy_zero_truncated_binomial}()},
+\code{\link{tidy_zero_truncated_negative_binomial}()}
 }
 \author{
 Steven P. Sanderson II, MPH

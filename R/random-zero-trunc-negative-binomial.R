@@ -2,14 +2,14 @@
 #'
 #' @family Discrete Distribution
 #' @family Binomial
-#' @family Zero Truncated Distribution
+#' @family Zero Truncated Negative Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 #'
-#' @details This function uses the underlying `actuar::rztbinom()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [actuar::rztbinom()]
+#' @details This function uses the underlying `actuar::rztnbinom()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [actuar::rztnbinom()]
 #'
 #' @description This function will generate `n` random points from a zero truncated binomial
 #' distribution with a user provided, `.size`, `.prob`, and number of
@@ -43,7 +43,7 @@
 #' @export
 #'
 
-tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1){
+tidy_zero_truncated_negative_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1){
 
     # Tidyeval ----
     n        <- as.integer(.n)
@@ -88,12 +88,12 @@ tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sim
     df <- dplyr::tibble(sim_number = as.factor(x)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(actuar::rztbinom(n = n, size = size, prob = prob))) %>%
+        dplyr::mutate(y = list(actuar::rztnbinom(n = n, size = size, prob = prob))) %>%
         dplyr::mutate(d = list(density(unlist(y), n = n)[c("x","y")] %>%
                                    purrr::set_names("dx","dy") %>%
                                    dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(actuar::pztbinom(ps,  size = size, prob = prob))) %>%
-        dplyr::mutate(q = list(actuar::qztbinom(qs,  size = size, prob = prob))) %>%
+        dplyr::mutate(p = list(actuar::pztnbinom(ps,  size = size, prob = prob))) %>%
+        dplyr::mutate(q = list(actuar::qztnbinom(qs,  size = size, prob = prob))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 
@@ -103,7 +103,7 @@ tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sim
     attr(df, ".prob") <- .prob
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_zero_truncated_binomial"
+    attr(df, "tibble_type") <- "tidy_zero_truncated_negative_binomial"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 
