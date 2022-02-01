@@ -83,7 +83,11 @@ subtitle is put together by the attributes of the table passed to the function.<
   <span class="va">.data</span>,
   .plot_type <span class="op">=</span> <span class="st">"density"</span>,
   .line_size <span class="op">=</span> <span class="fl">0.5</span>,
-  .point_size <span class="op">=</span> <span class="fl">0.5</span>,
+  .geom_point <span class="op">=</span> <span class="cn">FALSE</span>,
+  .point_size <span class="op">=</span> <span class="fl">1</span>,
+  .geom_rug <span class="op">=</span> <span class="cn">FALSE</span>,
+  .geom_smooth <span class="op">=</span> <span class="cn">FALSE</span>,
+  .geom_jitter <span class="op">=</span> <span class="cn">FALSE</span>,
   .interactive <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -97,11 +101,25 @@ subtitle is put together by the attributes of the table passed to the function.<
 <dd><p>This is a quoted string like 'density'</p></dd>
 <dt>.line_size</dt>
 <dd><p>The size param ggplot</p></dd>
+<dt>.geom_point</dt>
+<dd><p>A Boolean value of TREU/FALSE, FALSE is the default. TRUE
+will return a plot with <code>ggplot2::ggeom_point()</code></p></dd>
 <dt>.point_size</dt>
-<dd><p>The line size param for ggplot</p></dd>
+<dd><p>The point size param for ggplot</p></dd>
+<dt>.geom_rug</dt>
+<dd><p>A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return the use of <code><a href="https://ggplot2.tidyverse.org/reference/geom_rug.html" class="external-link">ggplot2::geom_rug()</a></code></p></dd>
+<dt>.geom_smooth</dt>
+<dd><p>A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return the use of <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">ggplot2::geom_smooth()</a></code> The <code>aes</code> parameter of group is
+set to FALSE. This ensures a single smoothing band returned with SE also set to
+FALSE. Cole is set to 'black' and <code>linetype</code> is 'dashed'.</p></dd>
+<dt>.geom_jitter</dt>
+<dd><p>A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return the use of <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" class="external-link">ggplot2::geom_jitter()</a></code></p></dd>
 <dt>.interactive</dt>
-<dd><p>A boolean value of TRUE/FALSE, FALSE is the default. TRUE
-will return an interactive plotly plot.</p></dd>
+<dd><p>A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
+will return an interactive <code>plotly</code> plot.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -121,9 +139,13 @@ will return an interactive plotly plot.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">tn</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.num_sims <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">tidy_autoplot</span><span class="op">(</span><span class="va">tn</span>, .plot_type <span class="op">=</span> <span class="st">"density"</span>, .point_size <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.num_sims <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
+<span class="r-in">  <span class="fu">tidy_autoplot</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="tidy_autoplot-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="fu"><a href="tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.num_sims <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
+<span class="r-in">  <span class="fu">tidy_autoplot</span><span class="op">(</span>.plot_type <span class="op">=</span> <span class="st">"qq"</span><span class="op">)</span></span>
+<span class="r-plt img"><img src="tidy_autoplot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

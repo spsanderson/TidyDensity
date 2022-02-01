@@ -40,6 +40,9 @@
     <loc>/reference/tidy_beta.html</loc>
   </url>
   <url>
+    <loc>/reference/tidy_binomial.html</loc>
+  </url>
+  <url>
     <loc>/reference/tidy_cauchy.html</loc>
   </url>
   <url>
@@ -61,6 +64,9 @@
     <loc>/reference/tidy_gamma.html</loc>
   </url>
   <url>
+    <loc>/reference/tidy_geometric.html</loc>
+  </url>
+  <url>
     <loc>/reference/tidy_hypergeometric.html</loc>
   </url>
   <url>
@@ -73,7 +79,16 @@
     <loc>/reference/tidy_lognormal.html</loc>
   </url>
   <url>
+    <loc>/reference/tidy_negative_binomial.html</loc>
+  </url>
+  <url>
     <loc>/reference/tidy_normal.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_pareto.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_pareto1.html</loc>
   </url>
   <url>
     <loc>/reference/tidy_poisson.html</loc>
@@ -86,5 +101,17 @@
   </url>
   <url>
     <loc>/reference/tidy_weibull.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_zero_truncated_binomial.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_zero_truncated_geometric.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_zero_truncated_negative_binomial.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_zero_truncated_poisson.html</loc>
   </url>
 </urlset>
