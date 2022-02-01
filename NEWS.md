@@ -10,6 +10,8 @@
 5. Fix #35 - Add function `tidy_zero_truncated_geometric()`
 6. Fix #36 - Add function `tidy_zero_truncated_binomial()`
 7. Fix #37 - Add function `tidy_zero_truncated_negative_binomial()`
+8. Fix #41 - Add function `tidy_pareto1()`
+9. Fix #42 - Add function `tidy_pareto()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

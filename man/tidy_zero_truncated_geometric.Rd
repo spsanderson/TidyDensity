@@ -48,7 +48,8 @@ tidy_zero_truncated_geometric()
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 
 Other Continuous Distribution: 
-\code{\link{tidy_pareto1}()}
+\code{\link{tidy_pareto1}()},
+\code{\link{tidy_pareto}()}
 
 Other Zero Truncated Distribution: 
 \code{\link{tidy_zero_truncated_binomial}()},
