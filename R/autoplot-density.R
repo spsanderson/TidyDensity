@@ -150,7 +150,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
         } else if(atb$tibble_type %in% c("tidy_pareto_single_parameter")){
             paste0("Shape: ", atb$.shape, " - Min: ", atb$.min)
         } else if(atb$tibble_type %in% c("tidy_pareto")){
-            paste0("Shape: ", atb$.shape, "- Scale: ", atb$.scale)
+            paste0("Shape: ", atb$.shape, " - Scale: ", atb$.scale)
         }
     )
 
