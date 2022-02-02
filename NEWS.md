@@ -1,6 +1,7 @@
 # TidyDensity (development version)
 
 ## Breaking Changes
+None
 
 ## New Features
 1. Fix #27 - Add function `tidy_binomial()`
