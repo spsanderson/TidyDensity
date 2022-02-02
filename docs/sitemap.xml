@@ -13,6 +13,9 @@
     <loc>/authors.html</loc>
   </url>
   <url>
+    <loc>/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
     <loc>/index.html</loc>
   </url>
   <url>
@@ -68,6 +71,9 @@
   </url>
   <url>
     <loc>/reference/tidy_hypergeometric.html</loc>
+  </url>
+  <url>
+    <loc>/reference/tidy_inverse_pareto.html</loc>
   </url>
   <url>
     <loc>/reference/tidy_logisitc.html</loc>
