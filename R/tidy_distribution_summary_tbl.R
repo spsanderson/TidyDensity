@@ -30,41 +30,39 @@
 #' @examples
 #' tn <- tidy_normal(.num_sims = 5)
 #' tidy_distribution_summary_tbl(tn)
-#'
 #' @return
 #' A summary stats tibble
 #'
 #' @export
 #'
 
-tidy_distribution_summary_tbl <- function(.data){
+tidy_distribution_summary_tbl <- function(.data) {
 
-    # Get the data attributes
-    atb <- attributes(.data)
+  # Get the data attributes
+  atb <- attributes(.data)
 
-    if(!"tibble_type" %in% names(atb)){
-        rlang::abort("The data passed must come from a `tidy_` distribution function.")
-    }
+  if (!"tibble_type" %in% names(atb)) {
+    rlang::abort("The data passed must come from a `tidy_` distribution function.")
+  }
 
-    data_tbl <- dplyr::as_tibble(.data)
+  data_tbl <- dplyr::as_tibble(.data)
 
-    summary_tbl <- data_tbl %>%
-        dplyr::group_by(sim_number) %>%
-        dplyr::select(sim_number, y) %>%
-        dplyr::summarise(
-            mean_val = mean(y, na.rm = TRUE),
-            median_val = stats::median(y, na.rm = TRUE),
-            std_val = sd(y, na.rm = TRUE),
-            min_val = min(y),
-            max_val = max(y),
-            # skewness = healthyR.ai::hai_skewness_vec(y),
-            # kurtosis = healthyR.ai::hai_kurtosis_vec(y),
-            range = healthyR.ai::hai_range_statistic(y),
-            iqr = stats::IQR(y),
-            variance = stats::var(y)
-        ) %>%
-        dplyr::ungroup()
+  summary_tbl <- data_tbl %>%
+    dplyr::group_by(sim_number) %>%
+    dplyr::select(sim_number, y) %>%
+    dplyr::summarise(
+      mean_val = mean(y, na.rm = TRUE),
+      median_val = stats::median(y, na.rm = TRUE),
+      std_val = sd(y, na.rm = TRUE),
+      min_val = min(y),
+      max_val = max(y),
+      # skewness = healthyR.ai::hai_skewness_vec(y),
+      # kurtosis = healthyR.ai::hai_kurtosis_vec(y),
+      range = healthyR.ai::hai_range_statistic(y),
+      iqr = stats::IQR(y),
+      variance = stats::var(y)
+    ) %>%
+    dplyr::ungroup()
 
-    return(summary_tbl)
-
+  return(summary_tbl)
 }

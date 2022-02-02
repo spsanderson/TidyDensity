@@ -45,7 +45,6 @@
 #'
 #' tidy_normal(.num_sims = 20) %>%
 #'   tidy_autoplot(.plot_type = "qq")
-#'
 #' @return
 #' A ggplot or a plotly plot.
 #'
@@ -55,209 +54,211 @@
 tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
                           .geom_point = FALSE, .point_size = 1,
                           .geom_rug = FALSE, .geom_smooth = FALSE,
-                          .geom_jitter = FALSE, .interactive = FALSE){
+                          .geom_jitter = FALSE, .interactive = FALSE) {
 
-    # Plot type ----
-    plot_type <- tolower(as.character(.plot_type))
-    line_size <- as.numeric(.line_size)
-    point_size <- as.numeric(.point_size)
+  # Plot type ----
+  plot_type <- tolower(as.character(.plot_type))
+  line_size <- as.numeric(.line_size)
+  point_size <- as.numeric(.point_size)
 
-    # Get the data attributes
-    atb <- attributes(.data)
-    ns <- atb$.num_sims
-    ps <- attributes(.data)$ps
-    ps <- rep(ps, ns)
-    qs <- attributes(.data)$qs
-    qs <- rep(qs, ns)
+  # Get the data attributes
+  atb <- attributes(.data)
+  ns <- atb$.num_sims
+  ps <- attributes(.data)$ps
+  ps <- rep(ps, ns)
+  qs <- attributes(.data)$qs
+  qs <- rep(qs, ns)
 
-    # Checks on data ---
-    if(!is.data.frame(.data)){
-        rlang::abort("The .data parameter must be a valid data.frame from a `tidy_`
+  # Checks on data ---
+  if (!is.data.frame(.data)) {
+    rlang::abort("The .data parameter must be a valid data.frame from a `tidy_`
                      distribution function.  ")
-    }
+  }
 
-    if(!"tibble_type" %in% names(atb)){
-        rlang::abort("The data passed must come from a `tidy_` distribution function.")
-    }
+  if (!"tibble_type" %in% names(atb)) {
+    rlang::abort("The data passed must come from a `tidy_` distribution function.")
+  }
 
-    if(!attributes(.data)$tibble_type %in% c(
-        "tidy_gaussian", "tidy_poisson","tidy_gamma","tidy_beta","tidy_f",
-        "tidy_hypergeometric","tidy_lognormal","tidy_cauchy","tidy_chisquare",
-        "tidy_weibull","tidy_uniform","tidy_logistic","tidy_exponential",
-        "tidy_empirical","tidy_binomial","tidy_geometric","tidy_negative_binomial",
-        "tidy_zero_truncated_poisson","tidy_zero_truncated_geometric",
-        "tidy_zero_truncated_binomial","tidy_zero_truncated_negative_binomial",
-        "tidy_pareto_single_parameter","tidy_pareto"
-    )){
-        rlang::abort("The data passed must come from a `tidy_` distribution function.")
-    }
+  if (!attributes(.data)$tibble_type %in% c(
+    "tidy_gaussian", "tidy_poisson", "tidy_gamma", "tidy_beta", "tidy_f",
+    "tidy_hypergeometric", "tidy_lognormal", "tidy_cauchy", "tidy_chisquare",
+    "tidy_weibull", "tidy_uniform", "tidy_logistic", "tidy_exponential",
+    "tidy_empirical", "tidy_binomial", "tidy_geometric", "tidy_negative_binomial",
+    "tidy_zero_truncated_poisson", "tidy_zero_truncated_geometric",
+    "tidy_zero_truncated_binomial", "tidy_zero_truncated_negative_binomial",
+    "tidy_pareto_single_parameter", "tidy_pareto", "tidy_inverse_pareto"
+  )) {
+    rlang::abort("The data passed must come from a `tidy_` distribution function.")
+  }
 
-    if(!is.numeric(.line_size) | !is.numeric(.point_size) | .line_size < 0 | .point_size < 0){
-        rlang::abort("The parameters .line_size and .point_size must be numeric and
+  if (!is.numeric(.line_size) | !is.numeric(.point_size) | .line_size < 0 | .point_size < 0) {
+    rlang::abort("The parameters .line_size and .point_size must be numeric and
                      greater than 0.")
+  }
+
+  if (!plot_type %in% c("density", "quantile", "probability", "qq")) {
+    rlang::abort("You have chose an unsupported plot type.")
+  }
+
+  # Get .data parameters from the tidy_ function to construct subtitle
+  # for ggplot
+  n <- atb$.n
+  sims <- atb$.num_sims
+  dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
+    stringr::str_replace_all(pattern = "_", " ") %>%
+    stringr::str_to_title()
+
+  sub_title <- paste0(
+    "Data Points: ", n, " - ",
+    "Simulations: ", sims, "\n",
+    "Distribution Family: ", dist_type, "\n",
+    "Parameters: ", if (atb$tibble_type == "tidy_gaussian") {
+      paste0("Mean: ", atb$.mean, " - SD: ", atb$.sd)
+    } else if (atb$tibble_type == "tidy_gamma") {
+      paste0("Shape: ", atb$.shape, " - Rate: ", atb$.rate)
+    } else if (atb$tibble_type == "tidy_beta") {
+      paste0("Shape1: ", atb$.shape1, " - Shape2: ", atb$.shape2, " - NCP: ", atb$.ncp)
+    } else if (atb$tibble_type %in% c("tidy_poisson", "tidy_zero_truncated_poisson")) {
+      paste0("Lambda: ", atb$.lambda)
+    } else if (atb$tibble_type == "tidy_f") {
+      paste0("DF1: ", atb$.df1, " - DF2: ", atb$.df2, " - NCP: ", atb$.ncp)
+    } else if (atb$tibble_type == "tidy_hypergeometric") {
+      paste0("M: ", atb$.m, " - NN: ", atb$.nn, " - K: ", atb$.k)
+    } else if (atb$tibble_type == "tidy_lognormal") {
+      paste0("Mean Log: ", atb$.meanlog, " - SD Log: ", atb$.sdlog)
+    } else if (atb$tibble_type == "tidy_cauchy") {
+      paste0("Location: ", atb$.location, " - Scale: ", atb$.scale)
+    } else if (atb$tibble_type == "tidy_chisquare") {
+      paste0("DF: ", atb$.df, " - NPC: ", atb$.ncp)
+    } else if (atb$tibble_type == "tidy_weibull") {
+      paste0("Shape: ", atb$.schape, " - Scale: ", atb$.scale)
+    } else if (atb$tibble_type == "tidy_uniform") {
+      paste0("Max: ", atb$.max, " - Min: ", atb$.min)
+    } else if (atb$tibble_type == "tidy_logistic") {
+      paste0("Location: ", atb$.location, " - Scale: ", atb$.scale)
+    } else if (atb$tibble_type == "tidy_exponential") {
+      paste0("Rate: ", atb$.rate)
+    } else if (atb$tibble_type == "tidy_empirical") {
+      paste0("Empirical - No params")
+    } else if (atb$tibble_type %in% c(
+      "tidy_binomial", "tidy_negative_binomial",
+      "tidy_zero_truncated_binomial",
+      "tidy_zero_truncated_negative_binomial"
+    )) {
+      paste0("Size: ", atb$.size, " - Prob: ", atb$.prob)
+    } else if (atb$tibble_type %in% c("tidy_geometric", "tidy_zero_truncated_geometric")) {
+      paste0("Prob: ", atb$.prob)
+    } else if (atb$tibble_type %in% c("tidy_pareto_single_parameter")) {
+      paste0("Shape: ", atb$.shape, " - Min: ", atb$.min)
+    } else if (atb$tibble_type %in% c("tidy_pareto", "tidy_inverse_pareto")) {
+      paste0("Shape: ", atb$.shape, " - Scale: ", atb$.scale)
     }
+  )
 
-    if(!plot_type %in% c("density","quantile","probability","qq")){
-        rlang::abort("You have chose an unsupported plot type.")
-    }
+  # Data ----
+  data_tbl <- dplyr::as_tibble(.data)
 
-    # Get .data parameters from the tidy_ function to construct subtitle
-    # for ggplot
-    n <- atb$.n
-    sims <- atb$.num_sims
-    dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
-        stringr::str_replace_all(pattern = "_", " ") %>%
-        stringr::str_to_title()
+  # Plot logic ----
+  leg_pos <- if (atb$tibble_type == "tidy_empirical") {
+    "none"
+  } else if (sims > 9) {
+    "none"
+  } else {
+    "bottom"
+  }
 
-    sub_title <- paste0(
-        "Data Points: ", n," - ",
-        "Simulations: ", sims,"\n",
-        "Distribution Family: ", dist_type, "\n",
-        "Parameters: ", if(atb$tibble_type == "tidy_gaussian"){
-            paste0("Mean: ", atb$.mean, " - SD: ", atb$.sd)
-        } else if(atb$tibble_type == "tidy_gamma"){
-            paste0("Shape: ", atb$.shape, " - Rate: ", atb$.rate)
-        } else if(atb$tibble_type == "tidy_beta"){
-            paste0("Shape1: ", atb$.shape1, " - Shape2: ", atb$.shape2, " - NCP: ", atb$.ncp)
-        } else if(atb$tibble_type %in% c("tidy_poisson","tidy_zero_truncated_poisson")){
-            paste0("Lambda: ", atb$.lambda)
-        } else if(atb$tibble_type == "tidy_f"){
-            paste0("DF1: ", atb$.df1, " - DF2: ", atb$.df2, " - NCP: ", atb$.ncp)
-        } else if(atb$tibble_type == "tidy_hypergeometric"){
-            paste0("M: ", atb$.m, " - NN: ", atb$.nn, " - K: ", atb$.k)
-        } else if(atb$tibble_type == "tidy_lognormal"){
-            paste0("Mean Log: ", atb$.meanlog, " - SD Log: ", atb$.sdlog)
-        } else if(atb$tibble_type == "tidy_cauchy"){
-            paste0("Location: ", atb$.location, " - Scale: ", atb$.scale)
-        } else if(atb$tibble_type == "tidy_chisquare"){
-            paste0("DF: ", atb$.df, " - NPC: ", atb$.ncp)
-        } else if(atb$tibble_type == "tidy_weibull"){
-            paste0("Shape: ", atb$.schape, " - Scale: ", atb$.scale)
-        } else if(atb$tibble_type == "tidy_uniform"){
-            paste0("Max: ", atb$.max, " - Min: ", atb$.min)
-        } else if(atb$tibble_type == "tidy_logistic"){
-            paste0("Location: ", atb$.location, " - Scale: ", atb$.scale)
-        } else if(atb$tibble_type == "tidy_exponential"){
-            paste0("Rate: ", atb$.rate)
-        } else if(atb$tibble_type == "tidy_empirical"){
-            paste0("Empirical - No params")
-        } else if(atb$tibble_type %in% c("tidy_binomial","tidy_negative_binomial",
-                                         "tidy_zero_truncated_binomial",
-                                         "tidy_zero_truncated_negative_binomial")){
-            paste0("Size: ", atb$.size, " - Prob: ", atb$.prob)
-        } else if(atb$tibble_type %in% c("tidy_geometric","tidy_zero_truncated_geometric")){
-            paste0("Prob: ", atb$.prob)
-        } else if(atb$tibble_type %in% c("tidy_pareto_single_parameter")){
-            paste0("Shape: ", atb$.shape, " - Min: ", atb$.min)
-        } else if(atb$tibble_type %in% c("tidy_pareto")){
-            paste0("Shape: ", atb$.shape, " - Scale: ", atb$.scale)
-        }
-    )
+  if (plot_type == "density") {
+    plt <- data_tbl %>%
+      ggplot2::ggplot(
+        ggplot2::aes(x = dx, y = dy, group = sim_number, color = sim_number)
+      ) +
+      ggplot2::geom_line(size = line_size) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "Density Plot",
+        subtitle = sub_title,
+        color = "Simulation"
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  } else if (plot_type == "quantile") {
+    plt <- data_tbl %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          x = qs, y = q, group = sim_number, color = sim_number
+        )
+      ) +
+      ggplot2::geom_line(size = line_size) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "Qantile Plot",
+        subtitle = sub_title,
+        color = "Simulation"
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  } else if (plot_type == "probability") {
+    plt <- data_tbl %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          x = ps, y = p, color = sim_number, group = sim_number
+        )
+      ) +
+      ggplot2::geom_line(size = line_size) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "Probabilty Plot",
+        subtitle = sub_title,
+        color = "Simulation"
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  } else if (plot_type == "qq") {
+    plt <- data_tbl %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          sample = y, color = sim_number, group = sim_number
+        )
+      ) +
+      ggplot2::stat_qq(size = point_size) +
+      ggplot2::stat_qq_line(size = line_size) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "QQ Plot",
+        subtitle = sub_title,
+        color = "Simulation"
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  }
 
-    # Data ----
-    data_tbl <- dplyr::as_tibble(.data)
+  if (.geom_rug) {
+    plt <- plt +
+      ggplot2::geom_rug()
+  }
 
-    # Plot logic ----
-    leg_pos <- if(atb$tibble_type == "tidy_empirical"){
-        "none"
-    } else if(sims > 9) {
-        "none"
-    } else {
-        "bottom"
-    }
+  if ((.geom_point) & (!plot_type == "qq")) {
+    plt <- plt +
+      ggplot2::geom_point(size = point_size)
+  }
 
-    if(plot_type == "density"){
-        plt <- data_tbl %>%
-            ggplot2::ggplot(
-                ggplot2::aes(x = dx, y = dy, group = sim_number, color = sim_number)
-            ) +
-            ggplot2::geom_line(size = line_size) +
-            ggplot2::theme_minimal() +
-            ggplot2::labs(
-                title = "Density Plot",
-                subtitle = sub_title,
-                color = "Simulation"
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
-    } else if(plot_type == "quantile"){
-        plt <- data_tbl %>%
-            ggplot2::ggplot(
-                ggplot2::aes(
-                    x = qs, y = q, group = sim_number, color = sim_number
-                )
-            ) +
-            ggplot2::geom_line(size = line_size) +
-            ggplot2::theme_minimal() +
-            ggplot2::labs(
-                title = "Qantile Plot",
-                subtitle = sub_title,
-                color = "Simulation"
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
-    } else if(plot_type == "probability"){
-        plt <- data_tbl %>%
-            ggplot2::ggplot(
-                ggplot2::aes(
-                    x = ps, y = p, color = sim_number, group = sim_number
-                )
-            ) +
-            ggplot2::geom_line(size = line_size) +
-            ggplot2::theme_minimal() +
-            ggplot2::labs(
-                title = "Probabilty Plot",
-                subtitle = sub_title,
-                color = "Simulation"
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
-    } else if(plot_type == "qq"){
-        plt <- data_tbl %>%
-            ggplot2::ggplot(
-                ggplot2::aes(
-                    sample = y, color = sim_number, group = sim_number
-                )
-            ) +
-            ggplot2::stat_qq(size = point_size) +
-            ggplot2::stat_qq_line(size = line_size) +
-            ggplot2::theme_minimal() +
-            ggplot2::labs(
-                title = "QQ Plot",
-                subtitle = sub_title,
-                color = "Simulation"
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
-    }
+  if (.geom_smooth) {
+    plt <- plt +
+      ggplot2::geom_smooth(
+        ggplot2::aes(
+          group = FALSE
+        ),
+        se = FALSE,
+        color = "black",
+        linetype = "dashed"
+      )
+  }
 
-    if(.geom_rug){
-        plt <- plt +
-            ggplot2::geom_rug()
-    }
+  if (.geom_jitter) {
+    plt <- plt +
+      ggplot2::geom_jitter()
+  }
 
-    if((.geom_point) & (!plot_type == "qq")){
-        plt <- plt +
-            ggplot2::geom_point(size = point_size)
-    }
+  if (.interactive) {
+    plt <- plotly::ggplotly(plt)
+  }
 
-    if(.geom_smooth){
-        plt <- plt +
-            ggplot2::geom_smooth(
-                ggplot2::aes(
-                    group = FALSE
-                ),
-                se = FALSE,
-                color = "black",
-                linetype = "dashed"
-            )
-    }
-
-    if(.geom_jitter) {
-        plt <- plt +
-            ggplot2::geom_jitter()
-    }
-
-    if(.interactive){
-        plt <- plotly::ggplotly(plt)
-    }
-
-    # Return ----
-    return(plt)
+  # Return ----
+  return(plt)
 }

@@ -33,69 +33,67 @@
 #'
 #' @examples
 #' tidy_geometric()
-#'
 #' @return
 #' A tibble of randomly generated data.
 #'
 #' @export
 #'
 
-tidy_geometric <- function(.n = 50, .prob = 1, .num_sims = 1){
+tidy_geometric <- function(.n = 50, .prob = 1, .num_sims = 1) {
 
-    # Tidyeval ----
-    n        <- as.integer(.n)
-    num_sims <- as.integer(.num_sims)
-    prob     <- as.numeric(.prob)
+  # Tidyeval ----
+  n <- as.integer(.n)
+  num_sims <- as.integer(.num_sims)
+  prob <- as.numeric(.prob)
 
-    # Checks ----
-    if(!is.integer(n) | n < 0){
-        rlang::abort(
-            "The parameters '.n' must be of class integer. Please pass a whole
+  # Checks ----
+  if (!is.integer(n) | n < 0) {
+    rlang::abort(
+      "The parameters '.n' must be of class integer. Please pass a whole
             number like 50 or 100. It must be greater than 0."
-        )
-    }
+    )
+  }
 
-    if(!is.integer(num_sims) | num_sims < 0){
-        rlang::abort(
-            "The parameter `.num_sims' must be of class integer. Please pass a
+  if (!is.integer(num_sims) | num_sims < 0) {
+    rlang::abort(
+      "The parameter `.num_sims' must be of class integer. Please pass a
             whole number like 50 or 100. It must be greater than 0."
-        )
-    }
+    )
+  }
 
-    if(!is.numeric(prob) | prob < 0 | prob > 1){
-        rlang::abort(
-            "The parameter of rate must be of class numeric and 0 < .prob <= 1 must be
+  if (!is.numeric(prob) | prob < 0 | prob > 1) {
+    rlang::abort(
+      "The parameter of rate must be of class numeric and 0 < .prob <= 1 must be
             satisfied."
-        )
-    }
+    )
+  }
 
-    x <- seq(1, num_sims, 1)
+  x <- seq(1, num_sims, 1)
 
-    ps <- seq(-n, n-1, 2)
-    qs <- seq(0, 1, (1/(n-1)))
+  ps <- seq(-n, n - 1, 2)
+  qs <- seq(0, 1, (1 / (n - 1)))
 
-    df <- dplyr::tibble(sim_number = as.factor(x)) %>%
-        dplyr::group_by(sim_number) %>%
-        dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(stats::rgeom(n = n, prob = prob))) %>%
-        dplyr::mutate(d = list(density(unlist(y), n = n)[c("x","y")] %>%
-                                   purrr::set_names("dx","dy") %>%
-                                   dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(stats::pgeom(ps,  prob = prob))) %>%
-        dplyr::mutate(q = list(stats::qgeom(qs,  prob = prob))) %>%
-        tidyr::unnest(cols = c(x, y, d, p, q)) %>%
-        dplyr::ungroup()
+  df <- dplyr::tibble(sim_number = as.factor(x)) %>%
+    dplyr::group_by(sim_number) %>%
+    dplyr::mutate(x = list(1:n)) %>%
+    dplyr::mutate(y = list(stats::rgeom(n = n, prob = prob))) %>%
+    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
+      purrr::set_names("dx", "dy") %>%
+      dplyr::as_tibble())) %>%
+    dplyr::mutate(p = list(stats::pgeom(ps, prob = prob))) %>%
+    dplyr::mutate(q = list(stats::qgeom(qs, prob = prob))) %>%
+    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
+    dplyr::ungroup()
 
 
-    # Attach descriptive attributes to tibble
-    attr(df, ".prob") <- .prob
-    attr(df, ".n") <- .n
-    attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_geometric"
-    attr(df, "ps") <- ps
-    attr(df, "qs") <- qs
+  # Attach descriptive attributes to tibble
+  attr(df, ".prob") <- .prob
+  attr(df, ".n") <- .n
+  attr(df, ".num_sims") <- .num_sims
+  attr(df, "tibble_type") <- "tidy_geometric"
+  attr(df, "ps") <- ps
+  attr(df, "qs") <- qs
 
-    # Return final result as function output
-    return(df)
-
+  # Return final result as function output
+  return(df)
 }

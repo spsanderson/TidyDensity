@@ -1,17 +1,19 @@
-#' Tidy Randomly Generated F Distribution Tibble
+#' Tidy Randomly Generated Inverse Pareto Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Pareto
+#' @family Inverse Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @seealso \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3665.htm}
+#' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 #'
-#' @details This function uses the underlying `stats::rf()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [stats::rf()]
+#' @details This function uses the underlying `actuar::rinvpareto()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [actuar::rinvpareto()]
 #'
-#' @description This function will generate `n` random points from a rf
-#' distribution with a user provided, `df1`,`df2`, and `ncp`, and number of random
-#' simulations to be produced. The function returns a tibble with the
+#' @description This function will generate `n` random points from an inverse
+#' pareto distribution with a user provided, `.shape`, `.scale`, and number of
+#' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.
 #'
@@ -28,27 +30,25 @@
 #' -  `q` The values from the resulting q_ function of the distribution family.
 #'
 #' @param .n The number of randomly generated points you want.
-#' @param .df1 Degrees of freedom, Inf is allowed.
-#' @param .df2 Degrees of freedom, Inf is allowed.
-#' @param .ncp Non-centrality parameter.
+#' @param .shape Must be positive.
+#' @param .scale Must be positive.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_f()
+#' tidy_inverse_pareto()
 #' @return
 #' A tibble of randomly generated data.
 #'
 #' @export
 #'
 
-tidy_f <- function(.n = 50, .df1 = 1, .df2 = 1, .ncp = 0, .num_sims = 1) {
+tidy_inverse_pareto <- function(.n = 50, .shape = 1, .scale = 1, .num_sims = 1) {
 
   # Tidyeval ----
   n <- as.integer(.n)
   num_sims <- as.integer(.num_sims)
-  df1 <- as.numeric(.df1)
-  df2 <- as.numeric(.df2)
-  ncp <- as.numeric(.ncp)
+  shape <- as.numeric(.shape)
+  scale <- as.numeric(.scale)
 
   # Checks ----
   if (!is.integer(n) | n < 0) {
@@ -65,13 +65,18 @@ tidy_f <- function(.n = 50, .df1 = 1, .df2 = 1, .ncp = 0, .num_sims = 1) {
     )
   }
 
-  if (!is.numeric(df1) | !is.numeric(df2) | !is.numeric(ncp) |
-    df1 <= 0 | df2 <= 0 | ncp < 0) {
+  if (!is.numeric(shape) | !is.numeric(scale)) {
     rlang::abort(
-      "The parameters of '.df1', '.df2', and '.ncp' must be of class numeric.
-            Please pass a numer like 1 or 1.1 etc. .ncp must be equal to or greater
-            than 0. .df1 and .df2 must be greater than 0."
+      "The parameters of .shape and .scale must be of class numeric and greater than 0."
     )
+  }
+
+  if (shape <= 0) {
+    rlang::abort("The parameter of .size must be greater than 0.")
+  }
+
+  if (scale <= 0) {
+    rlang::abort("The parameter of .scale must be greater than 0")
   }
 
   x <- seq(1, num_sims, 1)
@@ -82,23 +87,22 @@ tidy_f <- function(.n = 50, .df1 = 1, .df2 = 1, .ncp = 0, .num_sims = 1) {
   df <- dplyr::tibble(sim_number = as.factor(x)) %>%
     dplyr::group_by(sim_number) %>%
     dplyr::mutate(x = list(1:n)) %>%
-    dplyr::mutate(y = list(stats::rf(n = n, df1 = df1, df2 = df2, ncp = ncp))) %>%
+    dplyr::mutate(y = list(actuar::rinvpareto(n = n, shape = shape, scale = scale))) %>%
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pf(ps, df1 = df1, df2 = df2, ncp = ncp))) %>%
-    dplyr::mutate(q = list(stats::qf(qs, df1 = df1, df2 = df2, ncp = ncp))) %>%
+    dplyr::mutate(p = list(actuar::pinvpareto(ps, shape = shape, scale = scale))) %>%
+    dplyr::mutate(q = list(actuar::qinvpareto(qs, shape = shape, scale = scale))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
 
   # Attach descriptive attributes to tibble
-  attr(df, ".df1") <- .df1
-  attr(df, ".df2") <- .df2
-  attr(df, ".ncp") <- .ncp
+  attr(df, ".shape") <- .shape
+  attr(df, ".scale") <- .scale
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims
-  attr(df, "tibble_type") <- "tidy_f"
+  attr(df, "tibble_type") <- "tidy_inverse_pareto"
   attr(df, "ps") <- ps
   attr(df, "qs") <- qs
 
