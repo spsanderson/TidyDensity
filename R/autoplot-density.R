@@ -33,7 +33,7 @@
 #' @param .geom_smooth A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
 #' will return the use of `ggplot2::geom_smooth()` The `aes` parameter of group is
 #' set to FALSE. This ensures a single smoothing band returned with SE also set to
-#' FALSE. Cole is set to 'black' and `linetype` is 'dashed'.
+#' FALSE. Color is set to 'black' and `linetype` is 'dashed'.
 #' @param .geom_jitter A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
 #' will return the use of `ggplot2::geom_jitter()`
 #' @param .interactive A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
