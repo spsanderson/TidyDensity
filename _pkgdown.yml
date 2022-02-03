@@ -1,7 +1,8 @@
 template:
+  boostrap: 5
   params:
-    bootswatch: flatly
     #ganalytics: G-3393M45M1X
+    bootswatch: flatly
 
 navbar:
   title: "TidyDensity"

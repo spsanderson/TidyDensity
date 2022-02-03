@@ -35,6 +35,7 @@
 #' @examples
 #' tidy_normal(.sd = .1, .num_sims = 25) %>%
 #'   tidy_random_walk()
+#'
 #' @return
 #' An ungrouped tibble.
 #'
@@ -45,7 +46,7 @@ tidy_random_walk <- function(.data, .initial_value = 0, .sample = FALSE,
                              .replace = FALSE, .value_type = "cum_sum") {
 
   # Tidyeval ----
-  inital_value <- as.numeric(.initial_value)
+  initial_value <- as.numeric(.initial_value)
   samp <- as.logical(.sample)
   rlace <- as.logical(.replace)
   value_type <- as.character(.value_type)
@@ -59,7 +60,7 @@ tidy_random_walk <- function(.data, .initial_value = 0, .sample = FALSE,
                      function.")
   }
 
-  if (inital_value < 0) {
+  if (initial_value < 0) {
     rlang::abort("The .intial_value must be greater than or equal to zero.")
   }
 
@@ -112,7 +113,7 @@ tidy_random_walk <- function(.data, .initial_value = 0, .sample = FALSE,
   if (value_type == "cum_sum" & samp == TRUE) {
     dfw <- df %>%
       dplyr::group_by(sim_number) %>%
-      dplyr::mutate(random_walk_value = inital_value + cumsum(sample(y, replace = rlace))) %>%
+      dplyr::mutate(random_walk_value = initial_value + cumsum(sample(y, replace = rlace))) %>%
       dplyr::ungroup()
   }
 
