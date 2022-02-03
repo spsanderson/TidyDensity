@@ -35,7 +35,7 @@ will return the use of \code{ggplot2::geom_rug()}}
 \item{.geom_smooth}{A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
 will return the use of \code{ggplot2::geom_smooth()} The \code{aes} parameter of group is
 set to FALSE. This ensures a single smoothing band returned with SE also set to
-FALSE. Cole is set to 'black' and \code{linetype} is 'dashed'.}
+FALSE. Color is set to 'black' and \code{linetype} is 'dashed'.}
 
 \item{.geom_jitter}{A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
 will return the use of \code{ggplot2::geom_jitter()}}
@@ -75,6 +75,10 @@ tidy_normal(.num_sims = 5) \%>\%
 
 tidy_normal(.num_sims = 20) \%>\%
   tidy_autoplot(.plot_type = "qq")
+}
+\seealso{
+Other Autoplot: 
+\code{\link{tidy_random_walk_autoplot}()}
 }
 \author{
 Steven P. Sanderson II, MPH

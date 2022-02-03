@@ -28,11 +28,11 @@
 #'
 #' @examples
 #' tidy_normal(.sd = .1, .num_sims = 5) %>%
-#'   tidy_random_walk(.value_type = "cum_sum")
+#'   tidy_random_walk(.value_type = "cum_sum") %>%
 #'   tidy_random_walk_autoplot()
 #'
-#' tidy_normal(.num_sims = 20) %>%
-#'   tidy_random_walk(.value_type = "cum_sum", .sample = TRUE, .replace = TRUE)
+#' tidy_normal(.sd = .1, .num_sims = 20) %>%
+#'   tidy_random_walk(.value_type = "cum_sum", .sample = TRUE, .replace = TRUE) %>%
 #'   tidy_random_walk_autoplot()
 #'
 #' @return
@@ -123,7 +123,9 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
         ggplot2::labs(
             title = "Random Walk Plot",
             subtitle = sub_title,
-            color = "Simulation"
+            color = "Simulation",
+            x = "Time",
+            y = "Value"
         ) +
         ggplot2::theme(legend.position = leg_pos)
 
@@ -142,6 +144,10 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
                 color = "black",
                 linetype = "dashed"
             )
+    }
+
+    if (.interactive) {
+        plt <- plotly::ggplotly(plt)
     }
 
     # Return ----
