@@ -49,7 +49,6 @@ This function uses the underlying \code{actuar::rztnbinom()}, and its underlying
 }
 \examples{
 tidy_zeo_truncated_binomial()
-
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}

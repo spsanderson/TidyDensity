@@ -75,7 +75,6 @@ tidy_normal(.num_sims = 5) \%>\%
 
 tidy_normal(.num_sims = 20) \%>\%
   tidy_autoplot(.plot_type = "qq")
-
 }
 \author{
 Steven P. Sanderson II, MPH

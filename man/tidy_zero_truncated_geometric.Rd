@@ -42,7 +42,6 @@ This function uses the underlying \code{actuar::rztgeom()}, and its underlying
 }
 \examples{
 tidy_zero_truncated_geometric()
-
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}

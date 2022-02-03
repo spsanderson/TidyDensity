@@ -42,7 +42,6 @@ This function uses the underlying \code{stats::rpois()}, and its underlying
 }
 \examples{
 tidy_poisson()
-
 }
 \seealso{
 \url{https://r-coder.com/poisson-distribution-r/}

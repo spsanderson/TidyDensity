@@ -45,7 +45,6 @@ This function uses the underlying \code{stats::rgamma()}, and its underlying
 }
 \examples{
 tidy_gamma()
-
 }
 \seealso{
 \url{https://www.statology.org/fit-gamma-distribution-to-dataset-in-r/}

@@ -44,7 +44,6 @@ This function uses the underlying \code{actuar::rpareto1()}, and its underlying
 }
 \examples{
 tidy_pareto1()
-
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}

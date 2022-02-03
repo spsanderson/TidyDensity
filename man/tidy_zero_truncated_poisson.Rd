@@ -42,7 +42,6 @@ This function uses the underlying \code{actuar::rztpois()}, and its underlying
 }
 \examples{
 tidy_zero_truncated_poisson()
-
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}

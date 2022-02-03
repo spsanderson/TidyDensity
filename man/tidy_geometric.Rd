@@ -42,7 +42,6 @@ This function uses the underlying \code{stats::rgeom()}, and its underlying
 }
 \examples{
 tidy_geometric()
-
 }
 \seealso{
 \url{https://en.wikipedia.org/wiki/Geometric_distribution}

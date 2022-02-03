@@ -44,7 +44,6 @@ This function uses the underlying \code{actuar::rinvpareto()}, and its underlyin
 }
 \examples{
 tidy_inverse_pareto()
-
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}

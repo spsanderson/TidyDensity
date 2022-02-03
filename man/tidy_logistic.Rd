@@ -44,7 +44,6 @@ This function uses the underlying \code{stats::rlogis()}, and its underlying
 }
 \examples{
 tidy_logistic()
-
 }
 \seealso{
 \url{https://en.wikipedia.org/wiki/Logistic_distribution}

@@ -22,7 +22,6 @@ This function takes in a single argument of .x a vector
 }
 \examples{
 tidy_empirical(.x = 1:10)
-
 }
 \author{
 Steven P. Sanderson II, MPH

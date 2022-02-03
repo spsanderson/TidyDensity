@@ -39,7 +39,6 @@ The kurtosis and skewness come from the package \code{healthyR.ai}
 \examples{
 tn <- tidy_normal(.num_sims = 5)
 tidy_distribution_summary_tbl(tn)
-
 }
 \author{
 Steven P. Sanderson II, MPH

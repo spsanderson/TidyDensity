@@ -44,7 +44,6 @@ This function uses the underlying \code{stats::rbinom()}, and its underlying
 }
 \examples{
 tidy_binomial()
-
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm}

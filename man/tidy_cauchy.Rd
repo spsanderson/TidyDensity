@@ -44,7 +44,6 @@ This function uses the underlying \code{stats::rcauchy()}, and its underlying
 }
 \examples{
 tidy_cauchy()
-
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3663.htm}

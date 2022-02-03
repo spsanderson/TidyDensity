@@ -45,7 +45,6 @@ more information please see \code{\link[stats:Normal]{stats::rnorm()}}
 }
 \examples{
 tidy_normal()
-
 }
 \seealso{
 Other Data Generator: 

@@ -46,7 +46,6 @@ This function uses the underlying \code{stats::rbeta()}, and its underlying
 }
 \examples{
 tidy_beta()
-
 }
 \seealso{
 \url{https://statisticsglobe.com/beta-distribution-in-r-dbeta-pbeta-qbeta-rbeta}

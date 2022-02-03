@@ -46,7 +46,6 @@ This function uses the underlying \code{stats::rhyper()}, and its underlying
 }
 \examples{
 tidy_hypergeometric()
-
 }
 \seealso{
 \url{https://en.wikipedia.org/wiki/Hypergeometric_distribution}

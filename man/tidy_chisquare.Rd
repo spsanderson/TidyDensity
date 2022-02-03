@@ -44,7 +44,6 @@ This function uses the underlying \code{stats::rchisq()}, and its underlying
 }
 \examples{
 tidy_chisquare()
-
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3666.htm}

@@ -42,7 +42,6 @@ This function uses the underlying \code{stats::rexp()}, and its underlying
 }
 \examples{
 tidy_exponential()
-
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3667.htm}
