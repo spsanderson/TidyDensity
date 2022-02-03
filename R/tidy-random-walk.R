@@ -35,7 +35,6 @@
 #' @examples
 #' tidy_normal(.sd = .1, .num_sims = 25) %>%
 #'   tidy_random_walk()
-#'
 #' @return
 #' An ungrouped tibble.
 #'
@@ -43,96 +42,89 @@
 #'
 
 tidy_random_walk <- function(.data, .initial_value = 0, .sample = FALSE,
-                             .replace = FALSE, .value_type = "cum_sum"){
+                             .replace = FALSE, .value_type = "cum_sum") {
 
-    # Tidyeval ----
-    inital_value <- as.numeric(.initial_value)
-    samp <- as.logical(.sample)
-    rlace <- as.logical(.replace)
-    value_type <- as.character(.value_type)
+  # Tidyeval ----
+  inital_value <- as.numeric(.initial_value)
+  samp <- as.logical(.sample)
+  rlace <- as.logical(.replace)
+  value_type <- as.character(.value_type)
 
-    # Get data attributes ----
-    atb <- attributes(.data)
+  # Get data attributes ----
+  atb <- attributes(.data)
 
-    # Checks ----
-    if (!"tibble_type" %in% names(atb)){
-        rlang::abort("Function expects to take in data from a 'tidy_' distribution
+  # Checks ----
+  if (!"tibble_type" %in% names(atb)) {
+    rlang::abort("Function expects to take in data from a 'tidy_' distribution
                      function.")
-    }
+  }
 
-    if(inital_value < 0){
-        rlang::abort("The .intial_value must be greater than or equal to zero.")
-    }
+  if (inital_value < 0) {
+    rlang::abort("The .intial_value must be greater than or equal to zero.")
+  }
 
-    if(!value_type %in% c("cum_prod","cum_sum")){
-        rlang::abort("You chose an unsupported .value_type. Please chose from:
+  if (!value_type %in% c("cum_prod", "cum_sum")) {
+    rlang::abort("You chose an unsupported .value_type. Please chose from:
                      'cum_prod', 'cum_sum'.")
+  }
+
+  # Data ----
+  df <- dplyr::as_tibble(.data)
+
+  # Manipulation
+  if (value_type == "cum_prod" & samp == FALSE) {
+    ifelse(initial_value == 0, 1, initial_value)
+
+    dfw <- df %>%
+      dplyr::group_by(sim_number) %>%
+      dplyr::mutate(random_walk_value = initial_value * cumprod(1 + y))
+
+    if (initial_value == 0) {
+      dfw <- dfw %>%
+        dplyr::mutate(random_walk_value = random_walk_value - 1)
     }
 
-    # Data ----
-    df <- dplyr::as_tibble(.data)
+    dfw <- dfw %>% dplyr::ungroup()
+  }
 
-    # Manipulation
-    if(value_type == "cum_prod" & samp == FALSE){
+  if (value_type == "cum_prod" & samp == TRUE) {
+    ifelse(initial_value == 0, 1, initial_value)
 
-        ifelse(initial_value == 0, 1, initial_value)
+    dfw <- df %>%
+      dplyr::group_by(sim_number) %>%
+      dplyr::mutate(random_walk_value = initial_value * cumprod(1 + sample(y, replace = rlace)))
 
-        dfw <- df %>%
-            dplyr::group_by(sim_number) %>%
-            dplyr::mutate(random_walk_value = initial_value * cumprod(1 + y))
-
-        if(initial_value == 0){
-            dfw <- dfw %>%
-                dplyr::mutate(random_walk_value = random_walk_value - 1)
-        }
-
-        dfw <- dfw %>% dplyr::ungroup()
-
+    if (initial_value == 0) {
+      dfw <- dfw %>%
+        dplyr::mutate(random_walk_value = random_walk_value - 1)
     }
 
-    if(value_type == "cum_prod" & samp == TRUE){
+    dfw <- dfw %>% dplyr::ungroup()
+  }
 
-        ifelse(initial_value == 0, 1, initial_value)
+  if (value_type == "cum_sum" & samp == FALSE) {
+    dfw <- df %>%
+      dplyr::group_by(sim_number) %>%
+      dplyr::mutate(random_walk_value = initial_value + cumsum(y)) %>%
+      dplyr::ungroup()
+  }
 
-        dfw <- df %>%
-            dplyr::group_by(sim_number) %>%
-            dplyr::mutate(random_walk_value = initial_value * cumprod(1 + sample(y, replace = rlace)))
+  if (value_type == "cum_sum" & samp == TRUE) {
+    dfw <- df %>%
+      dplyr::group_by(sim_number) %>%
+      dplyr::mutate(random_walk_value = inital_value + cumsum(sample(y, replace = rlace))) %>%
+      dplyr::ungroup()
+  }
 
-        if(initial_value == 0){
-            dfw <- dfw %>%
-                dplyr::mutate(random_walk_value = random_walk_value - 1)
-        }
+  # Attributes ----
+  attr(dfw, ".initial_value") <- .initial_value
+  attr(dfw, ".sample") <- .sample
+  attr(dfw, ".replace") <- .replace
+  attr(dfw, ".value_type") <- .value_type
+  attr(dfw, "tibble_type") <- "tidy_random_walk"
+  attr(dfw, "dist_type") <- atb$tibble_type
+  attr(dfw, "all") <- atb
 
-        dfw <- dfw %>% dplyr::ungroup()
-
-    }
-
-    if(value_type == "cum_sum" & samp == FALSE){
-
-        dfw <- df %>%
-            dplyr::group_by(sim_number) %>%
-            dplyr::mutate(random_walk_value = initial_value + cumsum(y)) %>%
-            dplyr::ungroup()
-
-    }
-
-    if(value_type == "cum_sum" & samp == TRUE){
-        dfw <- df %>%
-            dplyr::group_by(sim_number) %>%
-            dplyr::mutate(random_walk_value = inital_value + cumsum(sample(y, replace = rlace))) %>%
-            dplyr::ungroup()
-    }
-
-    # Attributes ----
-    attr(dfw, ".initial_value") <- .initial_value
-    attr(dfw, ".sample") <- .sample
-    attr(dfw, ".replace") <- .replace
-    attr(dfw, ".value_type") <- .value_type
-    attr(dfw, "tibble_type") <- "tidy_random_walk"
-    attr(dfw, "dist_type") <- atb$tibble_type
-    attr(dfw, "all") <- atb
-
-    # Return ----
-    return(dfw)
-
+  # Return ----
+  return(dfw)
 }
