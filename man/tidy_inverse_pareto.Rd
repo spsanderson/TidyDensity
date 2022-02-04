@@ -49,11 +49,13 @@ tidy_inverse_pareto()
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 
 Other Continuous Distribution: 
+\code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_pareto1}()},
 \code{\link{tidy_pareto}()},
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Pareto: 
+\code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_pareto1}()},
 \code{\link{tidy_pareto}()}
 }

@@ -16,6 +16,7 @@ None
 10. Fix #43 - Add function `tidy_inverse_pareto()`
 11. Fix #58 - Add function `tidy_random_walk()`
 12. Fix #60 - Add function `tidy_random_walk_autoplot()`
+13. Fix #47 - Add function `tidy_generalized_pareto()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

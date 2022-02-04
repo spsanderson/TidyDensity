@@ -6,8 +6,8 @@
 #'
 #' @seealso \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3669.htm}
 #'
-#' @details This function uses the underlying `stats::rlnorm()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [stats::rlnorm()]
+#' @details This function uses the underlying `stats::rweibull()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [stats::rweibull()]
 #'
 #' @description This function will generate `n` random points from a weibull
 #' distribution with a user provided, `.shape`, `.scale`, and number of

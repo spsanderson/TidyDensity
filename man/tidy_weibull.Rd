@@ -39,8 +39,8 @@ The columns that are output are:
 }
 }
 \details{
-This function uses the underlying \code{stats::rlnorm()}, and its underlying
-\code{p}, \code{d}, and \code{q} functions. For more information please see \code{\link[stats:Lognormal]{stats::rlnorm()}}
+This function uses the underlying \code{stats::rweibull()}, and its underlying
+\code{p}, \code{d}, and \code{q} functions. For more information please see \code{\link[stats:Weibull]{stats::rweibull()}}
 }
 \examples{
 tidy_weibull()
