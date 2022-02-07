@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Logistic Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Logistic
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

@@ -59,7 +59,6 @@ Other Data Generator:
 \code{\link{tidy_f}()},
 \code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
-\code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},
 \code{\link{tidy_normal}()},
 \code{\link{tidy_uniform}()},

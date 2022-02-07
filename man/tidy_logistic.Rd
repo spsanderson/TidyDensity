@@ -48,21 +48,19 @@ tidy_logistic()
 \seealso{
 \url{https://en.wikipedia.org/wiki/Logistic_distribution}
 
-Other Data Generator: 
-\code{\link{tidy_beta}()},
-\code{\link{tidy_cauchy}()},
-\code{\link{tidy_chisquare}()},
-\code{\link{tidy_exponential}()},
-\code{\link{tidy_f}()},
-\code{\link{tidy_gamma}()},
-\code{\link{tidy_geometric}()},
-\code{\link{tidy_hypergeometric}()},
-\code{\link{tidy_lognormal}()},
-\code{\link{tidy_normal}()},
-\code{\link{tidy_uniform}()},
-\code{\link{tidy_weibull}()}
+Other Continuous Distribution: 
+\code{\link{tidy_generalized_pareto}()},
+\code{\link{tidy_inverse_pareto}()},
+\code{\link{tidy_paralogistic}()},
+\code{\link{tidy_pareto1}()},
+\code{\link{tidy_pareto}()},
+\code{\link{tidy_zero_truncated_geometric}()}
+
+Other Logistic: 
+\code{\link{tidy_paralogistic}()}
 }
 \author{
 Steven P. Sanderson II, MPH
 }
-\concept{Data Generator}
+\concept{Continuous Distribution}
+\concept{Logistic}

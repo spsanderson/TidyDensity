@@ -62,6 +62,8 @@ tidy_generalized_pareto()
 
 Other Continuous Distribution: 
 \code{\link{tidy_inverse_pareto}()},
+\code{\link{tidy_logistic}()},
+\code{\link{tidy_paralogistic}()},
 \code{\link{tidy_pareto1}()},
 \code{\link{tidy_pareto}()},
 \code{\link{tidy_zero_truncated_geometric}()}
