@@ -74,11 +74,11 @@ tidy_random_walk <- function(.data, .initial_value = 0, .sample = FALSE,
 
   # Manipulation
   if (value_type == "cum_prod" & samp == FALSE) {
-    ifelse(initial_value == 0, 1, initial_value)
+    ifelse(initial_value == 0, iv <- 1, iv <- initial_value)
 
     dfw <- df %>%
       dplyr::group_by(sim_number) %>%
-      dplyr::mutate(random_walk_value = initial_value * cumprod(1 + y))
+      dplyr::mutate(random_walk_value = iv * cumprod(1 + y))
 
     if (initial_value == 0) {
       dfw <- dfw %>%
@@ -89,11 +89,11 @@ tidy_random_walk <- function(.data, .initial_value = 0, .sample = FALSE,
   }
 
   if (value_type == "cum_prod" & samp == TRUE) {
-    ifelse(initial_value == 0, 1, initial_value)
+    ifelse(initial_value == 0, iv <- 1, iv <- initial_value)
 
     dfw <- df %>%
       dplyr::group_by(sim_number) %>%
-      dplyr::mutate(random_walk_value = initial_value * cumprod(1 + sample(y, replace = rlace)))
+      dplyr::mutate(random_walk_value = iv * cumprod(1 + sample(y, replace = rlace)))
 
     if (initial_value == 0) {
       dfw <- dfw %>%
