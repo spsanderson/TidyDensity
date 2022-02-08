@@ -1,18 +1,18 @@
-#' Tidy Randomly Generated Inverse Exponential Distribution Tibble
+#' Tidy Randomly Generated Inverse Gamma Distribution Tibble
 #'
 #' @family Continuous Distribution
-#' @family Exponential
+#' @family Gamma
 #' @family Inverse Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 #'
-#' @details This function uses the underlying `actuar::rinvexp()`, and its underlying
-#' `p`, `d`, and `q` functions. For more information please see [actuar::rinvexp()]
+#' @details This function uses the underlying `actuar::rinvgamma()`, and its underlying
+#' `p`, `d`, and `q` functions. For more information please see [actuar::rinvgamma()]
 #'
-#' @description This function will generate `n` random points from an inverse exponential
-#' distribution with a user provided, `.rate` or `.scale` and number of
+#' @description This function will generate `n` random points from an inverse gamma
+#' distribution with a user provided, `.shape`, `.rate`, `.scale`, and number of
 #' random simulations to be produced. The function returns a tibble with the
 #' simulation number column the x column which corresponds to the n randomly
 #' generated points, the `d_`, `p_` and `q_` data points as well.
@@ -30,26 +30,27 @@
 #' -  `q` The values from the resulting q_ function of the distribution family.
 #'
 #' @param .n The number of randomly generated points you want.
+#' @param .shape Must be strictly positive.
 #' @param .scale Must be strictly positive.
 #' @param .rate An alternative way to specify the `.scale`
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_inverse_exponential()
-#'
+#' tidy_inverse_gamma()
 #' @return
 #' A tibble of randomly generated data.
 #'
 #' @export
 #'
 
-tidy_inverse_exponential <- function(.n = 50, .rate = 1, .scale = 1/.rate, .num_sims = 1) {
+tidy_inverse_gamma <- function(.n = 50, .shape = 1, .rate = 1, .scale = 1/.rate, .num_sims = 1) {
 
     # Tidyeval ----
     n <- as.integer(.n)
     num_sims <- as.integer(.num_sims)
+    shape <- as.numeric(.shape)
     rate <- as.numeric(.rate)
-    scale <- as.numeric(.scale)
+    scl <- as.numeric(.scale)
 
     # Checks ----
     if (!is.integer(n) | n < 0) {
@@ -66,15 +67,15 @@ tidy_inverse_exponential <- function(.n = 50, .rate = 1, .scale = 1/.rate, .num_
         )
     }
 
-    if (!is.numeric(rate) | !is.numeric(scale)){
+    if (!is.numeric(shape) | !is.numeric(rate) | !is.numeric(scl)) {
         rlang::abort(
-            "The parameters of rate and scale must be of calss numeric."
+            "The parameters of '.shape', '.rate', and '.scale' must be of class numeric."
         )
     }
 
-    if (rate <= 0 | scale <= 0){
+    if (shape <= 0 | rate <= 0 | scl <= 0) {
         rlang::abort(
-            "The parameters of rate and scale must be strictly positive."
+            "The parameters of '.shape', '.rate', and '.scale' must be strictly positive."
         )
     }
 
@@ -86,22 +87,26 @@ tidy_inverse_exponential <- function(.n = 50, .rate = 1, .scale = 1/.rate, .num_
     df <- dplyr::tibble(sim_number = as.factor(x)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(actuar::rinvexp(n = n, rate = rate, scale = scale))) %>%
+        dplyr::mutate(y = list(actuar::rinvgamma(n = n, shape = shape,
+                                                 rate = rate, scale = scl))) %>%
         dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
                                    purrr::set_names("dx", "dy") %>%
                                    dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(actuar::pinvexp(ps, rate = rate, scale = scale))) %>%
-        dplyr::mutate(q = list(actuar::qinvexp(qs, rate = rate, scale = scale))) %>%
+        dplyr::mutate(p = list(actuar::pinvgamma(ps, shape = shape,
+                                             rate = rate, scale = scl))) %>%
+        dplyr::mutate(q = list(actuar::qinvgamma(qs, shape = shape,
+                                             rate = rate, scale = scl))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 
 
     # Attach descriptive attributes to tibble
+    attr(df, ".shape") <- .shape
     attr(df, ".rate") <- .rate
     attr(df, ".scale") <- .scale
     attr(df, ".n") <- .n
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_inverse_exponential"
+    attr(df, "tibble_type") <- "tidy_inverse_gamma"
     attr(df, "ps") <- ps
     attr(df, "qs") <- qs
 

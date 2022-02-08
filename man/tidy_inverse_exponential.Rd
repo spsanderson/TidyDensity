@@ -51,7 +51,9 @@ tidy_inverse_exponential()
 
 Other Continuous Distribution: 
 \code{\link{tidy_exponential}()},
+\code{\link{tidy_gamma}()},
 \code{\link{tidy_generalized_pareto}()},
+\code{\link{tidy_inverse_gamma}()},
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_paralogistic}()},
@@ -61,9 +63,14 @@ Other Continuous Distribution:
 
 Other Exponential: 
 \code{\link{tidy_exponential}()}
+
+Other Inverse Distribution: 
+\code{\link{tidy_inverse_gamma}()},
+\code{\link{tidy_inverse_pareto}()}
 }
 \author{
 Steven P. Sanderson II, MPH
 }
 \concept{Continuous Distribution}
 \concept{Exponential}
+\concept{Inverse Distribution}

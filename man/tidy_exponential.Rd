@@ -47,8 +47,10 @@ tidy_exponential()
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3667.htm}
 
 Other Continuous Distribution: 
+\code{\link{tidy_gamma}()},
 \code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_inverse_exponential}()},
+\code{\link{tidy_inverse_gamma}()},
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_paralogistic}()},

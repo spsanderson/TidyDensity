@@ -50,8 +50,10 @@ tidy_pareto()
 
 Other Continuous Distribution: 
 \code{\link{tidy_exponential}()},
+\code{\link{tidy_gamma}()},
 \code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_inverse_exponential}()},
+\code{\link{tidy_inverse_gamma}()},
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_paralogistic}()},

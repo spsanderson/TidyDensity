@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Gamma Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Gamma
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
