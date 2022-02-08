@@ -87,7 +87,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
     "tidy_zero_truncated_poisson", "tidy_zero_truncated_geometric",
     "tidy_zero_truncated_binomial", "tidy_zero_truncated_negative_binomial",
     "tidy_pareto_single_parameter", "tidy_pareto", "tidy_inverse_pareto",
-    "tidy_generalized_pareto","tidy_paralogistic"
+    "tidy_generalized_pareto","tidy_paralogistic", "tidy_inverse_exponential"
   )) {
     rlang::abort("The data passed must come from a `tidy_` distribution function.")
   }
@@ -164,6 +164,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       paste0("Shape: ", atb$.shape, " - ",
              "Rate: ", atb$.rate, " - ",
              "Scale: ", atb$.scale)
+    } else if (atb$tibble_type == "tidy_inverse_exponential"){
+      paste0("Rate: ", atb$.rate, " - Scale: ", atb$.scale)
     }
   )
 

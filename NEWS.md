@@ -18,6 +18,7 @@ None
 12. Fix #60 - Add function `tidy_random_walk_autoplot()`
 13. Fix #47 - Add function `tidy_generalized_pareto()`
 14. Fix #44 - Add function `tidy_paralogistic()`
+15. Fix #38 - Add function `tidy_inverse_exponential()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

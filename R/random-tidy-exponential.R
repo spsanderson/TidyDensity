@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Exponential Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Exponential
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
