@@ -54,10 +54,12 @@ Other Continuous Distribution:
 \code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_inverse_exponential}()},
 \code{\link{tidy_inverse_gamma}()},
+\code{\link{tidy_inverse_weibull}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_paralogistic}()},
 \code{\link{tidy_pareto1}()},
 \code{\link{tidy_pareto}()},
+\code{\link{tidy_weibull}()},
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Pareto: 
@@ -67,7 +69,9 @@ Other Pareto:
 
 Other Inverse Distribution: 
 \code{\link{tidy_inverse_exponential}()},
-\code{\link{tidy_inverse_gamma}()}
+\code{\link{tidy_inverse_gamma}()},
+\code{\link{tidy_inverse_weibull}()},
+\code{\link{tidy_weibull}()}
 }
 \author{
 Steven P. Sanderson II, MPH

@@ -99,6 +99,24 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
             paste0("Shape: ", atb$all$.shape, " - Min: ", atb$all$.min)
         } else if (atb$all$tibble_type %in% c("tidy_pareto", "tidy_inverse_pareto")) {
             paste0("Shape: ", atb$all$.shape, " - Scale: ", atb$all$.scale)
+        } else if (atb$all$tibble_type %in% c("tidy_generalized_pareto")){
+            paste0(
+                "Shape1: ", atb$all$.shape1, " - ",
+                "Shape2: ", atb$all$.shape2, " - ",
+                "Rate: ", atb$all$.rate, " - ",
+                "Scale: ", atb$all$.scale
+            )
+        } else if (atb$all$tibble_type %in% c(
+            "tidy_paralogistic",
+            "tidy_inverse_gamma",
+            "tidy_inverse_weibull"
+        )
+        ){
+            paste0("Shape: ", atb$all$.shape, " - ",
+                   "Rate: ", atb$all$.rate, " - ",
+                   "Scale: ", atb$all$.scale)
+        } else if (atb$all$tibble_type == "tidy_inverse_exponential"){
+            paste0("Rate: ", atb$all$.rate, " - Scale: ", atb$all$.scale)
         }
     )
 

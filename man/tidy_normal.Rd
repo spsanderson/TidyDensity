@@ -55,8 +55,7 @@ Other Data Generator:
 \code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_lognormal}()},
-\code{\link{tidy_uniform}()},
-\code{\link{tidy_weibull}()}
+\code{\link{tidy_uniform}()}
 }
 \author{
 Steven P. Sanderson II, MPH
