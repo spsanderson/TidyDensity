@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated F Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family F Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

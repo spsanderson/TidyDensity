@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Uniform Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Uniform
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

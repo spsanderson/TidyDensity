@@ -46,18 +46,31 @@ tidy_zero_truncated_geometric()
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 
+Other Geometric: 
+\code{\link{tidy_geometric}()}
+
 Other Continuous Distribution: 
+\code{\link{tidy_beta}()},
+\code{\link{tidy_burr}()},
+\code{\link{tidy_cauchy}()},
+\code{\link{tidy_chisquare}()},
 \code{\link{tidy_exponential}()},
+\code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
 \code{\link{tidy_generalized_pareto}()},
+\code{\link{tidy_geometric}()},
+\code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_inverse_exponential}()},
 \code{\link{tidy_inverse_gamma}()},
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_inverse_weibull}()},
 \code{\link{tidy_logistic}()},
+\code{\link{tidy_lognormal}()},
+\code{\link{tidy_normal}()},
 \code{\link{tidy_paralogistic}()},
 \code{\link{tidy_pareto1}()},
 \code{\link{tidy_pareto}()},
+\code{\link{tidy_uniform}()},
 \code{\link{tidy_weibull}()}
 
 Other Zero Truncated Distribution: 

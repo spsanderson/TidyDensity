@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Cauchy Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Cauchy
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

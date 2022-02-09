@@ -2,7 +2,6 @@
 #'
 #' @family Continuous Distribution
 #' @family Weibull
-#' @family Inverse Distribution
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

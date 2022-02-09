@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Lognormal Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Lognormal
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

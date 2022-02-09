@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Gaussian Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Gaussian
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

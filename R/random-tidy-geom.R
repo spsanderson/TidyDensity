@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Geometric Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Geometric
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

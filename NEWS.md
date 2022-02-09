@@ -21,6 +21,7 @@ None
 15. Fix #38 - Add function `tidy_inverse_exponential()`
 16. Fix #45 - Add function `tidy_inverse_gamma()`
 17. Fix #46 - Add function `tidy_inverse_weibull()`
+18. Fix #48 - Add function `tidy_burr()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

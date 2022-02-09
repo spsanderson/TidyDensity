@@ -1,6 +1,7 @@
 #' Tidy Randomly Generated Beta Distribution Tibble
 #'
-#' @family Data Generator
+#' @family Continuous Distribution
+#' @family Beta
 #'
 #' @author Steven P. Sanderson II, MPH
 #'

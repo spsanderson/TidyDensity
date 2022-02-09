@@ -99,7 +99,8 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
             paste0("Shape: ", atb$all$.shape, " - Min: ", atb$all$.min)
         } else if (atb$all$tibble_type %in% c("tidy_pareto", "tidy_inverse_pareto")) {
             paste0("Shape: ", atb$all$.shape, " - Scale: ", atb$all$.scale)
-        } else if (atb$all$tibble_type %in% c("tidy_generalized_pareto")){
+        } else if (atb$all$tibble_type %in% c("tidy_generalized_pareto",
+                                              "tidy_burr")){
             paste0(
                 "Shape1: ", atb$all$.shape1, " - ",
                 "Shape2: ", atb$all$.shape2, " - ",
