@@ -17,28 +17,25 @@ navbar:
       href: news/index.html
 
 reference:
-  -  title: Data Generating Functions
-     desc: Functions that generate random data and return tibbles
+  -  title: Continuous Distribution Data Generating Functions
+     desc: Functions that generate random data from continuous distributions and return tibbles
      contents:
-     -  "tidy_normal"
-     -  "tidy_gamma"
-     -  "tidy_beta"
-     -  "tidy_poisson"
-     -  "tidy_empirical"
-     -  "tidy_uniform"
-     -  "tidy_exponential"
-     -  "tidy_logistic"
-     -  "tidy_lognormal"
-     -  "tidy_weibull"
-     -  "tidy_chisquare"
-     -  "tidy_cauchy"
-     -  "tidy_hypergeometric"
-     -  "tidy_f"
-     -  "tidy_binomial"
+     -  has_concept("Continuous Distribution")
+  -  title: Discrete Distribution Data Generating Functions
+     desc: Functions that generate random data from discrete distributions and return tibbles
+     contents:
+     -  has_concept("Discrete Distribution")
+  - title: Empirical Data Functions
+    contents:
+     -  contains("_empirical")
+  - title: Random Walk Functions
+    desc: Functions that generate random walk data and return tibbles
+    contents:
+     -  "tidy_random_walk"
   -  title: Plotting Functions
      desc: Functions that generate plots of the tidy_ distribution functions.
      contents:
-     -  "tidy_autoplot"
+     -  has_concept("Autoplot")
   -  title: Table Functions
      desc: Functions that generate tibbles
      contents:

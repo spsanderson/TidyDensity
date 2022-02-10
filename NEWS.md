@@ -34,6 +34,7 @@ no longer importing.
 6. Fix #57 - Fix `tidy_autoplot()` for when the distribution is `tidy_empirical()`
 the legend argument would fail.
 7. Fix #56 - Add attributes of .n and .num_sims (1L for now) to `tidy_empirical()`
+8. Fix #61 - Update `_pkgdown.yml` file to update site.
 
 # TidyDensity 0.0.1
 
