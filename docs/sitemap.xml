@@ -1,150 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/404.html</loc>
   </url>
   <url>
-    <loc>/articles/getting-started.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/articles/getting-started.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/articles/index.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/authors.html</loc>
   </url>
   <url>
-    <loc>/CODE_OF_CONDUCT.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/index.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/pipe.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>/reference/tidyeval.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidyeval.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_autoplot.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_autoplot.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_beta.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_beta.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_binomial.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_binomial.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_burr.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_burr.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_cauchy.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_cauchy.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_chisquare.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_chisquare.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_distribution_summary_tbl.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_distribution_summary_tbl.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_empirical.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_empirical.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_exponential.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_exponential.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_f.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_f.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_gamma.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_gamma.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_generalized_pareto.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_generalized_pareto.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_geometric.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_geometric.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_hypergeometric.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_hypergeometric.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_inverse_burr.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_inverse_burr.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_inverse_exponential.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_inverse_exponential.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_inverse_gamma.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_inverse_gamma.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_inverse_pareto.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_inverse_pareto.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_inverse_weibull.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_inverse_weibull.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_logisitc.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_logisitc.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_logistic.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_logistic.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_lognormal.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_lognormal.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_negative_binomial.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_negative_binomial.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_normal.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_normal.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_paralogistic.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_paralogistic.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_pareto.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_pareto.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_pareto1.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_pareto1.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_poisson.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_poisson.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_random_walk.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_random_walk.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_random_walk_autoplot.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_random_walk_autoplot.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_rnorm.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_rnorm.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_uniform.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_uniform.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_weibull.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_weibull.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_zero_truncated_binomial.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_zero_truncated_binomial.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_zero_truncated_geometric.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_zero_truncated_geometric.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_zero_truncated_negative_binomial.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_zero_truncated_negative_binomial.html</loc>
   </url>
   <url>
-    <loc>/reference/tidy_zero_truncated_poisson.html</loc>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_zero_truncated_poisson.html</loc>
   </url>
 </urlset>
