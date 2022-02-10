@@ -69,6 +69,7 @@ Other Continuous Distribution:
 \code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
+\code{\link{tidy_inverse_burr}()},
 \code{\link{tidy_inverse_exponential}()},
 \code{\link{tidy_inverse_gamma}()},
 \code{\link{tidy_inverse_pareto}()},
@@ -82,6 +83,9 @@ Other Continuous Distribution:
 \code{\link{tidy_uniform}()},
 \code{\link{tidy_weibull}()},
 \code{\link{tidy_zero_truncated_geometric}()}
+
+Other Burr: 
+\code{\link{tidy_inverse_burr}()}
 }
 \author{
 Steven P. Sanderson II, MPH
