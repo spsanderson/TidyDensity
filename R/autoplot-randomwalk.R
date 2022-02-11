@@ -118,6 +118,10 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
                    "Scale: ", atb$all$.scale)
         } else if (atb$all$tibble_type == "tidy_inverse_exponential"){
             paste0("Rate: ", atb$all$.rate, " - Scale: ", atb$all$.scale)
+        }else if (atb$all$tibble_type == "tidy_inverse_gaussian"){
+            paste0("Mean: ", atb$all$.mean, " - ",
+                   "Shape: ", atb$all$.shape, " - ",
+                   "Dispersion: ", atb$all$.dispersion)
         }
     )
 

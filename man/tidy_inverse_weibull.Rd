@@ -70,6 +70,7 @@ Other Continuous Distribution:
 \code{\link{tidy_inverse_burr}()},
 \code{\link{tidy_inverse_exponential}()},
 \code{\link{tidy_inverse_gamma}()},
+\code{\link{tidy_inverse_normal}()},
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_logistic}()},
 \code{\link{tidy_lognormal}()},
@@ -88,6 +89,7 @@ Other Inverse Distribution:
 \code{\link{tidy_inverse_burr}()},
 \code{\link{tidy_inverse_exponential}()},
 \code{\link{tidy_inverse_gamma}()},
+\code{\link{tidy_inverse_normal}()},
 \code{\link{tidy_inverse_pareto}()}
 }
 \author{
