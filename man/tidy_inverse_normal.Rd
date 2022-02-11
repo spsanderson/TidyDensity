@@ -63,7 +63,6 @@ Other Continuous Distribution:
 \code{\link{tidy_gamma}()},
 \code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_geometric}()},
-\code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_inverse_burr}()},
 \code{\link{tidy_inverse_exponential}()},
 \code{\link{tidy_inverse_gamma}()},

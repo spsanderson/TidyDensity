@@ -1,6 +1,6 @@
 #' Tidy Randomly Generated Hypergeometric Distribution Tibble
 #'
-#' @family Continuous Distribution
+#' @family Discrete Distribution
 #' @family Hypergeometric
 #'
 #' @author Steven P. Sanderson II, MPH
