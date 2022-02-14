@@ -9,7 +9,7 @@ tidy_random_walk(
   .initial_value = 0,
   .sample = FALSE,
   .replace = FALSE,
-  .value_type = "cum_sum"
+  .value_type = "cum_prod"
 )
 }
 \arguments{

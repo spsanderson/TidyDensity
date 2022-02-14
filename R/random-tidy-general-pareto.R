@@ -123,7 +123,7 @@ tidy_generalized_pareto <- function(.n = 50, .shape1 = 1, .shape2 = 1,
   # Attach descriptive attributes to tibble
   attr(df, ".shape1") <- .shape1
   attr(df, ".shape2") <- .shape2
-  attr(df, "rate") <- .rate
+  attr(df, ".rate") <- .rate
   attr(df, ".scale") <- .scale
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims

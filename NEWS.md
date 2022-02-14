@@ -24,6 +24,7 @@ None
 18. Fix #48 - Add function `tidy_burr()`
 19. Fix #49 - Add function `tidy_inverse_burr()`
 20. Fix #50 - Add function `tidy_inverse_normal()`
+21. Fix #51 - Add function `tidy_generalized_beta()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

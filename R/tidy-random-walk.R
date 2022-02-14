@@ -43,7 +43,7 @@
 #'
 
 tidy_random_walk <- function(.data, .initial_value = 0, .sample = FALSE,
-                             .replace = FALSE, .value_type = "cum_sum") {
+                             .replace = FALSE, .value_type = "cum_prod") {
 
   # Tidyeval ----
   initial_value <- as.numeric(.initial_value)

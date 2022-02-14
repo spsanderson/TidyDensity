@@ -55,6 +55,7 @@ Other Continuous Distribution:
 \code{\link{tidy_exponential}()},
 \code{\link{tidy_f}()},
 \code{\link{tidy_gamma}()},
+\code{\link{tidy_generalized_beta}()},
 \code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_geometric}()},
 \code{\link{tidy_inverse_burr}()},
