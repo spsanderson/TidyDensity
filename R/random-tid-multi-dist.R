@@ -4,15 +4,32 @@
 #'
 #' @family Multiple Distribution
 #'
-#' @details
+#' @details Generate multiple distributions of data from the same `tidy_`
+#' distribution function. This allows you to simulate multiple distributions of
+#' the same family in order to view how shapes change with parameter changes. You
+#' can then visualize the differences however you choose.
 #'
-#' @description
+#' @description Generate multiple distributions of data from the same `tidy_`
+#' distribution function.
 #'
-#' @param
+#' @param .tidy_dist The type of `tidy_` distribution that you want to run. You
+#' can only choose one.
+#' @param .param_list This must be a `list()` object of the parameters that you
+#' want to pass through to the TidyDensity `tidy_` distribution function.
 #'
 #' @examples
+#' tidy_multi_dist(
+#'   .tidy_dist = "tidy_normal",
+#'   .param_list = list(
+#'     .n = 50,
+#'     .mean = c(-1, 0, 1),
+#'     .sd = 1,
+#'     .num_sims = 3
+#'   )
+#' )
 #'
 #' @return
+#' A tibble
 #'
 #' @export
 #'
