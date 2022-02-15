@@ -75,7 +75,7 @@ tidy_multi_dist <- function(
     df <- tidyr::expand_grid(
         n = n,
         param_grid,
-        sim = as.integer(x)
+        sim = max(as.integer(x))
     )
 
     #func_parm_list <- as.list(df)
@@ -112,6 +112,7 @@ tidy_multi_dist <- function(
     # Attach attributes ----
     attr(df_unnested_tbl, "all") <- atb
     attr(df_unnested_tbl, "tbl") <- "tidy_multi_tibble"
+    attr(df_unnested_tbl, ".num_sims") <- max(num_sims)
 
     # Return ----
     return(df_unnested_tbl)
