@@ -56,7 +56,8 @@ tidy_normal(.sd = .1, .num_sims = 20) \%>\%
 }
 \seealso{
 Other Autoplot: 
-\code{\link{tidy_autoplot}()}
+\code{\link{tidy_autoplot}()},
+\code{\link{tidy_multi_dist_autoplot}()}
 }
 \author{
 Steven P. Sanderson II, MPH
