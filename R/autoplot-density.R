@@ -10,7 +10,7 @@
 #' -  `probability`
 #' -  `qq`
 #'
-#' @description This is an autoplotting function that will take in a `tidy_`
+#' @description This is an auto plotting function that will take in a `tidy_`
 #' distribution function and a few arguments, one being the plot type, which is
 #' a quoted string of one of the following:
 #' -  `density`
