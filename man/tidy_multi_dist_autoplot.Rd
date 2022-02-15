@@ -69,16 +69,21 @@ This function will spit out one of the following plots:
 }
 }
 \examples{
-tidy_multi_dist(
+tn <- tidy_multi_dist(
   .tidy_dist = "tidy_normal",
   .param_list = list(
-    .n = 50,
-    .mean = c(-1, 0, 1),
+    .n = 500,
+    .mean = c(-2, 0, 2),
     .sd = 1,
-    .num_sims = 3
+    .num_sims = 5
   )
-) \%>\%
-tidy_multi_dist_autoplot()
+)
+
+tn \%>\%
+  tidy_multi_dist_autoplot()
+
+tn \%>\%
+  tidy_multi_dist_autoplot(.plot_type = "qq")
 
 }
 \seealso{

@@ -39,16 +39,21 @@
 #' will return an interactive `plotly` plot.
 #'
 #' @examples
-#' tidy_multi_dist(
+#' tn <- tidy_multi_dist(
 #'   .tidy_dist = "tidy_normal",
 #'   .param_list = list(
-#'     .n = 50,
-#'     .mean = c(-1, 0, 1),
+#'     .n = 500,
+#'     .mean = c(-2, 0, 2),
 #'     .sd = 1,
-#'     .num_sims = 3
+#'     .num_sims = 5
 #'   )
-#' ) %>%
-#' tidy_multi_dist_autoplot()
+#' )
+#'
+#' tn %>%
+#'   tidy_multi_dist_autoplot()
+#'
+#' tn %>%
+#'   tidy_multi_dist_autoplot(.plot_type = "qq")
 #'
 #' @return
 #' A ggplot or a plotly plot.
@@ -116,33 +121,32 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
     sub_title <- paste0(
         "Data Points: ", n, " - ",
         "Simulations: ", sims, "\n",
-        #"Distribution Family: ", dist_type, "\n",
         "Parameters: ", if (atb$all$tibble_type == "tidy_gaussian") {
-            paste0("Mean: ", atb$all$.mean, " - SD: ", atb$all$.sd)
+            paste0("Mean: ", toString(atb$.param_list$.mean), " - SD: ", toString(atb$.param_list$.sd))
         } else if (atb$all$tibble_type == "tidy_gamma") {
-            paste0("Shape: ", atb$all$.shape, " - Rate: ", atb$all$.rate)
+            paste0("Shape: ", toString(atb$.param_list$.shape), " - Rate: ", toString(atb$.param_list$.rate))
         } else if (atb$all$tibble_type == "tidy_beta") {
-            paste0("Shape1: ", atb$all$.shape1, " - Shape2: ", atb$all$.shape2, " - NCP: ", atb$all$.ncp)
+            paste0("Shape1: ", toString(atb$.param_list$.shape1), " - Shape2: ", toString(atb$.param_list$.shape2), " - NCP: ", toString(atb$.param_list$.ncp))
         } else if (atb$all$tibble_type %in% c("tidy_poisson", "tidy_zero_truncated_poisson")) {
-            paste0("Lambda: ", atb$all$.lambda)
+            paste0("Lambda: ", toString(atb$.param_list$.lambda))
         } else if (atb$all$tibble_type == "tidy_f") {
-            paste0("DF1: ", atb$all$.df1, " - DF2: ", atb$all$.df2, " - NCP: ", atb$all$.ncp)
+            paste0("DF1: ", toString(atb$.param_list$.df1), " - DF2: ", toString(atb$.param_list$.df2), " - NCP: ", toString(atb$.param_list$.ncp))
         } else if (atb$all$tibble_type == "tidy_hypergeometric") {
-            paste0("M: ", atb$all$.m, " - NN: ", atb$all$.nn, " - K: ", atb$all$.k)
+            paste0("M: ", toString(atb$.param_list$.m), " - NN: ", toString(atb$.param_list$.nn), " - K: ", toString(atb$.param_list$.k))
         } else if (atb$all$tibble_type == "tidy_lognormal") {
-            paste0("Mean Log: ", atb$all$.meanlog, " - SD Log: ", atb$all$.sdlog)
+            paste0("Mean Log: ", toString(atb$.param_list$.meanlog), " - SD Log: ", toString(atb$.param_list$.sdlog))
         } else if (atb$all$tibble_type == "tidy_cauchy") {
-            paste0("Location: ", atb$all$.location, " - Scale: ", atb$all$.scale)
+            paste0("Location: ", toString(atb$.param_list$.location), " - Scale: ", toString(atb$.param_list$.scale))
         } else if (atb$all$tibble_type == "tidy_chisquare") {
-            paste0("DF: ", atb$all$.df, " - NPC: ", atb$all$.ncp)
+            paste0("DF: ", toString(atb$.param_list$.df), " - NPC: ", toString(atb$.param_list$.ncp))
         } else if (atb$all$tibble_type == "tidy_weibull") {
-            paste0("Shape: ", atb$all$.schape, " - Scale: ", atb$all$.scale)
+            paste0("Shape: ", toString(atb$.param_list$.schape), " - Scale: ", toString(atb$.param_list$.scale))
         } else if (atb$all$tibble_type == "tidy_uniform") {
-            paste0("Max: ", atb$all$.max, " - Min: ", atb$all$.min)
+            paste0("Max: ", toString(atb$.param_list$.max), " - Min: ", toString(atb$.param_list$.min))
         } else if (atb$all$tibble_type == "tidy_logistic") {
-            paste0("Location: ", atb$all$.location, " - Scale: ", atb$all$.scale)
+            paste0("Location: ", toString(atb$.param_list$.location), " - Scale: ", toString(atb$.param_list$.scale))
         } else if (atb$all$tibble_type == "tidy_exponential") {
-            paste0("Rate: ", atb$all$.rate)
+            paste0("Rate: ", toString(atb$.param_list$.rate))
         } else if (atb$all$tibble_type == "tidy_empirical") {
             paste0("Empirical - No params")
         } else if (atb$all$tibble_type %in% c(
@@ -150,20 +154,20 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
             "tidy_zero_truncated_binomial",
             "tidy_zero_truncated_negative_binomial"
         )) {
-            paste0("Size: ", atb$all$.size, " - Prob: ", atb$all$.prob)
+            paste0("Size: ", toString(atb$.param_list$.size), " - Prob: ", toString(atb$.param_list$.prob))
         } else if (atb$all$tibble_type %in% c("tidy_geometric", "tidy_zero_truncated_geometric")) {
-            paste0("Prob: ", atb$all$.prob)
+            paste0("Prob: ", toString(atb$.param_list$.prob))
         } else if (atb$all$tibble_type %in% c("tidy_pareto_single_parameter")) {
-            paste0("Shape: ", atb$all$.shape, " - Min: ", atb$all$.min)
+            paste0("Shape: ", toString(atb$.param_list$.shape), " - Min: ", toString(atb$.param_list$.min))
         } else if (atb$all$tibble_type %in% c("tidy_pareto", "tidy_inverse_pareto")) {
-            paste0("Shape: ", atb$all$.shape, " - Scale: ", atb$all$.scale)
+            paste0("Shape: ", toString(atb$.param_list$.shape), " - Scale: ", toString(atb$.param_list$.scale))
         } else if (atb$all$tibble_type %in% c("tidy_generalized_pareto",
                                           "tidy_burr","tidy_inverse_burr")){
             paste0(
-                "Shape1: ", atb$all$.shape1, " - ",
-                "Shape2: ", atb$all$.shape2, " - ",
-                "Rate: ", atb$all$.rate, " - ",
-                "Scale: ", atb$all$.scale
+                "Shape1: ", toString(atb$.param_list$.shape1), " - ",
+                "Shape2: ", toString(atb$.param_list$.shape2), " - ",
+                "Rate: ", toString(atb$.param_list$.rate), " - ",
+                "Scale: ", toString(atb$.param_list$.scale)
             )
         } else if (atb$all$tibble_type %in% c(
             "tidy_paralogistic",
@@ -171,22 +175,22 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
             "tidy_inverse_weibull"
         )
         ){
-            paste0("Shape: ", atb$all$.shape, " - ",
-                   "Rate: ", atb$all$.rate, " - ",
-                   "Scale: ", atb$all$.scale)
+            paste0("Shape: ", toString(atb$.param_list$.shape), " - ",
+                   "Rate: ", toString(atb$.param_list$.rate), " - ",
+                   "Scale: ", toString(atb$.param_list$.scale))
         } else if (atb$all$tibble_type == "tidy_inverse_exponential"){
-            paste0("Rate: ", atb$all$.rate, " - Scale: ", atb$.scale)
+            paste0("Rate: ", toString(atb$.param_list$.rate), " - Scale: ", toString(atb$.param_list$.scale))
         } else if (atb$all$tibble_type == "tidy_inverse_gaussian"){
-            paste0("Mean: ", atb$all$.mean, " - ",
-                   "Shape: ", atb$all$.shape, " - ",
-                   "Dispersion: ", atb$all$.dispersion)
+            paste0("Mean: ", toString(atb$.param_list$.mean), " - ",
+                   "Shape: ", toString(atb$.param_list$.shape), " - ",
+                   "Dispersion: ", toString(atb$.param_list$.dispersion))
         } else if (atb$all$tibble_type == "tidy_generalized_beta"){
             paste0(
-                "Shape1: ", atb$all$.shape1, " - ",
-                "Shape2: ", atb$all$.shape2, " - ",
-                "Shape3: ", atb$all$.shape3, " - ",
-                "Scale: ", atb$all$.scale, " - ",
-                "Rate: ", atb$all$.rate
+                "Shape1: ", toString(atb$.param_list$.shape1), " - ",
+                "Shape2: ", toString(atb$.param_list$.shape2), " - ",
+                "Shape3: ", toString(atb$.param_list$.shape3), " - ",
+                "Scale: ", toString(atb$.param_list$.scale), " - ",
+                "Rate: ", toString(atb$.param_list$.rate)
             )
         }
     )

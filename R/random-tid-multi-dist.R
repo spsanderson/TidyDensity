@@ -113,6 +113,7 @@ tidy_multi_dist <- function(
     attr(df_unnested_tbl, "all") <- atb
     attr(df_unnested_tbl, "tbl") <- "tidy_multi_tibble"
     attr(df_unnested_tbl, ".num_sims") <- max(num_sims)
+    attr(df_unnested_tbl, ".param_list") <- .param_list
 
     # Return ----
     return(df_unnested_tbl)
