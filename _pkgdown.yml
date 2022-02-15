@@ -26,12 +26,16 @@ reference:
      desc: Functions that generate random data from discrete distributions and return tibbles
      contents:
      -  has_concept("Discrete Distribution")
-  - title: Empirical Data Functions
-    contents:
+  -  title: Empirical Data Functions
+     contents:
      -  contains("_empirical")
-  - title: Random Walk Functions
-    desc: Functions that generate random walk data and return tibbles
-    contents:
+  -  title: Multiple Distribution Tibble
+     desc: Generate multiple simulations of the same distribution with different parameters
+     contents:
+     -  has_concept("Multiple Distribution")
+  -  title: Random Walk Functions
+     desc: Functions that generate random walk data and return tibbles
+     contents:
      -  "tidy_random_walk"
   -  title: Plotting Functions
      desc: Functions that generate plots of the tidy_ distribution functions.
