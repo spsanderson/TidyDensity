@@ -153,14 +153,15 @@ will return an interactive <code>plotly</code> plot.</p></dd>
 <span class="r-in">    .num_sims <span class="op">=</span> <span class="fl">5</span></span>
 <span class="r-in">  <span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in select(., -c(.n, .num_sims)):</span> could not find function "select"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">tn</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in">  <span class="fu">tidy_multi_dist_autoplot</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-plt img"><img src="tidy_multi_dist_autoplot-1.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in tidy_multi_dist_autoplot(.):</span> object 'tn' not found</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">tn</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in">  <span class="fu">tidy_multi_dist_autoplot</span><span class="op">(</span>.plot_type <span class="op">=</span> <span class="st">"qq"</span><span class="op">)</span></span>
-<span class="r-plt img"><img src="tidy_multi_dist_autoplot-2.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in tidy_multi_dist_autoplot(., .plot_type = "qq"):</span> object 'tn' not found</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
