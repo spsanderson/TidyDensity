@@ -73,11 +73,11 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
 
     # Get the data attributes
     atb <- attributes(.data)
-    ns <- atb$.num_sims
+    ns <- atb$.param_list$.num_sims
     ps <- attributes(.data)$all$ps
-    ps <- rep(ps, ns)
+    ps <- rep(ps, (ns * nrow(expand.grid(atb$.param_list))))
     qs <- attributes(.data)$all$qs
-    qs <- rep(qs, ns)
+    qs <- rep(qs, (ns * nrow(expand.grid(atb$.param_list))))
 
     # Checks on data ---
     if (!is.data.frame(.data)) {
@@ -282,7 +282,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
         plt <- plt +
             ggplot2::geom_smooth(
                 ggplot2::aes(
-                    group = FALSE
+                    group = dist_name
                 ),
                 se = FALSE,
                 color = "black",
