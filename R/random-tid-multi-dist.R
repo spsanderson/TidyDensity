@@ -55,67 +55,53 @@ tidy_multi_dist <- function(
         )
     }
 
-    # Call used ---
-    td <- as.character(.tidy_dist)
+  # Call used ---
+  td <- as.character(.tidy_dist)
 
-    # Params ----
-    params <- .param_list
+  # Params ----
+  params <- .param_list
 
-    # Params for the call ----
-    n <- as.integer(params$.n)
-    num_sims <- as.integer(params$.num_sims)
-    x <- seq(1, num_sims, 1)
+  # Set the grid to make the calls ----
+  param_grid <- expand.grid(params)
 
-    # Final parameter list
-    final_params_list <- params[which(!names(params) %in% c(".n", ".num_sims"))]
+  #func_parm_list <- as.list(df)
+  names(param_grid) <- methods::formalArgs(td)
 
-    # Set the grid to make the calls ----
-    param_grid <- expand.grid(final_params_list)
+  # Run call on the grouped df ----
+  dff <- param_grid %>%
+    dplyr::mutate(results = purrr::pmap(dplyr::cur_data(), match.fun(td)))
 
-    df <- tidyr::expand_grid(
-        n = n,
-        param_grid,
-        sim = max(as.integer(x))
-    )
+  # Get the attributes to be used later on ----
+  atb <- dff$results[[1]] %>% attributes()
 
-    #func_parm_list <- as.list(df)
-    names(df) <- methods::formalArgs(td)
+  # Make Dist Type for column ----
+  dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
+    stringr::str_replace_all(pattern = "_", " ") %>%
+    stringr::str_to_title()
 
-    # Run call on the grouped df ----
-    dff <- df %>%
-        dplyr::mutate(results = purrr::pmap(dplyr::cur_data(), match.fun(td)))
+  # Get column names from the param_grid in order to make teh dist_type column ----
+  cols <- names(param_grid %>% select(-c(.n, .num_sims)))
 
-    # Get the attributes to be used later on ----
-    atb <- dff$results[[1]] %>% attributes()
+  dff$dist_name <- paste0(
+    paste0(dist_type, " c("),
+    apply(dff[, cols], 1, paste0, collapse = ", "),
+    ")"
+  )
 
-    # Make Dist Type for column ----
-    dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
-        stringr::str_replace_all(pattern = "_", " ") %>%
-        stringr::str_to_title()
+  df_unnested_tbl <- dff %>%
+    tidyr::unnest(results) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(sim_number, dist_name, x:q) %>%
+    dplyr::mutate(dist_name = as.factor(dist_name)) %>%
+    dplyr::arrange(sim_number, dist_name)
 
-    # Get column names from the param_grid in order to make teh dist_type column ----
-    cols <- names(param_grid)
+  # Attach attributes ----
+  attr(df_unnested_tbl, "all") <- atb
+  attr(df_unnested_tbl, "tbl") <- "tidy_multi_tibble"
+  attr(df_unnested_tbl, ".num_sims") <- max(param_grid$.num_sims)
+  attr(df_unnested_tbl, ".param_list") <- .param_list
 
-    dff$dist_name <- paste0(
-        paste0(dist_type, " c("),
-        apply(dff[, cols], 1, paste0, collapse = ", "),
-        ")"
-    )
-
-    df_unnested_tbl <- dff %>%
-        tidyr::unnest(results) %>%
-        dplyr::ungroup() %>%
-        dplyr::select(sim_number, dist_name, x:q) %>%
-        dplyr::mutate(dist_name = as.factor(dist_name)) %>%
-        dplyr::arrange(sim_number, dist_name)
-
-    # Attach attributes ----
-    attr(df_unnested_tbl, "all") <- atb
-    attr(df_unnested_tbl, "tbl") <- "tidy_multi_tibble"
-    attr(df_unnested_tbl, ".num_sims") <- max(num_sims)
-    attr(df_unnested_tbl, ".param_list") <- .param_list
-
-    # Return ----
-    return(df_unnested_tbl)
+  # Return ----
+  return(df_unnested_tbl)
 
 }
