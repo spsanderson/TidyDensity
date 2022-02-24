@@ -97,6 +97,7 @@ tidy_gamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1) {
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
+  param_grid <- dplyr::tibble(.shape, .rate)
 
   # Attach descriptive attributes to tibble
   attr(df, ".shape") <- .shape
@@ -106,6 +107,21 @@ tidy_gamma <- function(.n = 50, .shape = 1, .rate = 1, .num_sims = 1) {
   attr(df, "tibble_type") <- "tidy_gamma"
   attr(df, "ps") <- ps
   attr(df, "qs") <- qs
+  attr(df, "param_grid") <- param_grid
+  attr(df, "param_grid_txt") <- paste0(
+    "c(",
+    paste(param_grid[, names(param_grid)], collapse = ", "),
+    ")"
+  )
+  attr(df, "dist_with_params") <- paste0(
+    "Gamma",
+    " ",
+    paste0(
+      "c(",
+      paste(param_grid[, names(param_grid)], collapse = ", "),
+      ")"
+    )
+  )
 
   # Return final result as function output
   return(df)

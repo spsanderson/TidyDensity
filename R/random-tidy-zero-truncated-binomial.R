@@ -96,6 +96,7 @@ tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sim
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
+  param_grid <- dplyr::tibble(.size, .prob)
 
   # Attach descriptive attributes to tibble
   attr(df, ".size") <- .size
@@ -105,6 +106,21 @@ tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sim
   attr(df, "tibble_type") <- "tidy_zero_truncated_binomial"
   attr(df, "ps") <- ps
   attr(df, "qs") <- qs
+  attr(df, "param_grid") <- param_grid
+  attr(df, "param_grid_txt") <- paste0(
+    "c(",
+    paste(param_grid[, names(param_grid)], collapse = ", "),
+    ")"
+  )
+  attr(df, "dist_with_params") <- paste0(
+    "Zero Truncated Binomial",
+    " ",
+    paste0(
+      "c(",
+      paste(param_grid[, names(param_grid)], collapse = ", "),
+      ")"
+    )
+  )
 
   # Return final result as function output
   return(df)
