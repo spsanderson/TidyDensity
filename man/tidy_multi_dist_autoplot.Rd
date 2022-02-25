@@ -69,7 +69,7 @@ This function will spit out one of the following plots:
 }
 }
 \examples{
-tn <- tidy_multi_dist(
+tn <- tidy_multi_single_dist(
   .tidy_dist = "tidy_normal",
   .param_list = list(
     .n = 500,

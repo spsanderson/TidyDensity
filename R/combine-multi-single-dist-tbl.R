@@ -80,7 +80,7 @@ tidy_multi_single_dist <- function(
     stringr::str_to_title()
 
   # Get column names from the param_grid in order to make teh dist_type column ----
-  cols <- names(param_grid %>% select(-c(.n, .num_sims)))
+  cols <- names(param_grid %>% dplyr::select(-c(.n, .num_sims)))
 
   dff$dist_name <- paste0(
     paste0(dist_type, " c("),

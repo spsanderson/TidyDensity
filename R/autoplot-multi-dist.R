@@ -39,7 +39,7 @@
 #' will return an interactive `plotly` plot.
 #'
 #' @examples
-#' tn <- tidy_multi_dist(
+#' tn <- tidy_multi_single_dist(
 #'   .tidy_dist = "tidy_normal",
 #'   .param_list = list(
 #'     .n = 500,

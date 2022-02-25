@@ -58,7 +58,7 @@ tidy_combine_distributions <- function(...){
             dplyr::mutate(dist_type = attributes(.x)[["dist_with_params"]])
     )
 
-    dist_final_tbl <- purrr::map_dfr(dist_tbl, as_tibble)
+    dist_final_tbl <- purrr::map_dfr(dist_tbl, dplyr::as_tibble)
 
     attr(dist_final_tbl, "tibble_type") <- "tidy_multi_dist_combine"
 

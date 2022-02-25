@@ -55,6 +55,9 @@
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_chisquare.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_combine_distributions.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_distribution_summary_tbl.html</loc>
   </url>
   <url>
@@ -113,6 +116,9 @@
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_multi_dist_autoplot.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_multi_single_dist.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_negative_binomial.html</loc>
