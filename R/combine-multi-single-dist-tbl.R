@@ -18,7 +18,7 @@
 #' want to pass through to the TidyDensity `tidy_` distribution function.
 #'
 #' @examples
-#' tidy_multi_dist(
+#' tidy_multi_single_dist(
 #'   .tidy_dist = "tidy_normal",
 #'   .param_list = list(
 #'     .n = 50,
@@ -34,7 +34,7 @@
 #' @export
 #'
 
-tidy_multi_dist <- function(
+tidy_multi_single_dist <- function(
     .tidy_dist = NULL,
     .param_list = list()
 ) {
