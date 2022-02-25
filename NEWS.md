@@ -39,6 +39,8 @@ no longer importing.
 the legend argument would fail.
 7. Fix #56 - Add attributes of .n and .num_sims (1L for now) to `tidy_empirical()`
 8. Fix #61 - Update `_pkgdown.yml` file to update site.
+9. Fix #67 - Add `param_grid`, `param_grid_txt`, and `dist_with_params` to the
+attributes of all `tidy_` distribution functions.
 
 # TidyDensity 0.0.1
 
