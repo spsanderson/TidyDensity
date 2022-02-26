@@ -103,6 +103,9 @@
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_inverse_weibull.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_kurtosis_vec.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_logisitc.html</loc>
   </url>
   <url>
@@ -145,7 +148,13 @@
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_random_walk_autoplot.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_range_statistic.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_rnorm.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_skewness_vec.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_uniform.html</loc>
