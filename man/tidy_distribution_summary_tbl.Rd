@@ -4,11 +4,14 @@
 \alias{tidy_distribution_summary_tbl}
 \title{Tidy Distribution Summary Statistics Tibble}
 \usage{
-tidy_distribution_summary_tbl(.data)
+tidy_distribution_summary_tbl(.data, ...)
 }
 \arguments{
 \item{.data}{The data that is going to be passed from a a \code{tidy_} distribution
 function.}
+
+\item{...}{This is the grouping variable that gets passed to \code{\link[dplyr:group_by]{dplyr::group_by()}}
+and \code{\link[dplyr:select]{dplyr::select()}}.}
 }
 \value{
 A summary stats tibble
@@ -37,8 +40,19 @@ will return a tibble of the following information:
 The kurtosis and skewness come from the package \code{healthyR.ai}
 }
 \examples{
+library(dplyr)
+
 tn <- tidy_normal(.num_sims = 5)
+tb <- tidy_beta(.num_sims = 5)
+
 tidy_distribution_summary_tbl(tn)
+tidy_distribution_summary_tbl(tn, sim_number)
+
+data_tbl <- tidy_combine_distributions(tn, tb)
+
+tidy_distribution_summary_tbl(data_tbl)
+tidy_distribution_summary_tbl(data_tbl, dist_type)
+
 }
 \author{
 Steven P. Sanderson II, MPH

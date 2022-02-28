@@ -44,6 +44,7 @@ the legend argument would fail.
 8. Fix #61 - Update `_pkgdown.yml` file to update site.
 9. Fix #67 - Add `param_grid`, `param_grid_txt`, and `dist_with_params` to the
 attributes of all `tidy_` distribution functions.
+10. Fix #70 - Add `...` as a grouping parameter to `tidy_distribution_summary_tbl()`
 
 # TidyDensity 0.0.1
 

@@ -26,17 +26,30 @@
 #'
 #' @param .data The data that is going to be passed from a a `tidy_` distribution
 #' function.
+#' @param ... This is the grouping variable that gets passed to [dplyr::group_by()]
+#' and [dplyr::select()].
 #'
 #' @examples
+#' library(dplyr)
+#'
 #' tn <- tidy_normal(.num_sims = 5)
+#' tb <- tidy_beta(.num_sims = 5)
+#'
 #' tidy_distribution_summary_tbl(tn)
+#' tidy_distribution_summary_tbl(tn, sim_number)
+#'
+#' data_tbl <- tidy_combine_distributions(tn, tb)
+#'
+#' tidy_distribution_summary_tbl(data_tbl)
+#' tidy_distribution_summary_tbl(data_tbl, dist_type)
+#'
 #' @return
 #' A summary stats tibble
 #'
 #' @export
 #'
 
-tidy_distribution_summary_tbl <- function(.data) {
+tidy_distribution_summary_tbl <- function(.data, ...) {
 
   # Get the data attributes
   atb <- attributes(.data)
@@ -48,8 +61,8 @@ tidy_distribution_summary_tbl <- function(.data) {
   data_tbl <- dplyr::as_tibble(.data)
 
   summary_tbl <- data_tbl %>%
-    dplyr::group_by(sim_number) %>%
-    dplyr::select(sim_number, y) %>%
+    dplyr::group_by(...) %>%
+    dplyr::select(..., y) %>%
     dplyr::summarise(
       mean_val = mean(y, na.rm = TRUE),
       median_val = stats::median(y, na.rm = TRUE),
