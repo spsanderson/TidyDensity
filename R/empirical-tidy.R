@@ -66,6 +66,7 @@ tidy_empirical <- function(.x) {
   attr(df, ".n") <- n
   attr(df, ".num_sims") <- 1L
   attr(df, "tibble_type") <- "tidy_empirical"
+  attr(df, "dist_with_params") <- "Empirical"
 
   # Return ----
   return(df)
