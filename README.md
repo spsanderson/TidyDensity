@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/TidyDensity)](https://cran.r-project.org/package=TidyDensity)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/TidyDensity)](https://cran.r-project.org/package=TidyDensity)
 ![](https://cranlogs.r-pkg.org/badges/TidyDensity)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/TidyDensity)
 [![Lifecycle:
@@ -50,18 +50,18 @@ library(ggplot2)
 
 tidy_normal()
 #> # A tibble: 50 x 7
-#>    sim_number     x      y    dx       dy         p        q
-#>    <fct>      <int>  <dbl> <dbl>    <dbl>     <dbl>    <dbl>
-#>  1 1              1  1.24  -3.56 0.000249 0         -Inf    
-#>  2 1              2  0.524 -3.41 0.000750 0           -2.05 
-#>  3 1              3 -0.281 -3.27 0.00196  0           -1.74 
-#>  4 1              4 -0.496 -3.12 0.00448  0           -1.54 
-#>  5 1              5 -0.401 -2.97 0.00896  0           -1.39 
-#>  6 1              6  0.424 -2.83 0.0158   0           -1.27 
-#>  7 1              7  0.436 -2.68 0.0249   0           -1.16 
-#>  8 1              8  0.862 -2.54 0.0351   4.18e-284   -1.07 
-#>  9 1              9  0.861 -2.39 0.0451   1.11e-253   -0.981
-#> 10 1             10  0.954 -2.24 0.0532   5.45e-225   -0.901
+#>    sim_number     x       y    dx       dy         p        q
+#>    <fct>      <int>   <dbl> <dbl>    <dbl>     <dbl>    <dbl>
+#>  1 1              1 -1.43   -3.39 0.000354 0         -Inf    
+#>  2 1              2 -2.10   -3.26 0.000884 0           -2.05 
+#>  3 1              3  0.619  -3.13 0.00202  0           -1.74 
+#>  4 1              4 -1.54   -2.99 0.00425  0           -1.54 
+#>  5 1              5  1.26   -2.86 0.00820  0           -1.39 
+#>  6 1              6 -1.18   -2.73 0.0146   0           -1.27 
+#>  7 1              7  0.215  -2.60 0.0242   0           -1.16 
+#>  8 1              8 -0.0552 -2.47 0.0373   4.18e-284   -1.07 
+#>  9 1              9 -0.262  -2.34 0.0538   1.11e-253   -0.981
+#> 10 1             10 -1.84   -2.20 0.0732   5.45e-225   -0.901
 #> # ... with 40 more rows
 ```
 
