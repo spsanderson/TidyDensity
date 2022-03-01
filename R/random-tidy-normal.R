@@ -79,8 +79,9 @@ tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1) {
 
   x <- seq(1, num_sims, 1)
 
-  ps <- seq(-n, n - 1, 2)
+  # ps <- seq(-n, n - 1, 2)
   qs <- seq(0, 1, (1 / (n - 1)))
+  ps <- qs
 
   df <- dplyr::tibble(sim_number = as.factor(x)) %>%
     dplyr::group_by(sim_number) %>%
