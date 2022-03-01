@@ -36,7 +36,6 @@
 #' @param .shape3 A non-negative parameter of the Beta distribution.
 #' @param .scale Must be strictly positive.
 #' @param .rate An alternative way to specify the `.scale` parameter.
-#' @param .ncp The `non-centrality parameter` of the Beta distribution.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples

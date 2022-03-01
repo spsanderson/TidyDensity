@@ -28,8 +28,6 @@ tidy_generalized_beta(
 \item{.scale}{Must be strictly positive.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
-
-\item{.ncp}{The \verb{non-centrality parameter} of the Beta distribution.}
 }
 \value{
 A tibble of randomly generated data.

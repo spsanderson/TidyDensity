@@ -27,7 +27,7 @@ tidy_empirical <- function(.x) {
     }
 
     ## New P
-    e <- ecdf(x_term)
+    e <- stats::ecdf(x_term)
 
     df <- dplyr::tibble(sim_number = as.factor(1)) %>%
         dplyr::group_by(sim_number) %>%

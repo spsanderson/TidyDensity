@@ -35,7 +35,7 @@
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_zeo_truncated_binomial()
+#' tidy_zero_truncated_binomial()
 #' @return
 #' A tibble of randomly generated data.
 #'
