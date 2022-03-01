@@ -25,7 +25,8 @@ Imports:
     tidyr,
     purrr,
     stringr,
-    actuar
+    actuar,
+    methods
 Suggests: 
     rmarkdown,
     knitr,
