@@ -28,10 +28,21 @@ This is a wrapper for the \code{\link[EnvStats:ebeta]{EnvStats::ebeta()}} functi
 }
 \examples{
 library(dplyr)
+library(ggplot2)
 
-tb <- tidy_beta(.n = 50, .shape1 = 2.5, .shape2 = 1.4, .ncp = 0) \%>\%
-  pull(y)
-util_beta_param_estimate(tb)
+x <- mtcars$mpg
+output <- util_beta_param_estimate(x)
+
+output$parameter_tbl
+
+output$combined_data_tbl \%>\%
+  ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
+  geom_line() +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+tb <- rbeta(50, 2.5, 1.4)
+util_beta_param_estimate(tb)$parameter_tbl
 
 }
 \seealso{

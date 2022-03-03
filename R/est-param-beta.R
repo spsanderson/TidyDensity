@@ -20,10 +20,21 @@
 #'
 #' @examples
 #' library(dplyr)
+#' library(ggplot2)
 #'
-#' tb <- tidy_beta(.n = 50, .shape1 = 2.5, .shape2 = 1.4, .ncp = 0) %>%
-#'   pull(y)
-#' util_beta_param_estimate(tb)
+#' x <- mtcars$mpg
+#' output <- util_beta_param_estimate(x)
+#'
+#' output$parameter_tbl
+#'
+#' output$combined_data_tbl %>%
+#'   ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
+#'   geom_line() +
+#'   theme_minimal() +
+#'   theme(legend.position = "bottom")
+#'
+#' tb <- rbeta(50, 2.5, 1.4)
+#' util_beta_param_estimate(tb)$parameter_tbl
 #'
 #' @return
 #' A tibble
@@ -37,9 +48,11 @@ util_beta_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
     x_term <- as.numeric(.x)
     minx <- min(x_term)
     maxx <- max(x_term)
+    n <- length(x_term)
+    unique_terms <- length(unique(x_term))
 
     # Checks ----
-    if (length(n) < 2  || length(unique(x_term)) < 2){
+    if (n < 2 || unique_terms < 2){
         rlang::abort(
             message = "The data must have at least two (2) unique data points.",
             use_cli_format = TRUE
@@ -70,7 +83,6 @@ util_beta_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
     }
 
     # Get params ----
-    n <- length(x_term)
     m <- mean(x_term, na.rm = TRUE)
     s2 <- var(x_term, na.rm = TRUE)
 
