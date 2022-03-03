@@ -5,11 +5,22 @@
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @details This is a wrapper for the [EnvStats::ebeta()] function.
+#' @details This function will attempt to estimate the beta shape1 and shape2
+#' parameters given some vector of values.
 #'
-#' @description This function is a wrapper for the [EnvStats::ebeta()] function.
-#' It will automatically scale the data from 0 to 1 if it is not already. This means
-#' you can pass a vector like `mtcars$mpg` and not worry about it.
+#' @description This function will automatically scale the data from 0 to 1 if
+#' it is not already. This means you can pass a vector like `mtcars$mpg` and not
+#' worry about it.
+#'
+#' The function will return a list output by default, and  if the parameter
+#' `.auto_gen_empirical` is set to `TRUE` then the empirical data given to the
+#' parameter `.x` will be run through the `tidy_empirical()` function and combined
+#' with the estimated beta data.
+#'
+#' Three different methods of shape parameters are supplied:
+#' -  Bayes
+#' -  NIST mme
+#' -  EnvStats mme, see [EnvStats::ebeta()]
 #'
 #' @param .x The vector of data to be passed to the function. Must be numeric, and
 #' all values must be 0 <= x <= 1
