@@ -19,12 +19,25 @@ can then plot out the data using \verb{$combined_data_tbl} from the function out
 A tibble
 }
 \description{
-This function is a wrapper for the \code{\link[EnvStats:ebeta]{EnvStats::ebeta()}} function.
-It will automatically scale the data from 0 to 1 if it is not already. This means
-you can pass a vector like \code{mtcars$mpg} and not worry about it.
+This function will automatically scale the data from 0 to 1 if
+it is not already. This means you can pass a vector like \code{mtcars$mpg} and not
+worry about it.
+
+The function will return a list output by default, and  if the parameter
+\code{.auto_gen_empirical} is set to \code{TRUE} then the empirical data given to the
+parameter \code{.x} will be run through the \code{tidy_empirical()} function and combined
+with the estimated beta data.
+
+Three different methods of shape parameters are supplied:
+\itemize{
+\item Bayes
+\item NIST mme
+\item EnvStats mme, see \code{\link[EnvStats:ebeta]{EnvStats::ebeta()}}
+}
 }
 \details{
-This is a wrapper for the \code{\link[EnvStats:ebeta]{EnvStats::ebeta()}} function.
+This function will attempt to estimate the beta shape1 and shape2
+parameters given some vector of values.
 }
 \examples{
 library(dplyr)
