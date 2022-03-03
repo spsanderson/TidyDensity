@@ -79,7 +79,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Beta: 
-\code{\link{tidy_generalized_beta}()}
+\code{\link{tidy_generalized_beta}()},
+\code{\link{util_beta_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH

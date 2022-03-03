@@ -33,6 +33,10 @@ reference:
      desc: Generate multiple simulations of the same distribution with different parameters
      contents:
      -  has_concept("Multiple Distribution")
+  -  title: Parameter Estimation Functions
+     desc: Functions that help to estimate parameters from raw data.
+     contents:
+     -  has_concept("Parameter Estimation")
   -  title: Random Walk Functions
      desc: Functions that generate random walk data and return tibbles
      contents:
