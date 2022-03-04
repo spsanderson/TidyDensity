@@ -21,9 +21,12 @@
 #' library(ggplot2)
 #'
 #' te <- tidy_exponential(.rate = .1) %>% pull(y)
-#' util_exponential_param_estimate(te)$parameter_tbl
-#' util_exponential_param_estimate(te)$combined_data_tbl %>%
-#'   ggplot(aes(x = y, group = dist_type, color = dist_type)) +
+#' output <- util_exponential_param_estimate(te)
+#'
+#' output$parameter_tbl
+#'
+#' output$combined_data_tbl %>%
+#'   ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
 #'   geom_line() +
 #'   theme_minimal() +
 #'   theme(legend.position = "bottom")

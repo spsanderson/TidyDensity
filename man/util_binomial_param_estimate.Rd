@@ -34,8 +34,9 @@ library(dplyr)
 library(ggplot2)
 
 tb <- rbinom(50, 1, .1)
-util_binomial_param_estimate(tb)$parameter_tbl
-util_binomial_param_estimate(tb)$combined_data_tbl \%>\%
+output <- util_binomial_param_estimate(tb)
+
+output$combined_data_tbl \%>\%
   ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
   geom_histogram(binwidth = 0.5, color = "black") +
   theme_minimal() +
