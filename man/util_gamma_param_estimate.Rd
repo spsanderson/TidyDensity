@@ -29,7 +29,7 @@ library(dplyr)
 library(ggplot2)
 
 tg <- tidy_gamma(.shape = 1, .rate = .5) \%>\% pull(y)
-output <- util_exponential_param_estimate(tg)
+output <- util_gamma_param_estimate(tg)
 
 output$parameter_tbl
 

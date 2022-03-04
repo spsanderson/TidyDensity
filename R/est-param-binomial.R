@@ -127,7 +127,7 @@ util_binomial_param_estimate <- function(.x, .size = NULL, .auto_gen_empirical =
             xx <- x_term
         }
         te <- tidy_empirical(.x = xx)
-        td <- tidy_binomial(.n = n, .size = size, .prob = prob)
+        td <- tidy_binomial(.n = n, .size = size, .prob = round(prob, 3))
         combined_tbl <- tidy_combine_distributions(te, td)
     }
 

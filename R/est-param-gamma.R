@@ -21,7 +21,7 @@
 #' library(ggplot2)
 #'
 #' tg <- tidy_gamma(.shape = 1, .rate = .5) %>% pull(y)
-#' output <- util_exponential_param_estimate(tg)
+#' output <- util_gamma_param_estimate(tg)
 #'
 #' output$parameter_tbl
 #'
@@ -85,7 +85,7 @@ util_gamma_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
     # Return Tibble ----
     if (.auto_gen_empirical){
         te <- tidy_empirical(.x = x_term)
-        td <- tidy_gamma(.n = n, .shape = nist_shape, .rate = nist_rate)
+        td <- tidy_gamma(.n = n, .shape = round(nist_shape, 3), .rate = round(nist_rate, 3))
         combined_tbl <- tidy_combine_distributions(te, td)
     }
 

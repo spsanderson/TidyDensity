@@ -67,7 +67,7 @@ util_exponential_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
     # Return Tibble ----
     if (.auto_gen_empirical){
         te <- tidy_empirical(.x = x_term)
-        td <- tidy_exponential(.n = n, .rate = rate)
+        td <- tidy_exponential(.n = n, .rate = round(rate, 3))
         combined_tbl <- tidy_combine_distributions(te, td)
     }
 
