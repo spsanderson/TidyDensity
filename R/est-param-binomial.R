@@ -43,14 +43,14 @@ util_binomial_param_estimate <- function(.x, .size = NULL, .auto_gen_empirical =
     # Tidyeval ----
     x_term <- .x
     n <- length(x_term)
-    minx <- min(x_term)
-    maxx <- max(x_term)
-    m <- mean(x_term)
-    s2 <- var(x_term)
+    minx <- min(as.numeric(x_term))
+    maxx <- max(as.numeric(x_term))
+    m <- mean(as.numeric(x_term))
+    s2 <- var(as.numeric(x_term))
     size <- .size
 
     # Checks ----
-    if (!is.vector(x_term)){
+    if (!is.vector(x_term) && !is.factor(x_term)){
         rlang::abort(
             message = "'.x' must be either a numeric or factor vector.",
             use_cli_format = TRUE
@@ -120,7 +120,12 @@ util_binomial_param_estimate <- function(.x, .size = NULL, .auto_gen_empirical =
 
     # Return Tibble ----
     if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
+        if(is.factor(x_term)){
+            xx <- x
+        } else {
+            xx <- x_term
+        }
+        te <- tidy_empirical(.x = xx)
         td <- tidy_binomial(.n = n, .size = size, .prob = prob)
         combined_tbl <- tidy_combine_distributions(te, td)
     }
