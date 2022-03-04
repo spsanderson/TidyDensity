@@ -83,7 +83,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Gamma: 
-\code{\link{tidy_gamma}()}
+\code{\link{tidy_gamma}()},
+\code{\link{util_gamma_param_estimate}()}
 
 Other Inverse Distribution: 
 \code{\link{tidy_inverse_burr}()},

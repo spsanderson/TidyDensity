@@ -28,7 +28,8 @@ Imports:
     actuar,
     methods,
     EnvStats,
-    healthyR.ai
+    healthyR.ai,
+    stats
 Suggests: 
     rmarkdown,
     knitr,
