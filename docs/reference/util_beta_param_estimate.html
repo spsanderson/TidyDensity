@@ -99,7 +99,7 @@ can then plot out the data using <code>$combined_data_tbl</code> from the functi
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble</p>
+    <p>A tibble/list</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -108,7 +108,9 @@ parameters given some vector of values.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p>Other Beta: 
+    <div class="dont-index"><p>Other Parameter Estimation: 
+<code><a href="util_binomial_param_estimate.html">util_binomial_param_estimate</a>()</code></p>
+<p>Other Beta: 
 <code><a href="tidy_beta.html">tidy_beta</a>()</code>,
 <code><a href="tidy_generalized_beta.html">tidy_generalized_beta</a>()</code></p></div>
     </div>
@@ -152,9 +154,9 @@ parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 x 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max  mean variance method       shape1 shape2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Beta             50 0.193 0.995 0.633   0.038<span style="text-decoration: underline;">9</span> Bayes         31.6   18.4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta             50 0.193 0.995 0.633   0.038<span style="text-decoration: underline;">9</span> NIST_MME       3.15   1.83</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Beta             50 0.193 0.995 0.633   0.038<span style="text-decoration: underline;">9</span> EnvStats_MME   3.23   1.87</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Beta             50 0.193 0.952 0.657   0.048<span style="text-decoration: underline;">9</span> Bayes         32.9   17.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta             50 0.193 0.952 0.657   0.048<span style="text-decoration: underline;">9</span> NIST_MME       2.37   1.23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Beta             50 0.193 0.952 0.657   0.048<span style="text-decoration: underline;">9</span> EnvStats_MME   2.43   1.27</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 1 more variable: shape_ratio &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 </code></pre></div>
