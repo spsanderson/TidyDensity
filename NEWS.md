@@ -32,6 +32,7 @@ None
 `tidy_range_statistic()`
 26. Fix #75 - Add function `util_beta_param_estimate()`
 27. Fix #76 - Add function `util_binomial_param_estimate()`
+28. Fix #77 - Add function `util_exponential_param_estimate()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

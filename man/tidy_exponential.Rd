@@ -73,7 +73,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Exponential: 
-\code{\link{tidy_inverse_exponential}()}
+\code{\link{tidy_inverse_exponential}()},
+\code{\link{util_exponential_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH

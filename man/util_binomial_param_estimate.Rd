@@ -44,7 +44,8 @@ util_binomial_param_estimate(tb)$combined_data_tbl \%>\%
 }
 \seealso{
 Other Parameter Estimation: 
-\code{\link{util_beta_param_estimate}()}
+\code{\link{util_beta_param_estimate}()},
+\code{\link{util_exponential_param_estimate}()}
 
 Other Binomial: 
 \code{\link{tidy_binomial}()},

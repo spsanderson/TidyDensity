@@ -144,7 +144,8 @@ util_binomial_param_estimate <- function(.x, .size = NULL, .auto_gen_empirical =
     )
 
     # Return ----
-    attr(ret, "tibble_typle") <- "binomial_parameter_estimation"
+    attr(ret, "tibble_type") <- "parameter_estimation"
+    attr(ret, "family") <- "binomial"
     attr(ret, "x_term") <- .x
     attr(ret, "n") <- n
 

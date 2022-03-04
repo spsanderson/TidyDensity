@@ -76,7 +76,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Exponential: 
-\code{\link{tidy_exponential}()}
+\code{\link{tidy_exponential}()},
+\code{\link{util_exponential_param_estimate}()}
 
 Other Inverse Distribution: 
 \code{\link{tidy_inverse_burr}()},

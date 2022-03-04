@@ -60,7 +60,8 @@ util_beta_param_estimate(tb)$parameter_tbl
 }
 \seealso{
 Other Parameter Estimation: 
-\code{\link{util_binomial_param_estimate}()}
+\code{\link{util_binomial_param_estimate}()},
+\code{\link{util_exponential_param_estimate}()}
 
 Other Beta: 
 \code{\link{tidy_beta}()},

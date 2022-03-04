@@ -139,7 +139,8 @@ util_beta_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
     )
 
     # Return ----
-    attr(ret, "tibble_typle") <- "beta_parameter_estimation"
+    attr(ret, "tibble_type") <- "parameter_estimation"
+    attr(ret, "family") <- "beta"
     attr(ret, "x_term") <- .x
     attr(ret, "scaled") <- scaled
     attr(ret, "n") <- n
