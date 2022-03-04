@@ -16,7 +16,7 @@ for the \code{.x} parameter and use the \code{tidy_combine_distributions()}. The
 can then plot out the data using \verb{$combined_data_tbl} from the function output.}
 }
 \value{
-A tibble
+A tibble/list
 }
 \description{
 This function will automatically scale the data from 0 to 1 if
@@ -59,6 +59,9 @@ util_beta_param_estimate(tb)$parameter_tbl
 
 }
 \seealso{
+Other Parameter Estimation: 
+\code{\link{util_binomial_param_estimate}()}
+
 Other Beta: 
 \code{\link{tidy_beta}()},
 \code{\link{tidy_generalized_beta}()}

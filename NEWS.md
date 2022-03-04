@@ -30,6 +30,8 @@ None
 24. Fix #66 - Add function `tidy_combine_distributions()`
 25. Fix #69 - Add functions `tidy_kurtosis_vec()`, `tidy_skewness_vec()`, and
 `tidy_range_statistic()`
+26. Fix #75 - Add function `util_beta_param_estimate()`
+27. Fix #76 - Add function `util_binomial_param_estimate()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

@@ -48,7 +48,7 @@
 #' util_beta_param_estimate(tb)$parameter_tbl
 #'
 #' @return
-#' A tibble
+#' A tibble/list
 #'
 #' @export
 #'
