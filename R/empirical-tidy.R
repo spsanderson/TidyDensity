@@ -23,7 +23,7 @@ tidy_empirical <- function(.x) {
     n <- length(x_term)
 
     if (!is.vector(x_term)) {
-        rlang::abort("You must pass a vector as the .x arguemtn to this function.")
+        rlang::abort("You must pass a vector as the .x argument to this function.")
     }
 
     ## New P
