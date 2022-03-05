@@ -6,7 +6,7 @@
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @details This function will see if the given vector `.x` is a numeric vector.
-#' It will attempt to estimate the prob prameter of a geometric distribution.
+#' It will attempt to estimate the prob parameter of a geometric distribution.
 #'
 #' @description This function will attempt to estimate the geometric prob parameter
 #' given some vector of values `.x`.
