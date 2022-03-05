@@ -73,7 +73,6 @@ util_geometric_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
         )
     }
 
-
     # Parameters ----
     # EnvStats
     es_mme_prob <- n/(n + sum_x)
