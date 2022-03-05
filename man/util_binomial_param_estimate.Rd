@@ -36,6 +36,8 @@ library(ggplot2)
 tb <- rbinom(50, 1, .1)
 output <- util_binomial_param_estimate(tb)
 
+output$parameter_tbl
+
 output$combined_data_tbl \%>\%
   ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
   geom_histogram(binwidth = 0.5, color = "black") +
@@ -47,7 +49,8 @@ output$combined_data_tbl \%>\%
 Other Parameter Estimation: 
 \code{\link{util_beta_param_estimate}()},
 \code{\link{util_exponential_param_estimate}()},
-\code{\link{util_gamma_param_estimate}()}
+\code{\link{util_gamma_param_estimate}()},
+\code{\link{util_geometric_param_estimate}()}
 
 Other Binomial: 
 \code{\link{tidy_binomial}()},

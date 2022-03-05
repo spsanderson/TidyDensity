@@ -22,14 +22,14 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' tg <- tidy_geometric() %>% pull(y)
+#' tg <- tidy_geometric(.prob = .1) %>% pull(y)
 #' output <- util_geometric_param_estimate(tg)
 #'
 #' output$parameter_tbl
 #'
 #' output$combined_data_tbl %>%
-#'   ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
-#'   geom_line() +
+#'   ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
+#'   geom_histogram(binwidth = 0.5, color = "black") +
 #'   theme_minimal() +
 #'   theme(legend.position = "bottom")
 #'
@@ -47,67 +47,60 @@ util_geometric_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
     minx <- min(as.numeric(x_term))
     maxx <- max(as.numeric(x_term))
     m <- mean(as.numeric(x_term))
-    s <- sqrt((n - 1)/n) * stats::sd(x_term)
+    s <- var(x_term)
+    sum_x <- sum(x_term)
 
     # Checks ----
-    if (!is.numeric(x_term)){
+    if (!is.vector(x_term, mode = "numeric")){
         rlang::abort(
             message = "The '.x' term must be a numeric vector.",
             use_cli_format = TRUE
         )
     }
 
-    if (!is.vector(x_term)){
+    if (!all(x_term == trunc(x_term)) || any(x_term < 0)){
         rlang::abort(
-            message = "The '.x' term must be a numeric vecotr.",
+            message = "All values of 'x' must be non-negative integers.",
             use_cli_format = TRUE
         )
     }
 
-    if (n < 2 || any(x_term < 0) || length(unique(x_term)) < 2){
+    if (n < 2){
         rlang::abort(
-            message = "The numeric vector '.x' must contain at least two unique values
-            greater than 0",
+            message = "You must supply at least two data points for this function.
+            If you only have one then use [EnvStats::egeom()]",
             use_cli_format = TRUE
         )
     }
+
 
     # Parameters ----
-    # NIST
-    nist_shape <- (m/s)^2
-    nist_rate <- (s^2)/m
-
     # EnvStats
-    es_mmu_shape <- (m/(sqrt(n/(n - 1)) * s))^2
-    es_mmu_rate <- m/nist_shape
-
-    es_bcmle_shape <- ((n - 3)/n) * nist_shape + (2/(3 * n))
-    es_bcmle_rate <- m/nist_shape
+    es_mme_prob <- n/(n + sum_x)
+    es_mvue_prob <- (n - 1)/(n + sum_x - 1)
 
     # Return Tibble ----
     if (.auto_gen_empirical){
         te <- tidy_empirical(.x = x_term)
-        td <- tidy_gamma(.n = n, .shape = round(nist_shape, 3), .rate = round(nist_rate, 3))
+        td <- tidy_geometric(.n = n, .prob = round(es_mme_prob, 3))
         combined_tbl <- tidy_combine_distributions(te, td)
     }
 
     ret <- dplyr::tibble(
-        dist_type = rep('Gamma', 3),
-        samp_size = rep(n, 3),
-        min = rep(minx, 3),
-        max = rep(maxx, 3),
-        mean = rep(m, 3),
-        variance = rep(s, 3),
-        method = c("NIST_MME", "EnvStats_MMUE", "EnvStats_BCMLE"),
-        shape = c(nist_shape, es_mmu_shape, es_bcmle_shape),
-        rate = c(nist_rate, es_mmu_rate, es_bcmle_rate),
-        shape_ratio = c(nist_shape/nist_rate, es_mmu_shape/es_mmu_rate,
-                        es_bcmle_shape/es_bcmle_rate)
+        dist_type = rep('Geometric', 2),
+        samp_size = rep(n, 2),
+        min = rep(minx, 2),
+        max = rep(maxx, 2),
+        mean = rep(m, 2),
+        variance = rep(s, 2),
+        sum_x = rep(sum_x, 2),
+        method = c("EnvStats_MME", "EnvStats_MVUE"),
+        shape = c(es_mme_prob, es_mvue_prob)
     )
 
     # Return ----
     attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "gamma"
+    attr(ret, "family") <- "geometric"
     attr(ret, "x_term") <- .x
     attr(ret, "n") <- n
 

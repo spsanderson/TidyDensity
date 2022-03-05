@@ -27,7 +27,6 @@ Imports:
     stringr,
     actuar,
     methods,
-    EnvStats,
     healthyR.ai,
     stats
 Suggests: 

@@ -47,7 +47,8 @@ tidy_zero_truncated_geometric()
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 
 Other Geometric: 
-\code{\link{tidy_geometric}()}
+\code{\link{tidy_geometric}()},
+\code{\link{util_geometric_param_estimate}()}
 
 Other Continuous Distribution: 
 \code{\link{tidy_beta}()},
