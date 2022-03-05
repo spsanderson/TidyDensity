@@ -1,16 +1,18 @@
-#' Estimate Gamma Parameters
+#' Estimate Geometric Parameters
 #'
 #' @family Parameter Estimation
-#' @family Gamma
+#' @family Geometric
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @details This function will see if the given vector `.x` is a numeric vector.
+#' It will attempt to estimate the prob prameter of a geometric distribution.
 #'
-#' @description This function will attempt to estimate the gamma shape and rate
-#' parameters given some vector of values
+#' @description This function will attempt to estimate the geometric prob parameter
+#' given some vector of values `.x`.
 #'
-#' @param .x The vector of data to be passed to the function. Must be numeric.
+#' @param .x The vector of data to be passed to the function. Must be non-negative
+#' integers.
 #' @param .auto_gen_empirical This is a boolean value of TRUE/FALSE with default
 #' set to TRUE. This will automatically create the `tidy_empirical()` output
 #' for the `.x` parameter and use the `tidy_combine_distributions()`. The user
@@ -20,8 +22,8 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' tg <- tidy_gamma(.shape = 1, .rate = .5) %>% pull(y)
-#' output <- util_gamma_param_estimate(tg)
+#' tg <- tidy_geometric() %>% pull(y)
+#' output <- util_geometric_param_estimate(tg)
 #'
 #' output$parameter_tbl
 #'
@@ -37,7 +39,7 @@
 #' @export
 #'
 
-util_gamma_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_geometric_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
 
     # Tidyeval ----
     x_term <- as.numeric(.x)
