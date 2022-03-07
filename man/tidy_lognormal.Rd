@@ -73,6 +73,9 @@ Other Continuous Distribution:
 \code{\link{tidy_uniform}()},
 \code{\link{tidy_weibull}()},
 \code{\link{tidy_zero_truncated_geometric}()}
+
+Other Lognormal: 
+\code{\link{util_lognormal_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH
