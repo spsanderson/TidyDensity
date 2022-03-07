@@ -51,6 +51,7 @@ the legend argument would fail.
 9. Fix #67 - Add `param_grid`, `param_grid_txt`, and `dist_with_params` to the
 attributes of all `tidy_` distribution functions.
 10. Fix #70 - Add `...` as a grouping parameter to `tidy_distribution_summary_tbl()`
+11. Fix #88 - Make the column `dist_type` a factor for `tidy_combine_distributions()`
 
 # TidyDensity 0.0.1
 
