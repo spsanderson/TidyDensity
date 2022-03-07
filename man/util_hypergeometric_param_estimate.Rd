@@ -56,8 +56,8 @@ number of balls by \code{T} = \code{.m} + \code{.n}
 library(dplyr)
 library(ggplot2)
 
-th <- rhyper(1, 20, 30, 5)
-output <- util_hypergeometric_param_estimate(th)
+th <- rhyper(10, 20, 30, 5)
+output <- util_hypergeometric_param_estimate(th, .total = 50, .k = 5)
 
 output$parameter_tbl
 

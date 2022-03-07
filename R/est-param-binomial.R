@@ -158,7 +158,9 @@ util_binomial_param_estimate <- function(.x, .size = NULL, .auto_gen_empirical =
             parameter_tbl     = ret
         )
     } else {
-        output <- ret
+        output <- list(
+            parameter_tbl = ret
+        )
     }
 
     return(output)

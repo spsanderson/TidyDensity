@@ -151,7 +151,9 @@ util_beta_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
             parameter_tbl     = ret
         )
     } else {
-        output <- ret
+        output <- list(
+            parameter_tbl = ret
+        )
     }
 
     return(output)

@@ -39,8 +39,8 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' th <- rhyper(1, 20, 30, 5)
-#' output <- util_hypergeometric_param_estimate(th)
+#' th <- rhyper(10, 20, 30, 5)
+#' output <- util_hypergeometric_param_estimate(th, .total = 50, .k = 5)
 #'
 #' output$parameter_tbl
 #'
@@ -199,7 +199,7 @@ util_hypergeometric_param_estimate <- function(.x, .m = NULL, .total = NULL, .k,
     attr(ret, "x_term") <- x_term
     attr(ret, "n") <- n
 
-    ct_exists <- if(exists("combined_tbl", mode = "data.frame")){
+    ct_exists <- if(exists("combined_tbl") && nrow(combined_tbl) > 1){
         ct_exists <- TRUE
     } else {
         ct_exists <- FALSE
@@ -211,7 +211,9 @@ util_hypergeometric_param_estimate <- function(.x, .m = NULL, .total = NULL, .k,
             parameter_tbl     = ret
         )
     } else {
-        output <- ret
+        output <- list(
+            parameter_tbl = ret
+        )
     }
 
     return(output)
