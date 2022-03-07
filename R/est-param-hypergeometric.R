@@ -60,63 +60,152 @@ util_hypergeometric_param_estimate <- function(.x, .m = NULL, .total = NULL, .k,
                                                .auto_gen_empirical = TRUE){
 
     # Tidyeval ----
-    x_term <- as.numeric(.x)
+    x_vec <- as.numeric(.x)
+    x_term <- x_vec[1]
     k <- .k
     m <- .m
-    n <- length(x_term)
+    n <- length(x_vec)
+    t <- .total
 
 
     # Checks ----
     if (!is.vector(x_term, mode = "numeric") || length(x_term) != 1 ||
-        !is.finite(x_term) || x != trunc(x_term) || !is.vector(k, mode = "numeric") ||
-        length(k) != 1 || !is.finite(k) || k != trunc(k))
-        stop("Missing values not allowed for 'x' and 'k' and they must be integers")
-    if ((is.null(m) & is.null(total)) || (!is.null(m) & !is.null(total)))
-        stop("You must supply 'm' or 'total' but not both")
+           !is.finite(x_term) || x_term != trunc(x_term) ||
+           !is.vector(k, mode = "numeric") ||
+           length(k) != 1 || !is.finite(k) || k != trunc(k)){
+        rlang::abort(
+            message = "You must supply a single integer value '.x' and '.k'.",
+            use_cli_format = TRUE
+        )
+    }
+
+    if ((is.null(m) & is.null(t)) || (!is.null(m) & !is.null(t))){
+        rlang::abort(
+            message = "You must supply either '.m' or '.total', but not both.",
+            use_cli_format = TRUE
+        )
+    }
+
     if (!is.null(m)) {
         if (!is.vector(m, mode = "numeric") || length(m) != 1 ||
-            !is.finite(m) || m != trunc(m))
-            stop("Missing values not allowed for 'm' and it must be an integer")
-        est.m <- FALSE
-    }
-    else {
-        if (!is.vector(total, mode = "numeric") || length(total) !=
-            1 || !is.finite(total) || total != trunc(total))
-            stop("Missing values not allowed for 'total' and it must be an integer")
-        est.m <- TRUE
+            !is.finite(m) || m != trunc(m)){
+            rlang::abort(
+                message = "Missing values are not allowed for '.m' and it must be
+                an integer.",
+                use_cli_format = TRUE
+            )
+        }
+        est_m <- FALSE
+    } else {
+        if (!is.vector(t, mode = "numeric") || length(t) != 1 ||
+            !is.finite(t) || t != trunc(t)){
+            rlang::abort(
+                message = "Missing values are not allowed for '.total' and it must be
+                an integer.",
+                use_cli_format = TRUE
+            )
+        }
+        est_m <- TRUE
     }
 
-    # Parameters ----
-    # EnvStats
-    es_mme_prob <- n/(n + sum_x)
-    es_mvue_prob <- (n - 1)/(n + sum_x - 1)
+    # Estimateion ----
+    if (est_m){
+        if (x_term < 0 || x_term > k){
+            rlang::abort(
+                message = paste0(
+                    "'.x' must be between 0 and '.k'. You gave values of: ",
+                    "'.x' = ", x_term,
+                    " and '.k. = ", k
+                ),
+                use_cli_format = TRUE
+            )
+        }
+
+        if (t < 1){
+            rlang::abort(
+                message = paste0("'.t' must be at least 1. You gave '.total' = ", t),
+                use_cli_format = TRUE
+            )
+        }
+
+        if (k < 1 || k > t){
+            rlang::abort(
+                message = paste0("'.k' must be between 1 and '.total'. You gave '.k' = ", k,
+                                 "and '.total' = ", t),
+                use_cli_format = TRUE
+            )
+        }
+
+        m_hat <- ((t + 1) * x_term)/k
+        ifelse(m_hat == trunc(m_hat), m_hat - 1, floor(m_hat))
+        es_mle_m  <- m_hat
+        es_mvue_m <- (t * x_term)/k
+    } else {
+        if (x_term < 0 || x_term > min(k, m)){
+            rlang::abort(
+                message = paste0("'.x' must be between 0 and min(k, m). Values supplied are: ",
+                                 "'.x' = ", x_term, "'.k' = ", k, " and '.m' = ", m),
+                use_cli_format = TRUE
+            )
+        }
+
+        if (m < 0){
+            rlang::abort(
+                message = paste0("'.m' must be at least 0. Value suppled is: ", m),
+                use_cli_format = TRUE
+            )
+        }
+
+        if (k < 1){
+            rlang::abort(
+                message = paste0("'.k' must be at least 1. Value supplied is: ", k),
+                use_cli_format = TRUE
+            )
+        }
+
+        es_mle_t <- floor((k * m)/x_term)
+    }
 
     # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_geometric(.n = n, .prob = round(es_mme_prob, 3))
+    if(!.auto_gen_empirical | n < 2){
+        rlang::inform(
+            message = paste0("Empirical data cannot be generated because '.auto_gen_empirical' = ",
+            .auto_gen_empirical, " and the length of '.x' is ", n, "'.auto_gen_empirical' must
+            bet TRUE and n must be at least 2."),
+            use_cli_format = TRUE
+        )
+    } else {
+        te <- tidy_empirical(.x = x_vec)
+        td <- tidy_hypergeometric(.n = n, .m = es_mle_m, .nn = t, .k = k)
         combined_tbl <- tidy_combine_distributions(te, td)
     }
 
+    # ES MLE Total Exists?
+    if (!exists("es_mle_t", mode = "numeric")){
+        es_mle_t <- NA
+    }
+
     ret <- dplyr::tibble(
-        dist_type = rep('Geometric', 2),
+        dist_type = rep('Hypergeometric', 2),
         samp_size = rep(n, 2),
-        min = rep(minx, 2),
-        max = rep(maxx, 2),
-        mean = rep(m, 2),
-        variance = rep(s, 2),
-        sum_x = rep(sum_x, 2),
-        method = c("EnvStats_MME", "EnvStats_MVUE"),
-        shape = c(es_mme_prob, es_mvue_prob)
+        method = c("EnvStats_MLE", "EnvStats_MVUE"),
+        m = c(es_mle_m, es_mvue_m),
+        total = c(es_mle_t, t)
     )
 
     # Return ----
     attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "geometric"
-    attr(ret, "x_term") <- .x
+    attr(ret, "family") <- "hypergeometric"
+    attr(ret, "x_term") <- x_term
     attr(ret, "n") <- n
 
-    if (.auto_gen_empirical){
+    ct_exists <- if(exists("combined_tbl", mode = "data.frame")){
+        ct_exists <- TRUE
+    } else {
+        ct_exists <- FALSE
+    }
+
+    if (.auto_gen_empirical & ct_exists){
         output <- list(
             combined_data_tbl = combined_tbl,
             parameter_tbl     = ret

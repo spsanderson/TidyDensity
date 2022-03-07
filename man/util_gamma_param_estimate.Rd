@@ -45,7 +45,8 @@ Other Parameter Estimation:
 \code{\link{util_beta_param_estimate}()},
 \code{\link{util_binomial_param_estimate}()},
 \code{\link{util_exponential_param_estimate}()},
-\code{\link{util_geometric_param_estimate}()}
+\code{\link{util_geometric_param_estimate}()},
+\code{\link{util_hypergeometric_param_estimate}()}
 
 Other Gamma: 
 \code{\link{tidy_gamma}()},

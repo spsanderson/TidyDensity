@@ -24,7 +24,7 @@ given some vector of values \code{.x}.
 }
 \details{
 This function will see if the given vector \code{.x} is a numeric vector.
-It will attempt to estimate the prob prameter of a geometric distribution.
+It will attempt to estimate the prob parameter of a geometric distribution.
 }
 \examples{
 library(dplyr)
@@ -47,7 +47,8 @@ Other Parameter Estimation:
 \code{\link{util_beta_param_estimate}()},
 \code{\link{util_binomial_param_estimate}()},
 \code{\link{util_exponential_param_estimate}()},
-\code{\link{util_gamma_param_estimate}()}
+\code{\link{util_gamma_param_estimate}()},
+\code{\link{util_hypergeometric_param_estimate}()}
 
 Other Geometric: 
 \code{\link{tidy_geometric}()},

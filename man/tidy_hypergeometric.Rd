@@ -57,6 +57,9 @@ Other Discrete Distribution:
 \code{\link{tidy_zero_truncated_binomial}()},
 \code{\link{tidy_zero_truncated_negative_binomial}()},
 \code{\link{tidy_zero_truncated_poisson}()}
+
+Other Hypergeometric: 
+\code{\link{util_hypergeometric_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH

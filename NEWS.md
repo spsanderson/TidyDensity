@@ -35,6 +35,7 @@ None
 28. Fix #77 - Add function `util_exponential_param_estimate()`
 29. Fix #78 - Add function `util_gamma_param_estimate()`
 30. Fix #79 - Add function `util_geometric_param_estimate()`
+31. Fix #80 - Add function `util_hypergeometric_param_estimate()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`
