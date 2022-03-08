@@ -18,8 +18,7 @@
 #' -  MME
 #' -  MMUE
 #'
-#' @param .x The vector of data to be passed to the function. Must be numeric, and
-#' all values must be 0 <= x <= 1
+#' @param .x The vector of data to be passed to the function.
 #' @param .auto_gen_empirical This is a boolean value of TRUE/FALSE with default
 #' set to TRUE. This will automatically create the `tidy_empirical()` output
 #' for the `.x` parameter and use the `tidy_combine_distributions()`. The user
