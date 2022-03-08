@@ -82,7 +82,7 @@ util_beta_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
       The data will therefore be scaled to enforce this.",
             use_cli_format = TRUE
         )
-        x_term <- healthyR.ai::hai_scale_zero_one_vec(x_term)
+        x_term <- tidy_scale_zero_one_vec(x_term)
         scaled <- TRUE
     } else {
         rlang::inform(

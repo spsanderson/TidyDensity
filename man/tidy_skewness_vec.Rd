@@ -34,7 +34,8 @@ Other Statistic:
 \code{\link{tidy_range_statistic}()}
 
 Other Vector Function: 
-\code{\link{tidy_kurtosis_vec}()}
+\code{\link{tidy_kurtosis_vec}()},
+\code{\link{tidy_scale_zero_one_vec}()}
 }
 \author{
 Steven P. Sanderson II, MPH

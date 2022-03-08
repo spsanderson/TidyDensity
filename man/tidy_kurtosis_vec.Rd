@@ -30,6 +30,7 @@ tidy_kurtosis_vec(rnorm(100, 3, 2))
 \url{https://en.wikipedia.org/wiki/Kurtosis}
 
 Other Vector Function: 
+\code{\link{tidy_scale_zero_one_vec}()},
 \code{\link{tidy_skewness_vec}()}
 
 Other Statistic: 
@@ -37,6 +38,7 @@ Other Statistic:
 \code{\link{tidy_skewness_vec}()}
 
 Other Vector Function: 
+\code{\link{tidy_scale_zero_one_vec}()},
 \code{\link{tidy_skewness_vec}()}
 }
 \author{

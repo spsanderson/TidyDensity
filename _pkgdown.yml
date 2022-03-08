@@ -53,3 +53,7 @@ reference:
      desc: Functions that generate tibbles
      contents:
      -  contains("_tbl")
+  -  title: Vector Functions
+     desc: Functions that work on vectors
+     contents:
+     -  has_concept("Vector Function")
