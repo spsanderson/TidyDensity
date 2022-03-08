@@ -9,6 +9,8 @@ util_negative_binomial_param_estimate(.x, .size, .auto_gen_empirical = TRUE)
 \arguments{
 \item{.x}{The vector of data to be passed to the function.}
 
+\item{.size}{The size parameter.}
+
 \item{.auto_gen_empirical}{This is a boolean value of TRUE/FALSE with default
 set to TRUE. This will automatically create the \code{tidy_empirical()} output
 for the \code{.x} parameter and use the \code{tidy_combine_distributions()}. The user
