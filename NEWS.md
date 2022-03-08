@@ -39,6 +39,7 @@ None
 32. Fix #81 - Add function `util_lognormal_param_estimate()`
 33. Fix #89 - Add function `tidy_scale_zero_one_vec()`
 34. Fix #87 - Add function `tidy_combined_autoplot()`
+35. Fix #82 - Add function `util_logistic_param_estimate()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

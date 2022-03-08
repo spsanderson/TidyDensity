@@ -75,7 +75,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Logistic: 
-\code{\link{tidy_paralogistic}()}
+\code{\link{tidy_paralogistic}()},
+\code{\link{util_logistic_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH
