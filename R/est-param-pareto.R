@@ -28,7 +28,7 @@
 #' library(ggplot2)
 #'
 #' x <- mtcars$mpg
-#' output <- util_pareto_estimate(x)
+#' output <- util_pareto_param_estimate(x)
 #'
 #' output$parameter_tbl
 #'
@@ -39,7 +39,7 @@
 #'   theme(legend.position = "bottom")
 #'
 #' t <- tidy_pareto(50, 1, 1) %>% pull(y)
-#' util_pareto_estimate(t)$parameter_tbl
+#' util_pareto_param_estimate(t)$parameter_tbl
 #'
 #' @return
 #' A tibble/list
@@ -47,7 +47,7 @@
 #' @export
 #'
 
-util_pareto_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_pareto_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
 
     # Tidyeval ----
     x_term <- as.numeric(.x)
