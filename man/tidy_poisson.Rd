@@ -49,7 +49,8 @@ tidy_poisson()
 \url{https://en.wikipedia.org/wiki/Poisson_distribution}
 
 Other Poisson: 
-\code{\link{tidy_zero_truncated_poisson}()}
+\code{\link{tidy_zero_truncated_poisson}()},
+\code{\link{util_poisson_param_estimate}()}
 
 Other Discrete Distribution: 
 \code{\link{tidy_binomial}()},

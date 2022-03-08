@@ -64,7 +64,8 @@ Other Parameter Estimation:
 \code{\link{util_lognormal_param_estimate}()},
 \code{\link{util_negative_binomial_param_estimate}()},
 \code{\link{util_normal_param_estimate}()},
-\code{\link{util_pareto_param_estimate}()}
+\code{\link{util_pareto_param_estimate}()},
+\code{\link{util_poisson_param_estimate}()}
 
 Other Logistic: 
 \code{\link{tidy_logistic}()},

@@ -47,7 +47,8 @@ tidy_zero_truncated_poisson()
 \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
 
 Other Poisson: 
-\code{\link{tidy_poisson}()}
+\code{\link{tidy_poisson}()},
+\code{\link{util_poisson_param_estimate}()}
 
 Other Zero Truncated Distribution: 
 \code{\link{tidy_zero_truncated_binomial}()},
