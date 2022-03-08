@@ -53,13 +53,15 @@ Other Parameter Estimation:
 \code{\link{util_geometric_param_estimate}()},
 \code{\link{util_hypergeometric_param_estimate}()},
 \code{\link{util_logistic_param_estimate}()},
-\code{\link{util_lognormal_param_estimate}()}
+\code{\link{util_lognormal_param_estimate}()},
+\code{\link{util_negative_binomial_param_estimate}()}
 
 Other Binomial: 
 \code{\link{tidy_binomial}()},
 \code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_zero_truncated_binomial}()},
-\code{\link{tidy_zero_truncated_negative_binomial}()}
+\code{\link{tidy_zero_truncated_negative_binomial}()},
+\code{\link{util_negative_binomial_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH

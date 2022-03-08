@@ -62,7 +62,8 @@ Other Binomial:
 \code{\link{tidy_binomial}()},
 \code{\link{tidy_zero_truncated_binomial}()},
 \code{\link{tidy_zero_truncated_negative_binomial}()},
-\code{\link{util_binomial_param_estimate}()}
+\code{\link{util_binomial_param_estimate}()},
+\code{\link{util_negative_binomial_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH
