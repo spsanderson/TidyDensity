@@ -1,5 +1,5 @@
 Package: TidyDensity
-Title: Functions for Tidy Analysis of Randomly Generated Data
+Title: Functions for Tidy Analysis and Generation of Random Data
 Version: 0.0.1.9000
 Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
