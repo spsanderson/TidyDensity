@@ -25,7 +25,7 @@ MMUE
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TidyDensity</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9000</span>
       </span>
     </div>
 
@@ -82,6 +82,8 @@ with the estimated negative binomial data.</p>
     <h2>Arguments</h2>
     <dl><dt>.x</dt>
 <dd><p>The vector of data to be passed to the function.</p></dd>
+<dt>.size</dt>
+<dd><p>The size parameter.</p></dd>
 <dt>.auto_gen_empirical</dt>
 <dd><p>This is a boolean value of TRUE/FALSE with default
 set to TRUE. This will automatically create the <code><a href="tidy_empirical.html">tidy_empirical()</a></code> output
@@ -150,8 +152,8 @@ parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 x 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type         samp_size   min   max  mean method   size   prob shape_ratio</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Negative Binomial        50     0    41  9.36 EnvSta~    50 0.096<span style="text-decoration: underline;">5</span>        518 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Negative Binomial        50     0    41  9.36 EnvSta~    50 0.094<span style="text-decoration: underline;">8</span>        528.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Negative Binomial        50     0    47  10.7 EnvSta~    50 0.085<span style="text-decoration: underline;">6</span>        584 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Negative Binomial        50     0    47  10.7 EnvSta~    50 0.084<span style="text-decoration: underline;">0</span>        595.</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
