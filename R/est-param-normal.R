@@ -11,7 +11,7 @@
 #' @description The function will return a list output by default, and  if the parameter
 #' `.auto_gen_empirical` is set to `TRUE` then the empirical data given to the
 #' parameter `.x` will be run through the `tidy_empirical()` function and combined
-#' with the estimated beta data.
+#' with the estimated normal data.
 #'
 #' Three different methods of shape parameters are supplied:
 #' -  MLE/MME
