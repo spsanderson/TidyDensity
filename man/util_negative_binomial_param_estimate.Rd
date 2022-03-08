@@ -7,8 +7,7 @@
 util_negative_binomial_param_estimate(.x, .size, .auto_gen_empirical = TRUE)
 }
 \arguments{
-\item{.x}{The vector of data to be passed to the function. Must be numeric, and
-all values must be 0 <= x <= 1}
+\item{.x}{The vector of data to be passed to the function.}
 
 \item{.auto_gen_empirical}{This is a boolean value of TRUE/FALSE with default
 set to TRUE. This will automatically create the \code{tidy_empirical()} output
@@ -39,7 +38,7 @@ library(dplyr)
 library(ggplot2)
 
 x <- as.integer(mtcars$mpg)
-output <- util_negative_binomial_param_estimate(x, .size = 5)
+output <- util_negative_binomial_param_estimate(x, .size = 1)
 
 output$parameter_tbl
 
