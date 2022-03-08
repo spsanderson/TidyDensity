@@ -21,9 +21,9 @@ A tibble/list
 The function will return a list output by default, and  if the parameter
 \code{.auto_gen_empirical} is set to \code{TRUE} then the empirical data given to the
 parameter \code{.x} will be run through the \code{tidy_empirical()} function and combined
-with the estimated beta data.
+with the estimated negative binomial data.
 
-Three different methods of shape parameters are supplied:
+Two different methods of shape parameters are supplied:
 \itemize{
 \item MLE/MME
 \item MMUE

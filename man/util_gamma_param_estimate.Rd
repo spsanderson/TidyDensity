@@ -19,7 +19,10 @@ A tibble/list
 }
 \description{
 This function will attempt to estimate the gamma shape and rate
-parameters given some vector of values
+parameters given some vector of values. The function will return a list output by default, and  if the parameter
+\code{.auto_gen_empirical} is set to \code{TRUE} then the empirical data given to the
+parameter \code{.x} will be run through the \code{tidy_empirical()} function and combined
+with the estimated gamma data.
 }
 \details{
 This function will see if the given vector \code{.x} is a numeric vector.

@@ -23,7 +23,10 @@ A tibble/list
 \description{
 This function will check to see if some given vector \code{.x} is
 either a numeric vector or a factor vector with at least two levels then it
-will cause an error and the function will abort.
+will cause an error and the function will abort. The function will return a
+list output by default, and  if the parameter \code{.auto_gen_empirical} is set to
+\code{TRUE} then the empirical data given to the parameter \code{.x} will be run through
+the \code{tidy_empirical()} function and combined with the estimated binomial data.
 }
 \details{
 This function will attempt to estimate the binomial p_hat and size
