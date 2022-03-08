@@ -41,6 +41,7 @@ None
 34. Fix #87 - Add function `tidy_combined_autoplot()`
 35. Fix #82 - Add function `util_logistic_param_estimate()`
 36. Fix #83 - Add function `util_negative_binomial_param_estimate()`
+37. Fix #84 - Add function `util_normal_param_estimate()`
 
 ## Fixes and Minor Improvements
 1. Fix #30 - Move `crayon`, `rstudioapi`, and `cli` from Suggests to Imports due to `pillar`

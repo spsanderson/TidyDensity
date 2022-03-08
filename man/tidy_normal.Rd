@@ -74,7 +74,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Gaussian: 
-\code{\link{tidy_inverse_normal}()}
+\code{\link{tidy_inverse_normal}()},
+\code{\link{util_normal_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH
