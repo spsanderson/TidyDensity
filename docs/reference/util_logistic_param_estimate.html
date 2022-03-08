@@ -83,8 +83,7 @@ with the estimated beta data.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.x</dt>
-<dd><p>The vector of data to be passed to the function. Must be numeric, and
-all values must be 0 &lt;= x &lt;= 1</p></dd>
+<dd><p>The vector of data to be passed to the function.</p></dd>
 <dt>.auto_gen_empirical</dt>
 <dd><p>This is a boolean value of TRUE/FALSE with default
 set to TRUE. This will automatically create the <code><a href="tidy_empirical.html">tidy_empirical()</a></code> output
@@ -110,7 +109,8 @@ parameters given some vector of values.</p>
 <code><a href="util_geometric_param_estimate.html">util_geometric_param_estimate</a>()</code>,
 <code><a href="util_hypergeometric_param_estimate.html">util_hypergeometric_param_estimate</a>()</code>,
 <code><a href="util_lognormal_param_estimate.html">util_lognormal_param_estimate</a>()</code>,
-<code><a href="util_negative_binomial_param_estimate.html">util_negative_binomial_param_estimate</a>()</code></p>
+<code><a href="util_negative_binomial_param_estimate.html">util_negative_binomial_param_estimate</a>()</code>,
+<code><a href="util_normal_param_estimate.html">util_normal_param_estimate</a>()</code></p>
 <p>Other Logistic: 
 <code><a href="tidy_logistic.html">tidy_logistic</a>()</code>,
 <code><a href="tidy_paralogistic.html">tidy_paralogistic</a>()</code></p></div>
@@ -149,9 +149,9 @@ parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 x 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max  mean basic_scale method        location scale</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Logistic         50 -<span style="color: #BB0000;">1.87</span>  8.29  2.75        1.24 EnvStats_MME      2.75  1.24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Logistic         50 -<span style="color: #BB0000;">1.87</span>  8.29  2.75        1.24 EnvStats_MMUE     2.75  1.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Logistic         50 -<span style="color: #BB0000;">1.87</span>  8.29  2.75        1.24 EnvStats_MLE      2.75  1.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Logistic         50 -<span style="color: #BB0000;">2.74</span>  10.4  2.74        1.25 EnvStats_MME      2.74  1.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Logistic         50 -<span style="color: #BB0000;">2.74</span>  10.4  2.74        1.25 EnvStats_MMUE     2.74  1.26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Logistic         50 -<span style="color: #BB0000;">2.74</span>  10.4  2.74        1.25 EnvStats_MLE      2.74  1.59</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 1 more variable: shape_ratio &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 </code></pre></div>

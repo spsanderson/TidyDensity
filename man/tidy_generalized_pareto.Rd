@@ -89,7 +89,8 @@ Other Continuous Distribution:
 Other Pareto: 
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_pareto1}()},
-\code{\link{tidy_pareto}()}
+\code{\link{tidy_pareto}()},
+\code{\link{util_pareto_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH
