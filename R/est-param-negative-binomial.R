@@ -29,7 +29,7 @@
 #' library(ggplot2)
 #'
 #' x <- as.integer(mtcars$mpg)
-#' output <- util_negative_binomial_param_estimate(x, .size = 5)
+#' output <- util_negative_binomial_param_estimate(x, .size = 1)
 #'
 #' output$parameter_tbl
 #'
