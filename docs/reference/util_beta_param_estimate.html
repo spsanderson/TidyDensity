@@ -118,7 +118,8 @@ parameters given some vector of values.</p>
 <code><a href="util_lognormal_param_estimate.html">util_lognormal_param_estimate</a>()</code>,
 <code><a href="util_negative_binomial_param_estimate.html">util_negative_binomial_param_estimate</a>()</code>,
 <code><a href="util_normal_param_estimate.html">util_normal_param_estimate</a>()</code>,
-<code><a href="util_pareto_param_estimate.html">util_pareto_param_estimate</a>()</code></p>
+<code><a href="util_pareto_param_estimate.html">util_pareto_param_estimate</a>()</code>,
+<code><a href="util_poisson_param_estimate.html">util_poisson_param_estimate</a>()</code></p>
 <p>Other Beta: 
 <code><a href="tidy_beta.html">tidy_beta</a>()</code>,
 <code><a href="tidy_generalized_beta.html">tidy_generalized_beta</a>()</code></p></div>
@@ -160,9 +161,9 @@ parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 x 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size    min   max  mean variance method       shape1 shape2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Beta             50 0.077<span style="text-decoration: underline;">7</span> 0.973 0.644   0.044<span style="text-decoration: underline;">3</span> Bayes         32.2   17.8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta             50 0.077<span style="text-decoration: underline;">7</span> 0.973 0.644   0.044<span style="text-decoration: underline;">3</span> NIST_MME       2.69   1.49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Beta             50 0.077<span style="text-decoration: underline;">7</span> 0.973 0.644   0.044<span style="text-decoration: underline;">3</span> EnvStats_MME   2.75   1.52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Beta             50 0.091<span style="text-decoration: underline;">2</span> 0.971 0.610   0.056<span style="text-decoration: underline;">5</span> Bayes         30.5   19.5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta             50 0.091<span style="text-decoration: underline;">2</span> 0.971 0.610   0.056<span style="text-decoration: underline;">5</span> NIST_MME       1.96   1.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Beta             50 0.091<span style="text-decoration: underline;">2</span> 0.971 0.610   0.056<span style="text-decoration: underline;">5</span> EnvStats_MME   2.01   1.29</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 1 more variable: shape_ratio &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 </code></pre></div>

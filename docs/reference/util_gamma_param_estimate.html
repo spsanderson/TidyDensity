@@ -103,7 +103,8 @@ can then plot out the data using <code>$combined_data_tbl</code> from the functi
 <code><a href="util_lognormal_param_estimate.html">util_lognormal_param_estimate</a>()</code>,
 <code><a href="util_negative_binomial_param_estimate.html">util_negative_binomial_param_estimate</a>()</code>,
 <code><a href="util_normal_param_estimate.html">util_normal_param_estimate</a>()</code>,
-<code><a href="util_pareto_param_estimate.html">util_pareto_param_estimate</a>()</code></p>
+<code><a href="util_pareto_param_estimate.html">util_pareto_param_estimate</a>()</code>,
+<code><a href="util_poisson_param_estimate.html">util_poisson_param_estimate</a>()</code></p>
 <p>Other Gamma: 
 <code><a href="tidy_gamma.html">tidy_gamma</a>()</code>,
 <code><a href="tidy_inverse_gamma.html">tidy_inverse_gamma</a>()</code></p></div>
@@ -125,9 +126,9 @@ can then plot out the data using <code>$combined_data_tbl</code> from the functi
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 x 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size    min   max  mean variance method shape  rate shape_ratio</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gamma            50 0.040<span style="text-decoration: underline;">2</span>  11.8  1.87     2.05 NIST_~ 0.840  2.23       0.376</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gamma            50 0.040<span style="text-decoration: underline;">2</span>  11.8  1.87     2.05 EnvSt~ 0.823  2.23       0.369</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Gamma            50 0.040<span style="text-decoration: underline;">2</span>  11.8  1.87     2.05 EnvSt~ 0.803  2.23       0.360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gamma            50 0.052<span style="text-decoration: underline;">7</span>  5.97  1.60     1.47 NIST_~  1.18  1.35       0.872</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gamma            50 0.052<span style="text-decoration: underline;">7</span>  5.97  1.60     1.47 EnvSt~  1.16  1.35       0.854</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Gamma            50 0.052<span style="text-decoration: underline;">7</span>  5.97  1.60     1.47 EnvSt~  1.12  1.35       0.829</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">output</span><span class="op">$</span><span class="va">combined_data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">dx</span>, y <span class="op">=</span> <span class="va">dy</span>, group <span class="op">=</span> <span class="va">dist_type</span>, color <span class="op">=</span> <span class="va">dist_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>

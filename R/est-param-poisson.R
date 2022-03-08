@@ -29,12 +29,12 @@
 #' output$parameter_tbl
 #'
 #' output$combined_data_tbl %>%
-#'   ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
-#'   geom_line() +
+#'   ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
+#'   geom_histogram(binwidth = 0.5, color = "black") +
 #'   theme_minimal() +
 #'   theme(legend.position = "bottom")
 #'
-#' t <- rnorm(50, 0, 1)
+#' t <- rpois(50, 5)
 #' util_poisson_param_estimate(t)$parameter_tbl
 #'
 #' @return

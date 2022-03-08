@@ -31,8 +31,8 @@
 #' output$parameter_tbl
 #'
 #' output$combined_data_tbl %>%
-#'   ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
-#'   geom_histogram(binwidth = 0.5, color = "black") +
+#'   ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
+#'   geom_line() +
 #'   theme_minimal() +
 #'   theme(legend.position = "bottom")
 #'

@@ -103,7 +103,8 @@ can then plot out the data using <code>$combined_data_tbl</code> from the functi
 <code><a href="util_lognormal_param_estimate.html">util_lognormal_param_estimate</a>()</code>,
 <code><a href="util_negative_binomial_param_estimate.html">util_negative_binomial_param_estimate</a>()</code>,
 <code><a href="util_normal_param_estimate.html">util_normal_param_estimate</a>()</code>,
-<code><a href="util_pareto_param_estimate.html">util_pareto_param_estimate</a>()</code></p>
+<code><a href="util_pareto_param_estimate.html">util_pareto_param_estimate</a>()</code>,
+<code><a href="util_poisson_param_estimate.html">util_poisson_param_estimate</a>()</code></p>
 <p>Other Exponential: 
 <code><a href="tidy_exponential.html">tidy_exponential</a>()</code>,
 <code><a href="tidy_inverse_exponential.html">tidy_inverse_exponential</a>()</code></p></div>
@@ -123,9 +124,9 @@ can then plot out the data using <code>$combined_data_tbl</code> from the functi
 <span class="r-in"></span>
 <span class="r-in"><span class="va">output</span><span class="op">$</span><span class="va">parameter_tbl</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type   samp_size    min   max  mean variance method    rate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Exponential        50 0.011<span style="text-decoration: underline;">6</span>  42.0  8.44     66.7 NIST_MME 0.119</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type   samp_size   min   max  mean variance method    rate</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Exponential        50 0.126  45.0  9.99     76.7 NIST_MME 0.100</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">output</span><span class="op">$</span><span class="va">combined_data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">dx</span>, y <span class="op">=</span> <span class="va">dy</span>, group <span class="op">=</span> <span class="va">dist_type</span>, color <span class="op">=</span> <span class="va">dist_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>

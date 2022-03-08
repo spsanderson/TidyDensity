@@ -109,7 +109,8 @@ deviation parameters given some vector of values.</p>
 <code><a href="util_logistic_param_estimate.html">util_logistic_param_estimate</a>()</code>,
 <code><a href="util_lognormal_param_estimate.html">util_lognormal_param_estimate</a>()</code>,
 <code><a href="util_negative_binomial_param_estimate.html">util_negative_binomial_param_estimate</a>()</code>,
-<code><a href="util_pareto_param_estimate.html">util_pareto_param_estimate</a>()</code></p>
+<code><a href="util_pareto_param_estimate.html">util_pareto_param_estimate</a>()</code>,
+<code><a href="util_poisson_param_estimate.html">util_poisson_param_estimate</a>()</code></p>
 <p>Other Gaussian: 
 <code><a href="tidy_inverse_normal.html">tidy_inverse_normal</a>()</code>,
 <code><a href="tidy_normal.html">tidy_normal</a>()</code></p></div>
@@ -146,8 +147,8 @@ deviation parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 x 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max method               mu stan_dev shape_ratio</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gaussian         50 -<span style="color: #BB0000;">2.67</span>  2.89 EnvStats_MME_MLE -<span style="color: #BB0000;">0.159</span>     1.14      -<span style="color: #BB0000;">0.140</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gaussian         50 -<span style="color: #BB0000;">2.67</span>  2.89 EnvStats_MVUE    -<span style="color: #BB0000;">0.159</span>     1.15      -<span style="color: #BB0000;">0.138</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gaussian         50 -<span style="color: #BB0000;">2.47</span>  2.22 EnvStats_MME_MLE 0.058<span style="text-decoration: underline;">9</span>    0.994      0.059<span style="text-decoration: underline;">3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gaussian         50 -<span style="color: #BB0000;">2.47</span>  2.22 EnvStats_MVUE    0.058<span style="text-decoration: underline;">9</span>    1.00       0.058<span style="text-decoration: underline;">7</span></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
