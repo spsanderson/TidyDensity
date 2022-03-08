@@ -83,7 +83,7 @@ util_logistic_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
         sum(c + log(b) + 2 * log(1 + exp(-c)))
     }
 
-    mle_params <- nlminb(
+    mle_params <- stats::nlminb(
         start = c(location, scale),
         objective = mle_fx,
         lower = c(-Inf, .Machine$double.eps), y = x_term)$par
