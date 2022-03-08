@@ -9,7 +9,10 @@
 #' It will attempt to estimate the prob parameter of a geometric distribution.
 #'
 #' @description This function will attempt to estimate the geometric prob parameter
-#' given some vector of values `.x`.
+#' given some vector of values `.x`. The function will return a list output by default, and  if the parameter
+#' `.auto_gen_empirical` is set to `TRUE` then the empirical data given to the
+#' parameter `.x` will be run through the `tidy_empirical()` function and combined
+#' with the estimated geometric data.
 #'
 #' @param .x The vector of data to be passed to the function. Must be non-negative
 #' integers.
