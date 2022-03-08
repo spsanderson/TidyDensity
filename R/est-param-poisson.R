@@ -23,7 +23,7 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' x <- mtcars$mpg
+#' x <- as.integer(mtcars$mpg)
 #' output <- util_poisson_param_estimate(x)
 #'
 #' output$parameter_tbl
@@ -60,7 +60,7 @@ util_poisson_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
         )
     }
 
-    if (n < 2 || any(x_term < 0) || any(unique_terms != trunc(x_term))){
+    if (n < 1 || any(x_term < 0) || any(x_term != trunc(x_term))){
         rlang::abort(
             message = "'.x' must contain at least one non-missing distinct value.
       All values of '.x' must be positive integers.",
