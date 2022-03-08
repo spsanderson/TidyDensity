@@ -47,7 +47,8 @@ tidy_combine_distributions <- function(...){
     # Checks ----
     if (length(dist_list) < 2){
         rlang::abort(
-            "You must add at least two distributions to the function"
+            message = "You must add at least two distributions to the function",
+            use_cli_format = TRUE
         )
     }
 
