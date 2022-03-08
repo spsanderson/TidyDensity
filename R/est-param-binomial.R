@@ -10,7 +10,10 @@
 #'
 #' @description This function will check to see if some given vector `.x` is
 #' either a numeric vector or a factor vector with at least two levels then it
-#' will cause an error and the function will abort.
+#' will cause an error and the function will abort. The function will return a
+#' list output by default, and  if the parameter `.auto_gen_empirical` is set to
+#' `TRUE` then the empirical data given to the parameter `.x` will be run through
+#' the `tidy_empirical()` function and combined with the estimated binomial data.
 #'
 #' @param .x The vector of data to be passed to the function. Must be numeric, and
 #' all values must be 0 <= x <= 1
