@@ -47,10 +47,10 @@
 #'
 #' combined_tbl
 #'
-#' tn %>%
+#' combined_tbl %>%
 #'   tidy_combined_autoplot()
 #'
-#' tn %>%
+#' combined_tbl %>%
 #'   tidy_combined_autoplot(.plot_type = "qq")
 #'
 #' @return
