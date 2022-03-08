@@ -8,7 +8,10 @@
 #' @details This function will see if the given vector `.x` is a numeric vector.
 #'
 #' @description This function will attempt to estimate the gamma shape and rate
-#' parameters given some vector of values
+#' parameters given some vector of values. The function will return a list output by default, and  if the parameter
+#' `.auto_gen_empirical` is set to `TRUE` then the empirical data given to the
+#' parameter `.x` will be run through the `tidy_empirical()` function and combined
+#' with the estimated gamma data.
 #'
 #' @param .x The vector of data to be passed to the function. Must be numeric.
 #' @param .auto_gen_empirical This is a boolean value of TRUE/FALSE with default
