@@ -27,7 +27,6 @@ Imports:
     stringr,
     actuar,
     methods,
-    healthyR.ai,
     stats
 Suggests: 
     rmarkdown,

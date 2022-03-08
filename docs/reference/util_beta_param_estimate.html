@@ -133,9 +133,6 @@ parameters given some vector of values.</p>
 <span class="r-in"><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu">util_beta_param_estimate</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> For the beta distribution, its mean 'mu' should be 0 &lt; mu &lt; 1. The data will</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> therefore be scaled to enforce this.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Registered S3 method overwritten by 'tune':</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   method                   from   </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   required_pkgs.model_spec parsnip</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">output</span><span class="op">$</span><span class="va">parameter_tbl</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 x 10</span></span>
@@ -159,9 +156,9 @@ parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 x 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max  mean variance method       shape1 shape2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Beta             50 0.128 0.988 0.641   0.038<span style="text-decoration: underline;">3</span> Bayes         32.1   17.9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta             50 0.128 0.988 0.641   0.038<span style="text-decoration: underline;">3</span> NIST_MME       3.21   1.79</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Beta             50 0.128 0.988 0.641   0.038<span style="text-decoration: underline;">3</span> EnvStats_MME   3.28   1.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Beta             50 0.156 0.975 0.610   0.045<span style="text-decoration: underline;">3</span> Bayes         30.5   19.5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta             50 0.156 0.975 0.610   0.045<span style="text-decoration: underline;">3</span> NIST_MME       2.59   1.66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Beta             50 0.156 0.975 0.610   0.045<span style="text-decoration: underline;">3</span> EnvStats_MME   2.66   1.70</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 1 more variable: shape_ratio &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 </code></pre></div>
