@@ -273,6 +273,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
   }
 
   if (.geom_smooth) {
+      max_dy <- max(data_tbl$dy)
+
     plt <- plt +
       ggplot2::geom_smooth(
         ggplot2::aes(
@@ -281,7 +283,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
         se = FALSE,
         color = "black",
         linetype = "dashed"
-      )
+      ) +
+        ggplot2::xlim(0, max_dy)
   }
 
   if (.geom_jitter) {

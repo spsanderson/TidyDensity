@@ -5,6 +5,13 @@
 Fix `tidy_autoplot_` functions to incorprate this change. Fix `util_gamma_param_estimate()`
 to say `scale` instead of `rate` in the returned estimated parameters.
 
+## New Features
+None
+
+## Minor Fixes and Improvements
+1. Fix #90 - Make sure when `.geom_smooth` is set to TRUE that `ggplot2::xlim(0, max_dy)`
+is set.
+
 # TidyDensity 1.0.0
 
 ## Breaking Changes
