@@ -1,5 +1,10 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+1. Fix #91 - Bug fix, change `tidy_gamma()` parameter of `.rate` to `.scale
+Fix `tidy_autoplot_` functions to incorprate this change. Fix `util_gamma_param_estimate()`
+to say `scale` instead of `rate` in the returned estimated parameters.
+
 # TidyDensity 1.0.0
 
 ## Breaking Changes
