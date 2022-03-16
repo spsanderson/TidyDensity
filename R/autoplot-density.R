@@ -118,7 +118,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
     "Parameters: ", if (atb$tibble_type == "tidy_gaussian") {
       paste0("Mean: ", atb$.mean, " - SD: ", atb$.sd)
     } else if (atb$tibble_type == "tidy_gamma") {
-      paste0("Shape: ", atb$.shape, " - Rate: ", atb$.rate)
+      paste0("Shape: ", atb$.shape, " - Scale: ", atb$.scale)
     } else if (atb$tibble_type == "tidy_beta") {
       paste0("Shape1: ", atb$.shape1, " - Shape2: ", atb$.shape2, " - NCP: ", atb$.ncp)
     } else if (atb$tibble_type %in% c("tidy_poisson", "tidy_zero_truncated_poisson")) {

@@ -124,7 +124,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
         "Parameters: ", if (atb$all$tibble_type == "tidy_gaussian") {
             paste0("Mean: ", toString(atb$.param_list$.mean), " - SD: ", toString(atb$.param_list$.sd))
         } else if (atb$all$tibble_type == "tidy_gamma") {
-            paste0("Shape: ", toString(atb$.param_list$.shape), " - Rate: ", toString(atb$.param_list$.rate))
+            paste0("Shape: ", toString(atb$.param_list$.shape), " - Scale: ", toString(atb$.param_list$.scale))
         } else if (atb$all$tibble_type == "tidy_beta") {
             paste0("Shape1: ", toString(atb$.param_list$.shape1), " - Shape2: ", toString(atb$.param_list$.shape2), " - NCP: ", toString(atb$.param_list$.ncp))
         } else if (atb$all$tibble_type %in% c("tidy_poisson", "tidy_zero_truncated_poisson")) {

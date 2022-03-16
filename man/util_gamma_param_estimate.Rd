@@ -18,7 +18,7 @@ can then plot out the data using \verb{$combined_data_tbl} from the function out
 A tibble/list
 }
 \description{
-This function will attempt to estimate the gamma shape and rate
+This function will attempt to estimate the gamma shape and scale
 parameters given some vector of values. The function will return a list output by default, and  if the parameter
 \code{.auto_gen_empirical} is set to \code{TRUE} then the empirical data given to the
 parameter \code{.x} will be run through the \code{tidy_empirical()} function and combined
@@ -31,7 +31,7 @@ This function will see if the given vector \code{.x} is a numeric vector.
 library(dplyr)
 library(ggplot2)
 
-tg <- tidy_gamma(.shape = 1, .rate = .5) \%>\% pull(y)
+tg <- tidy_gamma(.shape = 1, .scale = .3) \%>\% pull(y)
 output <- util_gamma_param_estimate(tg)
 
 output$parameter_tbl

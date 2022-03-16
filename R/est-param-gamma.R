@@ -7,7 +7,7 @@
 #'
 #' @details This function will see if the given vector `.x` is a numeric vector.
 #'
-#' @description This function will attempt to estimate the gamma shape and rate
+#' @description This function will attempt to estimate the gamma shape and scale
 #' parameters given some vector of values. The function will return a list output by default, and  if the parameter
 #' `.auto_gen_empirical` is set to `TRUE` then the empirical data given to the
 #' parameter `.x` will be run through the `tidy_empirical()` function and combined
@@ -23,7 +23,7 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' tg <- tidy_gamma(.shape = 1, .rate = .5) %>% pull(y)
+#' tg <- tidy_gamma(.shape = 1, .scale = .3) %>% pull(y)
 #' output <- util_gamma_param_estimate(tg)
 #'
 #' output$parameter_tbl
@@ -76,19 +76,19 @@ util_gamma_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
     # Parameters ----
     # NIST
     nist_shape <- (m/s)^2
-    nist_rate <- (s^2)/m
+    nist_scale <- (s^2)/m
 
     # EnvStats
     es_mmu_shape <- (m/(sqrt(n/(n - 1)) * s))^2
-    es_mmu_rate <- m/nist_shape
+    es_mmu_scale <- m/nist_shape
 
     es_bcmle_shape <- ((n - 3)/n) * nist_shape + (2/(3 * n))
-    es_bcmle_rate <- m/nist_shape
+    es_bcmle_scale <- m/nist_shape
 
     # Return Tibble ----
     if (.auto_gen_empirical){
         te <- tidy_empirical(.x = x_term)
-        td <- tidy_gamma(.n = n, .shape = round(nist_shape, 3), .rate = round(nist_rate, 3))
+        td <- tidy_gamma(.n = n, .shape = round(nist_shape, 3), .scale = round(nist_scale, 3))
         combined_tbl <- tidy_combine_distributions(te, td)
     }
 
@@ -101,9 +101,9 @@ util_gamma_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
         variance = rep(s, 3),
         method = c("NIST_MME", "EnvStats_MMUE", "EnvStats_BCMLE"),
         shape = c(nist_shape, es_mmu_shape, es_bcmle_shape),
-        rate = c(nist_rate, es_mmu_rate, es_bcmle_rate),
-        shape_ratio = c(nist_shape/nist_rate, es_mmu_shape/es_mmu_rate,
-                        es_bcmle_shape/es_bcmle_rate)
+        scale = c(nist_scale, es_mmu_scale, es_bcmle_scale),
+        shape_ratio = c(nist_shape/nist_scale, es_mmu_shape/es_mmu_scale,
+                        es_bcmle_shape/es_bcmle_scale)
     )
 
     # Return ----

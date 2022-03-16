@@ -4,17 +4,17 @@
 \alias{tidy_gamma}
 \title{Tidy Randomly Generated Gamma Distribution Tibble}
 \usage{
-tidy_gamma(.n = 50, .shape = 1, .rate = 1, .num_sims = 1)
+tidy_gamma(.n = 50, .shape = 1, .scale = 0.3, .num_sims = 1)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
 
 \item{.shape}{This is strictly 0 to infinity.}
 
+\item{.num_sims}{The number of randomly generated simulations you want.}
+
 \item{.rate}{The standard deviation of the randomly generated data. This is
 strictly from 0 to infinity.}
-
-\item{.num_sims}{The number of randomly generated simulations you want.}
 }
 \value{
 A tibble of randomly generated data.
