@@ -62,7 +62,7 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
         "Parameters: ", if (atb$all$tibble_type == "tidy_gaussian") {
             paste0("Mean: ", atb$all$.mean, " - SD: ", atb$all$.sd)
         } else if (atb$all$tibble_type == "tidy_gamma") {
-            paste0("Shape: ", atb$all$.shape, " - Rate: ", atb$all$.rate)
+            paste0("Shape: ", atb$all$.shape, " - Scale: ", atb$all$.scale)
         } else if (atb$all$tibble_type == "tidy_beta") {
             paste0("Shape1: ", atb$all$.shape1, " - Shape2: ", atb$all$.shape2, " - NCP: ", atb$all$.ncp)
         } else if (atb$all$tibble_type %in% c("tidy_poisson", "tidy_zero_truncated_poisson")) {
