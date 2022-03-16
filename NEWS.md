@@ -5,6 +5,12 @@
 Fix `tidy_autoplot_` functions to incorprate this change. Fix `util_gamma_param_estimate()`
 to say `scale` instead of `rate` in the returned estimated parameters.
 
+## New Features
+None
+
+## Minor Fixes and Improvements
+None
+
 # TidyDensity 1.0.0
 
 ## Breaking Changes
