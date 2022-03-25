@@ -31,7 +31,7 @@
 #'
 #' @param .n The number of randomly generated points you want.
 #' @param .shape This is strictly 0 to infinity.
-#' @param .rate The standard deviation of the randomly generated data. This is
+#' @param .scale The standard deviation of the randomly generated data. This is
 #' strictly from 0 to infinity.
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
