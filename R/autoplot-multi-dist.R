@@ -207,7 +207,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
         "bottom"
     }
 
-    if (plot_type == "density" & atb$distribution_family_type == "continuous") {
+    if (plot_type == "density" & atb$all$distribution_family_type == "continuous") {
         plt <- data_tbl %>%
             ggplot2::ggplot(
                 ggplot2::aes(x = dx, y = dy, group = interaction(dist_name, sim_number), color = dist_name)
@@ -220,7 +220,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
                 color = "Simulation"
             ) +
             ggplot2::theme(legend.position = leg_pos)
-    } else if (plot_type == "density" & atb$distribution_family_type == "discrete"){
+    } else if (plot_type == "density" & atb$all$distribution_family_type == "discrete"){
         plt <- data_tbl %>%
             ggplot2::ggplot(
                 ggplot2::aes(x = y, group = interaction(dist_name, sim_number), color = dist_name)
