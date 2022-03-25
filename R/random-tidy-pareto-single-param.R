@@ -99,6 +99,7 @@ tidy_pareto1 <- function(.n = 50, .shape = 1, .min = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.shape, .min)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".shape") <- .shape
   attr(df, ".min") <- .min
   attr(df, ".n") <- .n

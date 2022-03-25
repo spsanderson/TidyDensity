@@ -96,6 +96,7 @@ tidy_f <- function(.n = 50, .df1 = 1, .df2 = 1, .ncp = 0, .num_sims = 1) {
   param_grid <- dplyr::tibble(.df1, .df2, .ncp)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".df1") <- .df1
   attr(df, ".df2") <- .df2
   attr(df, ".ncp") <- .ncp

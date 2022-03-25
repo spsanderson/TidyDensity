@@ -89,6 +89,7 @@ tidy_exponential <- function(.n = 50, .rate = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.rate)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".rate") <- .rate
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims

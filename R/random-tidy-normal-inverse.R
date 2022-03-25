@@ -103,6 +103,7 @@ tidy_inverse_normal <- function(.n = 50, .mean = 1, .shape = 1, .dispersion = 1/
     param_grid <- dplyr::tibble(.mean, .shape, .dispersion)
 
     # Attach descriptive attributes to tibble
+    attr(df, "distribution_family_type") <- "continuous"
     attr(df, ".mean") <- .mean
     attr(df, ".shape") <- .shape
     attr(df, ".dispersion") <- .dispersion

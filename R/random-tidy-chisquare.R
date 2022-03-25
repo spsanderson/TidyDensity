@@ -95,6 +95,7 @@ tidy_chisquare <- function(.n = 50, .df = 1, .ncp = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.df, .ncp)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".df") <- .df
   attr(df, ".ncp") <- .ncp
   attr(df, ".n") <- .n

@@ -91,6 +91,7 @@ tidy_logistic <- function(.n = 50, .location = 0, .scale = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.location, .scale)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".location") <- .location
   attr(df, ".scale") <- .scale
   attr(df, ".n") <- .n

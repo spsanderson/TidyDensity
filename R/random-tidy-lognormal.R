@@ -95,6 +95,7 @@ tidy_lognormal <- function(.n = 50, .meanlog = 0, .sdlog = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.meanlog, .sdlog)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".meanlog") <- .meanlog
   attr(df, ".sdlog") <- .sdlog
   attr(df, ".n") <- .n

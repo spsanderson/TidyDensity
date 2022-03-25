@@ -99,6 +99,7 @@ tidy_inverse_exponential <- function(.n = 50, .rate = 1, .scale = 1/.rate, .num_
     param_grid <- dplyr::tibble(.rate, .scale)
 
     # Attach descriptive attributes to tibble
+    attr(df, "distribution_family_type") <- "continuous"
     attr(df, ".rate") <- .rate
     attr(df, ".scale") <- .scale
     attr(df, ".n") <- .n
