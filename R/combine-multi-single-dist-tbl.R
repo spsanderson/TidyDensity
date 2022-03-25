@@ -80,13 +80,24 @@ tidy_multi_single_dist <- function(
     stringr::str_to_title()
 
   # Get column names from the param_grid in order to make teh dist_type column ----
+  # Get column names from the param_grid in order to make the dist_type column ----
   cols <- names(param_grid %>% dplyr::select(-c(.n, .num_sims)))
 
-  dff$dist_name <- paste0(
-    paste0(dist_type, " c("),
-    apply(dff[, cols], 1, paste0, collapse = ", "),
-    ")"
-  )
+  if (length(cols) == 1){
+      dff$dist_name <- paste0(dist_type, " c(", dff[, cols], ")")
+  } else {
+      dff$dist_name <- paste0(
+          paste0(dist_type, " c("),
+          apply(dff[, cols], 1, paste0, collapse = ", "),
+          ")"
+      )
+  }
+
+  # dff$dist_name <- paste0(
+  #   paste0(dist_type, " c("),
+  #   apply(dff[, cols], 1, paste0, collapse = ", "),
+  #   ")"
+  # )
 
   df_unnested_tbl <- dff %>%
     tidyr::unnest(results) %>%

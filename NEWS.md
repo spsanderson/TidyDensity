@@ -11,6 +11,8 @@ None
 ## Minor Fixes and Improvements
 1. Fix #90 - Make sure when `.geom_smooth` is set to TRUE that `ggplot2::xlim(0, max_dy)`
 is set.
+2. Fix #100 - `tidy_multi_single_dist()` failed on distribution with single parameter
+like `tidy_poisson()`
 
 # TidyDensity 1.0.0
 
