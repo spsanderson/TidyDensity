@@ -15,6 +15,8 @@ is set.
 like `tidy_poisson()`
 3. Fix #96 - Enhance all `tidy_` distribution functions to add an attribute of 
 either discrete or continuous that helps in the autoplot process.
+4. Fix #97 - Enhance `tidy_autoplot()` to use histogram or lines for density plot
+depending on if the distribution is discrete or continuous.
 
 # TidyDensity 1.0.0
 
