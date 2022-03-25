@@ -62,9 +62,9 @@
 #'
 
 tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
-                          .geom_point = FALSE, .point_size = 1,
-                          .geom_rug = FALSE, .geom_smooth = FALSE,
-                          .geom_jitter = FALSE, .interactive = FALSE) {
+                                     .geom_point = FALSE, .point_size = 1,
+                                     .geom_rug = FALSE, .geom_smooth = FALSE,
+                                     .geom_jitter = FALSE, .interactive = FALSE) {
 
     # Plot type ----
     plot_type <- tolower(as.character(.plot_type))
@@ -162,7 +162,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
         } else if (atb$all$tibble_type %in% c("tidy_pareto", "tidy_inverse_pareto")) {
             paste0("Shape: ", toString(atb$.param_list$.shape), " - Scale: ", toString(atb$.param_list$.scale))
         } else if (atb$all$tibble_type %in% c("tidy_generalized_pareto",
-                                          "tidy_burr","tidy_inverse_burr")){
+                                              "tidy_burr","tidy_inverse_burr")){
             paste0(
                 "Shape1: ", toString(atb$.param_list$.shape1), " - ",
                 "Shape2: ", toString(atb$.param_list$.shape2), " - ",
@@ -207,7 +207,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
         "bottom"
     }
 
-    if (plot_type == "density") {
+    if (plot_type == "density" & atb$distribution_family_type == "continuous") {
         plt <- data_tbl %>%
             ggplot2::ggplot(
                 ggplot2::aes(x = dx, y = dy, group = interaction(dist_name, sim_number), color = dist_name)
@@ -218,6 +218,22 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
                 title = "Density Plot",
                 subtitle = sub_title,
                 color = "Simulation"
+            ) +
+            ggplot2::theme(legend.position = leg_pos)
+    } else if (plot_type == "density" & atb$distribution_family_type == "discrete"){
+        plt <- data_tbl %>%
+            ggplot2::ggplot(
+                ggplot2::aes(x = y, group = interaction(dist_name, sim_number), color = dist_name)
+            ) +
+            ggplot2::geom_histogram(
+                alpha = 0.318, color = "#e9ecef", bins = max(unique(data_tbl$y)) + 1,
+                position = "identity"
+            ) +
+            ggplot2::theme_minimal() +
+            ggplot2::labs(
+                title = "Histogram Plot",
+                subtitle = sub_title,
+                fill = "Simulation"
             ) +
             ggplot2::theme(legend.position = leg_pos)
     } else if (plot_type == "quantile") {
