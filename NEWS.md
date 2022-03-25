@@ -13,6 +13,8 @@ None
 is set.
 2. Fix #100 - `tidy_multi_single_dist()` failed on distribution with single parameter
 like `tidy_poisson()`
+3. Fix #96 - Enhance all `tidy_` distribution functions to add an attribute of 
+either discrete or continuous that helps in the autoplot process.
 
 # TidyDensity 1.0.0
 

@@ -90,6 +90,7 @@ tidy_geometric <- function(.n = 50, .prob = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.prob)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".prob") <- .prob
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims

@@ -98,6 +98,7 @@ tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.mean, .sd)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".mean") <- .mean
   attr(df, ".sd") <- .sd
   attr(df, ".n") <- .n

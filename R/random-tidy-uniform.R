@@ -92,6 +92,7 @@ tidy_uniform <- function(.n = 50, .min = 0, .max = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.max, .min)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".max") <- .max
   attr(df, ".min") <- .min
   attr(df, ".n") <- .n

@@ -95,6 +95,7 @@ tidy_weibull <- function(.n = 50, .shape = 1, .scale = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.shape, .scale)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".shape") <- .shape
   attr(df, ".scale") <- .scale
   attr(df, ".n") <- .n

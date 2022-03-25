@@ -99,6 +99,7 @@ tidy_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.size, .prob)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "discrete"
   attr(df, ".size") <- .size
   attr(df, ".prob") <- .prob
   attr(df, ".n") <- .n

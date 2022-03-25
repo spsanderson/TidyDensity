@@ -119,6 +119,7 @@ tidy_generalized_beta <- function(.n = 50, .shape1 = 1, .shape2 = 1,
     param_grid <- dplyr::tibble(.shape1, .shape2, .shape3, .rate, .scale)
 
     # Attach descriptive attributes to tibble
+    attr(df, "distribution_family_type") <- "continuous"
     attr(df, ".shape1") <- .shape1
     attr(df, ".shape2") <- .shape2
     attr(df, ".shape3") <- .shape3

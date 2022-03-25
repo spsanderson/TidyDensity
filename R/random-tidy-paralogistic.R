@@ -104,6 +104,7 @@ tidy_paralogistic <- function(.n = 50, .shape = 1, .rate = 1, .scale = 1/.rate,
     param_grid <- dplyr::tibble(.shape, .rate, .scale)
 
     # Attach descriptive attributes to tibble
+    attr(df, "distribution_family_type") <- "continuous"
     attr(df, ".shape") <- .shape
     attr(df, ".rate") <- .rate
     attr(df, ".scale") <- .scale

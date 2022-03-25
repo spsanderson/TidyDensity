@@ -91,6 +91,7 @@ tidy_poisson <- function(.n = 50, .lambda = 1, .num_sims = 1) {
   param_grid <- dplyr::tibble(.lambda)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "discrete"
   attr(df, ".lambda") <- .lambda
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims

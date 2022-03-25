@@ -96,6 +96,7 @@ tidy_hypergeometric <- function(.n = 50, .m = 0, .nn = 0, .k = 0, .num_sims = 1)
   param_grid <- dplyr::tibble(.m, .nn, .k)
 
   # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "discrete"
   attr(df, ".m") <- .m
   attr(df, ".nn") <- .nn
   attr(df, ".k") <- .k
