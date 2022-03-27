@@ -1,4 +1,4 @@
-# TidyDensity (development version)
+# TidyDensity 1.0.1
 
 ## Breaking Changes
 1. Fix #91 - Bug fix, change `tidy_gamma()` parameter of `.rate` to `.scale

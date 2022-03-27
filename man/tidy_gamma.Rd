@@ -11,10 +11,10 @@ tidy_gamma(.n = 50, .shape = 1, .scale = 0.3, .num_sims = 1)
 
 \item{.shape}{This is strictly 0 to infinity.}
 
-\item{.num_sims}{The number of randomly generated simulations you want.}
-
-\item{.rate}{The standard deviation of the randomly generated data. This is
+\item{.scale}{The standard deviation of the randomly generated data. This is
 strictly from 0 to infinity.}
+
+\item{.num_sims}{The number of randomly generated simulations you want.}
 }
 \value{
 A tibble of randomly generated data.
