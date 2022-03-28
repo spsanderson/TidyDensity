@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TidyDensity</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1.9000</span>
       </span>
     </div>
 
@@ -59,18 +59,35 @@
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="tidydensity-development-version">TidyDensity (development version)<a class="anchor" aria-label="anchor" href="#tidydensity-development-version"></a></h2>
 <div class="section level3">
-<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
-<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/91">#91</a> - Bug fix, change <code><a href="../reference/tidy_gamma.html">tidy_gamma()</a></code> parameter of
-<code>.rate</code> to
-<code>.scale Fix</code>tidy_autoplot_<code>functions to incorprate this change. Fix</code>util_gamma_param_estimate()<code>to say</code>scale<code>instead of</code>rate`
-in the returned estimated parameters.</li>
-</ol></div>
+<h3 id="breaking-changes-development-version">Breaking Changes:<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<p>None</p>
+</div>
 <div class="section level3">
 <h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
 <p>None</p>
 </div>
 <div class="section level3">
 <h3 id="minor-fixes-and-improvements-development-version">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-development-version"></a></h3>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/110">#110</a> - Bug fix, correct the <code>p</code> calculation in
+<code><a href="../reference/tidy_poisson.html">tidy_poisson()</a></code> that will now produce the correct
+probability chart from the auto plot functions.</li>
+</ol></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.1" id="tidydensity-101">TidyDensity 1.0.1<small>2022-03-27</small><a class="anchor" aria-label="anchor" href="#tidydensity-101"></a></h2>
+<div class="section level3">
+<h3 id="breaking-changes-1-0-1">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-1"></a></h3>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/91">#91</a> - Bug fix, change <code><a href="../reference/tidy_gamma.html">tidy_gamma()</a></code> parameter of
+<code>.rate</code> to
+<code>.scale Fix</code>tidy_autoplot_<code>functions to incorprate this change. Fix</code>util_gamma_param_estimate()<code>to say</code>scale<code>instead of</code>rate`
+in the returned estimated parameters.</li>
+</ol></div>
+<div class="section level3">
+<h3 id="new-features-1-0-1">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-0-1"></a></h3>
+<p>None</p>
+</div>
+<div class="section level3">
+<h3 id="minor-fixes-and-improvements-1-0-1">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-1-0-1"></a></h3>
 <ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/90">#90</a> - Make sure when <code>.geom_smooth</code> is set to TRUE
 that <code>ggplot2::xlim(0, max_dy)</code> is set.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/100">#100</a> - <code><a href="../reference/tidy_multi_single_dist.html">tidy_multi_single_dist()</a></code> failed on
