@@ -11,12 +11,13 @@ None
 now produce the correct probability chart from the auto plot functions.
 2. Fix #112 - Bug fix, correct the `p` calculation in `tidy_hypergeometric()` that
 will no produce the correct probability chart from the auto plot functions.
+3. Fix #115 - Fix spelling in Quantile chart.
 
 # TidyDensity 1.0.1
 
 ## Breaking Changes
 1. Fix #91 - Bug fix, change `tidy_gamma()` parameter of `.rate` to `.scale
-Fix `tidy_autoplot_` functions to incorprate this change. Fix `util_gamma_param_estimate()`
+Fix `tidy_autoplot_` functions to incorporate this change. Fix `util_gamma_param_estimate()`
 to say `scale` instead of `rate` in the returned estimated parameters.
 
 ## New Features
