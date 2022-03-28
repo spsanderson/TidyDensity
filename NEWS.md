@@ -9,7 +9,7 @@ None
 ## Minor Fixes and Improvements
 1. Fix #110 - Bug fix, correct the `p` calculation in `tidy_poisson()` that will
 now produce the correct probability chart from the auto plot functions.
-2. Fix #112 - Bug fix, correct the `p` calculation in `tidy_hypergeometri()` that
+2. Fix #112 - Bug fix, correct the `p` calculation in `tidy_hypergeometric()` that
 will no produce the correct probability chart from the auto plot functions.
 
 # TidyDensity 1.0.1
