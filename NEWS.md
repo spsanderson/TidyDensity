@@ -17,7 +17,7 @@ will no produce the correct probability chart from the auto plot functions.
 
 ## Breaking Changes
 1. Fix #91 - Bug fix, change `tidy_gamma()` parameter of `.rate` to `.scale
-Fix `tidy_autoplot_` functions to incorprate this change. Fix `util_gamma_param_estimate()`
+Fix `tidy_autoplot_` functions to incorporate this change. Fix `util_gamma_param_estimate()`
 to say `scale` instead of `rate` in the returned estimated parameters.
 
 ## New Features
