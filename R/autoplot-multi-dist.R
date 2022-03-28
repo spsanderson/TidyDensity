@@ -261,7 +261,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
             ggplot2::geom_line(size = line_size) +
             ggplot2::theme_minimal() +
             ggplot2::labs(
-                title = "Probabilty Plot",
+                title = "Probability Plot",
                 subtitle = sub_title,
                 color = "Simulation"
             ) +
