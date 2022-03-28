@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   getting-started: getting-started.html
-last_built: 2022-03-28T17:46Z
+last_built: 2022-03-28T17:49Z
 urls:
   reference: https://github.com/spsanderson/TidyDensity/reference
   article: https://github.com/spsanderson/TidyDensity/articles
