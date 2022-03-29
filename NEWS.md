@@ -12,6 +12,8 @@ now produce the correct probability chart from the auto plot functions.
 2. Fix #112 - Bug fix, correct the `p` calculation in `tidy_hypergeometric()` that
 will no produce the correct probability chart from the auto plot functions.
 3. Fix #115 - Fix spelling in Quantile chart.
+4. Fix #117 - Fix probability plot x axis label.
+4. Fix #118 - Fix fill color on combined auto plot
 
 # TidyDensity 1.0.1
 

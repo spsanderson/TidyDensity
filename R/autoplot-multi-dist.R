@@ -223,7 +223,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
     } else if (plot_type == "density" & atb$all$distribution_family_type == "discrete"){
         plt <- data_tbl %>%
             ggplot2::ggplot(
-                ggplot2::aes(x = y, group = interaction(dist_name, sim_number), color = dist_name)
+                ggplot2::aes(x = y, group = interaction(dist_name, sim_number), fill = dist_name)
             ) +
             ggplot2::geom_histogram(
                 alpha = 0.318, color = "#e9ecef", bins = max(unique(data_tbl$y)) + 1,
@@ -255,10 +255,10 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
         plt <- data_tbl %>%
             ggplot2::ggplot(
                 ggplot2::aes(
-                    x = ps, y = p, group = interaction(dist_name, sim_number), color = dist_name
+                    x = y, group = interaction(dist_name, sim_number), color = dist_name
                 )
             ) +
-            ggplot2::geom_line(size = line_size) +
+            ggplot2::stat_ecdf(size = line_size) +
             ggplot2::theme_minimal() +
             ggplot2::labs(
                 title = "Probability Plot",
