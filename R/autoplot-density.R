@@ -245,11 +245,9 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
     } else if (plot_type == "probability") {
         plt <- data_tbl %>%
             ggplot2::ggplot(
-                ggplot2::aes(
-                    x = ps, y = p, color = sim_number, group = sim_number
-                )
+                ggplot2::aes(x = y, color = sim_number, group = sim_number)
             ) +
-            ggplot2::geom_line(size = line_size) +
+            ggplot2::stat_ecdf(size = line_size) +
             ggplot2::theme_minimal() +
             ggplot2::labs(
                 title = "Probability Plot",

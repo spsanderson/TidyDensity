@@ -165,18 +165,18 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
         plt <- data_tbl %>%
             ggplot2::ggplot(
                 ggplot2::aes(
-                    x = tidy_scale_zero_one_vec(dx),
-                    y = p,
+                    x = y,
                     group = interaction(dist_type, sim_number),
                     color = dist_type
                 )
             ) +
-            ggplot2::geom_line(size = line_size) +
+            ggplot2::stat_ecdf(size = line_size) +
             ggplot2::theme_minimal() +
             ggplot2::labs(
                 title = "Probability Plot",
                 subtitle = sub_title,
-                color = "Simulation"
+                color = "Simulation",
+                x = "dx"
             ) +
             ggplot2::theme(legend.position = leg_pos)
     } else if (plot_type == "qq") {
