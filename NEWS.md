@@ -4,7 +4,8 @@
 None
 
 ## New Features
-None
+1. Fix #119 - Add function `tidy_four_autoplot()` - This will auto plot the density,
+qq, quantile and probability plots to a single graph.
 
 ## Minor Fixes and Improvements
 1. Fix #110 - Bug fix, correct the `p` calculation in `tidy_poisson()` that will
