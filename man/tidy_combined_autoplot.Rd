@@ -87,6 +87,7 @@ combined_tbl \%>\%
 \seealso{
 Other Autoplot: 
 \code{\link{tidy_autoplot}()},
+\code{\link{tidy_four_autoplot}()},
 \code{\link{tidy_multi_dist_autoplot}()},
 \code{\link{tidy_random_walk_autoplot}()}
 }
