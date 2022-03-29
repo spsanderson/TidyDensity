@@ -15,6 +15,8 @@ will no produce the correct probability chart from the auto plot functions.
 3. Fix #115 - Fix spelling in Quantile chart.
 4. Fix #117 - Fix probability plot x axis label.
 4. Fix #118 - Fix fill color on combined auto plot
+5. Fix #122 - The `tidy_distribution_summary_tbl()` function did not take the 
+output of `tidy_multi_single_dist()` 
 
 # TidyDensity 1.0.1
 

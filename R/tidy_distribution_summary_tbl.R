@@ -54,7 +54,7 @@ tidy_distribution_summary_tbl <- function(.data, ...) {
   # Get the data attributes
   atb <- attributes(.data)
 
-  if (!"tibble_type" %in% names(atb)) {
+  if (!"tibble_type" %in% names(atb) & !"tibble_type" %in% names(atb$all)) {
     rlang::abort("The data passed must come from a `tidy_` distribution function.")
   }
 
