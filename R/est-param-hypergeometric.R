@@ -45,10 +45,7 @@
 #' output$parameter_tbl
 #'
 #' output$combined_data_tbl %>%
-#'   ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
-#'   geom_histogram(binwidth = 0.5, color = "black") +
-#'   theme_minimal() +
-#'   theme(legend.position = "bottom")
+#'   tidy_combined_autoplot()
 #'
 #' @return
 #' A tibble/list

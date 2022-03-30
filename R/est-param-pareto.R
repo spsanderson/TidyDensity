@@ -33,10 +33,7 @@
 #' output$parameter_tbl
 #'
 #' output$combined_data_tbl %>%
-#'   ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
-#'   geom_line() +
-#'   theme_minimal() +
-#'   theme(legend.position = "bottom")
+#'   tidy_combined_autoplot()
 #'
 #' t <- tidy_pareto(50, 1, 1) %>% pull(y)
 #' util_pareto_param_estimate(t)$parameter_tbl

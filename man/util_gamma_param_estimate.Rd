@@ -37,10 +37,7 @@ output <- util_gamma_param_estimate(tg)
 output$parameter_tbl
 
 output$combined_data_tbl \%>\%
-  ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
-  geom_line() +
-  theme_minimal() +
-  theme(legend.position = "bottom")
+  tidy_combined_autoplot()
 
 }
 \seealso{

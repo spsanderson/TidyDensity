@@ -2,7 +2,7 @@
 % Please edit documentation in R/autoplot-four-graphs.R
 \name{tidy_four_autoplot}
 \alias{tidy_four_autoplot}
-\title{#' Automatic Plot of Density Data}
+\title{Automatic Plot of Density Data}
 \usage{
 tidy_four_autoplot(
   .data,

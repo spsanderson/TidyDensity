@@ -33,10 +33,7 @@
 #' output$parameter_tbl
 #'
 #' output$combined_data_tbl %>%
-#'   ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
-#'   geom_line() +
-#'   theme_minimal() +
-#'   theme(legend.position = "bottom")
+#'   tidy_combined_autoplot()
 #'
 #' tb <- tidy_lognormal(.meanlog = 2, .sdlog = 1) %>% pull(y)
 #' util_lognormal_param_estimate(tb)$parameter_tbl

@@ -62,10 +62,7 @@ output <- util_hypergeometric_param_estimate(th, .total = 50, .k = 5)
 output$parameter_tbl
 
 output$combined_data_tbl \%>\%
-  ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
-  geom_histogram(binwidth = 0.5, color = "black") +
-  theme_minimal() +
-  theme(legend.position = "bottom")
+  tidy_combined_autoplot()
 
 }
 \seealso{
