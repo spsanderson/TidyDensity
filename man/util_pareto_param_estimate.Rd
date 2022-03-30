@@ -64,7 +64,8 @@ Other Parameter Estimation:
 \code{\link{util_lognormal_param_estimate}()},
 \code{\link{util_negative_binomial_param_estimate}()},
 \code{\link{util_normal_param_estimate}()},
-\code{\link{util_poisson_param_estimate}()}
+\code{\link{util_poisson_param_estimate}()},
+\code{\link{util_weibull_param_estimate}()}
 
 Other Pareto: 
 \code{\link{tidy_generalized_pareto}()},
