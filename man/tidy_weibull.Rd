@@ -75,7 +75,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Weibull: 
-\code{\link{tidy_inverse_weibull}()}
+\code{\link{tidy_inverse_weibull}()},
+\code{\link{util_weibull_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH

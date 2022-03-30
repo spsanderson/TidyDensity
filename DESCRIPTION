@@ -28,7 +28,8 @@ Imports:
     actuar,
     methods,
     stats,
-    patchwork
+    patchwork,
+    survival
 Suggests: 
     rmarkdown,
     knitr,

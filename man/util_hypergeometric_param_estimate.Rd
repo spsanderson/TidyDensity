@@ -62,16 +62,14 @@ output <- util_hypergeometric_param_estimate(th, .total = 50, .k = 5)
 output$parameter_tbl
 
 output$combined_data_tbl \%>\%
-  ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
-  geom_histogram(binwidth = 0.5, color = "black") +
-  theme_minimal() +
-  theme(legend.position = "bottom")
+  tidy_combined_autoplot()
 
 }
 \seealso{
 Other Parameter Estimation: 
 \code{\link{util_beta_param_estimate}()},
 \code{\link{util_binomial_param_estimate}()},
+\code{\link{util_cauchy_param_estimate}()},
 \code{\link{util_exponential_param_estimate}()},
 \code{\link{util_gamma_param_estimate}()},
 \code{\link{util_geometric_param_estimate}()},
@@ -80,7 +78,9 @@ Other Parameter Estimation:
 \code{\link{util_negative_binomial_param_estimate}()},
 \code{\link{util_normal_param_estimate}()},
 \code{\link{util_pareto_param_estimate}()},
-\code{\link{util_poisson_param_estimate}()}
+\code{\link{util_poisson_param_estimate}()},
+\code{\link{util_uniform_param_estimate}()},
+\code{\link{util_weibull_param_estimate}()}
 
 Other Hypergeometric: 
 \code{\link{tidy_hypergeometric}()}

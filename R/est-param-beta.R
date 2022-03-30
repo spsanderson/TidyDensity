@@ -39,10 +39,7 @@
 #' output$parameter_tbl
 #'
 #' output$combined_data_tbl %>%
-#'   ggplot(aes(x = dx, y = dy, group = dist_type, color = dist_type)) +
-#'   geom_line() +
-#'   theme_minimal() +
-#'   theme(legend.position = "bottom")
+#'   tidy_combined_autoplot()
 #'
 #' tb <- rbeta(50, 2.5, 1.4)
 #' util_beta_param_estimate(tb)$parameter_tbl

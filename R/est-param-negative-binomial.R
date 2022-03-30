@@ -34,10 +34,7 @@
 #' output$parameter_tbl
 #'
 #' output$combined_data_tbl %>%
-#'   ggplot(aes(x = y, group = dist_type, fill = dist_type)) +
-#'   geom_histogram(bins = 30, color = "black") +
-#'   theme_minimal() +
-#'   theme(legend.position = "bottom")
+#'   tidy_combined_autoplot()
 #'
 #' t <- rnbinom(50, 1, .1)
 #' util_negative_binomial_param_estimate(t, .size = 1)$parameter_tbl

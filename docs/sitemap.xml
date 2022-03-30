@@ -190,6 +190,9 @@
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_binomial_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_cauchy_param_estimate.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_exponential_param_estimate.html</loc>
   </url>
   <url>
@@ -221,5 +224,11 @@
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_poisson_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_uniform_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_weibull_param_estimate.html</loc>
   </url>
 </urlset>

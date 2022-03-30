@@ -1,4 +1,4 @@
-#' #' Automatic Plot of Density Data
+#' Automatic Plot of Density Data
 #'
 #' @family Autoplot
 #'
