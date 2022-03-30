@@ -53,7 +53,8 @@ Other Parameter Estimation:
 \code{\link{util_negative_binomial_param_estimate}()},
 \code{\link{util_normal_param_estimate}()},
 \code{\link{util_pareto_param_estimate}()},
-\code{\link{util_poisson_param_estimate}()}
+\code{\link{util_poisson_param_estimate}()},
+\code{\link{util_uniform_param_estimate}()}
 
 Other Weibull: 
 \code{\link{tidy_inverse_weibull}()},
