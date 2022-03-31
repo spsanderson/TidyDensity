@@ -137,6 +137,7 @@ generated points, the <code>d_</code>, <code>p_</code> and <code>q_</code> data 
 <code><a href="tidy_paralogistic.html">tidy_paralogistic</a>()</code>,
 <code><a href="tidy_pareto1.html">tidy_pareto1</a>()</code>,
 <code><a href="tidy_pareto.html">tidy_pareto</a>()</code>,
+<code><a href="tidy_t.html">tidy_t</a>()</code>,
 <code><a href="tidy_uniform.html">tidy_uniform</a>()</code>,
 <code><a href="tidy_weibull.html">tidy_weibull</a>()</code>,
 <code><a href="tidy_zero_truncated_geometric.html">tidy_zero_truncated_geometric</a>()</code></p>
@@ -152,18 +153,18 @@ generated points, the <code>d_</code>, <code>p_</code> and <code>q_</code> data 
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tidy_lognormal</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 50 x 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number     x     y      dx      dy         p     q</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1              1 1.13  -<span style="color: #BB0000;">0.778</span>  0.001<span style="text-decoration: underline;">07</span> 0         0    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1              2 0.412 -<span style="color: #BB0000;">0.566</span>  0.008<span style="text-decoration: underline;">50</span> 0.000<span style="text-decoration: underline;">049</span>7 0.129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1              3 3.44  -<span style="color: #BB0000;">0.354</span>  0.044<span style="text-decoration: underline;">1</span>  0.000<span style="text-decoration: underline;">690</span>  0.175</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1              4 5.00  -<span style="color: #BB0000;">0.142</span>  0.151   0.002<span style="text-decoration: underline;">61</span>   0.213</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1              5 0.402  0.070<span style="text-decoration: underline;">2</span> 0.347   0.006<span style="text-decoration: underline;">11</span>   0.248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1              6 0.129  0.282  0.552   0.011<span style="text-decoration: underline;">2</span>    0.281</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1              7 1.41   0.494  0.646   0.017<span style="text-decoration: underline;">9</span>    0.313</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1              8 1.21   0.706  0.611   0.025<span style="text-decoration: underline;">8</span>    0.344</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1              9 0.763  0.919  0.506   0.035<span style="text-decoration: underline;">0</span>    0.375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1             10 0.504  1.13   0.381   0.045<span style="text-decoration: underline;">1</span>    0.406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number     x      y       dx      dy         p     q</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1              1  0.300 -<span style="color: #BB0000;">0.920</span>   0.001<span style="text-decoration: underline;">16</span> 0         0    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1              2  1.53  -<span style="color: #BB0000;">0.465</span>   0.033<span style="text-decoration: underline;">7</span>  0.000<span style="text-decoration: underline;">049</span>7 0.129</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1              3  0.673 -<span style="color: #BB0000;">0.008</span><span style="color: #BB0000; text-decoration: underline;">92</span> 0.232   0.000<span style="text-decoration: underline;">690</span>  0.175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1              4  1.65   0.447   0.480   0.002<span style="text-decoration: underline;">61</span>   0.213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1              5 20.4    0.903   0.452   0.006<span style="text-decoration: underline;">11</span>   0.248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1              6  1.59   1.36    0.337   0.011<span style="text-decoration: underline;">2</span>    0.281</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1              7  0.384  1.81    0.182   0.017<span style="text-decoration: underline;">9</span>    0.313</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1              8  1.19   2.27    0.100   0.025<span style="text-decoration: underline;">8</span>    0.344</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1              9 16.2    2.73    0.056<span style="text-decoration: underline;">1</span>  0.035<span style="text-decoration: underline;">0</span>    0.375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1             10  6.64   3.18    0.037<span style="text-decoration: underline;">8</span>  0.045<span style="text-decoration: underline;">1</span>    0.406</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 40 more rows</span></span>
 </code></pre></div>
     </div>
