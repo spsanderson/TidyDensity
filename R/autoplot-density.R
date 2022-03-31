@@ -89,7 +89,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
         "tidy_pareto_single_parameter", "tidy_pareto", "tidy_inverse_pareto",
         "tidy_generalized_pareto","tidy_paralogistic", "tidy_inverse_exponential",
         "tidy_inverse_gamma","tidy_inverse_weibull","tidy_burr","tidy_inverse_burr",
-        "tidy_inverse_gaussian","tidy_generalized_beta"
+        "tidy_inverse_gaussian","tidy_generalized_beta","tidy_t"
     )) {
         rlang::abort("The data passed must come from a `tidy_` distribution function.")
     }
@@ -131,7 +131,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
             paste0("Mean Log: ", atb$.meanlog, " - SD Log: ", atb$.sdlog)
         } else if (atb$tibble_type == "tidy_cauchy") {
             paste0("Location: ", atb$.location, " - Scale: ", atb$.scale)
-        } else if (atb$tibble_type == "tidy_chisquare") {
+        } else if (atb$tibble_type %in% c("tidy_chisquare","tidy_t")) {
             paste0("DF: ", atb$.df, " - NPC: ", atb$.ncp)
         } else if (atb$tibble_type == "tidy_weibull") {
             paste0("Shape: ", atb$.schape, " - Scale: ", atb$.scale)
