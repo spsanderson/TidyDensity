@@ -75,7 +75,7 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
             paste0("Mean Log: ", atb$all$.meanlog, " - SD Log: ", atb$all$.sdlog)
         } else if (atb$all$tibble_type == "tidy_cauchy") {
             paste0("Location: ", atb$all$.location, " - Scale: ", atb$all$.scale)
-        } else if (atb$all$tibble_type == "tidy_chisquare") {
+        } else if (atb$all$tibble_type %in% c("tidy_chisquare","tidy_t")) {
             paste0("DF: ", atb$all$.df, " - NPC: ", atb$all$.ncp)
         } else if (atb$all$tibble_type == "tidy_weibull") {
             paste0("Shape: ", atb$all$.schape, " - Scale: ", atb$all$.scale)
