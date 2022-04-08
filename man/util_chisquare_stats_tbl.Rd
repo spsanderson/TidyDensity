@@ -30,6 +30,7 @@ Other Chisquare:
 \code{\link{tidy_chisquare}()}
 
 Other Distribution Statistics: 
+\code{\link{util_beta_stats_tbl}()},
 \code{\link{util_binomial_stats_tbl}()},
 \code{\link{util_cauchy_stats_tbl}()},
 \code{\link{util_exponential_stats_tbl}()},

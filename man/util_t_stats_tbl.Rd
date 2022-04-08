@@ -30,6 +30,7 @@ Other T Distribution:
 \code{\link{tidy_t}()}
 
 Other Distribution Statistics: 
+\code{\link{util_beta_stats_tbl}()},
 \code{\link{util_binomial_stats_tbl}()},
 \code{\link{util_cauchy_stats_tbl}()},
 \code{\link{util_chisquare_stats_tbl}()},
