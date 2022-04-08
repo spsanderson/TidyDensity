@@ -48,7 +48,8 @@ tidy_zero_truncated_poisson()
 
 Other Poisson: 
 \code{\link{tidy_poisson}()},
-\code{\link{util_poisson_param_estimate}()}
+\code{\link{util_poisson_param_estimate}()},
+\code{\link{util_poisson_stats_tbl}()}
 
 Other Zero Truncated Distribution: 
 \code{\link{tidy_zero_truncated_binomial}()},

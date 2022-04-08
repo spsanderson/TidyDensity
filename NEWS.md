@@ -18,6 +18,7 @@ qq, quantile and probability plots to a single graph.
 11. Fix #146 - Add function `util_negative_binomial_stats_tbl()`
 12. Fix #145 - Add function `util_normal_stats_tbl()`
 13. Fix #144 - Add function `util_pareto_stats_tbl()`
+14. Fix #143 - Add function `util_poisson_stats_tbl()`
 
 ## Minor Fixes and Improvements
 1. Fix #110 - Bug fix, correct the `p` calculation in `tidy_poisson()` that will
