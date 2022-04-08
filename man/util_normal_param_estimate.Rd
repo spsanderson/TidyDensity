@@ -68,7 +68,8 @@ Other Parameter Estimation:
 
 Other Gaussian: 
 \code{\link{tidy_inverse_normal}()},
-\code{\link{tidy_normal}()}
+\code{\link{tidy_normal}()},
+\code{\link{util_normal_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

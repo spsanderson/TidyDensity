@@ -76,7 +76,8 @@ Other Continuous Distribution:
 
 Other Gaussian: 
 \code{\link{tidy_inverse_normal}()},
-\code{\link{util_normal_param_estimate}()}
+\code{\link{util_normal_param_estimate}()},
+\code{\link{util_normal_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
