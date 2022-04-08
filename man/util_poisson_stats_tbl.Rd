@@ -34,7 +34,9 @@ Other Poisson:
 Other Distribution Statistics: 
 \code{\link{util_cauchy_stats_tbl}()},
 \code{\link{util_chisquare_stats_tbl}()},
+\code{\link{util_exponential_stats_tbl}()},
 \code{\link{util_f_stats_tbl}()},
+\code{\link{util_gamma_stats_tbl}()},
 \code{\link{util_geometric_stats_tbl}()},
 \code{\link{util_hypergeometric_stats_tbl}()},
 \code{\link{util_logistic_stats_tbl}()},
@@ -43,7 +45,8 @@ Other Distribution Statistics:
 \code{\link{util_normal_stats_tbl}()},
 \code{\link{util_pareto_stats_tbl}()},
 \code{\link{util_t_stats_tbl}()},
-\code{\link{util_uniform_stats_tbl}()}
+\code{\link{util_uniform_stats_tbl}()},
+\code{\link{util_weibull_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

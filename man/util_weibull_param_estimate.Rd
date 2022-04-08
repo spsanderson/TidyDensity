@@ -59,7 +59,8 @@ Other Parameter Estimation:
 
 Other Weibull: 
 \code{\link{tidy_inverse_weibull}()},
-\code{\link{tidy_weibull}()}
+\code{\link{tidy_weibull}()},
+\code{\link{util_weibull_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

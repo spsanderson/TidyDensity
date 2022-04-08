@@ -78,7 +78,8 @@ Other Continuous Distribution:
 
 Other Exponential: 
 \code{\link{tidy_exponential}()},
-\code{\link{util_exponential_param_estimate}()}
+\code{\link{util_exponential_param_estimate}()},
+\code{\link{util_exponential_stats_tbl}()}
 
 Other Inverse Distribution: 
 \code{\link{tidy_inverse_burr}()},

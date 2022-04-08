@@ -85,7 +85,8 @@ Other Continuous Distribution:
 
 Other Gamma: 
 \code{\link{tidy_gamma}()},
-\code{\link{util_gamma_param_estimate}()}
+\code{\link{util_gamma_param_estimate}()},
+\code{\link{util_gamma_stats_tbl}()}
 
 Other Inverse Distribution: 
 \code{\link{tidy_inverse_burr}()},

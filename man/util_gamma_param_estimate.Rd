@@ -59,7 +59,8 @@ Other Parameter Estimation:
 
 Other Gamma: 
 \code{\link{tidy_gamma}()},
-\code{\link{tidy_inverse_gamma}()}
+\code{\link{tidy_inverse_gamma}()},
+\code{\link{util_gamma_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

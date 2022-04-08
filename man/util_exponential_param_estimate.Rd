@@ -59,7 +59,8 @@ Other Parameter Estimation:
 
 Other Exponential: 
 \code{\link{tidy_exponential}()},
-\code{\link{tidy_inverse_exponential}()}
+\code{\link{tidy_inverse_exponential}()},
+\code{\link{util_exponential_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
