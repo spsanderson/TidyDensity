@@ -48,7 +48,8 @@ tidy_zero_truncated_geometric()
 
 Other Geometric: 
 \code{\link{tidy_geometric}()},
-\code{\link{util_geometric_param_estimate}()}
+\code{\link{util_geometric_param_estimate}()},
+\code{\link{util_geometric_stats_tbl}()}
 
 Other Continuous Distribution: 
 \code{\link{tidy_beta}()},
