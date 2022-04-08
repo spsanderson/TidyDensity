@@ -12,6 +12,7 @@ qq, quantile and probability plots to a single graph.
 5. Fix #130 - Add function `tidy_t()` - Also add to plotting functions.
 6. Fix #151 - Add function `tidy_mixture_density()`
 7. Fix #150 - Add function `util_geometric_stats_tbl()`
+8. Fix #149 - Add function `util_hypergeometric_stats_tbl()`
 
 ## Minor Fixes and Improvements
 1. Fix #110 - Bug fix, correct the `p` calculation in `tidy_poisson()` that will

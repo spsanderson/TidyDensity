@@ -1,6 +1,6 @@
 #' Distribution Statistics
 #'
-#' @family Geometric
+#' @family Hypergeometric
 #' @family Distribution Statistics
 #'
 #' @author Steven P. Sanderson II, MPH
@@ -14,8 +14,8 @@
 #' @param .data The data being passed from a `tidy_` distribution function.
 #'
 #' @examples
-#' tidy_geometric() %>%
-#'   util_geometric_stats_tbl()
+#' tidy_hypergeometric() %>%
+#'   util_hypergeometric_stats_tbl()
 #'
 #' @return
 #' A tibble
@@ -23,7 +23,7 @@
 #' @export
 #'
 
-util_geometric_stats_tbl <- function(.data){
+util_hypergeometric_stats_tbl <- function(.data){
 
     # Immediate check for tidy_ distribution function
     if (!"tibble_type" %in% names(attributes(.data))){
@@ -33,9 +33,9 @@ util_geometric_stats_tbl <- function(.data){
         )
     }
 
-    if (attributes(.data)$tibble_type != "tidy_geometric"){
+    if (attributes(.data)$tibble_type != "tidy_hypergeometric"){
         rlang::abort(
-            message = "You must use 'tidy_geometric()'",
+            message = "You must use 'tidy_hypergeometric()'",
             use_cli_format = TRUE
         )
     }
@@ -44,17 +44,26 @@ util_geometric_stats_tbl <- function(.data){
     data_tbl <- tibble::as_tibble(.data)
 
     atb <- attributes(data_tbl)
-    p <- atb$.prob
+    N <- atb$.m + atb$.nn
+    m <- atb$.m
+    n <- atb$.nn
+    k <- atb$.k
 
-    stat_mean   <- (1 - p)/p
-    stat_mode   <- data_tbl %>%
-        dplyr::filter(p == max(p)) %>%
-        dplyr::pull(y) %>%
-        max()
-    stat_sd <- sqrt((1 - p)/p)
-    stat_skewness <- (2 - p)/sqrt(1 - p)
-    stat_kurtosis <- 6 + ((p*p)/(1 - p))
-    stat_coef_var <- (1-p)/(p * p)
+    a <- (N-1)*(N^2)
+    b <- (3*m)*(N-m)*((n^2)*(-N)* + (n-2)*(N^2) + (6*n) * (N-n))
+    c <- N^2
+    d <- (6*n) * (N - n) + N*(N + 1)
+    e <- (m*n) * (N - 3) * (N - 2) * (N - m) * (N - n)
+
+    stat_mean   <- (m*n)/N
+    stat_mode   <- c(
+        ((n + 1)*(k + 1))/(N + 2) - 1,
+        ((n + 1)*(k + 1))/(N + 2)
+    )
+    stat_sd <- sqrt(((m*n) * (N-m)*(N-n))/(N-1))/N
+    stat_skewness <- (sqrt(N-1) * (N - 2*m) * (N - 2*n))/((N-2)*sqrt((m*n) * (N - m) * (N - n)))
+    stat_kurtosis <- (a * (b/c - d)) / e
+    stat_coef_var <- ((m*n) * (1 - (m/n)) * (N - n)) / ((N - 1)*N)
 
     # Data Tibble
     ret <- tibble::tibble(
@@ -67,7 +76,8 @@ util_geometric_stats_tbl <- function(.data){
         points = atb$.n,
         simulations = atb$.num_sims,
         mean = stat_mean,
-        mode = stat_mode,
+        mode_lower = stat_mode[[1]],
+        mode_upper = stat_mode[[2]],
         range = paste0("0 to Inf"),
         std_dv = stat_sd,
         coeff_var = stat_coef_var,

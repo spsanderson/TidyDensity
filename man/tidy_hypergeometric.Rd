@@ -59,7 +59,8 @@ Other Discrete Distribution:
 \code{\link{tidy_zero_truncated_poisson}()}
 
 Other Hypergeometric: 
-\code{\link{util_hypergeometric_param_estimate}()}
+\code{\link{util_hypergeometric_param_estimate}()},
+\code{\link{util_hypergeometric_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
