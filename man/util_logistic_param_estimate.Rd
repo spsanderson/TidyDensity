@@ -69,7 +69,8 @@ Other Parameter Estimation:
 
 Other Logistic: 
 \code{\link{tidy_logistic}()},
-\code{\link{tidy_paralogistic}()}
+\code{\link{tidy_paralogistic}()},
+\code{\link{util_logistic_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
