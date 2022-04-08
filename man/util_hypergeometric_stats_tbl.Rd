@@ -31,6 +31,7 @@ Other Hypergeometric:
 \code{\link{util_hypergeometric_param_estimate}()}
 
 Other Distribution Statistics: 
+\code{\link{util_cauchy_stats_tbl}()},
 \code{\link{util_geometric_stats_tbl}()},
 \code{\link{util_logistic_stats_tbl}()},
 \code{\link{util_lognormal_stats_tbl}()},
