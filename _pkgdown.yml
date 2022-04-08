@@ -37,6 +37,10 @@ reference:
      desc: Functions that help to estimate parameters from raw data.
      contents:
      -  has_concept("Parameter Estimation")
+  -  title: Distribution Statistics
+     desc: Functions that generate a tibble of distribution statistics
+     contents:
+     -  has_concept("Distribution Statistics")
   -  title: Random Walk Functions
      desc: Functions that generate random walk data and return tibbles
      contents:
