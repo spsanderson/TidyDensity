@@ -30,6 +30,7 @@ Other F Distribution:
 \code{\link{tidy_f}()}
 
 Other Distribution Statistics: 
+\code{\link{util_binomial_stats_tbl}()},
 \code{\link{util_cauchy_stats_tbl}()},
 \code{\link{util_chisquare_stats_tbl}()},
 \code{\link{util_exponential_stats_tbl}()},
