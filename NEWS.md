@@ -21,6 +21,9 @@ qq, quantile and probability plots to a single graph.
 14. Fix #143 - Add function `util_poisson_stats_tbl()`
 15. Fix #142 - Add function `util_uniform_stats_tbl()`
 16. Fix #141 - Add function `util_cauchy_stats_tbl()`
+17. Fix #140 - Add function `util_t_stats_tbl()`
+18. Fix #139 - Add function `util_f_stats_tbl()`
+19. Fix #138 - Add function `util_chisquare_stats_tbl()`
 
 ## Minor Fixes and Improvements
 1. Fix #110 - Bug fix, correct the `p` calculation in `tidy_poisson()` that will

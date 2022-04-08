@@ -74,6 +74,9 @@ Other Continuous Distribution:
 \code{\link{tidy_uniform}()},
 \code{\link{tidy_weibull}()},
 \code{\link{tidy_zero_truncated_geometric}()}
+
+Other Chisquare: 
+\code{\link{util_chisquare_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
