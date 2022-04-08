@@ -33,6 +33,7 @@ Other Logistic:
 
 Other Distribution Statistics: 
 \code{\link{util_cauchy_stats_tbl}()},
+\code{\link{util_f_stats_tbl}()},
 \code{\link{util_geometric_stats_tbl}()},
 \code{\link{util_hypergeometric_stats_tbl}()},
 \code{\link{util_lognormal_stats_tbl}()},
