@@ -33,6 +33,7 @@ Other Cauchy:
 Other Distribution Statistics: 
 \code{\link{util_chisquare_stats_tbl}()},
 \code{\link{util_f_stats_tbl}()},
+\code{\link{util_gamma_stats_tbl}()},
 \code{\link{util_geometric_stats_tbl}()},
 \code{\link{util_hypergeometric_stats_tbl}()},
 \code{\link{util_logistic_stats_tbl}()},
