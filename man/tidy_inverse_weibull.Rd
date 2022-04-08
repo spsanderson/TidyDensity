@@ -85,7 +85,8 @@ Other Continuous Distribution:
 
 Other Weibull: 
 \code{\link{tidy_weibull}()},
-\code{\link{util_weibull_param_estimate}()}
+\code{\link{util_weibull_param_estimate}()},
+\code{\link{util_weibull_stats_tbl}()}
 
 Other Inverse Distribution: 
 \code{\link{tidy_inverse_burr}()},
