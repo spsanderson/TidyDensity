@@ -109,7 +109,8 @@ parameters given some vector of values.</p>
 <code><a href="util_uniform_param_estimate.html">util_uniform_param_estimate</a>()</code></p>
 <p>Other Weibull: 
 <code><a href="tidy_inverse_weibull.html">tidy_inverse_weibull</a>()</code>,
-<code><a href="tidy_weibull.html">tidy_weibull</a>()</code></p></div>
+<code><a href="tidy_weibull.html">tidy_weibull</a>()</code>,
+<code><a href="util_weibull_stats_tbl.html">util_weibull_stats_tbl</a>()</code></p></div>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -128,7 +129,7 @@ parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size    min   max method shape scale shape_ratio</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Weibull          50 0.034<span style="text-decoration: underline;">4</span>  10.6 NIST    1.09  2.41       0.454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Weibull          50 0.024<span style="text-decoration: underline;">5</span>  6.42 NIST    1.04  1.91       0.543</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">output</span><span class="op">$</span><span class="va">combined_data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in">  <span class="fu"><a href="tidy_combined_autoplot.html">tidy_combined_autoplot</a></span><span class="op">(</span><span class="op">)</span></span>

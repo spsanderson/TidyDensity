@@ -33,6 +33,10 @@ reference:
      desc: Generate multiple simulations of the same distribution with different parameters
      contents:
      -  has_concept("Multiple Distribution")
+  -  title: Mixture Model Data
+     desc: Function for creating mixture model data
+     contents:
+     -  has_concept("Mixture Data")
   -  title: Parameter Estimation Functions
      desc: Functions that help to estimate parameters from raw data.
      contents:

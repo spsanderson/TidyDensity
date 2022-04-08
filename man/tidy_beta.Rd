@@ -81,7 +81,8 @@ Other Continuous Distribution:
 
 Other Beta: 
 \code{\link{tidy_generalized_beta}()},
-\code{\link{util_beta_param_estimate}()}
+\code{\link{util_beta_param_estimate}()},
+\code{\link{util_beta_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

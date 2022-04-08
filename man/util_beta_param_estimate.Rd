@@ -74,7 +74,8 @@ Other Parameter Estimation:
 
 Other Beta: 
 \code{\link{tidy_beta}()},
-\code{\link{tidy_generalized_beta}()}
+\code{\link{tidy_generalized_beta}()},
+\code{\link{util_beta_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

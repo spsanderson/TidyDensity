@@ -121,6 +121,9 @@
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_lognormal.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_mixture_density.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_multi_dist.html</loc>
   </url>
   <url>
@@ -190,34 +193,73 @@
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_beta_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_beta_stats_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_binomial_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_binomial_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_cauchy_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_cauchy_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_chisquare_stats_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_exponential_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_exponential_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_f_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_gamma_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_gamma_stats_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_geometric_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_geometric_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_hypergeometric_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_hypergeometric_stats_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_logistic_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_logistic_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_lognormal_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_lognormal_stats_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_negative_binomial_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_negative_binomial_stats_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_normal_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_normal_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_pareto_estimate.html</loc>
@@ -226,12 +268,27 @@
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_pareto_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_pareto_stats_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_poisson_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_poisson_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_t_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_uniform_param_estimate.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_uniform_stats_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/util_weibull_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/util_weibull_stats_tbl.html</loc>
   </url>
 </urlset>
