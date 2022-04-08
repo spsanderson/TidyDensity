@@ -83,7 +83,8 @@ Other Parameter Estimation:
 \code{\link{util_weibull_param_estimate}()}
 
 Other Hypergeometric: 
-\code{\link{tidy_hypergeometric}()}
+\code{\link{tidy_hypergeometric}()},
+\code{\link{util_hypergeometric_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

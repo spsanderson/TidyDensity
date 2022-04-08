@@ -67,7 +67,8 @@ Other Parameter Estimation:
 \code{\link{util_weibull_param_estimate}()}
 
 Other Lognormal: 
-\code{\link{tidy_lognormal}()}
+\code{\link{tidy_lognormal}()},
+\code{\link{util_lognormal_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

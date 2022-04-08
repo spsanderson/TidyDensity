@@ -77,7 +77,8 @@ Other Continuous Distribution:
 
 Other Logistic: 
 \code{\link{tidy_paralogistic}()},
-\code{\link{util_logistic_param_estimate}()}
+\code{\link{util_logistic_param_estimate}()},
+\code{\link{util_logistic_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
