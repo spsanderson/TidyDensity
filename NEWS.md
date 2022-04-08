@@ -10,6 +10,7 @@ qq, quantile and probability plots to a single graph.
 3. Fix #126 - Add function `util_uniform_param_estimate()`
 4. Fix #127 - Add function `util_cauchy_param_estimate()`
 5. Fix #130 - Add function `tidy_t()` - Also add to plotting functions.
+6. Fix #151 - Add function `tidy_mixture_density()`
 
 ## Minor Fixes and Improvements
 1. Fix #110 - Bug fix, correct the `p` calculation in `tidy_poisson()` that will
