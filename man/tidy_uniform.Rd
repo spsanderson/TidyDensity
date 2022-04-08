@@ -76,7 +76,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Uniform: 
-\code{\link{util_uniform_param_estimate}()}
+\code{\link{util_uniform_param_estimate}()},
+\code{\link{util_uniform_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
