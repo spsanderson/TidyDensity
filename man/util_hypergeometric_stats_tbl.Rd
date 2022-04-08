@@ -32,7 +32,8 @@ Other Hypergeometric:
 
 Other Distribution Statistics: 
 \code{\link{util_geometric_stats_tbl}()},
-\code{\link{util_logistic_stats_tbl}()}
+\code{\link{util_logistic_stats_tbl}()},
+\code{\link{util_lognormal_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
