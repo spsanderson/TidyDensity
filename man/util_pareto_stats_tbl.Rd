@@ -34,12 +34,15 @@ Other Pareto:
 \code{\link{util_pareto_param_estimate}()}
 
 Other Distribution Statistics: 
+\code{\link{util_cauchy_stats_tbl}()},
 \code{\link{util_geometric_stats_tbl}()},
 \code{\link{util_hypergeometric_stats_tbl}()},
 \code{\link{util_logistic_stats_tbl}()},
 \code{\link{util_lognormal_stats_tbl}()},
 \code{\link{util_negative_binomial_stats_tbl}()},
-\code{\link{util_normal_stats_tbl}()}
+\code{\link{util_normal_stats_tbl}()},
+\code{\link{util_poisson_stats_tbl}()},
+\code{\link{util_uniform_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

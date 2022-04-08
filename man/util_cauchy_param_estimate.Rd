@@ -58,7 +58,8 @@ Other Parameter Estimation:
 \code{\link{util_weibull_param_estimate}()}
 
 Other Cauchy: 
-\code{\link{tidy_cauchy}()}
+\code{\link{tidy_cauchy}()},
+\code{\link{util_cauchy_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

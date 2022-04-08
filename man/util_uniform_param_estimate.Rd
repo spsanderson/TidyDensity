@@ -58,7 +58,8 @@ Other Parameter Estimation:
 \code{\link{util_weibull_param_estimate}()}
 
 Other Uniform: 
-\code{\link{tidy_uniform}()}
+\code{\link{tidy_uniform}()},
+\code{\link{util_uniform_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

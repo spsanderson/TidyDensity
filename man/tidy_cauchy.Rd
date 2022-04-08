@@ -76,7 +76,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Cauchy: 
-\code{\link{util_cauchy_param_estimate}()}
+\code{\link{util_cauchy_param_estimate}()},
+\code{\link{util_cauchy_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

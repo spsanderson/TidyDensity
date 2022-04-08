@@ -50,7 +50,8 @@ tidy_poisson()
 
 Other Poisson: 
 \code{\link{tidy_zero_truncated_poisson}()},
-\code{\link{util_poisson_param_estimate}()}
+\code{\link{util_poisson_param_estimate}()},
+\code{\link{util_poisson_stats_tbl}()}
 
 Other Discrete Distribution: 
 \code{\link{tidy_binomial}()},
