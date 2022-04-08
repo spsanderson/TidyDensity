@@ -82,7 +82,8 @@ Other Continuous Distribution:
 
 Other Gaussian: 
 \code{\link{tidy_normal}()},
-\code{\link{util_normal_param_estimate}()}
+\code{\link{util_normal_param_estimate}()},
+\code{\link{util_normal_stats_tbl}()}
 
 Other Inverse Distribution: 
 \code{\link{tidy_inverse_burr}()},
