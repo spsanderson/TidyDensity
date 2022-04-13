@@ -60,8 +60,8 @@ util_weibull_stats_tbl <- function(.data){
                         opts = list(algorithm = "NLOPT_LN_NELDERMEAD",
                                     maxeval = 1e5, ftol = 1e-12))
 
-    stat_mean   <- mean(rweibull(1e5, A$solution[[1]], scale = A$solution[[2]]))
-    stat_median <- median(survival::Surv(data_tbl$y))$quantile[[1]]
+    stat_mean   <- mean(stats::rweibull(1e5, A$solution[[1]], scale = A$solution[[2]]))
+    stat_median <- stats::median(survival::Surv(data_tbl$y))$quantile[[1]]
     stat_mode   <- t*(1 - (1/q))^(1/q)
     stat_sd     <- sqrt(A$solution[[2]])
     stat_coef_var <- A$solution[[2]]
