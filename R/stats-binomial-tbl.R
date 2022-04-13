@@ -49,7 +49,7 @@ util_binomial_stats_tbl <- function(.data){
 
     stat_mean   <- n*p
     stat_mode   <- c(p * (n + 1) - 1, p * (n + 1))
-    stat_sd     <- sqrt( (p*q)/((p+q)^2 * (p + q + 1)) )
+    stat_sd     <- sqrt( (p * n)/((p + n)^2 * (p + n + 1)) )
     stat_skewness <- (1 - 2*p)/sqrt((n*p) * (1-p))
     stat_kurtosis <- 3 - 6/n + 1/((n*p) * (1 - p))
     stat_coef_var <- sqrt((1-p)/(n*p))
