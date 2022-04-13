@@ -61,7 +61,7 @@ tidy_mixture_density <- function(...){
 
     # From SO Question of mine
     # https://stackoverflow.com/questions/71743013/get-formalargs-from-a-list-of-functions-r/71743155#71743155
-    input_data_tbl <- setNames(list(...), sapply(as.list(match.call())[-1], deparse))
+    input_data_tbl <- stats::setNames(list(...), sapply(as.list(match.call())[-1], deparse))
 
     # Capture functions that were passed
     input_fns  <- as.list(match.call())[-1]
