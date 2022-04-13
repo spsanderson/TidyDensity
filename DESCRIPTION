@@ -29,7 +29,8 @@ Imports:
     methods,
     stats,
     patchwork,
-    survival
+    survival,
+    nloptr
 Suggests: 
     rmarkdown,
     knitr,
