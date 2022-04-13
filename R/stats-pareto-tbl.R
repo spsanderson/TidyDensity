@@ -41,7 +41,7 @@ util_pareto_stats_tbl <- function(.data){
     }
 
     # Data
-    data_tbl <- tibble::as_tibble(.data)
+    data_tbl <- dplyr::as_tibble(.data)
 
     atb <- attributes(data_tbl)
     xm <- atb$.scale
@@ -55,7 +55,7 @@ util_pareto_stats_tbl <- function(.data){
     stat_kurtosis <- ifelse(alpha <= 4, "undefined", (6*(alpha^3 + alpha^2 - 6*alpha - 2))/(alpha * (alpha - 3) * (alpha - 4)))
 
     # Data Tibble
-    ret <- tibble::tibble(
+    ret <- dplyr::tibble(
         tidy_function = atb$tibble_type,
         function_call = atb$dist_with_params,
         distribution = atb$tibble_type %>%

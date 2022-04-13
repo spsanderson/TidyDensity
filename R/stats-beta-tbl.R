@@ -41,7 +41,7 @@ util_beta_stats_tbl <- function(.data){
     }
 
     # Data
-    data_tbl <- tibble::as_tibble(.data)
+    data_tbl <- dplyr::as_tibble(.data)
 
     atb <- attributes(data_tbl)
     p <- atb$.shape1
@@ -54,7 +54,7 @@ util_beta_stats_tbl <- function(.data){
     stat_coef_var <- sqrt(q/(p * (p + q + 1)))
 
     # Data Tibble
-    ret <- tibble::tibble(
+    ret <- dplyr::tibble(
         tidy_function = atb$tibble_type,
         function_call = atb$dist_with_params,
         distribution = atb$tibble_type %>%

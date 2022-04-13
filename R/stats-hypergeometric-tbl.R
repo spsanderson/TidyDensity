@@ -41,7 +41,7 @@ util_hypergeometric_stats_tbl <- function(.data){
     }
 
     # Data
-    data_tbl <- tibble::as_tibble(.data)
+    data_tbl <- dplyr::as_tibble(.data)
 
     atb <- attributes(data_tbl)
     N <- atb$.m + atb$.nn
@@ -66,7 +66,7 @@ util_hypergeometric_stats_tbl <- function(.data){
     stat_coef_var <- ((m*n) * (1 - (m/n)) * (N - n)) / ((N - 1)*N)
 
     # Data Tibble
-    ret <- tibble::tibble(
+    ret <- dplyr::tibble(
         tidy_function = atb$tibble_type,
         function_call = atb$dist_with_params,
         distribution = atb$tibble_type %>%

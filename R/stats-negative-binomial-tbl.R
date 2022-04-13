@@ -42,7 +42,7 @@ util_negative_binomial_stats_tbl <- function(.data){
     }
 
     # Data
-    data_tbl <- tibble::as_tibble(.data)
+    data_tbl <- dplyr::as_tibble(.data)
 
     atb <- attributes(data_tbl)
     r <- atb$.size
@@ -56,7 +56,7 @@ util_negative_binomial_stats_tbl <- function(.data){
     stat_kurtosis <- 6/r + ((1-p)^2)/(p*r)
 
     # Data Tibble
-    ret <- tibble::tibble(
+    ret <- dplyr::tibble(
         tidy_function = atb$tibble_type,
         function_call = atb$dist_with_params,
         distribution = atb$tibble_type %>%
