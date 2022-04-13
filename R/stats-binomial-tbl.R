@@ -41,7 +41,7 @@ util_binomial_stats_tbl <- function(.data){
     }
 
     # Data
-    data_tbl <- tibble::as_tibble(.data)
+    data_tbl <- dplyr::as_tibble(.data)
 
     atb <- attributes(data_tbl)
     n <- atb$.size
@@ -55,7 +55,7 @@ util_binomial_stats_tbl <- function(.data){
     stat_coef_var <- sqrt((1-p)/(n*p))
 
     # Data Tibble
-    ret <- tibble::tibble(
+    ret <- dplyr::tibble(
         tidy_function = atb$tibble_type,
         function_call = atb$dist_with_params,
         distribution = atb$tibble_type %>%

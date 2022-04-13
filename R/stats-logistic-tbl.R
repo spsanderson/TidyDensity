@@ -41,7 +41,7 @@ util_logistic_stats_tbl <- function(.data){
     }
 
     # Data
-    data_tbl <- tibble::as_tibble(.data)
+    data_tbl <- dplyr::as_tibble(.data)
 
     atb <- attributes(data_tbl)
     mu <- atb$.location
@@ -55,7 +55,7 @@ util_logistic_stats_tbl <- function(.data){
     stat_kurtosis <- 6/5
 
     # Data Tibble
-    ret <- tibble::tibble(
+    ret <- dplyr::tibble(
         tidy_function = atb$tibble_type,
         function_call = atb$dist_with_params,
         distribution = atb$tibble_type %>%
