@@ -21,7 +21,7 @@ of the given type of \code{tidy_} distribution. It is required that data be
 passed from a \code{tidy_} distribution function.
 }
 \examples{
-tidy_gammal() \%>\%
+tidy_gamma() \%>\%
   util_gamma_stats_tbl()
 
 }

@@ -14,7 +14,7 @@
 #' @param .data The data being passed from a `tidy_` distribution function.
 #'
 #' @examples
-#' tidy_gammal() %>%
+#' tidy_gamma() %>%
 #'   util_gamma_stats_tbl()
 #'
 #' @return
