@@ -55,7 +55,7 @@ util_uniform_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
     }
 
     # Use linear model to obtain mu_hat
-    mu_hat <- lm(x_term ~ 1)$coefficients[[1]]
+    mu_hat <- stats::lm(x_term ~ 1)$coefficients[[1]]
     s <- sqrt( ((maxx - minx)^2)/12 )
 
     # Momenth Method Estimator
