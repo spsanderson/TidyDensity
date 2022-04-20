@@ -40,6 +40,8 @@ will no produce the correct probability chart from the auto plot functions.
 4. Fix #118 - Fix fill color on combined auto plot
 5. Fix #122 - The `tidy_distribution_summary_tbl()` function did not take the 
 output of `tidy_multi_single_dist()` 
+6. Fix #166 - Change in all plotting functions `ggplot2::xlim(0, max_dy)` to 
+`ggplot2::ylim(0, max_dy)`
 
 # TidyDensity 1.0.1
 

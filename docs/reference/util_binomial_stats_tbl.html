@@ -117,7 +117,13 @@ passed from a <code>tidy_</code> distribution function.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="tidy_binomial.html">tidy_binomial</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
 <span class="r-in">  <span class="fu">util_binomial_stats_tbl</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in p * q:</span> non-numeric argument to binary operator</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 16</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   tidy_function function_call   distribution distribution_ty~ points simulations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> tidy_binomial Binomial c(0, ~ Binomial     discrete             50           1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 10 more variables: mean &lt;dbl&gt;, mode_lower &lt;dbl&gt;, mode_upper &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   range &lt;chr&gt;, std_dv &lt;dbl&gt;, coeff_var &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   computed_std_skew &lt;dbl&gt;, computed_std_kurt &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

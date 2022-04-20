@@ -221,7 +221,7 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
                 color = "black",
                 linetype = "dashed"
             ) +
-            ggplot2::xlim(0, max_dy)
+            ggplot2::ylim(0, max_dy)
     }
 
     if (.geom_jitter) {
