@@ -60,8 +60,8 @@ reference:
   -  title: Table Functions
      desc: Functions that generate tibbles
      contents:
-     -  contains("_tbl")
+     -  "tidy_distribution_summary_tbl"
   -  title: Vector Functions
      desc: Functions that work on vectors
      contents:
-     -  has_concept("Vector Function")
+     -  "tidy_scale_zero_one_vec"
