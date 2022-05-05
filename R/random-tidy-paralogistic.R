@@ -96,7 +96,7 @@ tidy_paralogistic <- function(.n = 50, .shape = 1, .rate = 1, .scale = 1/.rate,
                                    dplyr::as_tibble())) %>%
         dplyr::mutate(p = list(actuar::pparalogis(ps, shape = shape, rate = rate,
                                                   scale = scale))) %>%
-        dplyr::mutate(q = list(actuar::qparalogis(qs, shape = shape, rate = rate,
+        dplyr::mutate(q = list(actuar::qparalogis(tidy_scale_zero_one_vec(unlist(y)), shape = shape, rate = rate,
                                                   scale = scale))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()

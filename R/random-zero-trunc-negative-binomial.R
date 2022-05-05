@@ -93,7 +93,7 @@ tidy_zero_truncated_negative_binomial <- function(.n = 50, .size = 0, .prob = 1,
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
     dplyr::mutate(p = list(actuar::pztnbinom(ps, size = size, prob = prob))) %>%
-    dplyr::mutate(q = list(actuar::qztnbinom(qs, size = size, prob = prob))) %>%
+    dplyr::mutate(q = list(actuar::qztnbinom(tidy_scale_zero_one_vec(unlist(y)), size = size, prob = prob))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

@@ -93,7 +93,7 @@ tidy_inverse_pareto <- function(.n = 50, .shape = 1, .scale = 1, .num_sims = 1) 
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
     dplyr::mutate(p = list(actuar::pinvpareto(ps, shape = shape, scale = scale))) %>%
-    dplyr::mutate(q = list(actuar::qinvpareto(qs, shape = shape, scale = scale))) %>%
+    dplyr::mutate(q = list(actuar::qinvpareto(tidy_scale_zero_one_vec(unlist(y)), shape = shape, scale = scale))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

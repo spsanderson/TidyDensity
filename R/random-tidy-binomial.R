@@ -92,7 +92,7 @@ tidy_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1) {
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
     dplyr::mutate(p = list(stats::pbinom(ps, size = size, prob = prob))) %>%
-    dplyr::mutate(q = list(stats::qbinom(qs, size = size, prob = prob))) %>%
+    dplyr::mutate(q = list(stats::qbinom(tidy_scale_zero_one_vec(unlist(y)), size = size, prob = prob))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

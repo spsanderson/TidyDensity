@@ -89,7 +89,7 @@ tidy_t <- function(.n = 50, .df = 1, .ncp = 0, .num_sims = 1) {
                                    purrr::set_names("dx", "dy") %>%
                                    dplyr::as_tibble())) %>%
         dplyr::mutate(p = list(stats::pt(ps, df = df, ncp = ncp))) %>%
-        dplyr::mutate(q = list(stats::qt(qs, df = df, ncp = ncp))) %>%
+        dplyr::mutate(q = list(stats::qt(tidy_scale_zero_one_vec(unlist(y)), df = df, ncp = ncp))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 

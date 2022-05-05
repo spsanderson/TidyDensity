@@ -88,7 +88,7 @@ tidy_lognormal <- function(.n = 50, .meanlog = 0, .sdlog = 1, .num_sims = 1) {
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
     dplyr::mutate(p = list(stats::plnorm(ps, meanlog = meanlog, sdlog = sdlog))) %>%
-    dplyr::mutate(q = list(stats::qlnorm(qs, meanlog = meanlog, sdlog = sdlog))) %>%
+    dplyr::mutate(q = list(stats::qlnorm(tidy_scale_zero_one_vec(unlist(y)), meanlog = meanlog, sdlog = sdlog))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
