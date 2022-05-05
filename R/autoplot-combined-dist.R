@@ -141,11 +141,21 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
             ) +
             ggplot2::theme(legend.position = leg_pos)
     } else if (plot_type == "quantile") {
+        ## EDIT
+        data_tbl <- data_tbl %>%
+            dplyr::select(sim_number, dist_type, q) %>%
+            dplyr::group_by(sim_number, dist_type) %>%
+            dplyr::arrange(q) %>%
+            dplyr::mutate(x = 1:dplyr::n() %>%
+                              tidy_scale_zero_one_vec()) %>%
+            dplyr::ungroup()
+        ## End EDIT
         plt <- data_tbl %>%
             dplyr::filter(q > -Inf, q < Inf) %>%
             ggplot2::ggplot(
                 ggplot2::aes(
-                    x = tidy_scale_zero_one_vec(dx),
+                    #x = tidy_scale_zero_one_vec(dx),
+                    x = x,
                     y = tidy_scale_zero_one_vec(q),
                     group = interaction(dist_type, sim_number),
                     color = dist_type

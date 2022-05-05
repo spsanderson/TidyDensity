@@ -42,6 +42,8 @@ will no produce the correct probability chart from the auto plot functions.
 output of `tidy_multi_single_dist()` 
 6. Fix #166 - Change in all plotting functions `ggplot2::xlim(0, max_dy)` to 
 `ggplot2::ylim(0, max_dy)`
+7. Fix #169 - Fix the computation of the `q` column 
+8. Fix #170 - Fix the graphing of the quantile chart due to #169
 
 # TidyDensity 1.0.1
 

@@ -91,7 +91,7 @@ tidy_normal <- function(.n = 50, .mean = 0, .sd = 1, .num_sims = 1) {
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
     dplyr::mutate(p = list(stats::pnorm(ps, mu, std))) %>%
-    dplyr::mutate(q = list(stats::qnorm(qs, mu, std))) %>%
+    dplyr::mutate(q = list(stats::qnorm(tidy_scale_zero_one_vec(unlist(y)), mu, std))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

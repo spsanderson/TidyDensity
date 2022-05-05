@@ -95,7 +95,7 @@ tidy_inverse_gamma <- function(.n = 50, .shape = 1, .rate = 1, .scale = 1/.rate,
                                    dplyr::as_tibble())) %>%
         dplyr::mutate(p = list(actuar::pinvgamma(ps, shape = shape,
                                              rate = rate, scale = scl))) %>%
-        dplyr::mutate(q = list(actuar::qinvgamma(qs, shape = shape,
+        dplyr::mutate(q = list(actuar::qinvgamma(tidy_scale_zero_one_vec(unlist(y)), shape = shape,
                                              rate = rate, scale = scl))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()

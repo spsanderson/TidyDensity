@@ -96,7 +96,7 @@ tidy_inverse_weibull <- function(.n = 50, .shape = 1, .rate = 1,
                                    dplyr::as_tibble())) %>%
         dplyr::mutate(p = list(actuar::pinvweibull(ps, shape = shape,
                                                scale = scale, rate = rate))) %>%
-        dplyr::mutate(q = list(actuar::qinvweibull(qs, shape = shape,
+        dplyr::mutate(q = list(actuar::qinvweibull(tidy_scale_zero_one_vec(unlist(y)), shape = shape,
                                                scale = scale, rate = rate))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()

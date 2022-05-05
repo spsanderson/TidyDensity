@@ -100,7 +100,7 @@ tidy_inverse_burr <- function(.n = 50, .shape1 = 1, .shape2 = 1, .rate = 1,
         dplyr::mutate(p = list(actuar::pinvburr(ps, shape1 = shape1,
                                              shape2 = shape2, rate = rate,
                                              scale = scale))) %>%
-        dplyr::mutate(q = list(actuar::qinvburr(qs, shape1 = shape1,
+        dplyr::mutate(q = list(actuar::qinvburr(tidy_scale_zero_one_vec(unlist(y)), shape1 = shape1,
                                              shape2 = shape2, rate = rate,
                                              scale = scale))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%

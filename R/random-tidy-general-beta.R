@@ -109,7 +109,7 @@ tidy_generalized_beta <- function(.n = 50, .shape1 = 1, .shape2 = 1,
                                             shape2 = shape2,
                                             shape3 = shape3,
                                             rate = rate, scale = scl))) %>%
-        dplyr::mutate(q = list(actuar::qgenbeta(qs, shape1 = shape1,
+        dplyr::mutate(q = list(actuar::qgenbeta(tidy_scale_zero_one_vec(unlist(y)), shape1 = shape1,
                                             shape2 = shape2,
                                             shape3 = shape3,
                                             rate = rate, scale = scl))) %>%

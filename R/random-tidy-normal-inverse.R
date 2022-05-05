@@ -95,7 +95,7 @@ tidy_inverse_normal <- function(.n = 50, .mean = 1, .shape = 1, .dispersion = 1/
                                    dplyr::as_tibble())) %>%
         dplyr::mutate(p = list(actuar::pinvgauss(ps, mean = mu, shape = shape
                                             , dispersion = dispers))) %>%
-        dplyr::mutate(q = list(actuar::qinvgauss(qs, mean = mu, shape = shape
+        dplyr::mutate(q = list(actuar::qinvgauss(tidy_scale_zero_one_vec(unlist(y)), mean = mu, shape = shape
                                             , dispersion = dispers))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()

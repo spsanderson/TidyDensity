@@ -92,7 +92,7 @@ tidy_pareto1 <- function(.n = 50, .shape = 1, .min = 1, .num_sims = 1) {
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
     dplyr::mutate(p = list(actuar::ppareto1(ps, shape = shape, min = min))) %>%
-    dplyr::mutate(q = list(actuar::qpareto1(qs, shape = shape, min = min))) %>%
+    dplyr::mutate(q = list(actuar::qpareto1(tidy_scale_zero_one_vec(unlist(y)), shape = shape, min = min))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

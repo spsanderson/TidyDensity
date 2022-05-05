@@ -237,10 +237,18 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
             ) +
             ggplot2::theme(legend.position = leg_pos)
     } else if (plot_type == "quantile") {
+        ## EDIT
+        data_tbl <- data_tbl %>%
+            dplyr::select(sim_number, q) %>%
+            dplyr::group_by(sim_number) %>%
+            dplyr::arrange(q) %>%
+            dplyr::mutate(x = 1:dplyr::n()) %>%
+            dplyr::ungroup()
+        ## End EDIT
         plt <- data_tbl %>%
             ggplot2::ggplot(
                 ggplot2::aes(
-                    x = qs, y = q, group = interaction(dist_name, sim_number), color = dist_name
+                    x = x, y = q, group = interaction(dist_name, sim_number), color = dist_name
                 )
             ) +
             ggplot2::geom_line(size = line_size) +

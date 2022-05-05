@@ -112,7 +112,7 @@ tidy_generalized_pareto <- function(.n = 50, .shape1 = 1, .shape2 = 1,
       shape2 = shape2, rate = rate,
       scale = scale
     ))) %>%
-    dplyr::mutate(q = list(actuar::qgenpareto(qs,
+    dplyr::mutate(q = list(actuar::qgenpareto(tidy_scale_zero_one_vec(unlist(y)),
       shape1 = shape1,
       shape2 = shape2, rate = rate,
       scale = scale

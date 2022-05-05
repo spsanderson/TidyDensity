@@ -93,7 +93,7 @@ tidy_gamma <- function(.n = 50, .shape = 1, .scale = 0.3, .num_sims = 1) {
                                    purrr::set_names("dx", "dy") %>%
                                    dplyr::as_tibble())) %>%
         dplyr::mutate(p = list(stats::pgamma(ps, shape = shp, scale = scle))) %>%
-        dplyr::mutate(q = list(stats::qgamma(qs, shape = shp, scale = scle))) %>%
+        dplyr::mutate(q = list(stats::qgamma(tidy_scale_zero_one_vec(unlist(y)), shape = shp, scale = scle))) %>%
         tidyr::unnest(cols = c(x, y, d, p, q)) %>%
         dplyr::ungroup()
 

@@ -83,7 +83,7 @@ tidy_geometric <- function(.n = 50, .prob = 1, .num_sims = 1) {
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
     dplyr::mutate(p = list(stats::pgeom(ps, prob = prob))) %>%
-    dplyr::mutate(q = list(stats::qgeom(qs, prob = prob))) %>%
+    dplyr::mutate(q = list(stats::qgeom(tidy_scale_zero_one_vec(unlist(y)), prob = prob))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
