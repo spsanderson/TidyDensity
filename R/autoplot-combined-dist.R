@@ -253,7 +253,7 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
                 linetype = "dashed"
             ) +
             ggplot2::ylim(0, max_dy)
-    } else {
+    } else if (.geom_smooth & plot_type == "mcmc") {
         plt <- plt +
             ggplot2::geom_smooth(
                 ggplot2::aes(

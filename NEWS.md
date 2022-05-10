@@ -4,7 +4,8 @@
 None
 
 ## New Features
-None
+1. Fix #181 - Add functions `color_blind()` `td_scale_fill_colorblind()` and 
+`td_scale_color_colorblind()`
 
 ## Minor Fixes and Improvements
 1. Fix #176 - Update `_autoplot` functions to include cumulative mean MCMC chart
