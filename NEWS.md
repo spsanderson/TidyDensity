@@ -1,8 +1,19 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+None
+
+## New Features
+None
+
+## Minor Fixes and Improvements
+1. Fix #176 - Update `_autoplot` functions to include cumulative mean MCMC chart
+by taking advantage of the `.num_sims` paramter of `tidy_` distribution
+functions.
+
 # TidyDensity 1.1.0
 
-## Breaking Changes:
+## Breaking Changes
 None
 
 ## New Features

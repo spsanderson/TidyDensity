@@ -109,7 +109,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
                      greater than 0.")
     }
 
-    if (!plot_type %in% c("density", "quantile", "probability", "qq")) {
+    if (!plot_type %in% c("density", "quantile", "probability", "qq","mcmc")) {
         rlang::abort("You have chose an unsupported plot type.")
     }
 
@@ -290,6 +290,27 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
                 color = "Simulation"
             ) +
             ggplot2::theme(legend.position = leg_pos)
+    } else if (plot_type == "mcmc") {
+        plt <- data_tbl %>%
+            dplyr::group_by(sim_number) %>%
+            dplyr::mutate(cmy = dplyr::cummean(y)) %>%
+            dplyr::ungroup() %>%
+            ggplot2::ggplot(ggplot2::aes(
+                x = x, y = cmy, group = sim_number, color = sim_number
+            )) +
+            ggplot2::geom_line() +
+            ggplot2::theme_minimal() +
+            ggplot2::scale_x_continuous(trans = "log10") +
+            ggplot2::labs(
+                title = "MCMC Cumulative Mean Plot",
+                caption = "X is on log10 scale.",
+                subtitle = sub_title,
+                color = "Simulation",
+                x = "",
+                y = ""
+            ) +
+            ggplot2::theme(legend.position = leg_pos)
+
     }
 
     if (.geom_rug) {
@@ -302,19 +323,29 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
             ggplot2::geom_point(size = point_size)
     }
 
-    if (.geom_smooth) {
+    if (.geom_smooth & !plot_type == "mcmc") {
         max_dy <- max(data_tbl$dy)
 
         plt <- plt +
             ggplot2::geom_smooth(
                 ggplot2::aes(
-                    group = dist_name
+                    group = FALSE
                 ),
                 se = FALSE,
                 color = "black",
                 linetype = "dashed"
             ) +
             ggplot2::ylim(0, max_dy)
+    } else {
+        plt <- plt +
+            ggplot2::geom_smooth(
+                ggplot2::aes(
+                    group = FALSE
+                ),
+                se = FALSE,
+                color = "black",
+                linetype = "dashed"
+            )
     }
 
     if (.geom_jitter) {
