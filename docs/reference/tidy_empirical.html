@@ -66,13 +66,16 @@ The <code>y</code> column is set equal to <code>dy</code> from the density funct
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tidy_empirical</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tidy_empirical</span><span class="op">(</span><span class="va">.x</span>, .distribution_type <span class="op">=</span> <span class="st">"continuous"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.x</dt>
 <dd><p>A vector of numbers</p></dd>
+<dt>.distribution_type</dt>
+<dd><p>A string of either "continuous" or "discrete". The
+function will default to "continuous"</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -89,7 +92,7 @@ The <code>y</code> column is set equal to <code>dy</code> from the density funct
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tidy_empirical</span><span class="op">(</span>.x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">tidy_empirical</span><span class="op">(</span>.x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, .distribution_type <span class="op">=</span> <span class="st">"continuous"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 x 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number     x     y     dx       dy     p     q</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
