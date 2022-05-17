@@ -9,8 +9,10 @@ None
 
 ## Minor Fixes and Improvements
 1. Fix #176 - Update `_autoplot` functions to include cumulative mean MCMC chart
-by taking advantage of the `.num_sims` paramter of `tidy_` distribution
+by taking advantage of the `.num_sims` parameter of `tidy_` distribution
 functions.
+2. Fix #184 - Update `tidy_empirical()` to add a parameter of `.distribution_type`
+3. Fix #183 - `tidy_empirical()` is now again plotted by `_autoplot` functions.
 
 # TidyDensity 1.1.0
 

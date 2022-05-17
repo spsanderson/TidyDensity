@@ -9,21 +9,28 @@
 #' The `y` column is set equal to `dy` from the density function.
 #'
 #' @param .x A vector of numbers
+#' @param .distribution_type A string of either "continuous" or "discrete". The
+#' function will default to "continuous"
 #'
 #' @examples
-#' tidy_empirical(.x = 1:10)
+#' tidy_empirical(.x = 1:10, .distribution_type = "continuous")
 #' @return
 #' A tibble
 #'
 #' @export
 #'
 
-tidy_empirical <- function(.x) {
+tidy_empirical <- function(.x, .distribution_type = "continuous") {
     x_term <- .x
     n <- length(x_term)
+    dist_type <- tolower(as.character(.distribution_type))
 
     if (!is.vector(x_term)) {
         rlang::abort("You must pass a vector as the .x argument to this function.")
+    }
+
+    if (!dist_type %in% c("continuous","discrete")){
+        rlang::abort("You must choose either 'continuous' or 'discrete'.")
     }
 
     ## New P
@@ -48,11 +55,13 @@ tidy_empirical <- function(.x) {
     df <- df %>%
     dplyr::mutate(q = q_vec$q)
 
-  attr(df, ".x") <- .x
-  attr(df, ".n") <- n
-  attr(df, ".num_sims") <- 1L
-  attr(df, "tibble_type") <- "tidy_empirical"
-  attr(df, "dist_with_params") <- "Empirical"
+    # Attach descriptive attributes to tibble
+    attr(df, "distribution_family_type") <- dist_type
+    attr(df, ".x") <- .x
+    attr(df, ".n") <- n
+    attr(df, ".num_sims") <- 1L
+    attr(df, "tibble_type") <- "tidy_empirical"
+    attr(df, "dist_with_params") <- "Empirical"
 
   # Return ----
   return(df)
