@@ -9,3 +9,8 @@ td_scale_color_colorblind(..., theme = "td")
 \description{
 Provide Colorblind Compliant Colors
 }
+\seealso{
+Other Color Blind: 
+\code{\link{td_scale_fill_colorblind}()}
+}
+\concept{Color Blind}
