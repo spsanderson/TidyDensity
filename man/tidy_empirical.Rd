@@ -4,10 +4,13 @@
 \alias{tidy_empirical}
 \title{Tidy Empirical}
 \usage{
-tidy_empirical(.x)
+tidy_empirical(.x, .distribution_type = "continuous")
 }
 \arguments{
 \item{.x}{A vector of numbers}
+
+\item{.distribution_type}{A string of either "continuous" or "discrete". The
+function will default to "continuous"}
 }
 \value{
 A tibble
@@ -21,7 +24,7 @@ The \code{y} column is set equal to \code{dy} from the density function.
 This function takes in a single argument of .x a vector
 }
 \examples{
-tidy_empirical(.x = 1:10)
+tidy_empirical(.x = 1:10, .distribution_type = "continuous")
 }
 \author{
 Steven P. Sanderson II, MPH

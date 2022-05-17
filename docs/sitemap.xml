@@ -28,10 +28,19 @@
     <loc>https://github.com/spsanderson/TidyDensity/news/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/color_blind.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/index.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/td_scale_color_colorblind.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/td_scale_fill_colorblind.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidyeval.html</loc>
