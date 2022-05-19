@@ -30,6 +30,8 @@ tidy_skewness_vec(rnorm(100, 3, 2))
 \url{https://en.wikipedia.org/wiki/Skewness}
 
 Other Statistic: 
+\code{\link{ci_hi}()},
+\code{\link{ci_lo}()},
 \code{\link{tidy_kurtosis_vec}()},
 \code{\link{tidy_range_statistic}()}
 

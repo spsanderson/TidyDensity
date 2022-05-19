@@ -34,6 +34,8 @@ Other Vector Function:
 \code{\link{tidy_skewness_vec}()}
 
 Other Statistic: 
+\code{\link{ci_hi}()},
+\code{\link{ci_lo}()},
 \code{\link{tidy_range_statistic}()},
 \code{\link{tidy_skewness_vec}()}
 
