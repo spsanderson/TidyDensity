@@ -26,6 +26,8 @@ tidy_range_statistic(seq(1:10))
 }
 \seealso{
 Other Statistic: 
+\code{\link{ci_hi}()},
+\code{\link{ci_lo}()},
 \code{\link{tidy_kurtosis_vec}()},
 \code{\link{tidy_skewness_vec}()}
 }
