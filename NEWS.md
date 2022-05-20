@@ -14,6 +14,7 @@ by taking advantage of the `.num_sims` parameter of `tidy_` distribution
 functions.
 2. Fix #184 - Update `tidy_empirical()` to add a parameter of `.distribution_type`
 3. Fix #183 - `tidy_empirical()` is now again plotted by `_autoplot` functions.
+4. Fix #188 - Add the `.num_sims` parameter to `tidy_empirical()`
 
 # TidyDensity 1.1.0
 
