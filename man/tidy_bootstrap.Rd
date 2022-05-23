@@ -44,6 +44,10 @@ x <- mtcars$mpg
 tidy_bootstrap(x)
 
 }
+\seealso{
+Other Bootstrap: 
+\code{\link{bootstrap_unnest_tbl}()}
+}
 \author{
 Steven P. Sanderson II, MPH
 }

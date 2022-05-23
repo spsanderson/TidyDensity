@@ -86,7 +86,7 @@ tidy_bootstrap <- function(.x, .num_sims = 2000, .proportion = 0.8,
     attr(df, "distribution_family_type") <- dist_type
     attr(df, ".x") <- .x
     attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_bootstrap"
+    attr(df, "tibble_type") <- "tidy_bootstrap_nested"
     attr(df, "dist_with_params") <- "Empirical"
 
     # Return ----
