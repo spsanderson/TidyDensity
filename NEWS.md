@@ -7,6 +7,7 @@ None
 1. Fix #181 - Add functions `color_blind()` `td_scale_fill_colorblind()` and 
 `td_scale_color_colorblind()`
 2. Fix #187 - Add functions `ci_lo()` and `ci_hi()`
+3. Fix #189 - Add function `tidy_bootstrap()`
 
 ## Minor Fixes and Improvements
 1. Fix #176 - Update `_autoplot` functions to include cumulative mean MCMC chart

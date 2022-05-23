@@ -37,6 +37,10 @@ reference:
      desc: Function for creating mixture model data
      contents:
      -  has_concept("Mixture Data")
+  -  title: Bootstrap
+     desc: Functions for bootstrapping data
+     contents:
+     -  has_concept("Bootstrap")
   -  title: Parameter Estimation Functions
      desc: Functions that help to estimate parameters from raw data.
      contents:
