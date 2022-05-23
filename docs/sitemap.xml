@@ -28,6 +28,9 @@
     <loc>https://github.com/spsanderson/TidyDensity/news/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/bootstrap_unnest_tbl.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/ci_hi.html</loc>
   </url>
   <url>
@@ -59,6 +62,9 @@
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_binomial.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_bootstrap.html</loc>
   </url>
   <url>
     <loc>https://github.com/spsanderson/TidyDensity/reference/tidy_burr.html</loc>
