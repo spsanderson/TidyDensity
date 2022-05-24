@@ -3,7 +3,13 @@
 y column from the tidy_ distribution function."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--></head><body data-spy="scroll" data-target="#toc">
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-BSLLH3X96M"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BSLLH3X96M');
+</script></head><body data-spy="scroll" data-target="#toc">
     
 
     <div class="container template-reference-topic">
@@ -73,8 +79,8 @@ y column from the <code>tidy_</code> distribution function.</p>
 <dd><p>The data that is going to be passed from a a <code>tidy_</code> distribution
 function.</p></dd>
 <dt>...</dt>
-<dd><p>This is the grouping variable that gets passed to <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">dplyr::group_by()</a></code>
-and <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">dplyr::select()</a></code>.</p></dd>
+<dd><p>This is the grouping variable that gets passed to <code><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">dplyr::group_by()</a></code>
+and <code><a href="https://rdrr.io/pkg/dplyr/man/select.html" class="external-link">dplyr::select()</a></code>.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -117,37 +123,37 @@ will return a tibble of the following information:</p><ul><li><p><code>sim_numbe
 <span class="r-in"><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidy_beta.html">tidy_beta</a></span><span class="op">(</span>.num_sims <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">tidy_distribution_summary_tbl</span><span class="op">(</span><span class="va">tn</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   mean_val median_val std_val min_val max_val skewness kurtosis range   iqr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  -<span style="color: #BB0000;">0.040</span><span style="color: #BB0000; text-decoration: underline;">1</span>    -<span style="color: #BB0000;">0.027</span><span style="color: #BB0000; text-decoration: underline;">8</span>   0.990   -<span style="color: #BB0000;">2.62</span>    2.18   -<span style="color: #BB0000;">0.119</span>     2.56  4.80  1.36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 1 more variable: variance &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  -<span style="color: #BB0000;">0.045</span><span style="color: #BB0000; text-decoration: underline;">3</span>    -<span style="color: #BB0000;">0.058</span><span style="color: #BB0000; text-decoration: underline;">6</span>   0.912   -<span style="color: #BB0000;">2.68</span>    2.35   -<span style="color: #BB0000;">0.103</span>     3.05  5.03  1.20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: variance &lt;dbl&gt;</span></span>
 <span class="r-in"><span class="fu">tidy_distribution_summary_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">sim_number</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 x 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 11</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   sim_number mean_val median_val std_val min_val max_val skewness kurtosis range</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1           -<span style="color: #BB0000;">0.014</span><span style="color: #BB0000; text-decoration: underline;">3</span>    0.227     0.940   -<span style="color: #BB0000;">2.62</span>    1.57   -<span style="color: #BB0000;">0.536</span>     2.85  4.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 2            0.091<span style="text-decoration: underline;">3</span>    0.009<span style="text-decoration: underline;">90</span>   0.969   -<span style="color: #BB0000;">1.97</span>    2.18    0.180     2.61  4.15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 3           -<span style="color: #BB0000;">0.252</span>    -<span style="color: #BB0000;">0.246</span>     1.04    -<span style="color: #BB0000;">2.40</span>    1.67   -<span style="color: #BB0000;">0.117</span>     2.18  4.07</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 4           -<span style="color: #BB0000;">0.088</span><span style="color: #BB0000; text-decoration: underline;">7</span>   -<span style="color: #BB0000;">0.053</span><span style="color: #BB0000; text-decoration: underline;">9</span>    0.990   -<span style="color: #BB0000;">2.54</span>    2.14   -<span style="color: #BB0000;">0.222</span>     2.69  4.68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 5            0.063<span style="text-decoration: underline;">8</span>    0.020<span style="text-decoration: underline;">6</span>    1.00    -<span style="color: #BB0000;">1.71</span>    1.93    0.132     2.20  3.63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 2 more variables: iqr &lt;dbl&gt;, variance &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1            0.063<span style="text-decoration: underline;">1</span>    -<span style="color: #BB0000;">0.049</span><span style="color: #BB0000; text-decoration: underline;">1</span>   0.917   -<span style="color: #BB0000;">2.06</span>    2.01  -<span style="color: #BB0000;">0.040</span><span style="color: #BB0000; text-decoration: underline;">9</span>     2.48  4.07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 2            0.196      0.265    0.941   -<span style="color: #BB0000;">2.68</span>    2.11  -<span style="color: #BB0000;">0.675</span>      4.09  4.79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 3           -<span style="color: #BB0000;">0.225</span>     -<span style="color: #BB0000;">0.215</span>    0.939   -<span style="color: #BB0000;">2.28</span>    1.63   0.126      2.51  3.91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 4           -<span style="color: #BB0000;">0.241</span>     -<span style="color: #BB0000;">0.295</span>    0.920   -<span style="color: #BB0000;">2.49</span>    2.35   0.441      3.84  4.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 5           -<span style="color: #BB0000;">0.019</span><span style="color: #BB0000; text-decoration: underline;">4</span>     0.120    0.790   -<span style="color: #BB0000;">2.30</span>    1.72  -<span style="color: #BB0000;">0.497</span>      3.58  4.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2 more variables: iqr &lt;dbl&gt;, variance &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidy_combine_distributions.html">tidy_combine_distributions</a></span><span class="op">(</span><span class="va">tn</span>, <span class="va">tb</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">tidy_distribution_summary_tbl</span><span class="op">(</span><span class="va">data_tbl</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   mean_val median_val std_val min_val max_val skewness kurtosis range   iqr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    0.234      0.389   0.776   -<span style="color: #BB0000;">2.62</span>    2.18   -<span style="color: #BB0000;">0.914</span>     4.22  4.80 0.755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 1 more variable: variance &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    0.238      0.350   0.733   -<span style="color: #BB0000;">2.68</span>    2.35   -<span style="color: #BB0000;">0.906</span>     4.59  5.03 0.775</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: variance &lt;dbl&gt;</span></span>
 <span class="r-in"><span class="fu">tidy_distribution_summary_tbl</span><span class="op">(</span><span class="va">data_tbl</span>, <span class="va">dist_type</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 x 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 11</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type mean_val median_val std_val  min_val max_val skewness kurtosis range</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gaussian~  -<span style="color: #BB0000;">0.040</span><span style="color: #BB0000; text-decoration: underline;">1</span>    -<span style="color: #BB0000;">0.027</span><span style="color: #BB0000; text-decoration: underline;">8</span>   0.990 -<span style="color: #BB0000;">2.62</span><span style="color: #949494;">e</span>+0   2.18   -<span style="color: #BB0000;">0.119</span>      2.56 4.80 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta c(1~   0.507      0.514    0.279  9.08<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span>   0.994  -<span style="color: #BB0000;">0.052</span><span style="color: #BB0000; text-decoration: underline;">5</span>     1.87 0.993</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ... with 2 more variables: iqr &lt;dbl&gt;, variance &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gaussian…  -<span style="color: #BB0000;">0.045</span><span style="color: #BB0000; text-decoration: underline;">3</span>    -<span style="color: #BB0000;">0.058</span><span style="color: #BB0000; text-decoration: underline;">6</span>   0.912 -<span style="color: #BB0000;">2.68</span>      2.35    -<span style="color: #BB0000;">0.103</span>     3.05 5.03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta c(1…   0.522      0.546    0.291  0.009<span style="text-decoration: underline;">77</span>   0.992   -<span style="color: #BB0000;">0.112</span>     1.80 0.983</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2 more variables: iqr &lt;dbl&gt;, variance &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
