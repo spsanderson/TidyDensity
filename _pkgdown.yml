@@ -2,7 +2,7 @@ url: https://github.com/spsanderson/TidyDensity
 template:
   boostrap: 5
   params:
-    #ganalytics: G-3393M45M1X
+    ganalytics: G-BSLLH3X96M
     bootswatch: flatly
 
 navbar:
