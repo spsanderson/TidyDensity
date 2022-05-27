@@ -17,6 +17,7 @@ functions.
 2. Fix #184 - Update `tidy_empirical()` to add a parameter of `.distribution_type`
 3. Fix #183 - `tidy_empirical()` is now again plotted by `_autoplot` functions.
 4. Fix #188 - Add the `.num_sims` parameter to `tidy_empirical()`
+5. Fix #196 - Add `ci_lo()` and `ci_hi()` to all stats tbl functions.
 
 # TidyDensity 1.1.0
 
