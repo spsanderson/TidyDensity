@@ -21,8 +21,11 @@ of the given type of \code{tidy_} distribution. It is required that data be
 passed from a \code{tidy_} distribution function.
 }
 \examples{
+library(dplyr)
+
 tidy_cauchy() \%>\%
-  util_cauchy_stats_tbl()
+  util_cauchy_stats_tbl() \%>\%
+  glimpse()
 
 }
 \seealso{

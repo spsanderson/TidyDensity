@@ -14,8 +14,11 @@
 #' @param .data The data being passed from a `tidy_` distribution function.
 #'
 #' @examples
+#' library(dplyr)
+#'
 #' tidy_binomial() %>%
-#'   util_binomial_stats_tbl()
+#'   util_binomial_stats_tbl() %>%
+#'   glimpse()
 #'
 #' @return
 #' A tibble
@@ -73,7 +76,9 @@ util_binomial_stats_tbl <- function(.data){
         skewness = stat_skewness,
         kurtosis = stat_kurtosis,
         computed_std_skew = tidy_skewness_vec(data_tbl$y),
-        computed_std_kurt = tidy_kurtosis_vec(data_tbl$y)
+        computed_std_kurt = tidy_kurtosis_vec(data_tbl$y),
+        ci_lo = ci_lo(data_tbl$y),
+        ci_hi = ci_hi(data_tbl$y)
     )
 
     # Return

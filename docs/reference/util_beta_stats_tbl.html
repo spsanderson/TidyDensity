@@ -118,15 +118,30 @@ passed from a <code>tidy_</code> distribution function.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="tidy_beta.html">tidy_beta</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">util_beta_stats_tbl</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   tidy_function function_call   distribution distribution_ty… points simulations</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> tidy_beta     Beta c(1, 1, 0) Beta         continuous           50           1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 9 more variables: mean &lt;dbl&gt;, mode &lt;chr&gt;, range &lt;chr&gt;, std_dv &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   coeff_var &lt;dbl&gt;, skewness &lt;dbl&gt;, kurtosis &lt;lgl&gt;, computed_std_skew &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   computed_std_kurt &lt;dbl&gt;</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="fu"><a href="tidy_beta.html">tidy_beta</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
+<span class="r-in">  <span class="fu">util_beta_stats_tbl</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span>
+<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tidy_function     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "tidy_beta"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ function_call     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Beta c(1, 1, 0)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ distribution      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Beta"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ distribution_type <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "continuous"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ points            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ simulations       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ mean              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ mode              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "undefined"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ range             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0 to 1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ std_dv            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.2886751</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ coeff_var         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.5773503</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ skewness          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ kurtosis          <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ computed_std_skew <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -0.1538134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ computed_std_kurt <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.589973</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ ci_lo             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.03012441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ ci_hi             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.9837966</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
