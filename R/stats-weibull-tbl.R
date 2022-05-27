@@ -14,8 +14,11 @@
 #' @param .data The data being passed from a `tidy_` distribution function.
 #'
 #' @examples
+#' library(dplyr)
+#'
 #' tidy_weibull() %>%
-#'   util_weibull_stats_tbl()
+#'   util_weibull_stats_tbl() %>%
+#'   glimpse()
 #'
 #' @return
 #' A tibble
@@ -83,7 +86,9 @@ util_weibull_stats_tbl <- function(.data){
         std_dv = stat_sd,
         coeff_var = stat_coef_var,
         computed_std_skew = tidy_skewness_vec(data_tbl$y),
-        computed_std_kurt = tidy_kurtosis_vec(data_tbl$y)
+        computed_std_kurt = tidy_kurtosis_vec(data_tbl$y),
+        ci_lo = ci_lo(data_tbl$y),
+        ci_hi = ci_hi(data_tbl$y)
     )
 
     # Return
