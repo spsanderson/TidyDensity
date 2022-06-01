@@ -31,7 +31,7 @@ bootstrap_unnest_tbl <- function(.data){
 
     # Checks ----
     atb <- attributes(.data)
-    distribution_family_type <- atb$dist_type
+    distribution_family_type <- atb$distribution_family_type
 
     if (!atb$tibble_type == "tidy_bootstrap_nested"){
         rlang::abort(
@@ -46,7 +46,7 @@ bootstrap_unnest_tbl <- function(.data){
 
     # Return ----
     attr(df, ".num_sims") <- atb$.num_sims
-    attr(df, "distribution_family_tpe") <- distribution_family_type
+    attr(df, "distribution_family_type") <- distribution_family_type
     attr(df, "tibble_type") <- "tidy_bootstrap"
     attr(df, "dist_with_params") <- "Empirical"
 
