@@ -205,8 +205,8 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
         total_deviance_tbl = total_deviance_tbl
     )
 
-    return(invisible(output))
-
     print(total_deviance_tbl)
+
+    return(invisible(output))
 
 }
