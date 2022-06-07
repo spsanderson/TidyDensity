@@ -7,6 +7,8 @@
 td_scale_color_colorblind(..., theme = "td")
 }
 \arguments{
+\item{...}{Data passed to the function}
+
 \item{theme}{This defaults to \code{td} and that is the only allowed value}
 }
 \description{

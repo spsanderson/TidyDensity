@@ -16,6 +16,7 @@ color_blind <- function(){
 #' @family ColorBlind
 #'
 #' @param theme This defaults to `td` and that is the only allowed value
+#' @param ... Data passed to the function
 #'
 #' @export
 td_scale_fill_colorblind <- function(..., theme = "td") {
@@ -32,6 +33,7 @@ td_scale_fill_colorblind <- function(..., theme = "td") {
 #' @family ColorBlind
 #'
 #' @param theme This defaults to `td` and that is the only allowed value
+#' @param ... Data passed to the function
 #'
 #' @export
 td_scale_color_colorblind = function(..., theme = "td") {
