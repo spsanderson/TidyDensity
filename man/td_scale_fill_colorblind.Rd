@@ -6,11 +6,14 @@
 \usage{
 td_scale_fill_colorblind(..., theme = "td")
 }
+\arguments{
+\item{theme}{This defaults to \code{td} and that is the only allowed value}
+}
 \description{
 Provide Colorblind Compliant Colors
 }
 \seealso{
-Other Color Blind: 
+Other ColorBlind: 
 \code{\link{td_scale_color_colorblind}()}
 }
-\concept{Color Blind}
+\concept{ColorBlind}
