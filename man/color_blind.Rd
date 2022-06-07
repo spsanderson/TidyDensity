@@ -9,6 +9,6 @@ color_blind()
 \description{
 Provide Colorblind Compliant Colors
 }
-\concept{Color Blind
+\concept{ColorBlind
 
 8 Hex RGB color definitions suitable for charts for colorblind people.}

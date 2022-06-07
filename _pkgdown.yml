@@ -58,7 +58,7 @@ reference:
      desc: Functions that generate plots of the tidy_ distribution functions.
      contents:
      -  has_concept("Autoplot")
-     -  has_concept("Color Blind")
+     -  has_concept("ColorBlind")
   -  title: Statistic Functions
      desc: Functions that return a statistic
      contents:
