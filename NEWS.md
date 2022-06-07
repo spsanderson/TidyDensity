@@ -9,6 +9,7 @@ None
 2. Fix #187 - Add functions `ci_lo()` and `ci_hi()`
 3. Fix #189 - Add function `tidy_bootstrap()`
 4. Fix #190 - Add function `bootstrap_unnest_tbl()`
+5. Fix 
 
 ## Minor Fixes and Improvements
 1. Fix #176 - Update `_autoplot` functions to include cumulative mean MCMC chart
@@ -18,6 +19,8 @@ functions.
 3. Fix #183 - `tidy_empirical()` is now again plotted by `_autoplot` functions.
 4. Fix #188 - Add the `.num_sims` parameter to `tidy_empirical()`
 5. Fix #196 - Add `ci_lo()` and `ci_hi()` to all stats tbl functions.
+6. Fix #201 - Correct attribute of `distribution_family_type` to `discrete` for
+`tidy_geometric()`
 
 # TidyDensity 1.1.0
 
