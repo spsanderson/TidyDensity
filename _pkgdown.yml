@@ -29,6 +29,7 @@ reference:
   -  title: Empirical Data Functions
      contents:
      -  contains("_empirical")
+     -  has_concept("Empirical")
   -  title: Multiple Distribution Tibble
      desc: Generate multiple simulations of the same distribution with different parameters
      contents:
