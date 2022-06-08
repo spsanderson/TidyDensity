@@ -1,7 +1,5 @@
 #' Provide Colorblind Compliant Colors
 #'
-#' @family ColorBlind
-#'
 #' 8 Hex RGB color definitions suitable for charts for colorblind people.
 #'
 #' @export
@@ -12,8 +10,6 @@ color_blind <- function(){
 }
 
 #' Provide Colorblind Compliant Colors
-#'
-#' @family ColorBlind
 #'
 #' @param theme This defaults to `td` and that is the only allowed value
 #' @param ... Data passed to the function
@@ -29,8 +25,6 @@ td_scale_fill_colorblind <- function(..., theme = "td") {
 }
 
 #' Provide Colorblind Compliant Colors
-#'
-#' @family ColorBlind
 #'
 #' @param theme This defaults to `td` and that is the only allowed value
 #' @param ... Data passed to the function
