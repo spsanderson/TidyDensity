@@ -14,8 +14,3 @@ td_scale_fill_colorblind(..., theme = "td")
 \description{
 Provide Colorblind Compliant Colors
 }
-\seealso{
-Other ColorBlind: 
-\code{\link{td_scale_color_colorblind}()}
-}
-\concept{ColorBlind}
