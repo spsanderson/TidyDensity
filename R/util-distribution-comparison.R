@@ -66,96 +66,172 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
 
     # Get parameter estimates for distributions
     if (dist_type == "continuous"){
-        b <- util_beta_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::filter(method == "NIST_MME") %>%
-            dplyr::select(dist_type, shape1, shape2) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        b <- try(util_beta_param_estimate(x_term)$parameter_tbl %>%
+                     dplyr::filter(method == "NIST_MME") %>%
+                     dplyr::select(dist_type, shape1, shape2) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
 
-        c <- util_cauchy_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::select(dist_type, location, scale) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        if (!inherits(b, "try-error")){
+            tb <- tidy_beta(.n = n, .shape1 = round(b[[2]], 2), .shape2 = round(b[[3]], 2))
+        }
 
-        e <- util_exponential_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::select(dist_type, rate) %>%
-            dplyr::mutate(param_2 = NA) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        c <- try(util_cauchy_param_estimate(x_term)$parameter_tbl %>%
+                     dplyr::select(dist_type, location, scale) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
 
-        g <- util_gamma_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::filter(method == "NIST_MME") %>%
-            dplyr::select(dist_type, shape, scale) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        if (!inherits(c, "try-error")){
+            tc <- tidy_cauchy(.n = n, .location = round(c[[2]], 2), .scale = round(c[[3]], 2))
+        }
 
-        l <- util_logistic_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::filter(method == "EnvStats_MME") %>%
-            dplyr::select(dist_type, location, scale) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        e <- try(util_exponential_param_estimate(x_term)$parameter_tbl %>%
+                     dplyr::select(dist_type, rate) %>%
+                     dplyr::mutate(param_2 = NA) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
 
-        ln <- util_lognormal_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::filter(method == "EnvStats_MME") %>%
-            dplyr::select(dist_type, mean_log, sd_log) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        if (!inherits(e, "try-error")){
+            te <- tidy_exponential(.n = n, .rate = round(e[[2]], 2))
+        }
 
-        p <- util_pareto_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::filter(method == "MLE") %>%
-            dplyr::select(dist_type, shape, scale) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        g <- try(util_gamma_param_estimate(x_term)$parameter_tbl %>%
+                     dplyr::filter(method == "NIST_MME") %>%
+                     dplyr::select(dist_type, shape, scale) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
 
-        u <- util_uniform_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::filter(method == "NIST_MME") %>%
-            dplyr::select(dist_type, min_est, max_est) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        if (!inherits(g, "try-error")){
+            tg <- tidy_gamma(.n = n, .shape = round(g[[2]], 2),  .scale = round(g[[3]], 2))
+        }
 
-        w <- util_weibull_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::select(dist_type, shape, scale) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        l <- try(util_logistic_param_estimate(x_term)$parameter_tbl %>%
+                     dplyr::filter(method == "EnvStats_MME") %>%
+                     dplyr::select(dist_type, location, scale) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
+
+        if (!inherits(l, "try-error")){
+            tl <- tidy_logistic(.n = n, .location = round(l[[2]], 2), .scale = round(l[[3]], 2))
+        }
+
+        ln <- try(util_lognormal_param_estimate(x_term)$parameter_tbl %>%
+                      dplyr::filter(method == "EnvStats_MME") %>%
+                      dplyr::select(dist_type, mean_log, sd_log) %>%
+                      purrr::set_names("dist_type", "param_1", "param_2"))
+
+        if (!inherits(ln, "try-error")){
+            tln <- tidy_lognormal(.n = n, .meanlog = round(ln[[2]], 2), .sdlog = round(ln[[3]], 2))
+        }
+
+        p <- try(util_pareto_param_estimate(x_term)$parameter_tbl %>%
+                     dplyr::filter(method == "MLE") %>%
+                     dplyr::select(dist_type, shape, scale) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
+
+        if (!inherits(p, "try-error")){
+            tp <- tidy_pareto(.n = n, .shape = round(p[[2]], 2), .scale = round(p[[3]], 2))
+        }
+
+        u <- try(util_uniform_param_estimate(x_term)$parameter_tbl %>%
+                     dplyr::filter(method == "NIST_MME") %>%
+                     dplyr::select(dist_type, min_est, max_est) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
+
+        if (!inherits(u, "try-error")){
+            tu <- tidy_uniform(.n = n, .min = round(u[[2]], 2), .max = round(u[[3]], 2))
+        }
+
+        w <- try(util_weibull_param_estimate(x_term)$parameter_tbl %>%
+                     dplyr::select(dist_type, shape, scale) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
+
+        if (!inherits(w, "try-error")){
+            tw <- tidy_weibull(.n = n, .shape = round(w[[2]], 2), .scale = round(w[[3]], 2))
+        }
 
         comp_tbl <- tidy_combine_distributions(
             tidy_empirical(x_term, .distribution_type = dist_type),
-            tidy_beta(.n = n, .shape1 = round(b[[2]], 2), .shape2 = round(b[[3]], 2)),
-            tidy_cauchy(.n = n, .location = round(c[[2]], 2), .scale = round(c[[3]], 2)),
-            tidy_exponential(.n = n, .rate = round(e[[2]], 2)),
-            tidy_gamma(.n = n, .shape = round(g[[2]], 2),  .scale = round(g[[3]], 2)),
-            tidy_logistic(.n = n, .location = round(l[[2]], 2), .scale = round(l[[3]], 2)),
-            tidy_lognormal(.n = n, .meanlog = round(ln[[2]], 2), .sdlog = round(ln[[3]], 2)),
-            tidy_pareto(.n = n, .shape = round(p[[2]], 2), .scale = round(p[[3]], 2)),
-            tidy_uniform(.n = n, .min = round(u[[2]], 2), .max = round(u[[3]], 2)),
-            tidy_weibull(.n = n, .shape = round(w[[2]], 2), .scale = round(w[[3]], 2))
+            if (exists("tb") && nrow(tb) > 0){tb},
+            if (exists("tc") && nrow(tb) > 0){tc},
+            if (exists("te") && nrow(tb) > 0){te},
+            if (exists("tg") && nrow(tb) > 0){tg},
+            if (exists("tl") && nrow(tb) > 0){tl},
+            if (exists("tln") && nrow(tb) > 0){tln},
+            if (exists("tp") && nrow(tb) > 0){tp},
+            if (exists("tu") && nrow(tb) > 0){tu},
+            if (exists("tw") && nrow(tb) > 0){tw}
         )
 
+        # comp_tbl <- tidy_combine_distributions(
+        #   tidy_empirical(x_term, .distribution_type = dist_type),
+        #   tidy_beta(.n = n, .shape1 = round(b[[2]], 2), .shape2 = round(b[[3]], 2)),
+        #   tidy_cauchy(.n = n, .location = round(c[[2]], 2), .scale = round(c[[3]], 2)),
+        #   tidy_exponential(.n = n, .rate = round(e[[2]], 2)),
+        #   tidy_gamma(.n = n, .shape = round(g[[2]], 2),  .scale = round(g[[3]], 2)),
+        #   tidy_logistic(.n = n, .location = round(l[[2]], 2), .scale = round(l[[3]], 2)),
+        #   tidy_lognormal(.n = n, .meanlog = round(ln[[2]], 2), .sdlog = round(ln[[3]], 2)),
+        #   tidy_pareto(.n = n, .shape = round(p[[2]], 2), .scale = round(p[[3]], 2)),
+        #   tidy_uniform(.n = n, .min = round(u[[2]], 2), .max = round(u[[3]], 2)),
+        #   tidy_weibull(.n = n, .shape = round(w[[2]], 2), .scale = round(w[[3]], 2))
+        # )
     } else {
-        bn <- util_binomial_param_estimate(trunc(tidy_scale_zero_one_vec(x_term)))$parameter_tbl %>%
-            dplyr::select(dist_type, size, prob) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        bn <- try(util_binomial_param_estimate(trunc(tidy_scale_zero_one_vec(x_term)))$parameter_tbl %>%
+                      dplyr::select(dist_type, size, prob) %>%
+                      purrr::set_names("dist_type", "param_1", "param_2"))
 
-        ge <- util_geometric_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::filter(method == "EnvStats_MME") %>%
-            dplyr::select(dist_type, shape) %>%
-            dplyr::mutate(param_2 = NA) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        if (!inherits(bn, "try-error")){
+            tb <- tidy_binomial(.n = n, .size = round(bn[[2]], 2), .prob = round(bn[[3]], 2))
+        }
 
-        h <- util_hypergeometric_param_estimate(.x = x_term, .total = n, .k = n)$parameter_tbl %>%
-            tidyr::drop_na() %>%
-            dplyr::slice(1) %>%
-            dplyr::select(dist_type, m, total) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        ge <- try(util_geometric_param_estimate(trunc(x_term))$parameter_tbl %>%
+                      dplyr::filter(method == "EnvStats_MME") %>%
+                      dplyr::select(dist_type, shape) %>%
+                      dplyr::mutate(param_2 = NA) %>%
+                      purrr::set_names("dist_type", "param_1", "param_2"))
 
-        po <- util_poisson_param_estimate(x_term)$parameter_tbl %>%
-            dplyr::select(dist_type, lambda) %>%
-            dplyr::mutate(param_2 = NA) %>%
-            purrr::set_names("dist_type", "param_1", "param_2")
+        if (!inherits(ge, "try-error")){
+            tg <- tidy_geometric(.n = n, .prob = round(ge[[2]], 2))
+        }
 
-        comp_tbl <- tidy_combine_distributions(
-            tidy_empirical(.x = x_term, .distribution_type = dist_type),
-            tidy_binomial(.n = n, .size = round(bn[[2]], 2), .prob = round(bn[[3]], 2)),
-            tidy_geometric(.n = n, .prob = round(ge[[2]], 2)),
-            tidy_hypergeometric(
+        h <- try(util_hypergeometric_param_estimate(.x = trunc(x_term), .total = n, .k = n)$parameter_tbl %>%
+                     tidyr::drop_na() %>%
+                     dplyr::slice(1) %>%
+                     dplyr::select(dist_type, m, total) %>%
+                     purrr::set_names("dist_type", "param_1", "param_2"))
+
+        if (!inherits(h, "try-error")){
+            th <- tidy_hypergeometric(
                 .n = n,
                 .m = trunc(h[[2]]),
                 .nn = n - trunc(h[[2]]),
                 .k = trunc(h[[2]])
-            ),
-            tidy_poisson(.n = n, .lambda = round(po[[2]], 2))
+            )
+        }
+
+        po <- try(util_poisson_param_estimate(trunc(x_term))$parameter_tbl %>%
+                      dplyr::select(dist_type, lambda) %>%
+                      dplyr::mutate(param_2 = NA) %>%
+                      purrr::set_names("dist_type", "param_1", "param_2"))
+
+        if (!inherits(po, "try-error")){
+            tp <- tidy_poisson(.n = n, .lambda = round(po[[2]], 2))
+        }
+
+        comp_tbl <- tidy_combine_distributions(
+            tidy_empirical(.x = x_term, .distribution_type = dist_type),
+            if (exists("tb") && nrow(tb) > 0){tb},
+            if (exists("tg") && nrow(tb) > 0){tg},
+            if (exists("th") && nrow(tb) > 0){th},
+            if (exists("tp") && nrow(tb) > 0){tp}
         )
+        # comp_tbl <- tidy_combine_distributions(
+        #   tidy_empirical(.x = x_term, .distribution_type = dist_type),
+        #   tidy_binomial(.n = n, .size = round(bn[[2]], 2), .prob = round(bn[[3]], 2)),
+        #   tidy_geometric(.n = n, .prob = round(ge[[2]], 2)),
+        #   tidy_hypergeometric(
+        #     .n = n,
+        #     .m = trunc(h[[2]]),
+        #     .nn = n - trunc(h[[2]]),
+        #     .k = trunc(h[[2]])
+        #   ),
+        #   tidy_poisson(.n = n, .lambda = round(po[[2]], 2))
+        # )
 
     }
 
