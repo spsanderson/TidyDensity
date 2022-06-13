@@ -44,6 +44,8 @@ tidy_combine_distributions <- function(...){
     # Add distributions to a list
     dist_list <- list(...)
 
+    dist_list <- purrr::compact(dist_list)
+
     # Checks ----
     if (length(dist_list) < 2){
         rlang::abort(
