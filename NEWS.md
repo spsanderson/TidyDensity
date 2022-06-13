@@ -9,7 +9,7 @@ None
 ## Minor Fixes and Improvments
 1. Fix #210 - Fix param_grid order on internal which affected attributes and thus
 the display of the order of the parameters.
-2. 
+2. Fix #211 - Add High and Low CI to `tidy_distribution_summary_tbl()`
 
 # TidyDensity 1.2.0
 
