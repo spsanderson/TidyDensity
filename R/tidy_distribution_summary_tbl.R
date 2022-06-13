@@ -73,7 +73,9 @@ tidy_distribution_summary_tbl <- function(.data, ...) {
       kurtosis = tidy_kurtosis_vec(y),
       range = tidy_range_statistic(y),
       iqr = stats::IQR(y),
-      variance = stats::var(y)
+      variance = stats::var(y),
+      ci_low = ci_lo(y),
+      ci_high = ci_hi(y)
     ) %>%
     dplyr::ungroup()
 
