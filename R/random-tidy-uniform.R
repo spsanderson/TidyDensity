@@ -89,7 +89,7 @@ tidy_uniform <- function(.n = 50, .min = 0, .max = 1, .num_sims = 1) {
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
-  param_grid <- dplyr::tibble(.max, .min)
+  param_grid <- dplyr::tibble(.min, .max)
 
   # Attach descriptive attributes to tibble
   attr(df, "distribution_family_type") <- "continuous"

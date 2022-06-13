@@ -1,5 +1,16 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+None
+
+## New Features
+None
+
+## Minor Fixes and Improvments
+1. Fix #210 - Fix param_grid order on internal which affected attributes and thus
+the display of the order of the parameters.
+2. 
+
 # TidyDensity 1.2.0
 
 ## Breaking Changes
