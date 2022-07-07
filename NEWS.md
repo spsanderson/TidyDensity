@@ -14,6 +14,8 @@ the display of the order of the parameters.
 to prevent the issue occurring in #212
 4. Fix #212 - Make `tidy_distribution_comparison()` more robust in terms of handling
 bad or erroneous data.
+5. Fix #216 - Add an attribute of "tibble_type" to `tidy_multi_single_dist()` which
+helps it to work with other functions like `tidy_random_walk()`
 
 # TidyDensity 1.2.0
 

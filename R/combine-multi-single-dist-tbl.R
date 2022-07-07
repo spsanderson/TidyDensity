@@ -44,19 +44,21 @@ tidy_multi_single_dist <- function(
     # Check param ----
     if (is.null(.tidy_dist)) {
         rlang::abort(
-            "Please enter a 'tidy_' distribution function like 'tidy_normal'
-      in quotes."
+            message = "Please enter a 'tidy_' distribution function like 'tidy_normal'
+                        in quotes.",
+            use_cli_format = TRUE
         )
     }
 
     if (length(.param_list) == 0) {
         rlang::abort(
-            "Please enter some parameters for your chosen 'tidy_' distribution."
+            message = "Please enter some parameters for your chosen 'tidy_' distribution.",
+            use_cli_format = TRUE
         )
     }
 
   # Call used ---
-  td <- as.character(.tidy_dist)
+  td <- tolower(as.character(.tidy_dist))
 
   # Params ----
   params <- .param_list
@@ -108,6 +110,7 @@ tidy_multi_single_dist <- function(
 
   # Attach attributes ----
   attr(df_unnested_tbl, "all") <- atb
+  attr(df_unnested_tbl, "tibble_type") <- atb$tibble_type
   attr(df_unnested_tbl, "tbl") <- "tidy_multi_tibble"
   attr(df_unnested_tbl, ".num_sims") <- max(param_grid$.num_sims)
   attr(df_unnested_tbl, ".param_list") <- .param_list
