@@ -44,7 +44,7 @@ This function uses the underlying \code{actuar::rztpois()}, and its underlying
 tidy_zero_truncated_poisson()
 }
 \seealso{
-\url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
+\url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}
 
 Other Poisson: 
 \code{\link{tidy_poisson}()},

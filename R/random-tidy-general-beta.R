@@ -7,7 +7,7 @@
 #'
 #' @seealso \url{https://statisticsglobe.com/beta-distribution-in-r-dbeta-pbeta-qbeta-rbeta}
 #' @seealso \url{https://en.wikipedia.org/wiki/Beta_distribution}
-#' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
+#' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}
 #'
 #' @details This function uses the underlying `stats::rbeta()`, and its underlying
 #' `p`, `d`, and `q` functions. For more information please see [stats::rbeta()]

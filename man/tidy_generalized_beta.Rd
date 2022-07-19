@@ -64,7 +64,7 @@ tidy_generalized_beta()
 
 \url{https://en.wikipedia.org/wiki/Beta_distribution}
 
-\url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
+\url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}
 
 Other Continuous Distribution: 
 \code{\link{tidy_beta}()},
