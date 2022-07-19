@@ -6,7 +6,7 @@
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
-#' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
+#' @seealso \url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}
 #'
 #' @details This function uses the underlying `actuar::rztgeom()`, and its underlying
 #' `p`, `d`, and `q` functions. For more information please see [actuar::rztgeom()]

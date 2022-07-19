@@ -48,7 +48,7 @@ This function uses the underlying \code{stats::rnbinom()}, and its underlying
 tidy_negative_binomial()
 }
 \seealso{
-\url{https://openacttexts.github.io/Loss-Data-Analytics/C-SummaryDistributions.html}
+\url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}
 
 Other Discrete Distribution: 
 \code{\link{tidy_binomial}()},
