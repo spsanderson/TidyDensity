@@ -1,10 +1,10 @@
 pandoc: 2.17.1.1
-pkgdown: 2.0.3
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   getting-started: getting-started.html
-last_built: 2022-06-08T13:59Z
+last_built: 2022-07-19T16:11Z
 urls:
-  reference: https://github.com/spsanderson/TidyDensity/reference
-  article: https://github.com/spsanderson/TidyDensity/articles
+  reference: https://www.spsanderson.com/TidyDensity/reference
+  article: https://www.spsanderson.com/TidyDensity/articles
 

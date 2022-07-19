@@ -1,9 +1,9 @@
-url: https://github.com/spsanderson/TidyDensity
+url: https://www.spsanderson.com/TidyDensity/
 template:
   boostrap: 5
-  params:
-    ganalytics: G-BSLLH3X96M
-    bootswatch: flatly
+  bootswatch: flatly
+  ganalytics: G-BSLLH3X96M
+
 
 navbar:
   title: "TidyDensity"
@@ -72,3 +72,5 @@ reference:
      desc: Functions that work on vectors
      contents:
      -  "tidy_scale_zero_one_vec"
+
+search:
