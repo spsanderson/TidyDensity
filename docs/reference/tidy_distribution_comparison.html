@@ -118,25 +118,25 @@ for this the function to try the appropriate types of distributions.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 9 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_with_params        abs_tot_deviance</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Logistic c(20.09, 3.27)           0.067<span style="text-decoration: underline;">5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Beta c(1.11, 1.58, 0)             0.476 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Gamma c(11.47, 1.75)              1.66  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Lognormal c(2.96, 0.29)           1.83  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Uniform c(8.34, 31.84)            1.90  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Weibull c(3.58, 22.29)            3.66  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Cauchy c(19.2, 7.38)              5.34  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> Exponential c(0.05)               6.36  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> Pareto c(10.4, 1.62)              6.78  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Weibull c(3.58, 22.29)             0.156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Uniform c(8.34, 31.84)             0.540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Gamma c(11.47, 1.75)               1.14 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Logistic c(20.09, 3.27)            2.55 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Beta c(1.11, 1.58, 0)              3.14 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Exponential c(0.05)                5.29 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Pareto c(10.4, 1.62)               5.40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> Lognormal c(2.96, 0.29)            5.69 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">9</span> Cauchy c(19.2, 7.38)              14.8  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">xd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">trunc</a></span><span class="op">(</span><span class="va">xc</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tidy_distribution_comparison</span><span class="op">(</span><span class="va">xd</span>, <span class="st">"discrete"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_with_params             abs_tot_deviance</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Hypergeometric c(21, 11, 21)             1.52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Poisson c(19.69)                         3.16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Binomial c(32, 0.03)                     4.48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Geometric c(0.05)                        6.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Hypergeometric c(21, 11, 21)             1.69</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Poisson c(19.69)                         1.74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Geometric c(0.05)                        3.44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Binomial c(32, 0.03)                     4.48</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

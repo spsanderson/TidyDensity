@@ -35,6 +35,8 @@ will return a tibble of the following information:
 \item \code{range}
 \item \code{iqr}
 \item \code{variance}
+\item \code{ci_hi}
+\item \code{ci_lo}
 }
 
 The kurtosis and skewness come from the package \code{healthyR.ai}

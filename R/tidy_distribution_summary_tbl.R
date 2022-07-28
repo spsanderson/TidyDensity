@@ -18,6 +18,8 @@
 #' -  `range`
 #' -  `iqr`
 #' -  `variance`
+#' -  `ci_hi`
+#' -  `ci_lo`
 #'
 #' The kurtosis and skewness come from the package `healthyR.ai`
 #'
