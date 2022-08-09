@@ -4,7 +4,8 @@
 None
 
 ## New Features
-None
+1. Fix 229 - Add `tidy_normal()` to list of tested distributions. Add `AIC` from
+a linear model for metric, and add `stats::ks.test()` as a metric.
 
 ## Minor Fixes and Improvements
 None

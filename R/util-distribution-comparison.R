@@ -18,6 +18,7 @@
 #' -  tidy_gamma
 #' -  tidy_logistic
 #' -  tidy_lognormal
+#' -  tidy_normal
 #' -  tidy_pareto
 #' -  tidy_uniform
 #' -  tidy_weibull
@@ -27,6 +28,29 @@
 #' -  tidy_geometric
 #' -  tidy_hypergeometric
 #' -  tidy_poisson
+#'
+#' The function itself returns a list output of tibbles. Here are the tibbles that
+#' are returned:
+#' -  comparison_tbl
+#' -  deviance_tbl
+#' -  total_deviance_tbl
+#' -  aic_tbl
+#' -  kolmogorov_smirnov_tbl
+#' -  multi_metric_tbl
+#'
+#' The `comparison_tbl` is a long `tibble` that lists the values of the `density`
+#' function against the given data.
+#'
+#' The `deviance_tbl` and the `total_deviance_tbl` just give the simple difference
+#' from the actual density to the estimated density for the given estimated distribution.
+#'
+#' The `aic_tbl` will provide the `AIC` for a `lm` model of the estimated density
+#' against the emprical density.
+#'
+#' The `kolmogorov_smirnov_tbl` for now provides a `two.sided` estimate of the
+#' `ks.test` of the estimated density against the empirical.
+#'
+#' The `multi_metric_tbl` will summarise all of these metrics into a single tibble.
 #'
 #'
 #' @description Compare some empirical data set against different distributions
@@ -38,10 +62,12 @@
 #'
 #' @examples
 #' xc <- mtcars$mpg
-#' tidy_distribution_comparison(xc, "continuous")
+#' output_c <- tidy_distribution_comparison(xc, "continuous")
 #'
 #' xd <- trunc(xc)
-#' tidy_distribution_comparison(xd, "discrete")
+#' output_d <- tidy_distribution_comparison(xd, "discrete")
+#'
+#' output_c
 #'
 #' @return
 #' An invisible list object. A tibble is printed.
@@ -61,6 +87,12 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
             message = "The '.distribution_type' parameter must be either 'continuous'
       or 'discrete'.",
       use_cli_format = TRUE
+        )
+    }
+
+    if (!is.logical(print_aic)){
+        rlang::abort(
+            message = "'.print_aic' must be either TRUE or FALSE."
         )
     }
 
@@ -145,31 +177,29 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
             tw <- tidy_weibull(.n = n, .shape = round(w[[2]], 2), .scale = round(w[[3]], 2))
         }
 
+        nn <- try(util_normal_param_estimate(x_term)$parameter_tbl %>%
+                      dplyr::filter(method == "EnvStats_MME_MLE") %>%
+                      dplyr::select(dist_type, mu, stan_dev) %>%
+                      purrr::set_names("dist_type", "param_1", "param_2"))
+
+        if (!inherits(n, "try-error")){
+            tn <- tidy_normal(.n = n, .mean = round(nn[[2]], 2), .sd = round(nn[[3]], 2))
+        }
+
         comp_tbl <- tidy_combine_distributions(
             tidy_empirical(x_term, .distribution_type = dist_type),
             if (exists("tb") && nrow(tb) > 0){tb},
-            if (exists("tc") && nrow(tb) > 0){tc},
-            if (exists("te") && nrow(tb) > 0){te},
-            if (exists("tg") && nrow(tb) > 0){tg},
-            if (exists("tl") && nrow(tb) > 0){tl},
-            if (exists("tln") && nrow(tb) > 0){tln},
-            if (exists("tp") && nrow(tb) > 0){tp},
-            if (exists("tu") && nrow(tb) > 0){tu},
-            if (exists("tw") && nrow(tb) > 0){tw}
+            if (exists("tc") && nrow(tc) > 0){tc},
+            if (exists("te") && nrow(te) > 0){te},
+            if (exists("tg") && nrow(tg) > 0){tg},
+            if (exists("tl") && nrow(tl) > 0){tl},
+            if (exists("tln") && nrow(tln) > 0){tln},
+            if (exists("tp") && nrow(tp) > 0){tp},
+            if (exists("tu") && nrow(tu) > 0){tu},
+            if (exists("tw") && nrow(tw) > 0){tw},
+            if (exists("tn") && nrow(tn) > 0){tn}
         )
 
-        # comp_tbl <- tidy_combine_distributions(
-        #   tidy_empirical(x_term, .distribution_type = dist_type),
-        #   tidy_beta(.n = n, .shape1 = round(b[[2]], 2), .shape2 = round(b[[3]], 2)),
-        #   tidy_cauchy(.n = n, .location = round(c[[2]], 2), .scale = round(c[[3]], 2)),
-        #   tidy_exponential(.n = n, .rate = round(e[[2]], 2)),
-        #   tidy_gamma(.n = n, .shape = round(g[[2]], 2),  .scale = round(g[[3]], 2)),
-        #   tidy_logistic(.n = n, .location = round(l[[2]], 2), .scale = round(l[[3]], 2)),
-        #   tidy_lognormal(.n = n, .meanlog = round(ln[[2]], 2), .sdlog = round(ln[[3]], 2)),
-        #   tidy_pareto(.n = n, .shape = round(p[[2]], 2), .scale = round(p[[3]], 2)),
-        #   tidy_uniform(.n = n, .min = round(u[[2]], 2), .max = round(u[[3]], 2)),
-        #   tidy_weibull(.n = n, .shape = round(w[[2]], 2), .scale = round(w[[3]], 2))
-        # )
     } else {
         bn <- try(util_binomial_param_estimate(trunc(tidy_scale_zero_one_vec(x_term)))$parameter_tbl %>%
                       dplyr::select(dist_type, size, prob) %>%
@@ -216,22 +246,10 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
         comp_tbl <- tidy_combine_distributions(
             tidy_empirical(.x = x_term, .distribution_type = dist_type),
             if (exists("tb") && nrow(tb) > 0){tb},
-            if (exists("tg") && nrow(tb) > 0){tg},
-            if (exists("th") && nrow(tb) > 0){th},
-            if (exists("tp") && nrow(tb) > 0){tp}
+            if (exists("tg") && nrow(tg) > 0){tg},
+            if (exists("th") && nrow(th) > 0){th},
+            if (exists("tp") && nrow(tp) > 0){tp}
         )
-        # comp_tbl <- tidy_combine_distributions(
-        #   tidy_empirical(.x = x_term, .distribution_type = dist_type),
-        #   tidy_binomial(.n = n, .size = round(bn[[2]], 2), .prob = round(bn[[3]], 2)),
-        #   tidy_geometric(.n = n, .prob = round(ge[[2]], 2)),
-        #   tidy_hypergeometric(
-        #     .n = n,
-        #     .m = trunc(h[[2]]),
-        #     .nn = n - trunc(h[[2]]),
-        #     .k = trunc(h[[2]])
-        #   ),
-        #   tidy_poisson(.n = n, .lambda = round(po[[2]], 2))
-        # )
 
     }
 
@@ -259,7 +277,8 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
         tidyr::drop_na() %>%
         tidyr::pivot_longer(
             cols = -x
-        )
+        ) %>%
+        dplyr::select(-x)
 
     total_deviance_tbl <- deviance_tbl %>%
         dplyr::filter(!name == "Empirical") %>%
@@ -271,18 +290,79 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
         dplyr::rename(dist_with_params = name,
                       abs_tot_deviance = total_deviance)
 
-    # Return ----
-    attr(deviance_tbl, ".tibble_type") <- "deviance_comparison_tbl"
-    attr(total_deviance_tbl, ".tibble_type") <- "deviance_results_tbl"
+    # AIC Data ----
+    emp_data_tbl <- comp_tbl %>%
+        dplyr::select(dist_type, x, dy) %>%
+        dplyr::filter(dist_type == "Empirical")
 
+    aic_tbl <- comp_tbl %>%
+        dplyr::filter(!dist_type == "Empirical") %>%
+        dplyr::select(dist_type, dy) %>%
+        tidyr::nest(data = dy) %>%
+        dplyr::mutate(
+            lm_model = purrr::map(
+                data,
+                function(df) lm(dy ~ emp_data_tbl$dy, data = df)
+            )
+        ) %>%
+        dplyr::mutate(aic_value = purrr::map(lm_model, stats::AIC)) %>%
+        dplyr::mutate(aic_value = unlist(aic_value)) %>%
+        dplyr::mutate(abs_aic = abs(aic_value)) %>%
+        dplyr::arrange(abs_aic) %>%
+        dplyr::select(dist_type, aic_value, abs_aic)
+
+    ks_tbl <- comp_tbl %>%
+        dplyr::filter(dist_type != "Empirical") %>%
+        dplyr::select(dist_type, dy) %>%
+        tidyr::nest(data = dy) %>%
+        dplyr::mutate(
+            ks = purrr::map(
+                .x = data,
+                .f = ~ ks.test(
+                    x = .x$dy,
+                    y = emp_data_tbl$dy,
+                    alternative = "two.sided",
+                    simulate.p.value = TRUE
+                )
+            ),
+            tidy_ks = map(ks, broom::tidy)
+        ) %>%
+        tidyr::unnest(cols = tidy_ks) %>%
+        dplyr::select(-c(data, ks)) %>%
+        dplyr::mutate(dist_char = as.character(dist_type)) %>%
+        purrr::set_names(
+            "dist_type","ks_statistic","ks_pvalue","ks_method","alternative",
+            "dist_char"
+        )
+
+    multi_metric_tbl <- total_deviance_tbl %>%
+        dplyr::mutate(dist_with_params = as.factor(dist_with_params)) %>%
+        dplyr::inner_join(aic_tbl, by = c("dist_with_params"="dist_type")) %>%
+        dplyr::inner_join(ks_tbl, by = c("dist_with_params"="dist_char")) %>%
+        dplyr::select(dist_type, dplyr::everything(), -dist_with_params) %>%
+        dplyr::mutate(dist_type = as.factor(dist_type))
+
+    # Return ----
     output <- list(
-        comparison_tbl     = comp_tbl,
-        deviance_tbl       = deviance_tbl,
-        total_deviance_tbl = total_deviance_tbl
+        comparison_tbl         = comp_tbl,
+        deviance_tbl           = deviance_tbl,
+        total_deviance_tbl     = total_deviance_tbl,
+        aic_tbl                = aic_tbl,
+        kolmogorov_smirnov_tbl = ks_tbl,
+        multi_metric_tbl       = multi_metric_tbl
     )
 
-    print(total_deviance_tbl)
+    # Attributes ----
+    attr(deviance_tbl, ".tibble_type") <- "deviance_comparison_tbl"
+    attr(total_deviance_tbl, ".tibble_type") <- "deviance_results_tbl"
+    attr(aic_tbl, ".tibble_type") <- "aic_tbl"
+    attr(comp_tbl, ".tibble_type") <- "comparison_tbl"
+    attr(ks_tbl, ".tibble_type") <- "kolmogorov_smirnov_tbl"
+    attr(multi_metric_tbl, ".tibble_type") <- "full_metric_tbl"
+    attr(output, ".x") <- x_term
+    attr(output, ".n") <- n
 
+    # Return ----
     return(invisible(output))
 
 }
