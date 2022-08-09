@@ -35,6 +35,7 @@ Continuous:
 \item tidy_gamma
 \item tidy_logistic
 \item tidy_lognormal
+\item tidy_normal
 \item tidy_pareto
 \item tidy_uniform
 \item tidy_weibull
@@ -47,13 +48,40 @@ Discrete:
 \item tidy_hypergeometric
 \item tidy_poisson
 }
+
+The function itself returns a list output of tibbles. Here are the tibbles that
+are returned:
+\itemize{
+\item comparison_tbl
+\item deviance_tbl
+\item total_deviance_tbl
+\item aic_tbl
+\item kolmogorov_smirnov_tbl
+\item multi_metric_tbl
+}
+
+The \code{comparison_tbl} is a long \code{tibble} that lists the values of the \code{density}
+function against the given data.
+
+The \code{deviance_tbl} and the \code{total_deviance_tbl} just give the simple difference
+from the actual density to the estimated density for the given estimated distribution.
+
+The \code{aic_tbl} will provide the \code{AIC} for a \code{lm} model of the estimated density
+against the emprical density.
+
+The \code{kolmogorov_smirnov_tbl} for now provides a \code{two.sided} estimate of the
+\code{ks.test} of the estimated density against the empirical.
+
+The \code{multi_metric_tbl} will summarise all of these metrics into a single tibble.
 }
 \examples{
 xc <- mtcars$mpg
-tidy_distribution_comparison(xc, "continuous")
+output_c <- tidy_distribution_comparison(xc, "continuous")
 
 xd <- trunc(xc)
-tidy_distribution_comparison(xd, "discrete")
+output_d <- tidy_distribution_comparison(xd, "discrete")
+
+output_c
 
 }
 \author{
