@@ -90,12 +90,6 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
         )
     }
 
-    if (!is.logical(print_aic)){
-        rlang::abort(
-            message = "'.print_aic' must be either TRUE or FALSE."
-        )
-    }
-
     # Get parameter estimates for distributions
     if (dist_type == "continuous"){
         b <- try(util_beta_param_estimate(x_term)$parameter_tbl %>%
@@ -302,7 +296,7 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
         dplyr::mutate(
             lm_model = purrr::map(
                 data,
-                function(df) lm(dy ~ emp_data_tbl$dy, data = df)
+                function(df) stats::lm(dy ~ emp_data_tbl$dy, data = df)
             )
         ) %>%
         dplyr::mutate(aic_value = purrr::map(lm_model, stats::AIC)) %>%
@@ -325,7 +319,7 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous"){
                     simulate.p.value = TRUE
                 )
             ),
-            tidy_ks = map(ks, broom::tidy)
+            tidy_ks = purrr::map(ks, broom::tidy)
         ) %>%
         tidyr::unnest(cols = tidy_ks) %>%
         dplyr::select(-c(data, ks)) %>%

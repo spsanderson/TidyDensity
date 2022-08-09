@@ -30,7 +30,8 @@ Imports:
     stats,
     patchwork,
     survival,
-    nloptr
+    nloptr,
+    broom
 Suggests: 
     rmarkdown,
     knitr,
