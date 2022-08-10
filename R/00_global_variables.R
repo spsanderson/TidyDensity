@@ -4,6 +4,8 @@ globalVariables(
     ".n",".num_sims","dist_name","random_walk_value","results",
     "dist_type","var","shape","rec_no","value","Empirical","bootstrap_samples",
     "cmy","lambda","location","m","max_est","mean_log","method","min_est",
-    "name","prob","rate","sd_log","shape1","shape2","size","total","total_deviance"
+    "name","prob","rate","sd_log","shape1","shape2","size","total","total_deviance",
+    "abs_aic","aic_value","data","dist_with_params","ks","lm","lm_model","mu",
+    "stan_dev","tidy_ks"
   )
 )
