@@ -1,4 +1,4 @@
-# TidyDensity (development version)
+# TidyDensity 1.2.2
 
 ## Breaking Changes
 None
