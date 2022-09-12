@@ -46,6 +46,7 @@ tidy_bootstrap(x)
 }
 \seealso{
 Other Bootstrap: 
+\code{\link{bootstrap_density_augment}()},
 \code{\link{bootstrap_unnest_tbl}()}
 }
 \author{
