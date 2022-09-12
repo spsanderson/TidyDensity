@@ -1,5 +1,12 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+
+## New Features
+
+## Minor Fixes and Improvements
+1. Fix #242 - Fix `prop` check in `tidy_bootstrap()`
+
 # TidyDensity 1.2.2
 
 ## Breaking Changes
