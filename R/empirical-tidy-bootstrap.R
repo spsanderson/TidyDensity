@@ -41,7 +41,7 @@ tidy_bootstrap <- function(.x, .num_sims = 2000, .proportion = 0.8,
     n <- length(x_term)
     dist_type <- tolower(as.character(.distribution_type))
     num_sims <- as.integer(.num_sims)
-    size <- as.numeric(.proportion)
+    prop <- as.numeric(.proportion)
 
     # Checks ----
     if (!is.vector(x_term)) {
@@ -51,9 +51,9 @@ tidy_bootstrap <- function(.x, .num_sims = 2000, .proportion = 0.8,
         )
     }
 
-    if (size < 0 | size > 1){
+    if (prop <= 0 | prop > 1){
         rlang::abort(
-            message = "The '.proportion' parameter must be between 0 and 1 inclusive.",
+            message = "The '.proportion' parameter must be greater than 0 and up to or including 1.",
             use_cli_format = TRUE
         )
     }
@@ -77,7 +77,7 @@ tidy_bootstrap <- function(.x, .num_sims = 2000, .proportion = 0.8,
     df <- dplyr::tibble(sim_number = as.factor(1:num_sims)) %>%
         dplyr::group_by(sim_number) %>%
         dplyr::mutate(bootstrap_samples = list(
-            sample(x = x_term, size = floor(size * n) ,replace = TRUE)
+            sample(x = x_term, size = floor(prop * n) ,replace = TRUE)
           )
         ) %>%
         dplyr::ungroup()
