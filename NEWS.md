@@ -3,6 +3,7 @@
 ## Breaking Changes
 
 ## New Features
+1. Fix #237 - Add function `bootstrap_density_augment()`
 
 ## Minor Fixes and Improvements
 1. Fix #242 - Fix `prop` check in `tidy_bootstrap()`
