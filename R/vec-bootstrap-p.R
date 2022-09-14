@@ -1,4 +1,4 @@
-#' Compute Skewness of a Vector
+#' Compute Bootstrap P of a Vector
 #'
 #' @family Bootstrap
 #' @family Vector Function
@@ -16,7 +16,6 @@
 #'
 #' @examples
 #' x <- mtcars$mpg
-#'
 #' bootstrap_p_vec(x)
 #'
 #' @return
