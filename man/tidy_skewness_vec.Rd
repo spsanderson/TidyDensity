@@ -36,6 +36,7 @@ Other Statistic:
 \code{\link{tidy_range_statistic}()}
 
 Other Vector Function: 
+\code{\link{bootstrap_p_vec}()},
 \code{\link{tidy_kurtosis_vec}()},
 \code{\link{tidy_scale_zero_one_vec}()}
 }

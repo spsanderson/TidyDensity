@@ -39,6 +39,8 @@ tidy_bootstrap(x) \%>\%
 }
 \seealso{
 Other Bootstrap: 
+\code{\link{bootstrap_p_augment}()},
+\code{\link{bootstrap_p_vec}()},
 \code{\link{bootstrap_unnest_tbl}()},
 \code{\link{tidy_bootstrap}()}
 }

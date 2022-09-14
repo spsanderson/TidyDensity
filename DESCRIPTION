@@ -31,7 +31,8 @@ Imports:
     patchwork,
     survival,
     nloptr,
-    broom
+    broom,
+    tidyselect
 Suggests: 
     rmarkdown,
     knitr,
