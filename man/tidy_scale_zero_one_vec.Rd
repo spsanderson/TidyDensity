@@ -38,6 +38,7 @@ lines(dens_2, col = "blue")
 }
 \seealso{
 Other Vector Function: 
+\code{\link{bootstrap_p_vec}()},
 \code{\link{tidy_kurtosis_vec}()},
 \code{\link{tidy_skewness_vec}()}
 }

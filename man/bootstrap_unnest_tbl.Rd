@@ -33,6 +33,8 @@ bootstrap_unnest_tbl(tb) \%>\%
 \seealso{
 Other Bootstrap: 
 \code{\link{bootstrap_density_augment}()},
+\code{\link{bootstrap_p_augment}()},
+\code{\link{bootstrap_p_vec}()},
 \code{\link{tidy_bootstrap}()}
 }
 \author{
