@@ -2,7 +2,7 @@
 % Please edit documentation in R/vec-bootstrap-p.R
 \name{bootstrap_p_vec}
 \alias{bootstrap_p_vec}
-\title{Compute Skewness of a Vector}
+\title{Compute Bootstrap P of a Vector}
 \usage{
 bootstrap_p_vec(.x)
 }
@@ -21,7 +21,6 @@ A function to return the ecdf probability of a vector.
 }
 \examples{
 x <- mtcars$mpg
-
 bootstrap_p_vec(x)
 
 }
