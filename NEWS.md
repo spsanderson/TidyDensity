@@ -5,6 +5,7 @@
 ## New Features
 1. Fix #237 - Add function `bootstrap_density_augment()`
 2. Fix #238 - Add functions `bootstrap_p_vec()` and `bootstrap_p_augment()`
+3. Fix #239 - Add functions `bootstrap_q_vec()` and `bootstrap_q_augment()`
 
 ## Minor Fixes and Improvements
 1. Fix #242 - Fix `prop` check in `tidy_bootstrap()`
