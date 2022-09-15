@@ -67,7 +67,7 @@ bootstrap_q_augment <- function(.data, .value, .names = "auto"){
 
     calls <- purrr::set_names(calls, newname)
 
-    ret <- tibble::as_tibble(dplyr::mutate(.data, !!!calls))
+    ret <- dplyr::as_tibble(dplyr::mutate(.data, !!!calls))
 
     return(ret)
 }
