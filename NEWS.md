@@ -9,6 +9,7 @@
 
 ## Minor Fixes and Improvements
 1. Fix #242 - Fix `prop` check in `tidy_bootstrap()`
+2. Fix #247 - Add attributes to `bootstrap_density_augment()` output.
 
 # TidyDensity 1.2.2
 

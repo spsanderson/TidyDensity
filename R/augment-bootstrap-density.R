@@ -1,6 +1,7 @@
 #' Bootstrap Density Tibble
 #'
 #' @family Bootstrap
+#' @family Augment Function
 #'
 #' @author Steven P. Sanderson II, MPH
 #'
@@ -74,9 +75,15 @@ bootstrap_density_augment <- function(.data){
         tidyr::unnest(cols = c(data, dens_tbl)) %>%
         dplyr::mutate(x = dplyr::row_number()) %>%
         dplyr::ungroup() %>%
-        dplyr::select(sim_number, x, y, dx, dy)
+        dplyr::select(sim_number, x, y, dx, dy, dplyr::everything())
 
     # Return
+    attr(df_tbl, "tibble_type") <- "bootstrap_density"
+    attr(df_tbl, "incoming_tibble_type") <- atb$tibble_type
+    attr(df_tbl, ".num_sims") <- atb$.num_sims
+    attr(df_tbl, "dist_with_params") <- atb$dist_with_params
+    attr(df_tbl, "distribution_family_type") <- atb$distribution_family_type
+
     return(df_tbl)
 
 }

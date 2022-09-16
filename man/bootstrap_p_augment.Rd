@@ -34,6 +34,7 @@ tidy_bootstrap(x) \%>\%
 }
 \seealso{
 Other Augment Function: 
+\code{\link{bootstrap_density_augment}()},
 \code{\link{bootstrap_q_augment}()}
 
 Other Bootstrap: 
