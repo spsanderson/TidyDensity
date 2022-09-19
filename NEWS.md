@@ -9,6 +9,7 @@ None
 3. Fix #239 - Add functions `bootstrap_q_vec()` and `bootstrap_q_augment()`
 4. Fix #256 #257 #258 #260 #265 #266 #267 #268 - Add functions `cmean()`
 `chmean()` `cgmean()` `cmedian()` `csd()` `ckurtosis()` `cskewness()` `cvar()`
+5. Fix #250 - Add function `bootstrap_stat_plot()`
 
 ## Minor Fixes and Improvements
 1. Fix #242 - Fix `prop` check in `tidy_bootstrap()`

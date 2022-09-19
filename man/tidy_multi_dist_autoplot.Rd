@@ -88,6 +88,7 @@ tn \%>\%
 }
 \seealso{
 Other Autoplot: 
+\code{\link{bootstrap_stat_plot}()},
 \code{\link{tidy_autoplot}()},
 \code{\link{tidy_combined_autoplot}()},
 \code{\link{tidy_four_autoplot}()},

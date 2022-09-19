@@ -86,6 +86,7 @@ combined_tbl \%>\%
 }
 \seealso{
 Other Autoplot: 
+\code{\link{bootstrap_stat_plot}()},
 \code{\link{tidy_autoplot}()},
 \code{\link{tidy_four_autoplot}()},
 \code{\link{tidy_multi_dist_autoplot}()},
