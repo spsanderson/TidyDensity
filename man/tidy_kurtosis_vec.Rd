@@ -32,6 +32,14 @@ tidy_kurtosis_vec(rnorm(100, 3, 2))
 Other Vector Function: 
 \code{\link{bootstrap_p_vec}()},
 \code{\link{bootstrap_q_vec}()},
+\code{\link{cgmean}()},
+\code{\link{chmean}()},
+\code{\link{ckurtosis}()},
+\code{\link{cmean}()},
+\code{\link{cmedian}()},
+\code{\link{csd}()},
+\code{\link{cskewness}()},
+\code{\link{cvar}()},
 \code{\link{tidy_scale_zero_one_vec}()},
 \code{\link{tidy_skewness_vec}()}
 
@@ -44,6 +52,14 @@ Other Statistic:
 Other Vector Function: 
 \code{\link{bootstrap_p_vec}()},
 \code{\link{bootstrap_q_vec}()},
+\code{\link{cgmean}()},
+\code{\link{chmean}()},
+\code{\link{ckurtosis}()},
+\code{\link{cmean}()},
+\code{\link{cmedian}()},
+\code{\link{csd}()},
+\code{\link{cskewness}()},
+\code{\link{cvar}()},
 \code{\link{tidy_scale_zero_one_vec}()},
 \code{\link{tidy_skewness_vec}()}
 }
