@@ -73,6 +73,7 @@ tidy_normal(.num_sims = 5) \%>\%
 }
 \seealso{
 Other Autoplot: 
+\code{\link{bootstrap_stat_plot}()},
 \code{\link{tidy_autoplot}()},
 \code{\link{tidy_combined_autoplot}()},
 \code{\link{tidy_multi_dist_autoplot}()},
