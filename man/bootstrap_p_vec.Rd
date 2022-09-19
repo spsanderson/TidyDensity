@@ -35,6 +35,14 @@ Other Bootstrap:
 
 Other Vector Function: 
 \code{\link{bootstrap_q_vec}()},
+\code{\link{cgmean}()},
+\code{\link{chmean}()},
+\code{\link{ckurtosis}()},
+\code{\link{cmean}()},
+\code{\link{cmedian}()},
+\code{\link{csd}()},
+\code{\link{cskewness}()},
+\code{\link{cvar}()},
 \code{\link{tidy_kurtosis_vec}()},
 \code{\link{tidy_scale_zero_one_vec}()},
 \code{\link{tidy_skewness_vec}()}

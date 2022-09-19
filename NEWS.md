@@ -1,11 +1,14 @@
 # TidyDensity (development version)
 
 ## Breaking Changes
+None
 
 ## New Features
 1. Fix #237 - Add function `bootstrap_density_augment()`
 2. Fix #238 - Add functions `bootstrap_p_vec()` and `bootstrap_p_augment()`
 3. Fix #239 - Add functions `bootstrap_q_vec()` and `bootstrap_q_augment()`
+4. Fix #256 #257 #258 #260 #265 #266 #267 #268 - Add functions `cmean()`
+`chmean()` `cgmean()` `cmedian()` `csd()` `ckurtosis()` `cskewness()` `cvar()`
 
 ## Minor Fixes and Improvements
 1. Fix #242 - Fix `prop` check in `tidy_bootstrap()`
