@@ -43,7 +43,16 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_q_vec.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_stat_plot.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_unnest_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/cgmean.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/chmean.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/ci_hi.html</loc>
@@ -52,7 +61,25 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/ci_lo.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/ckurtosis.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/cmean.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/cmedian.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/color_blind.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/csd.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/cskewness.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/cvar.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/index.html</loc>
