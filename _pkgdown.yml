@@ -72,5 +72,6 @@ reference:
      desc: Functions that work on vectors
      contents:
      -  "tidy_scale_zero_one_vec"
+     -  has_concept("Vector Function")
 
 search:
