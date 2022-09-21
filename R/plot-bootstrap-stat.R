@@ -189,7 +189,8 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
             ggplot2::theme_minimal() +
             ggplot2::labs(
                 x = "X",
-                y = y_txt
+                y = y_txt,
+                subtitle = paste0("Cumulative Statistic: ", y_txt)
             )
     } else {
         p <- df_tbl %>%
@@ -205,7 +206,7 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
             ggplot2::labs(
                 x = "X",
                 y = y_txt,
-                subtitle = "Cumulative Statistic"
+                subtitle = paste0("Cumulative Statistic: ", y_txt)
             )
     }
 
