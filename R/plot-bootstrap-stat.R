@@ -34,6 +34,8 @@
 #' column. It must be quoted. The default is "cmean".
 #' @param .show_groups The default is FALSE, set to TRUE to get output of all
 #' simulations of the bootstrap data.
+#' @param .show_ci_labels The default is TRUE, this will show the last value of
+#' the upper and lower quantile.
 #' @param .interactive The default is FALSE, set to TRUE to get a plotly plot
 #' object back.
 #'
@@ -41,10 +43,11 @@
 #' x <- mtcars$mpg
 #'
 #' tidy_bootstrap(x) %>%
-#'   bootstrap_stat_plot(y, "chmean")
+#'   bootstrap_stat_plot(y, "cmean")
 #'
 #' tidy_bootstrap(x, .num_sims = 10) %>%
-#'   bootstrap_stat_plot(y, .stat = "chmean", .show_groups = TRUE)
+#'   bootstrap_stat_plot(y, .stat = "chmean", .show_groups = TRUE,
+#'   .show_ci_label = FALSE)
 #'
 #' @return
 #' A plot either ggplot2 or plotly.

@@ -9,6 +9,7 @@ bootstrap_stat_plot(
   .value,
   .stat = "cmean",
   .show_groups = FALSE,
+  .show_ci_labels = TRUE,
   .interactive = FALSE
 )
 }
@@ -23,6 +24,9 @@ column. It must be quoted. The default is "cmean".}
 
 \item{.show_groups}{The default is FALSE, set to TRUE to get output of all
 simulations of the bootstrap data.}
+
+\item{.show_ci_labels}{The default is TRUE, this will show the last value of
+the upper and lower quantile.}
 
 \item{.interactive}{The default is FALSE, set to TRUE to get a plotly plot
 object back.}
@@ -58,10 +62,11 @@ cumulative functions that can be applied to the data.The accepted values are:
 x <- mtcars$mpg
 
 tidy_bootstrap(x) \%>\%
-  bootstrap_stat_plot(y, "chmean")
+  bootstrap_stat_plot(y, "cmean")
 
 tidy_bootstrap(x, .num_sims = 10) \%>\%
-  bootstrap_stat_plot(y, .stat = "chmean", .show_groups = TRUE)
+  bootstrap_stat_plot(y, .stat = "chmean", .show_groups = TRUE,
+  .show_ci_label = FALSE)
 
 }
 \seealso{
