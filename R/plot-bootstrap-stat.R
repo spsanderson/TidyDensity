@@ -54,13 +54,15 @@
 #'
 
 bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
-                                .show_groups = FALSE, .interactive = FALSE){
+                                .show_groups = FALSE, .show_ci_labels = TRUE,
+                                .interactive = FALSE){
 
     # Tidyeval ----
     value_var_expr <- rlang::enquo(.value)
     stat_fn <- tolower(as.character(.stat))
     show_groups <- as.logical(.show_groups)
     ip <- as.logical(.interactive)
+    show_ci_labels <- as.logical(.show_ci_labels)
 
     atb <- attributes(.data)
 
@@ -173,6 +175,9 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
         "cskewness" = "Skewness",
         "ckurtosis" = "Kurtosis"
     )
+
+    sub_title = paste0("Cumulative Statistic: ", y_txt)
+    cap = paste0("Simulations: ", atb$.num_sims)
     if (show_groups){
         p <- df_tbl %>%
             ggplot2::ggplot(ggplot2::aes(x = x, y = stat, group = sim_number)) +
@@ -190,7 +195,8 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
             ggplot2::labs(
                 x = "X",
                 y = y_txt,
-                subtitle = paste0("Cumulative Statistic: ", y_txt)
+                subtitle = sub_title,
+                caption = cap
             )
     } else {
         p <- df_tbl %>%
@@ -206,8 +212,27 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
             ggplot2::labs(
                 x = "X",
                 y = y_txt,
-                subtitle = paste0("Cumulative Statistic: ", y_txt)
+                subtitle = sub_title,
+                caption = cap
             )
+    }
+
+    # Show CI Labels ----
+    if (show_ci_labels){
+        p <- p  +
+            ggplot2::annotate(
+                geom = "label",
+                x = max(df_tbl$x), y = max(subset(df_tbl, x == max(x))$cil),
+                label = prettyNum(round(max(subset(df_tbl, x == max(x))$cil), 0), big.mark = ","),
+                size = 3, hjust = 1, color = "white", fill = "steelblue"
+            ) +
+            ggplot2::annotate(
+                geom = "label",
+                x = max(df_tbl$x), y = min(subset(df_tbl, x == max(x))$cih),
+                label = prettyNum(round(min(subset(df_tbl, x == max(x))$cih), 0), big.mark = ","),
+                size = 3, hjust = 1, color = "white", fill = "firebrick"
+            )
+
     }
 
 
