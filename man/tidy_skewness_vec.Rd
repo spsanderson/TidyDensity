@@ -33,7 +33,8 @@ Other Statistic:
 \code{\link{ci_hi}()},
 \code{\link{ci_lo}()},
 \code{\link{tidy_kurtosis_vec}()},
-\code{\link{tidy_range_statistic}()}
+\code{\link{tidy_range_statistic}()},
+\code{\link{tidy_stat_tbl}()}
 
 Other Vector Function: 
 \code{\link{bootstrap_p_vec}()},

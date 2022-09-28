@@ -30,7 +30,8 @@ Other Statistic:
 \code{\link{ci_hi}()},
 \code{\link{tidy_kurtosis_vec}()},
 \code{\link{tidy_range_statistic}()},
-\code{\link{tidy_skewness_vec}()}
+\code{\link{tidy_skewness_vec}()},
+\code{\link{tidy_stat_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

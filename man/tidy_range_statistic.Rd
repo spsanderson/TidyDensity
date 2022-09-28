@@ -29,7 +29,8 @@ Other Statistic:
 \code{\link{ci_hi}()},
 \code{\link{ci_lo}()},
 \code{\link{tidy_kurtosis_vec}()},
-\code{\link{tidy_skewness_vec}()}
+\code{\link{tidy_skewness_vec}()},
+\code{\link{tidy_stat_tbl}()}
 }
 \author{
 Steven P. Sandeson II, MPH
