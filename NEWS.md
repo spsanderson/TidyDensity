@@ -10,6 +10,7 @@ None
 4. Fix #256 #257 #258 #260 #265 #266 #267 #268 - Add functions `cmean()`
 `chmean()` `cgmean()` `cmedian()` `csd()` `ckurtosis()` `cskewness()` `cvar()`
 5. Fix #250 - Add function `bootstrap_stat_plot()`
+6. Fix #276 - Add function `tidy_stat_tbl()`
 
 ## Minor Fixes and Improvements
 1. Fix #242 - Fix `prop` check in `tidy_bootstrap()`
