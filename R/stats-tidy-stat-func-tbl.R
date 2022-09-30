@@ -149,10 +149,9 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector", ...) {
         ret <- purrr::map(
             df_tbl, ~ func(.x) %>%
                 purrr::imap(.f = ~ cbind(.x, name = .y)) %>%
-                purrr::map_df(dplyr::as_tibble) %>%
-                dplyr::select(2, 1)
+                purrr::map_df(dplyr::as_tibble)
         ) %>%
-            purrr::imap(~ cbind(.x, sim_number = .y)) %>%
+            purrr::imap(.f = ~ cbind(.x, sim_number = .y)) %>%
             purrr::map_df(dplyr::as_tibble) %>%
             dplyr::select(sim_number, name, .x) %>%
             dplyr::mutate(.x = as.numeric(.x)) %>%
