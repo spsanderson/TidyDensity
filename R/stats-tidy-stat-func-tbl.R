@@ -36,7 +36,7 @@
 #' @param .fns The default is `IQR`, but this can be any `stat` function like
 #' `quantile` or `median` etc.
 #' @param .return_type The default is "vector" which returns an `sapply` object.
-#' @param .use_data_tbl The default is FALSE, TRUE will use data.table under the
+#' @param .use_data_table The default is FALSE, TRUE will use data.table under the
 #' hood and still return a tibble. If this argument is set to TRUE then the
 #' `.return_type` parameter will be ignored.
 #' @param ... Addition function arguments to be supplied to the parameters of
@@ -50,13 +50,16 @@
 #' tidy_stat_tbl(tn, y, quantile, "vector", probs = p, na.rm = TRUE)
 #' tidy_stat_tbl(tn, y, quantile, "list", probs = p)
 #' tidy_stat_tbl(tn, y, quantile, "tibble", probs = p)
-#' tidy_stat_tbl(tn, y, quantile, .use_data_table = TRUE, probs = p)
+#' tidy_stat_tbl(tn, y, quantile, .use_data_table = TRUE, probs = p, na.rm = TRUE)
 #'
 #' @return
 #' A return of object of either `sapply` `lapply` or `tibble` based upon user input.
 #'
 #' @export
 #'
+#' @importFrom data.table .SD
+#' @importFrom data.table melt
+#' @importFrom data.table as.data.table
 
 tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
                           .use_data_table = FALSE, ...) {
@@ -110,16 +113,30 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
 
     # If regular tidy_ dist tibble
     if (.use_data_table){
+        if ("na.rm" %in% names(passed_args)) {
+            tmp_args <- passed_args[!names(passed_args) == "na.rm"]
+        }
+
+        if (!exists("tmp_args")) {
+            args <- passed_args
+        } else {
+            args <- tmp_args
+        }
+
+        .x <- deparse(substitute(.x))
+        .datatable.aware <- TRUE
+
         # # Benchmark ran 25 at 15.13 seconds
         # # Thank you Akrun https://stackoverflow.com/questions/73938515/keep-names-from-quantile-function-when-used-in-a-data-table/73938561#73938561
         dt <- dplyr::as_tibble(.data) %>%
             dplyr::select(sim_number, {{ value_var_expr }}) %>%
-            data.table::as.data.table()
+            as.data.table()
 
-        names(dt) <- c("sim_number","y")
+        #names(dt) <- c("sim_number","y")
 
-        ret <- data.table::melt(
-            dt[, as.list(func(y), unlist(args)), by = sim_number],
+        ret <- melt(
+            #dt[, as.list(func(y, unlist(args))), by = sim_number],
+            dt[, as.list(func(.SD[[1]], unlist(args))), by = sim_number, .SDcols = .x],
             id.var = "sim_number",
             value.name = func_chr
         ) %>%
