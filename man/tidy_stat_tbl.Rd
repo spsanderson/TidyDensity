@@ -4,7 +4,14 @@
 \alias{tidy_stat_tbl}
 \title{Tidy Stats of Tidy Distribution}
 \usage{
-tidy_stat_tbl(.data, .x = y, .fns, .return_type = "vector", ...)
+tidy_stat_tbl(
+  .data,
+  .x = y,
+  .fns,
+  .return_type = "vector",
+  .use_data_table = FALSE,
+  ...
+)
 }
 \arguments{
 \item{.data}{The input data coming from a \code{tidy_} distribution function.}
@@ -19,6 +26,10 @@ input data.}
 
 \item{...}{Addition function arguments to be supplied to the parameters of
 \code{.fns}}
+
+\item{.use_data_tbl}{The default is FALSE, TRUE will use data.table under the
+hood and still return a tibble. If this argument is set to TRUE then the
+\code{.return_type} parameter will be ignored.}
 }
 \value{
 A return of object of either \code{sapply} \code{lapply} or \code{tibble} based upon user input.
@@ -58,6 +69,7 @@ p <- c(0.025, 0.25, 0.5, 0.75, 0.95)
 tidy_stat_tbl(tn, y, quantile, "vector", probs = p, na.rm = TRUE)
 tidy_stat_tbl(tn, y, quantile, "list", probs = p)
 tidy_stat_tbl(tn, y, quantile, "tibble", probs = p)
+tidy_stat_tbl(tn, y, quantile, .use_data_table = TRUE, probs = p)
 
 }
 \seealso{

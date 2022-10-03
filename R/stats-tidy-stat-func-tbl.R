@@ -36,6 +36,9 @@
 #' @param .fns The default is `IQR`, but this can be any `stat` function like
 #' `quantile` or `median` etc.
 #' @param .return_type The default is "vector" which returns an `sapply` object.
+#' @param .use_data_tbl The default is FALSE, TRUE will use data.table under the
+#' hood and still return a tibble. If this argument is set to TRUE then the
+#' `.return_type` parameter will be ignored.
 #' @param ... Addition function arguments to be supplied to the parameters of
 #' `.fns`
 #'
@@ -47,6 +50,7 @@
 #' tidy_stat_tbl(tn, y, quantile, "vector", probs = p, na.rm = TRUE)
 #' tidy_stat_tbl(tn, y, quantile, "list", probs = p)
 #' tidy_stat_tbl(tn, y, quantile, "tibble", probs = p)
+#' tidy_stat_tbl(tn, y, quantile, .use_data_table = TRUE, probs = p)
 #'
 #' @return
 #' A return of object of either `sapply` `lapply` or `tibble` based upon user input.
@@ -54,7 +58,8 @@
 #' @export
 #'
 
-tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector", ...) {
+tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
+                          .use_data_table = FALSE, ...) {
 
     atb <- attributes(.data)
 
@@ -104,6 +109,27 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector", ...) {
     }
 
     # If regular tidy_ dist tibble
+    if (.use_data_table){
+        # # Benchmark ran 25 at 15.13 seconds
+        # # Thank you Akrun https://stackoverflow.com/questions/73938515/keep-names-from-quantile-function-when-used-in-a-data-table/73938561#73938561
+        dt <- dplyr::as_tibble(.data) %>%
+            dplyr::select(sim_number, {{ value_var_expr }}) %>%
+            data.table::as.data.table()
+
+        names(dt) <- c("sim_number","y")
+
+        ret <- data.table::melt(
+            dt[, as.list(func(y), unlist(args)), by = sim_number],
+            id.var = "sim_number",
+            value.name = func_chr
+        ) %>%
+          dplyr::as_tibble() %>%
+          dplyr::arrange(sim_number, variable) %>%
+          dplyr::rename(name = variable)
+
+        return(ret)
+    }
+
     if (!atb$tibble_type %in% c("tidy_bootstrap", "tidy_bootstrap_nested")) {
         df_tbl <- dplyr::as_tibble(.data) %>%
             split(.$sim_number) %>%
@@ -147,29 +173,17 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector", ...) {
 
     if (return_type == "tibble") {
         # Benchmark ran 25 at 73 seconds
-        # ret <- purrr::map(
-        #   df_tbl, ~ func(.x) %>%
-        #     purrr::imap(.f = ~ cbind(.x, name = .y)) %>%
-        #     purrr::map_df(dplyr::as_tibble)
-        # ) %>%
-        #   purrr::imap(.f = ~ cbind(.x, sim_number = .y)) %>%
-        #   purrr::map_df(dplyr::as_tibble) %>%
-        #   dplyr::select(sim_number, name, .x) %>%
-        #   dplyr::mutate(.x = as.numeric(.x)) %>%
-        #   dplyr::mutate(sim_number = factor(sim_number)) %>%
-        #   dplyr::rename(value = .x)
-
-        # Benchmark ran 25 at 3.44 seconds
-        # Thank you Akrun https://stackoverflow.com/questions/73938515/keep-names-from-quantile-function-when-used-in-a-data-table/73938561#73938561
-        dt <- data.table::as.data.table(.data)
-        ret <- data.table::melt(
-            dt[, as.list(func(y, unlist(args))), sim_number],
-            id.var = "sim_number",
-            value.name = func_chr
+        ret <- purrr::map(
+          df_tbl, ~ func(.x) %>%
+            purrr::imap(.f = ~ cbind(.x, name = .y)) %>%
+            purrr::map_df(dplyr::as_tibble)
         ) %>%
-            dplyr::as_tibble() %>%
-            dplyr::rename(name = variable) %>%
-            dplyr::arrange(sim_number, name)
+          purrr::imap(.f = ~ cbind(.x, sim_number = .y)) %>%
+          purrr::map_df(dplyr::as_tibble) %>%
+          dplyr::select(sim_number, name, .x) %>%
+          dplyr::mutate(.x = as.numeric(.x)) %>%
+          dplyr::mutate(sim_number = factor(sim_number)) %>%
+          dplyr::rename(value = .x)
 
         cn <- c("sim_number","name",func_chr)
         names(ret) <- cn
