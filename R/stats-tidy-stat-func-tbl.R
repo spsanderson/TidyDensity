@@ -146,17 +146,30 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector", ...) {
     }
 
     if (return_type == "tibble") {
-        ret <- purrr::map(
-            df_tbl, ~ func(.x) %>%
-                purrr::imap(.f = ~ cbind(.x, name = .y)) %>%
-                purrr::map_df(dplyr::as_tibble)
+        # Benchmark ran 25 at 73 seconds
+        # ret <- purrr::map(
+        #   df_tbl, ~ func(.x) %>%
+        #     purrr::imap(.f = ~ cbind(.x, name = .y)) %>%
+        #     purrr::map_df(dplyr::as_tibble)
+        # ) %>%
+        #   purrr::imap(.f = ~ cbind(.x, sim_number = .y)) %>%
+        #   purrr::map_df(dplyr::as_tibble) %>%
+        #   dplyr::select(sim_number, name, .x) %>%
+        #   dplyr::mutate(.x = as.numeric(.x)) %>%
+        #   dplyr::mutate(sim_number = factor(sim_number)) %>%
+        #   dplyr::rename(value = .x)
+
+        # Benchmark ran 25 at 3.44 seconds
+        # Thank you Akrun https://stackoverflow.com/questions/73938515/keep-names-from-quantile-function-when-used-in-a-data-table/73938561#73938561
+        dt <- data.table::as.data.table(.data)
+        ret <- data.table::melt(
+            dt[, as.list(func(y, unlist(args))), sim_number],
+            id.var = "sim_number",
+            value.name = func_chr
         ) %>%
-            purrr::imap(.f = ~ cbind(.x, sim_number = .y)) %>%
-            purrr::map_df(dplyr::as_tibble) %>%
-            dplyr::select(sim_number, name, .x) %>%
-            dplyr::mutate(.x = as.numeric(.x)) %>%
-            dplyr::mutate(sim_number = factor(sim_number)) %>%
-            dplyr::rename(value = .x)
+            dplyr::as_tibble() %>%
+            dplyr::rename(name = variable) %>%
+            dplyr::arrange(sim_number, name)
 
         cn <- c("sim_number","name",func_chr)
         names(ret) <- cn
