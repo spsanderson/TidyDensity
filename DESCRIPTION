@@ -32,11 +32,11 @@ Imports:
     survival,
     nloptr,
     broom,
-    tidyselect,
-    data.table
+    tidyselect
 Suggests: 
     rmarkdown,
     knitr,
     roxygen2,
-    EnvStats
+    EnvStats,
+    data.table
 VignetteBuilder: knitr
