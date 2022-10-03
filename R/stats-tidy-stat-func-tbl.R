@@ -113,6 +113,14 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
 
     # If regular tidy_ dist tibble
     if (.use_data_table){
+
+        if (purrr::is_empty(passed_args)){
+            rlang::abort(
+                message = "You must pass function arguments to ... when .use_data_table = TRUE",
+                use_cli_format = TRUE
+            )
+        }
+
         if ("na.rm" %in% names(passed_args)) {
             tmp_args <- passed_args[!names(passed_args) == "na.rm"]
         }
