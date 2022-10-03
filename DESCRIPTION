@@ -32,7 +32,8 @@ Imports:
     survival,
     nloptr,
     broom,
-    tidyselect
+    tidyselect,
+    data.table
 Suggests: 
     rmarkdown,
     knitr,
