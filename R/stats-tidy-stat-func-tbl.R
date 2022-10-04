@@ -122,7 +122,7 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
     # if ("na.rm" %in% names(passed_args)) {
     #   tmp_args <- passed_args[!names(passed_args) == "na.rm"]
     # }
-    # 
+    #
     # if (!exists("tmp_args")) {
     #   args <- passed_args
     # } else {
@@ -214,17 +214,20 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
   }
 
   # Return
-  # attr(ret, "tibble_type") <- "tidy_stat_tbl"
-  # attr(ret, ".fns") <- deparse(substitute(.fns))
-  # attr(ret, "incoming_tibble_type") <- atb$tibble_type
-  # attr(ret, ".return_type") <- .return_type
-  # attr(ret, ".return_type_function") <- switch(
-  #   return_type,
-  #   "vector" = "sapply",
-  #   "list" ="lapply",
-  #   "tibble" = "purr_map"
-  # )
-  # attr(ret, "class") <- "tidy_stat_tbl"
+  if (inherits(ret, "tibble") | inherits(ret, "data.table")){
+      attr(ret, "tibble_type") <- "tidy_stat_tbl"
+      attr(ret, ".fns") <- deparse(substitute(.fns))
+      attr(ret, "incoming_tibble_type") <- atb$tibble_type
+      attr(ret, ".return_type") <- .return_type
+      attr(ret, ".return_type_function") <- switch(
+          return_type,
+          "vector" = "sapply",
+          "list" ="lapply",
+          "tibble" = "purr_map"
+      )
+      attr(ret, "class") <- "tidy_stat_tbl"
+  }
 
   return(ret)
+
 }
