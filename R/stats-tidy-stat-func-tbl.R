@@ -119,15 +119,15 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
       )
     }
 
-    if ("na.rm" %in% names(passed_args)) {
-      tmp_args <- passed_args[!names(passed_args) == "na.rm"]
-    }
-
-    if (!exists("tmp_args")) {
-      args <- passed_args
-    } else {
-      args <- tmp_args
-    }
+    # if ("na.rm" %in% names(passed_args)) {
+    #   tmp_args <- passed_args[!names(passed_args) == "na.rm"]
+    # }
+    # 
+    # if (!exists("tmp_args")) {
+    #   args <- passed_args
+    # } else {
+    #   args <- tmp_args
+    # }
 
     .x <- deparse(substitute(.x))
     .datatable.aware <- TRUE
