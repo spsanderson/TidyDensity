@@ -44,71 +44,70 @@
 #' @export
 #'
 
-util_lognormal_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_lognormal_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    minx <- min(x_term)
-    maxx <- max(x_term)
-    n <- length(x_term)
-    unique_terms <- length(unique(x_term))
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  minx <- min(x_term)
+  maxx <- max(x_term)
+  n <- length(x_term)
+  unique_terms <- length(unique(x_term))
 
-    # Checks ----
-    if (!is.vector(x_term, mode = "numeric")){
-        rlang::abort(
-            message = "'.x' must be a numeric vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (n < 2 || unique_terms < 2 || any(x_term <= 0)){
-        rlang::abort(
-            message = paste0("'.x' must contain at least two non-missing distict values.
-                             All non-missing values must be positive."),
-            use_cli_format = TRUE
-        )
-    }
-
-    log_x <- log(x_term)
-    muhat <- mean(log_x)
-    es_mvue_sd <- sd(log_x)
-    es_mme_sd <- sqrt((n - 1)/n) * sd(log_x)
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_lognormal(.n = n, .meanlog = round(muhat, 3), .sdlog = round(es_mme_sd, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = rep('Lognormal', 2),
-        samp_size = rep(n, 2),
-        min = rep(minx, 2),
-        max = rep(maxx, 2),
-        method = c("EnvStats_MVUE", "EnvStats_MME"),
-        mean_log = c(muhat, muhat),
-        sd_log = c(es_mvue_sd, es_mme_sd),
-        shape_ratio = c(muhat/es_mvue_sd, muhat/es_mme_sd)
+  # Checks ----
+  if (!is.vector(x_term, mode = "numeric")) {
+    rlang::abort(
+      message = "'.x' must be a numeric vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "lognormal"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  if (n < 2 || unique_terms < 2 || any(x_term <= 0)) {
+    rlang::abort(
+      message = paste0("'.x' must contain at least two non-missing distict values.
+                             All non-missing values must be positive."),
+      use_cli_format = TRUE
+    )
+  }
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  log_x <- log(x_term)
+  muhat <- mean(log_x)
+  es_mvue_sd <- sd(log_x)
+  es_mme_sd <- sqrt((n - 1) / n) * sd(log_x)
 
-    return(output)
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_lognormal(.n = n, .meanlog = round(muhat, 3), .sdlog = round(es_mme_sd, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
 
+  ret <- dplyr::tibble(
+    dist_type = rep("Lognormal", 2),
+    samp_size = rep(n, 2),
+    min = rep(minx, 2),
+    max = rep(maxx, 2),
+    method = c("EnvStats_MVUE", "EnvStats_MME"),
+    mean_log = c(muhat, muhat),
+    sd_log = c(es_mvue_sd, es_mme_sd),
+    shape_ratio = c(muhat / es_mvue_sd, muhat / es_mme_sd)
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "lognormal"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

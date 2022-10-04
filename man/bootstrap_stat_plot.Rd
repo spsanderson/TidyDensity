@@ -65,8 +65,10 @@ tidy_bootstrap(x) \%>\%
   bootstrap_stat_plot(y, "cmean")
 
 tidy_bootstrap(x, .num_sims = 10) \%>\%
-  bootstrap_stat_plot(y, .stat = "chmean", .show_groups = TRUE,
-  .show_ci_label = FALSE)
+  bootstrap_stat_plot(y,
+    .stat = "chmean", .show_groups = TRUE,
+    .show_ci_label = FALSE
+  )
 
 }
 \seealso{

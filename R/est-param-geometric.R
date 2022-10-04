@@ -39,81 +39,80 @@
 #' @export
 #'
 
-util_geometric_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_geometric_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    n <- length(x_term)
-    minx <- min(as.numeric(x_term))
-    maxx <- max(as.numeric(x_term))
-    m <- mean(as.numeric(x_term))
-    s <- var(x_term)
-    sum_x <- sum(x_term)
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  n <- length(x_term)
+  minx <- min(as.numeric(x_term))
+  maxx <- max(as.numeric(x_term))
+  m <- mean(as.numeric(x_term))
+  s <- var(x_term)
+  sum_x <- sum(x_term)
 
-    # Checks ----
-    if (!is.vector(x_term, mode = "numeric")){
-        rlang::abort(
-            message = "The '.x' term must be a numeric vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (!all(x_term == trunc(x_term)) || any(x_term < 0)){
-        rlang::abort(
-            message = "All values of 'x' must be non-negative integers.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (n < 2){
-        rlang::abort(
-            message = "You must supply at least two data points for this function.
-            If you only have one then use [EnvStats::egeom()]",
-            use_cli_format = TRUE
-        )
-    }
-
-    # Parameters ----
-    # EnvStats
-    es_mme_prob <- n/(n + sum_x)
-    es_mvue_prob <- (n - 1)/(n + sum_x - 1)
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_geometric(.n = n, .prob = round(es_mme_prob, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = rep('Geometric', 2),
-        samp_size = rep(n, 2),
-        min = rep(minx, 2),
-        max = rep(maxx, 2),
-        mean = rep(m, 2),
-        variance = rep(s, 2),
-        sum_x = rep(sum_x, 2),
-        method = c("EnvStats_MME", "EnvStats_MVUE"),
-        shape = c(es_mme_prob, es_mvue_prob)
+  # Checks ----
+  if (!is.vector(x_term, mode = "numeric")) {
+    rlang::abort(
+      message = "The '.x' term must be a numeric vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "geometric"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  if (!all(x_term == trunc(x_term)) || any(x_term < 0)) {
+    rlang::abort(
+      message = "All values of 'x' must be non-negative integers.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  if (n < 2) {
+    rlang::abort(
+      message = "You must supply at least two data points for this function.
+            If you only have one then use [EnvStats::egeom()]",
+      use_cli_format = TRUE
+    )
+  }
 
-    return(output)
+  # Parameters ----
+  # EnvStats
+  es_mme_prob <- n / (n + sum_x)
+  es_mvue_prob <- (n - 1) / (n + sum_x - 1)
 
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_geometric(.n = n, .prob = round(es_mme_prob, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
+
+  ret <- dplyr::tibble(
+    dist_type = rep("Geometric", 2),
+    samp_size = rep(n, 2),
+    min = rep(minx, 2),
+    max = rep(maxx, 2),
+    mean = rep(m, 2),
+    variance = rep(s, 2),
+    sum_x = rep(sum_x, 2),
+    method = c("EnvStats_MME", "EnvStats_MVUE"),
+    shape = c(es_mme_prob, es_mvue_prob)
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "geometric"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

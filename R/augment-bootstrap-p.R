@@ -30,43 +30,42 @@
 #' @export
 #'
 
-bootstrap_p_augment <- function(.data, .value, .names = "auto"){
+bootstrap_p_augment <- function(.data, .value, .names = "auto") {
+  column_expr <- rlang::enquo(.value)
 
-    column_expr <- rlang::enquo(.value)
-
-    if(rlang::quo_is_missing(column_expr)){
-        rlang::abort(
-            message = "bootstrap_p_vec(.value) is missing",
-            use_cli_format = TRUE
-        )
-    }
-
-    col_nms <- names(tidyselect::eval_select(rlang::enquo(.value), .data))
-
-    make_call <- function(col){
-        rlang::call2(
-            "bootstrap_p_vec",
-            .x = rlang::sym(col),
-            .ns = "TidyDensity"
-        )
-    }
-
-    grid <- expand.grid(
-        col                = col_nms
-        , stringsAsFactors = FALSE
+  if (rlang::quo_is_missing(column_expr)) {
+    rlang::abort(
+      message = "bootstrap_p_vec(.value) is missing",
+      use_cli_format = TRUE
     )
+  }
 
-    calls <- purrr::pmap(.l = list(grid$col), make_call)
+  col_nms <- names(tidyselect::eval_select(rlang::enquo(.value), .data))
 
-    if(any(.names == "auto")){
-        newname <- "p"
-    } else {
-        newname <- as.list(.names)
-    }
+  make_call <- function(col) {
+    rlang::call2(
+      "bootstrap_p_vec",
+      .x = rlang::sym(col),
+      .ns = "TidyDensity"
+    )
+  }
 
-    calls <- purrr::set_names(calls, newname)
+  grid <- expand.grid(
+    col = col_nms,
+    stringsAsFactors = FALSE
+  )
 
-    ret <- dplyr::as_tibble(dplyr::mutate(.data, !!!calls))
+  calls <- purrr::pmap(.l = list(grid$col), make_call)
 
-    return(ret)
+  if (any(.names == "auto")) {
+    newname <- "p"
+  } else {
+    newname <- as.list(.names)
+  }
+
+  calls <- purrr::set_names(calls, newname)
+
+  ret <- dplyr::as_tibble(dplyr::mutate(.data, !!!calls))
+
+  return(ret)
 }

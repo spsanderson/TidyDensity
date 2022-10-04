@@ -34,28 +34,25 @@
 #' @export
 #'
 
-tidy_multi_single_dist <- function(
-    .tidy_dist = NULL,
-    .param_list = list()
-) {
+tidy_multi_single_dist <- function(.tidy_dist = NULL,
+                                   .param_list = list()) {
+  require("TidyDensity")
 
-    require("TidyDensity")
-
-    # Check param ----
-    if (is.null(.tidy_dist)) {
-        rlang::abort(
-            message = "Please enter a 'tidy_' distribution function like 'tidy_normal'
+  # Check param ----
+  if (is.null(.tidy_dist)) {
+    rlang::abort(
+      message = "Please enter a 'tidy_' distribution function like 'tidy_normal'
                         in quotes.",
-            use_cli_format = TRUE
-        )
-    }
+      use_cli_format = TRUE
+    )
+  }
 
-    if (length(.param_list) == 0) {
-        rlang::abort(
-            message = "Please enter some parameters for your chosen 'tidy_' distribution.",
-            use_cli_format = TRUE
-        )
-    }
+  if (length(.param_list) == 0) {
+    rlang::abort(
+      message = "Please enter some parameters for your chosen 'tidy_' distribution.",
+      use_cli_format = TRUE
+    )
+  }
 
   # Call used ---
   td <- tolower(as.character(.tidy_dist))
@@ -66,7 +63,7 @@ tidy_multi_single_dist <- function(
   # Set the grid to make the calls ----
   param_grid <- expand.grid(params)
 
-  #func_parm_list <- as.list(df)
+  # func_parm_list <- as.list(df)
   names(param_grid) <- methods::formalArgs(td)
 
   # Run call on the grouped df ----
@@ -85,14 +82,14 @@ tidy_multi_single_dist <- function(
   # Get column names from the param_grid in order to make the dist_type column ----
   cols <- names(param_grid %>% dplyr::select(-c(.n, .num_sims)))
 
-  if (length(cols) == 1){
-      dff$dist_name <- paste0(dist_type, " c(", dff[, cols], ")")
+  if (length(cols) == 1) {
+    dff$dist_name <- paste0(dist_type, " c(", dff[, cols], ")")
   } else {
-      dff$dist_name <- paste0(
-          paste0(dist_type, " c("),
-          apply(dff[, cols], 1, paste0, collapse = ", "),
-          ")"
-      )
+    dff$dist_name <- paste0(
+      paste0(dist_type, " c("),
+      apply(dff[, cols], 1, paste0, collapse = ", "),
+      ")"
+    )
   }
 
   # dff$dist_name <- paste0(
@@ -117,5 +114,4 @@ tidy_multi_single_dist <- function(
 
   # Return ----
   return(df_unnested_tbl)
-
 }

@@ -44,71 +44,70 @@
 #' @export
 #'
 
-util_normal_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_normal_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    minx <- min(x_term)
-    maxx <- max(x_term)
-    m <- mean(x_term, na.rm = TRUE)
-    n <- length(x_term)
-    unique_terms <- length(unique(x_term))
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  minx <- min(x_term)
+  maxx <- max(x_term)
+  m <- mean(x_term, na.rm = TRUE)
+  n <- length(x_term)
+  unique_terms <- length(unique(x_term))
 
-    # Checks ----
-    if (!is.vector(x_term, mode = "numeric")){
-        rlang::abort(
-            message = "'.x' must be a numeric vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (n < 2 || unique_terms < 2){
-        rlang::abort(
-            message = "'.x' must contain at least two non-missing distinct values",
-            use_cli_format = TRUE
-        )
-    }
-
-    # Get params ----
-    # EnvStats
-    es_mvue_sd <- stats::sd(x_term)
-    es_mme_sd <- sqrt((n - 1)/n) * stats::sd(x_term)
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_normal(.n = n, .mean = round(m, 3), .sd = round(es_mme_sd, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = rep('Gaussian', 2),
-        samp_size = rep(n, 2),
-        min = rep(minx, 2),
-        max = rep(maxx, 2),
-        method = c("EnvStats_MME_MLE", "EnvStats_MVUE"),
-        mu = c(m, m),
-        stan_dev = c(es_mme_sd, es_mvue_sd),
-        shape_ratio = c(m/es_mme_sd, m/es_mvue_sd)
+  # Checks ----
+  if (!is.vector(x_term, mode = "numeric")) {
+    rlang::abort(
+      message = "'.x' must be a numeric vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "gaussian"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  if (n < 2 || unique_terms < 2) {
+    rlang::abort(
+      message = "'.x' must contain at least two non-missing distinct values",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  # Get params ----
+  # EnvStats
+  es_mvue_sd <- stats::sd(x_term)
+  es_mme_sd <- sqrt((n - 1) / n) * stats::sd(x_term)
 
-    return(output)
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_normal(.n = n, .mean = round(m, 3), .sd = round(es_mme_sd, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
 
+  ret <- dplyr::tibble(
+    dist_type = rep("Gaussian", 2),
+    samp_size = rep(n, 2),
+    min = rep(minx, 2),
+    max = rep(maxx, 2),
+    method = c("EnvStats_MME_MLE", "EnvStats_MVUE"),
+    mu = c(m, m),
+    stan_dev = c(es_mme_sd, es_mvue_sd),
+    shape_ratio = c(m / es_mme_sd, m / es_mvue_sd)
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "gaussian"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

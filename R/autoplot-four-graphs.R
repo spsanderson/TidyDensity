@@ -51,38 +51,45 @@
 tidy_four_autoplot <- function(.data, .line_size = .5,
                                .geom_point = FALSE, .point_size = 1,
                                .geom_rug = FALSE, .geom_smooth = FALSE,
-                               .geom_jitter = FALSE, .interactive = FALSE){
+                               .geom_jitter = FALSE, .interactive = FALSE) {
+  p1 <- tidy_autoplot(
+    .data = .data, .plot_type = "density", .line_size = .line_size,
+    .geom_point = .geom_point, .geom_smooth = .geom_smooth,
+    .geom_jitter = .geom_jitter, .interactive = .interactive
+  )
 
-    p1 <- tidy_autoplot(.data = .data, .plot_type = "density", .line_size = .line_size,
-                        .geom_point = .geom_point, .geom_smooth = .geom_smooth,
-                        .geom_jitter = .geom_jitter, .interactive = .interactive)
+  subtitle <- p1$labels$subtitle
 
-    subtitle <- p1$labels$subtitle
+  p1 <- p1 + ggplot2::labs(subtitle = "")
+  p2 <- tidy_autoplot(
+    .data = .data, .plot_type = "probability", .line_size = .line_size,
+    .geom_point = .geom_point, .geom_smooth = .geom_smooth,
+    .geom_jitter = .geom_jitter, .interactive = .interactive
+  ) +
+    ggplot2::labs(subtitle = "")
+  p3 <- tidy_autoplot(
+    .data = .data, .plot_type = "qq", .line_size = .line_size,
+    .geom_point = .geom_point, .geom_smooth = .geom_smooth,
+    .geom_jitter = .geom_jitter, .interactive = .interactive
+  ) +
+    ggplot2::labs(subtitle = "")
+  p4 <- tidy_autoplot(
+    .data = .data, .plot_type = "quantile", .line_size = .line_size,
+    .geom_point = .geom_point, .geom_smooth = .geom_smooth,
+    .geom_jitter = .geom_jitter, .interactive = .interactive
+  ) +
+    ggplot2::labs(subtitle = "")
 
-    p1 <- p1 + ggplot2::labs(subtitle = "")
-    p2 <- tidy_autoplot(.data = .data, .plot_type = "probability", .line_size = .line_size,
-                        .geom_point = .geom_point, .geom_smooth = .geom_smooth,
-                        .geom_jitter = .geom_jitter, .interactive = .interactive) +
-        ggplot2::labs(subtitle = "")
-    p3 <- tidy_autoplot(.data = .data, .plot_type = "qq", .line_size = .line_size,
-                        .geom_point = .geom_point, .geom_smooth = .geom_smooth,
-                        .geom_jitter = .geom_jitter, .interactive = .interactive) +
-        ggplot2::labs(subtitle = "")
-    p4 <- tidy_autoplot(.data = .data, .plot_type = "quantile", .line_size = .line_size,
-                        .geom_point = .geom_point, .geom_smooth = .geom_smooth,
-                        .geom_jitter = .geom_jitter, .interactive = .interactive) +
-        ggplot2::labs(subtitle = "")
-
-    plt <- patchwork::wrap_plots(
-        p1, p2, p3, p4, ncol = 2, guides = "auto"
+  plt <- patchwork::wrap_plots(
+    p1, p2, p3, p4,
+    ncol = 2, guides = "auto"
+  ) +
+    ggplot2::guides(
+      color = ggplot2::theme(legend.position = "bottom")
     ) +
-        ggplot2::guides(
-            color = ggplot2::theme(legend.position = "bottom")
-        ) +
-        patchwork::plot_annotation(
-            subtitle = subtitle
-        )
+    patchwork::plot_annotation(
+      subtitle = subtitle
+    )
 
-    return(plt)
-
+  return(plt)
 }

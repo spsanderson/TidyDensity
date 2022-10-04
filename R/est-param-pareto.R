@@ -44,77 +44,76 @@
 #' @export
 #'
 
-util_pareto_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_pareto_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    minx <- min(x_term)
-    maxx <- max(x_term)
-    n <- length(x_term)
-    unique_terms <- length(unique(x_term))
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  minx <- min(x_term)
+  maxx <- max(x_term)
+  n <- length(x_term)
+  unique_terms <- length(unique(x_term))
 
-    # Checks ----
-    if (!is.vector(x_term, mode = "numeric") || is.factor(x_term)){
-        rlang::abort(
-            message = "'.x' must be a numeric vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (n < 2 || any(x_term <= 0) || unique_terms < 2){
-        rlang::abort(
-            message = "'.x' must contain at least two non-missing distinct values.
-      All values of '.x' must be positive.",
-            use_cli_format = TRUE
-        )
-    }
-
-    # Get params ----
-    # EnvStats
-    ppc <- 0.375
-    fhat <- stats::ppoints(n, a = ppc)
-    lse_coef <- stats::lm(log(1 - fhat) ~ log(sort(x_term)))$coefficients
-    lse_scale <- -lse_coef[[2]]
-    lse_shape <- exp(lse_coef[[1]]/lse_scale)
-
-    mle_shape <- min(x_term)
-    mle_scale <- n/sum(log(x_term/mle_shape))
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_pareto(.n = n, .shape = round(lse_shape, 3), .scale = round(lse_scale, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = rep('Pareto', 2),
-        samp_size = rep(n, 2),
-        min = rep(minx, 2),
-        max = rep(maxx, 2),
-        method = c("LSE", "MLE"),
-        shape = c(lse_shape, mle_shape),
-        scale = c(lse_scale, mle_scale),
-        shape_ratio = c(shape/scale)
+  # Checks ----
+  if (!is.vector(x_term, mode = "numeric") || is.factor(x_term)) {
+    rlang::abort(
+      message = "'.x' must be a numeric vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "pareto"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  if (n < 2 || any(x_term <= 0) || unique_terms < 2) {
+    rlang::abort(
+      message = "'.x' must contain at least two non-missing distinct values.
+      All values of '.x' must be positive.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  # Get params ----
+  # EnvStats
+  ppc <- 0.375
+  fhat <- stats::ppoints(n, a = ppc)
+  lse_coef <- stats::lm(log(1 - fhat) ~ log(sort(x_term)))$coefficients
+  lse_scale <- -lse_coef[[2]]
+  lse_shape <- exp(lse_coef[[1]] / lse_scale)
 
-    return(output)
+  mle_shape <- min(x_term)
+  mle_scale <- n / sum(log(x_term / mle_shape))
 
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_pareto(.n = n, .shape = round(lse_shape, 3), .scale = round(lse_scale, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
+
+  ret <- dplyr::tibble(
+    dist_type = rep("Pareto", 2),
+    samp_size = rep(n, 2),
+    min = rep(minx, 2),
+    max = rep(maxx, 2),
+    method = c("LSE", "MLE"),
+    shape = c(lse_shape, mle_shape),
+    scale = c(lse_scale, mle_scale),
+    shape_ratio = c(shape / scale)
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "pareto"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

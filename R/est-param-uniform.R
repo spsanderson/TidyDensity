@@ -37,73 +37,72 @@
 #' @export
 #'
 
-util_uniform_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_uniform_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    minx <- min(x_term)
-    maxx <- max(x_term)
-    n <- length(x_term)
-    unique_terms <- length(unique(x_term))
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  minx <- min(x_term)
+  maxx <- max(x_term)
+  n <- length(x_term)
+  unique_terms <- length(unique(x_term))
 
-    # Checks ----
-    if (!inherits(x_term, "numeric")){
-        rlang::abort(
-            message = "The '.x' parameter must be numeric.",
-            use_cli_format = TRUE
-        )
-    }
-
-    # Use linear model to obtain mu_hat
-    mu_hat <- stats::lm(x_term ~ 1)$coefficients[[1]]
-    s <- sqrt( ((maxx - minx)^2)/12 )
-
-    # Momenth Method Estimator
-    a_mme <- mu_hat - sqrt(3)*s
-    b_mme <- mu_hat + sqrt(3)*s
-
-    # MLE Estimator
-    a_hat_mr <- stats::median(range(minx, maxx))
-    h <- (0.5 * range(minx, maxx))
-
-    a_mle <- round((a_hat_mr - h)[[2]], 0)
-    b_mle <- round((a_hat_mr + h)[[2]], 0)
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_uniform(.n = n, .min = round(a_mme, 3), .max = round(b_mme, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = rep("Uniform", 2),
-        samp_size = rep(n, 2),
-        min       = rep(minx, 2),
-        max       = rep(maxx, 2),
-        method    = c("NIST_MME", "NIST_MLE"),
-        min_est   = c(a_mme, a_mle),
-        max_est   = c(b_mme, b_mle),
-        ratio     = c(a_mme/b_mme, a_mle/b_mle)
+  # Checks ----
+  if (!inherits(x_term, "numeric")) {
+    rlang::abort(
+      message = "The '.x' parameter must be numeric.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "uniform"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  # Use linear model to obtain mu_hat
+  mu_hat <- stats::lm(x_term ~ 1)$coefficients[[1]]
+  s <- sqrt(((maxx - minx)^2) / 12)
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  # Momenth Method Estimator
+  a_mme <- mu_hat - sqrt(3) * s
+  b_mme <- mu_hat + sqrt(3) * s
 
-    return(output)
+  # MLE Estimator
+  a_hat_mr <- stats::median(range(minx, maxx))
+  h <- (0.5 * range(minx, maxx))
 
+  a_mle <- round((a_hat_mr - h)[[2]], 0)
+  b_mle <- round((a_hat_mr + h)[[2]], 0)
+
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_uniform(.n = n, .min = round(a_mme, 3), .max = round(b_mme, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
+
+  ret <- dplyr::tibble(
+    dist_type = rep("Uniform", 2),
+    samp_size = rep(n, 2),
+    min       = rep(minx, 2),
+    max       = rep(maxx, 2),
+    method    = c("NIST_MME", "NIST_MLE"),
+    min_est   = c(a_mme, a_mle),
+    max_est   = c(b_mme, b_mle),
+    ratio     = c(a_mme / b_mme, a_mle / b_mle)
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "uniform"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

@@ -37,89 +37,90 @@
 #' @export
 #'
 
-util_gamma_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_gamma_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    n <- length(x_term)
-    minx <- min(as.numeric(x_term))
-    maxx <- max(as.numeric(x_term))
-    m <- mean(as.numeric(x_term))
-    s <- sqrt((n - 1)/n) * stats::sd(x_term)
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  n <- length(x_term)
+  minx <- min(as.numeric(x_term))
+  maxx <- max(as.numeric(x_term))
+  m <- mean(as.numeric(x_term))
+  s <- sqrt((n - 1) / n) * stats::sd(x_term)
 
-    # Checks ----
-    if (!is.numeric(x_term)){
-        rlang::abort(
-            message = "The '.x' term must be a numeric vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (!is.vector(x_term)){
-        rlang::abort(
-            message = "The '.x' term must be a numeric vecotr.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (n < 2 || any(x_term < 0) || length(unique(x_term)) < 2){
-        rlang::abort(
-            message = "The numeric vector '.x' must contain at least two unique values
-            greater than 0",
-            use_cli_format = TRUE
-        )
-    }
-
-    # Parameters ----
-    # NIST
-    nist_shape <- (m/s)^2
-    nist_scale <- (s^2)/m
-
-    # EnvStats
-    es_mmu_shape <- (m/(sqrt(n/(n - 1)) * s))^2
-    es_mmu_scale <- m/nist_shape
-
-    es_bcmle_shape <- ((n - 3)/n) * nist_shape + (2/(3 * n))
-    es_bcmle_scale <- m/nist_shape
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_gamma(.n = n, .shape = round(nist_shape, 3), .scale = round(nist_scale, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = rep('Gamma', 3),
-        samp_size = rep(n, 3),
-        min = rep(minx, 3),
-        max = rep(maxx, 3),
-        mean = rep(m, 3),
-        variance = rep(s, 3),
-        method = c("NIST_MME", "EnvStats_MMUE", "EnvStats_BCMLE"),
-        shape = c(nist_shape, es_mmu_shape, es_bcmle_shape),
-        scale = c(nist_scale, es_mmu_scale, es_bcmle_scale),
-        shape_ratio = c(nist_shape/nist_scale, es_mmu_shape/es_mmu_scale,
-                        es_bcmle_shape/es_bcmle_scale)
+  # Checks ----
+  if (!is.numeric(x_term)) {
+    rlang::abort(
+      message = "The '.x' term must be a numeric vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "gamma"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  if (!is.vector(x_term)) {
+    rlang::abort(
+      message = "The '.x' term must be a numeric vecotr.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  if (n < 2 || any(x_term < 0) || length(unique(x_term)) < 2) {
+    rlang::abort(
+      message = "The numeric vector '.x' must contain at least two unique values
+            greater than 0",
+      use_cli_format = TRUE
+    )
+  }
 
-    return(output)
+  # Parameters ----
+  # NIST
+  nist_shape <- (m / s)^2
+  nist_scale <- (s^2) / m
 
+  # EnvStats
+  es_mmu_shape <- (m / (sqrt(n / (n - 1)) * s))^2
+  es_mmu_scale <- m / nist_shape
+
+  es_bcmle_shape <- ((n - 3) / n) * nist_shape + (2 / (3 * n))
+  es_bcmle_scale <- m / nist_shape
+
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_gamma(.n = n, .shape = round(nist_shape, 3), .scale = round(nist_scale, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
+
+  ret <- dplyr::tibble(
+    dist_type = rep("Gamma", 3),
+    samp_size = rep(n, 3),
+    min = rep(minx, 3),
+    max = rep(maxx, 3),
+    mean = rep(m, 3),
+    variance = rep(s, 3),
+    method = c("NIST_MME", "EnvStats_MMUE", "EnvStats_BCMLE"),
+    shape = c(nist_shape, es_mmu_shape, es_bcmle_shape),
+    scale = c(nist_scale, es_mmu_scale, es_bcmle_scale),
+    shape_ratio = c(
+      nist_shape / nist_scale, es_mmu_shape / es_mmu_scale,
+      es_bcmle_shape / es_bcmle_scale
+    )
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "gamma"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

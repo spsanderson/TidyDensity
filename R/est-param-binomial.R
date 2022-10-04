@@ -41,128 +41,125 @@
 #' @export
 #'
 
-util_binomial_param_estimate <- function(.x, .size = NULL, .auto_gen_empirical = TRUE){
+util_binomial_param_estimate <- function(.x, .size = NULL, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- .x
-    n <- length(x_term)
-    minx <- min(as.numeric(x_term))
-    maxx <- max(as.numeric(x_term))
-    m <- mean(as.numeric(x_term))
-    s2 <- var(as.numeric(x_term))
-    size <- .size
+  # Tidyeval ----
+  x_term <- .x
+  n <- length(x_term)
+  minx <- min(as.numeric(x_term))
+  maxx <- max(as.numeric(x_term))
+  m <- mean(as.numeric(x_term))
+  s2 <- var(as.numeric(x_term))
+  size <- .size
 
-    # Checks ----
-    if (!is.vector(x_term) && !is.factor(x_term)){
-        rlang::abort(
-            message = "'.x' must be either a numeric or factor vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (is.factor(x_term) && length(levels(x_term)) < 2){
-        rlang::abort(
-            message = "When '.x' is a factor it must have at least two levels.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (!is.factor(x_term) && !is.numeric(x_term)){
-        rlang::abort(
-            message = "'.x' must be either a numeric or factor vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    # If size is NULL
-    if (is.null(size)) {
-
-        x <- as.numeric(x_term)
-
-        if (is.factor(x_term)){
-            x <- x - 1 # makes the factor vector equal to the actual x vector provided.
-        }
-
-        size <- length(x)
-
-        if (size == 0){
-            rlang::abort(
-                message = "'.x' must contain at least one non-missing value.",
-                use_cli_format = TRUE
-            )
-        }
-
-        if (!all(x == 0 | x == 1)){
-            rlang::abort(
-                message = "If '.size' is not supplied and '.x' is numeric,
-                all non-missing values of '.x' must be 0 or 1.",
-                use_cli_format = TRUE
-            )
-        }
-
-        prob <- mean(x)
-
-    } else {
-        if (n != 1 || !is.numeric(x_term) ||
-            !is.finite(x_term) || x_term != trunc(x_term) ||
-            x_term < 0) {
-                rlang::abort(
-                    message = "'.x' must be a single non-negative integer when
-                    '.size' is not NULL",
-                    use_cli_format = TRUE
-                )
-            }
-        if (length(size) != 1 || !is.numeric(size) || !is.finite(size) || size < x){
-            rlang::abort(
-                message = "'.size' must be a positive integer at least as large as '.x'."
-            )
-        }
-
-        prob <- x_term/size
-    }
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        if(is.factor(x_term)){
-            xx <- x
-        } else {
-            xx <- x_term
-        }
-        te <- tidy_empirical(.x = xx)
-        td <- tidy_binomial(.n = n, .size = size, .prob = round(prob, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = 'Binomial',
-        samp_size = n,
-        min = minx,
-        max = maxx,
-        mean = m,
-        variance = s2,
-        method = "EnvStats_MME",
-        prob = prob,
-        size = size,
-        shape_ratio = prob/size
+  # Checks ----
+  if (!is.vector(x_term) && !is.factor(x_term)) {
+    rlang::abort(
+      message = "'.x' must be either a numeric or factor vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "binomial"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  if (is.factor(x_term) && length(levels(x_term)) < 2) {
+    rlang::abort(
+      message = "When '.x' is a factor it must have at least two levels.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
+  if (!is.factor(x_term) && !is.numeric(x_term)) {
+    rlang::abort(
+      message = "'.x' must be either a numeric or factor vector.",
+      use_cli_format = TRUE
+    )
+  }
+
+  # If size is NULL
+  if (is.null(size)) {
+    x <- as.numeric(x_term)
+
+    if (is.factor(x_term)) {
+      x <- x - 1 # makes the factor vector equal to the actual x vector provided.
     }
 
-    return(output)
+    size <- length(x)
 
+    if (size == 0) {
+      rlang::abort(
+        message = "'.x' must contain at least one non-missing value.",
+        use_cli_format = TRUE
+      )
+    }
+
+    if (!all(x == 0 | x == 1)) {
+      rlang::abort(
+        message = "If '.size' is not supplied and '.x' is numeric,
+                all non-missing values of '.x' must be 0 or 1.",
+        use_cli_format = TRUE
+      )
+    }
+
+    prob <- mean(x)
+  } else {
+    if (n != 1 || !is.numeric(x_term) ||
+      !is.finite(x_term) || x_term != trunc(x_term) ||
+      x_term < 0) {
+      rlang::abort(
+        message = "'.x' must be a single non-negative integer when
+                    '.size' is not NULL",
+        use_cli_format = TRUE
+      )
+    }
+    if (length(size) != 1 || !is.numeric(size) || !is.finite(size) || size < x) {
+      rlang::abort(
+        message = "'.size' must be a positive integer at least as large as '.x'."
+      )
+    }
+
+    prob <- x_term / size
+  }
+
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    if (is.factor(x_term)) {
+      xx <- x
+    } else {
+      xx <- x_term
+    }
+    te <- tidy_empirical(.x = xx)
+    td <- tidy_binomial(.n = n, .size = size, .prob = round(prob, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
+
+  ret <- dplyr::tibble(
+    dist_type = "Binomial",
+    samp_size = n,
+    min = minx,
+    max = maxx,
+    mean = m,
+    variance = s2,
+    method = "EnvStats_MME",
+    prob = prob,
+    size = size,
+    shape_ratio = prob / size
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "binomial"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

@@ -45,105 +45,105 @@
 #' @export
 #'
 
-tidy_mixture_density <- function(...){
+tidy_mixture_density <- function(...) {
 
-    # Add distributions to a list, all base R and TidyDensity
-    dist_list <- list(...)
+  # Add distributions to a list, all base R and TidyDensity
+  dist_list <- list(...)
 
-    # Check that list is of length 2 or more before proceeding
-    if (length(dist_list) < 2){
-        rlang::abort(
-            message = "You need to pass at least two distributions
+  # Check that list is of length 2 or more before proceeding
+  if (length(dist_list) < 2) {
+    rlang::abort(
+      message = "You need to pass at least two distributions
       or 'y' vectors.",
-            use_cli_format = TRUE
-        )
-    }
+      use_cli_format = TRUE
+    )
+  }
 
-    # From SO Question of mine
-    # https://stackoverflow.com/questions/71743013/get-formalargs-from-a-list-of-functions-r/71743155#71743155
-    input_data_tbl <- stats::setNames(list(...), sapply(as.list(match.call())[-1], deparse))
+  # From SO Question of mine
+  # https://stackoverflow.com/questions/71743013/get-formalargs-from-a-list-of-functions-r/71743155#71743155
+  input_data_tbl <- stats::setNames(list(...), sapply(as.list(match.call())[-1], deparse))
 
-    # Capture functions that were passed
-    input_fns  <- as.list(match.call())[-1]
+  # Capture functions that were passed
+  input_fns <- as.list(match.call())[-1]
 
-    # Map dist_list to a tibble
-    all_col_nms <- names(purrr::map_dfr(dist_list, dplyr::as_tibble))
+  # Map dist_list to a tibble
+  all_col_nms <- names(purrr::map_dfr(dist_list, dplyr::as_tibble))
 
-    if ("sim_number" %in% all_col_nms){
-        # Get the median value of the sim_numbers even if it is
-        # only 1
-        tidy_dist_data_tbl <- purrr::map_dfr(dist_list, dplyr::as_tibble) %>%
-            dplyr::select(y, sim_number) %>%
-            dplyr::filter(!is.na(y)) %>%
-            dplyr::group_by(sim_number) %>%
-            dplyr::mutate(rec_no = dplyr::row_number()) %>%
-            dplyr::ungroup() %>%
-            dplyr::group_by(rec_no) %>%
-            dplyr::summarise(y = stats::median(y)) %>%
-            dplyr::ungroup() %>%
-            dplyr::select(y) %>%
-            dplyr::mutate(x = dplyr::row_number()) %>%
-            dplyr::select(x, y)
-    }
+  if ("sim_number" %in% all_col_nms) {
+    # Get the median value of the sim_numbers even if it is
+    # only 1
+    tidy_dist_data_tbl <- purrr::map_dfr(dist_list, dplyr::as_tibble) %>%
+      dplyr::select(y, sim_number) %>%
+      dplyr::filter(!is.na(y)) %>%
+      dplyr::group_by(sim_number) %>%
+      dplyr::mutate(rec_no = dplyr::row_number()) %>%
+      dplyr::ungroup() %>%
+      dplyr::group_by(rec_no) %>%
+      dplyr::summarise(y = stats::median(y)) %>%
+      dplyr::ungroup() %>%
+      dplyr::select(y) %>%
+      dplyr::mutate(x = dplyr::row_number()) %>%
+      dplyr::select(x, y)
+  }
 
-    if ("value" %in% all_col_nms){
-        tidy_vec_data_tbl <- purrr::map_dfr(dist_list, dplyr::as_tibble) %>%
-            dplyr::select(value) %>%
-            dplyr::filter(!is.na(value)) %>%
-            dplyr::rename(y = value) %>%
-            dplyr::mutate(x = dplyr::row_number()) %>%
-            dplyr::select(x, y)
-    }
+  if ("value" %in% all_col_nms) {
+    tidy_vec_data_tbl <- purrr::map_dfr(dist_list, dplyr::as_tibble) %>%
+      dplyr::select(value) %>%
+      dplyr::filter(!is.na(value)) %>%
+      dplyr::rename(y = value) %>%
+      dplyr::mutate(x = dplyr::row_number()) %>%
+      dplyr::select(x, y)
+  }
 
-    if ((exists("tidy_dist_data_tbl") && nrow(tidy_dist_data_tbl) != 0) &&
-        (exists("tidy_vec_data_tbl") && nrow(tidy_vec_data_tbl) != 0)){
-        dist_tbl <- rbind(tidy_vec_data_tbl, tidy_dist_data_tbl)
-    } else if ((exists("tidy_dist_data_tbl") && nrow(tidy_dist_data_tbl) != 0) &&
-               !exists("tidy_vec_data_tbl")){
-        dist_tbl <- tidy_dist_data_tbl
-    } else {
-        dist_tbl <- tidy_vec_data_tbl
-    }
+  if ((exists("tidy_dist_data_tbl") && nrow(tidy_dist_data_tbl) != 0) &&
+    (exists("tidy_vec_data_tbl") && nrow(tidy_vec_data_tbl) != 0)) {
+    dist_tbl <- rbind(tidy_vec_data_tbl, tidy_dist_data_tbl)
+  } else if ((exists("tidy_dist_data_tbl") && nrow(tidy_dist_data_tbl) != 0) &&
+    !exists("tidy_vec_data_tbl")) {
+    dist_tbl <- tidy_dist_data_tbl
+  } else {
+    dist_tbl <- tidy_vec_data_tbl
+  }
 
-    n <- nrow(dist_tbl)
+  n <- nrow(dist_tbl)
 
-    density_tbl <- stats::density(dist_tbl$y, n = n)[c("x","y")] %>%
-        dplyr::as_tibble()
+  density_tbl <- stats::density(dist_tbl$y, n = n)[c("x", "y")] %>%
+    dplyr::as_tibble()
 
-    # Plots ----
-    p1 <- dist_tbl %>%
-        ggplot2::ggplot(ggplot2::aes(x = x, y = y)) +
-        ggplot2::geom_line() +
-        ggplot2::theme_minimal() +
-        ggplot2::labs(
-            title = "Line Plot of mixture data",
-            subtitle = paste0("Mixutre Model Data from: ", toString(input_fns)),
-            x = "",
-            y = "Value"
-        )
-
-    p2 <- density_tbl %>%
-        ggplot2::ggplot(ggplot2::aes(x = x, y = y)) +
-        ggplot2::geom_line() +
-        ggplot2::theme_minimal() +
-        ggplot2::labs(
-            title = "Density Plot",
-            subtitle = paste0("Mixutre Model Data from: ", toString(input_fns))
-        )
-
-    # Return ----
-    output <- list(
-        data = list(
-            dist_tbl   = dist_tbl,
-            dens_tbl   = density_tbl,
-            input_data = input_data_tbl
-        ),
-        plots = list(
-            line_plot = p1,
-            dens_plot = p2
-        ),
-        input_fns = input_fns
+  # Plots ----
+  p1 <- dist_tbl %>%
+    ggplot2::ggplot(ggplot2::aes(x = x, y = y)) +
+    ggplot2::geom_line() +
+    ggplot2::theme_minimal() +
+    ggplot2::labs(
+      title = "Line Plot of mixture data",
+      subtitle = paste0("Mixutre Model Data from: ", toString(input_fns)),
+      x = "",
+      y = "Value"
     )
 
-    return(output)
+  p2 <- density_tbl %>%
+    ggplot2::ggplot(ggplot2::aes(x = x, y = y)) +
+    ggplot2::geom_line() +
+    ggplot2::theme_minimal() +
+    ggplot2::labs(
+      title = "Density Plot",
+      subtitle = paste0("Mixutre Model Data from: ", toString(input_fns))
+    )
+
+  # Return ----
+  output <- list(
+    data = list(
+      dist_tbl   = dist_tbl,
+      dens_tbl   = density_tbl,
+      input_data = input_data_tbl
+    ),
+    plots = list(
+      line_plot = p1,
+      dens_plot = p2
+    ),
+    input_fns = input_fns
+  )
+
+  return(output)
 }

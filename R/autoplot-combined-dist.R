@@ -60,220 +60,221 @@
 #'
 
 tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
-                                     .geom_point = FALSE, .point_size = 1,
-                                     .geom_rug = FALSE, .geom_smooth = FALSE,
-                                     .geom_jitter = FALSE, .interactive = FALSE) {
+                                   .geom_point = FALSE, .point_size = 1,
+                                   .geom_rug = FALSE, .geom_smooth = FALSE,
+                                   .geom_jitter = FALSE, .interactive = FALSE) {
 
-    # Plot type ----
-    plot_type <- tolower(as.character(.plot_type))
-    line_size <- as.numeric(.line_size)
-    point_size <- as.numeric(.point_size)
+  # Plot type ----
+  plot_type <- tolower(as.character(.plot_type))
+  line_size <- as.numeric(.line_size)
+  point_size <- as.numeric(.point_size)
 
-    # Get the data attributes
-    atb <- attributes(.data)
-    ns <- atb$.param_list$.num_sims
-    ps <- attributes(.data)$all$ps
-    ps <- rep(ps, (ns * nrow(expand.grid(atb$.param_list))))
-    qs <- attributes(.data)$all$qs
-    qs <- rep(qs, (ns * nrow(expand.grid(atb$.param_list))))
+  # Get the data attributes
+  atb <- attributes(.data)
+  ns <- atb$.param_list$.num_sims
+  ps <- attributes(.data)$all$ps
+  ps <- rep(ps, (ns * nrow(expand.grid(atb$.param_list))))
+  qs <- attributes(.data)$all$qs
+  qs <- rep(qs, (ns * nrow(expand.grid(atb$.param_list))))
 
-    # Checks on data ---
-    if (!is.data.frame(.data)) {
-        rlang::abort("The .data parameter must be a valid data.frame from a `tidy_`
+  # Checks on data ---
+  if (!is.data.frame(.data)) {
+    rlang::abort("The .data parameter must be a valid data.frame from a `tidy_`
                      distribution function.  ")
-    }
+  }
 
-    if (!atb$tibble_type == "tidy_multi_dist_combine") {
-        rlang::abort(
-            message = "The data passed must come from the
+  if (!atb$tibble_type == "tidy_multi_dist_combine") {
+    rlang::abort(
+      message = "The data passed must come from the
             `tidy_combine_distributions()` function.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (!is.numeric(.line_size) | !is.numeric(.point_size) | .line_size < 0 | .point_size < 0) {
-        rlang::abort(
-            message = "The parameters .line_size and .point_size must be numeric and
-                     greater than 0.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (!plot_type %in% c("density", "quantile", "probability", "qq", "mcmc")) {
-        rlang::abort(
-            message = "You have chose an unsupported plot type.",
-            use_cli_format = TRUE
-        )
-    }
-
-    # Data ----
-    data_tbl <- dplyr::as_tibble(.data)
-
-    # Data for ggplot
-    n <- max(data_tbl$x)
-    sims <- max(as.numeric(data_tbl$sim_number))
-
-    sub_title <- paste0(
-        "Data Points: ", n, " - ",
-        "Simulations: ", sims
+      use_cli_format = TRUE
     )
+  }
 
-    # Plot logic ----
-    leg_pos <- if (sims > 9) {
-        "none"
-    } else {
-        "bottom"
-    }
+  if (!is.numeric(.line_size) | !is.numeric(.point_size) | .line_size < 0 | .point_size < 0) {
+    rlang::abort(
+      message = "The parameters .line_size and .point_size must be numeric and
+                     greater than 0.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (plot_type == "density") {
-        plt <- data_tbl %>%
-            ggplot2::ggplot(
-                ggplot2::aes(x = dx, y = dy,
-                             group = interaction(dist_type, sim_number),
-                             color = dist_type)
-            ) +
-            ggplot2::geom_line(size = line_size) +
-            ggplot2::theme_minimal() +
-            ggplot2::labs(
-                title = "Density Plot",
-                subtitle = sub_title,
-                color = "Simulation"
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
-    } else if (plot_type == "quantile") {
-        ## EDIT
-        data_tbl <- data_tbl %>%
-            dplyr::select(sim_number, dist_type, q) %>%
-            dplyr::group_by(sim_number, dist_type) %>%
-            dplyr::arrange(q) %>%
-            dplyr::mutate(x = 1:dplyr::n() %>%
-                              tidy_scale_zero_one_vec()) %>%
-            dplyr::ungroup()
-        ## End EDIT
-        plt <- data_tbl %>%
-            dplyr::filter(q > -Inf, q < Inf) %>%
-            ggplot2::ggplot(
-                ggplot2::aes(
-                    #x = tidy_scale_zero_one_vec(dx),
-                    x = x,
-                    y = tidy_scale_zero_one_vec(q),
-                    group = interaction(dist_type, sim_number),
-                    color = dist_type
-                )
-            ) +
-            ggplot2::geom_line(size = line_size) +
-            ggplot2::theme_minimal() +
-            ggplot2::labs(
-                title = "Quantile Plot",
-                subtitle = sub_title,
-                x = "",
-                y = "",
-                color = "Simulation"
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
-    } else if (plot_type == "probability") {
-        plt <- data_tbl %>%
-            ggplot2::ggplot(
-                ggplot2::aes(
-                    x = y,
-                    group = interaction(dist_type, sim_number),
-                    color = dist_type
-                )
-            ) +
-            ggplot2::stat_ecdf(size = line_size) +
-            ggplot2::theme_minimal() +
-            ggplot2::labs(
-                title = "Probability Plot",
-                subtitle = sub_title,
-                color = "Simulation",
-                x = "dx"
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
-    } else if (plot_type == "qq") {
-        plt <- data_tbl %>%
-            ggplot2::ggplot(
-                ggplot2::aes(
-                    sample = y,
-                    group = interaction(dist_type, sim_number),
-                    color = dist_type
-                )
-            ) +
-            ggplot2::stat_qq(size = point_size) +
-            ggplot2::stat_qq_line(size = line_size) +
-            ggplot2::theme_minimal() +
-            ggplot2::labs(
-                title = "QQ Plot",
-                subtitle = sub_title,
-                color = "Simulation"
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
-    } else if (plot_type == "mcmc") {
-        plt <- data_tbl %>%
-            dplyr::group_by(sim_number) %>%
-            dplyr::mutate(cmy = dplyr::cummean(y)) %>%
-            dplyr::ungroup() %>%
-            ggplot2::ggplot(ggplot2::aes(
-                x = x, y = cmy, group = sim_number, color = sim_number
-            )) +
-            ggplot2::geom_line() +
-            ggplot2::theme_minimal() +
-            ggplot2::scale_x_continuous(trans = "log10") +
-            ggplot2::labs(
-                title = "MCMC Cumulative Mean Plot",
-                caption = "X is on log10 scale.",
-                subtitle = sub_title,
-                color = "Simulation",
-                x = "",
-                y = ""
-            ) +
-            ggplot2::theme(legend.position = leg_pos)
+  if (!plot_type %in% c("density", "quantile", "probability", "qq", "mcmc")) {
+    rlang::abort(
+      message = "You have chose an unsupported plot type.",
+      use_cli_format = TRUE
+    )
+  }
 
-    }
+  # Data ----
+  data_tbl <- dplyr::as_tibble(.data)
 
-    if (.geom_rug) {
-        plt <- plt +
-            ggplot2::geom_rug()
-    }
+  # Data for ggplot
+  n <- max(data_tbl$x)
+  sims <- max(as.numeric(data_tbl$sim_number))
 
-    if ((.geom_point) & (!plot_type == "qq")) {
-        plt <- plt +
-            ggplot2::geom_point(size = point_size)
-    }
+  sub_title <- paste0(
+    "Data Points: ", n, " - ",
+    "Simulations: ", sims
+  )
 
-    if (.geom_smooth & !plot_type == "mcmc") {
-        max_dy <- max(data_tbl$dy)
+  # Plot logic ----
+  leg_pos <- if (sims > 9) {
+    "none"
+  } else {
+    "bottom"
+  }
 
-        plt <- plt +
-            ggplot2::geom_smooth(
-                ggplot2::aes(
-                    group = FALSE
-                ),
-                se = FALSE,
-                color = "black",
-                linetype = "dashed"
-            ) +
-            ggplot2::ylim(0, max_dy)
-    } else if (.geom_smooth & plot_type == "mcmc") {
-        plt <- plt +
-            ggplot2::geom_smooth(
-                ggplot2::aes(
-                    group = FALSE
-                ),
-                se = FALSE,
-                color = "black",
-                linetype = "dashed"
-            )
-    }
+  if (plot_type == "density") {
+    plt <- data_tbl %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          x = dx, y = dy,
+          group = interaction(dist_type, sim_number),
+          color = dist_type
+        )
+      ) +
+      ggplot2::geom_line(size = line_size) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "Density Plot",
+        subtitle = sub_title,
+        color = "Simulation"
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  } else if (plot_type == "quantile") {
+    ## EDIT
+    data_tbl <- data_tbl %>%
+      dplyr::select(sim_number, dist_type, q) %>%
+      dplyr::group_by(sim_number, dist_type) %>%
+      dplyr::arrange(q) %>%
+      dplyr::mutate(x = 1:dplyr::n() %>%
+        tidy_scale_zero_one_vec()) %>%
+      dplyr::ungroup()
+    ## End EDIT
+    plt <- data_tbl %>%
+      dplyr::filter(q > -Inf, q < Inf) %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          # x = tidy_scale_zero_one_vec(dx),
+          x = x,
+          y = tidy_scale_zero_one_vec(q),
+          group = interaction(dist_type, sim_number),
+          color = dist_type
+        )
+      ) +
+      ggplot2::geom_line(size = line_size) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "Quantile Plot",
+        subtitle = sub_title,
+        x = "",
+        y = "",
+        color = "Simulation"
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  } else if (plot_type == "probability") {
+    plt <- data_tbl %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          x = y,
+          group = interaction(dist_type, sim_number),
+          color = dist_type
+        )
+      ) +
+      ggplot2::stat_ecdf(size = line_size) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "Probability Plot",
+        subtitle = sub_title,
+        color = "Simulation",
+        x = "dx"
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  } else if (plot_type == "qq") {
+    plt <- data_tbl %>%
+      ggplot2::ggplot(
+        ggplot2::aes(
+          sample = y,
+          group = interaction(dist_type, sim_number),
+          color = dist_type
+        )
+      ) +
+      ggplot2::stat_qq(size = point_size) +
+      ggplot2::stat_qq_line(size = line_size) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "QQ Plot",
+        subtitle = sub_title,
+        color = "Simulation"
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  } else if (plot_type == "mcmc") {
+    plt <- data_tbl %>%
+      dplyr::group_by(sim_number) %>%
+      dplyr::mutate(cmy = dplyr::cummean(y)) %>%
+      dplyr::ungroup() %>%
+      ggplot2::ggplot(ggplot2::aes(
+        x = x, y = cmy, group = sim_number, color = sim_number
+      )) +
+      ggplot2::geom_line() +
+      ggplot2::theme_minimal() +
+      ggplot2::scale_x_continuous(trans = "log10") +
+      ggplot2::labs(
+        title = "MCMC Cumulative Mean Plot",
+        caption = "X is on log10 scale.",
+        subtitle = sub_title,
+        color = "Simulation",
+        x = "",
+        y = ""
+      ) +
+      ggplot2::theme(legend.position = leg_pos)
+  }
 
-    if (.geom_jitter) {
-        plt <- plt +
-            ggplot2::geom_jitter()
-    }
+  if (.geom_rug) {
+    plt <- plt +
+      ggplot2::geom_rug()
+  }
 
-    if (.interactive) {
-        plt <- plotly::ggplotly(plt)
-    }
+  if ((.geom_point) & (!plot_type == "qq")) {
+    plt <- plt +
+      ggplot2::geom_point(size = point_size)
+  }
 
-    # Return ----
-    return(plt)
+  if (.geom_smooth & !plot_type == "mcmc") {
+    max_dy <- max(data_tbl$dy)
+
+    plt <- plt +
+      ggplot2::geom_smooth(
+        ggplot2::aes(
+          group = FALSE
+        ),
+        se = FALSE,
+        color = "black",
+        linetype = "dashed"
+      ) +
+      ggplot2::ylim(0, max_dy)
+  } else if (.geom_smooth & plot_type == "mcmc") {
+    plt <- plt +
+      ggplot2::geom_smooth(
+        ggplot2::aes(
+          group = FALSE
+        ),
+        se = FALSE,
+        color = "black",
+        linetype = "dashed"
+      )
+  }
+
+  if (.geom_jitter) {
+    plt <- plt +
+      ggplot2::geom_jitter()
+  }
+
+  if (.interactive) {
+    plt <- plotly::ggplotly(plt)
+  }
+
+  # Return ----
+  return(plt)
 }

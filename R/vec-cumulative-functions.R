@@ -24,8 +24,8 @@
 #' @export
 #'
 
-cvar <- function(.x){
-    sapply(seq_along(.x), function(k, z) stats::var(z[1:k]), z = .x)
+cvar <- function(.x) {
+  sapply(seq_along(.x), function(k, z) stats::var(z[1:k]), z = .x)
 }
 
 #' Cumulative Skewness
@@ -53,11 +53,11 @@ cvar <- function(.x){
 #' @export
 #'
 
-cskewness <- function(.x){
-    skewness <- function(.x){
-        sqrt(length(.x)) * sum((.x - mean(.x))^3) / (sum((.x - mean(.x))^2)^(3/2))
-    }
-    sapply(seq_along(.x), function(k, z) skewness(z[1:k]), z = .x)
+cskewness <- function(.x) {
+  skewness <- function(.x) {
+    sqrt(length(.x)) * sum((.x - mean(.x))^3) / (sum((.x - mean(.x))^2)^(3 / 2))
+  }
+  sapply(seq_along(.x), function(k, z) skewness(z[1:k]), z = .x)
 }
 
 #' Cumulative Kurtosis
@@ -85,11 +85,11 @@ cskewness <- function(.x){
 #' @export
 #'
 
-ckurtosis <- function(.x){
-    kurtosis <- function(.x){
-        length(.x) * sum((.x - mean(.x))^4) / (sum((.x - mean(.x))^2)^2)
-    }
-    sapply(seq_along(.x), function(k, z) kurtosis(z[1:k]), z = .x)
+ckurtosis <- function(.x) {
+  kurtosis <- function(.x) {
+    length(.x) * sum((.x - mean(.x))^4) / (sum((.x - mean(.x))^2)^2)
+  }
+  sapply(seq_along(.x), function(k, z) kurtosis(z[1:k]), z = .x)
 }
 
 #' Cumulative Standard Deviation
@@ -117,8 +117,8 @@ ckurtosis <- function(.x){
 #' @export
 #'
 
-csd <- function(.x){
-    sapply(seq_along(.x), function(k, z) stats::sd(z[1:k]), z = .x)
+csd <- function(.x) {
+  sapply(seq_along(.x), function(k, z) stats::sd(z[1:k]), z = .x)
 }
 
 #' Cumulative Median
@@ -146,8 +146,8 @@ csd <- function(.x){
 #' @export
 #'
 
-cmedian <- function(.x){
-    sapply(seq_along(.x), function(k, z) stats::median(z[1:k]), z = .x)
+cmedian <- function(.x) {
+  sapply(seq_along(.x), function(k, z) stats::median(z[1:k]), z = .x)
 }
 
 #' Cumulative Geometric Mean
@@ -176,8 +176,8 @@ cmedian <- function(.x){
 #' @export
 #'
 
-cgmean <- function(.x){
-    exp(cmean(log(.x)))
+cgmean <- function(.x) {
+  exp(cmean(log(.x)))
 }
 
 #' Cumulative Harmonic Mean
@@ -206,8 +206,8 @@ cgmean <- function(.x){
 #' @export
 #'
 
-chmean <- function(.x){
-    1 / (cumsum(1 / .x))
+chmean <- function(.x) {
+  1 / (cumsum(1 / .x))
 }
 
 #' Cumulative Mean
@@ -236,6 +236,6 @@ chmean <- function(.x){
 #' @export
 #'
 
-cmean <- function(.x){
-    dplyr::cummean(.x)
+cmean <- function(.x) {
+  dplyr::cummean(.x)
 }

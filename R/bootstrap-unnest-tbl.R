@@ -27,29 +27,28 @@
 #' @export
 #'
 
-bootstrap_unnest_tbl <- function(.data){
+bootstrap_unnest_tbl <- function(.data) {
 
-    # Checks ----
-    atb <- attributes(.data)
-    distribution_family_type <- atb$distribution_family_type
+  # Checks ----
+  atb <- attributes(.data)
+  distribution_family_type <- atb$distribution_family_type
 
-    if (!atb$tibble_type == "tidy_bootstrap_nested"){
-        rlang::abort(
-            message = "You must provide the output from the tidy_bootstrap() function.",
-            use_cli_format = TRUE
-        )
-    }
+  if (!atb$tibble_type == "tidy_bootstrap_nested") {
+    rlang::abort(
+      message = "You must provide the output from the tidy_bootstrap() function.",
+      use_cli_format = TRUE
+    )
+  }
 
-    # Data ----
-    df <- tidyr::unnest(.data, bootstrap_samples) %>%
-        purrr::set_names("sim_number", "y")
+  # Data ----
+  df <- tidyr::unnest(.data, bootstrap_samples) %>%
+    purrr::set_names("sim_number", "y")
 
-    # Return ----
-    attr(df, ".num_sims") <- atb$.num_sims
-    attr(df, "distribution_family_type") <- distribution_family_type
-    attr(df, "tibble_type") <- "tidy_bootstrap"
-    attr(df, "dist_with_params") <- "Empirical"
+  # Return ----
+  attr(df, ".num_sims") <- atb$.num_sims
+  attr(df, "distribution_family_type") <- distribution_family_type
+  attr(df, "tibble_type") <- "tidy_bootstrap"
+  attr(df, "dist_with_params") <- "Empirical"
 
-    return(df)
-
+  return(df)
 }
