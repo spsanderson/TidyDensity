@@ -1,6 +1,6 @@
 Package: TidyDensity
 Title: Functions for Tidy Analysis and Generation of Random Data
-Version: 1.2.2.9000
+Version: 1.2.3
 Authors@R: c(
     person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
     person("Steven Sanderson", role = "cph"))
@@ -38,6 +38,5 @@ Suggests:
     rmarkdown,
     knitr,
     roxygen2,
-    EnvStats,
-    data.table
+    EnvStats
 VignetteBuilder: knitr
