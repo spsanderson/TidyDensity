@@ -21,14 +21,13 @@
 #' @export
 #'
 
-ci_lo <- function(.x, .na_rm = FALSE){
+ci_lo <- function(.x, .na_rm = FALSE) {
+  na_rm <- as.logical(.na_rm)
+  x_term <- .x
 
-    na_rm <- as.logical(.na_rm)
-    x_term <- .x
+  ret <- unname(stats::quantile(x_term, 0.025, na.rm = na_rm))
 
-    ret <- unname(stats::quantile(x_term, 0.025, na.rm = na_rm))
-
-    return(ret)
+  return(ret)
 }
 
 #' Confidence Interval Generic
@@ -54,12 +53,11 @@ ci_lo <- function(.x, .na_rm = FALSE){
 #' @export
 #'
 
-ci_hi <- function(.x, .na_rm = FALSE){
+ci_hi <- function(.x, .na_rm = FALSE) {
+  na_rm <- as.logical(.na_rm)
+  x_term <- .x
 
-    na_rm <- as.logical(.na_rm)
-    x_term <- .x
+  ret <- unname(stats::quantile(x_term, 0.975, na.rm = na_rm))
 
-    ret <- unname(stats::quantile(x_term, 0.975, na.rm = na_rm))
-
-    return(ret)
+  return(ret)
 }

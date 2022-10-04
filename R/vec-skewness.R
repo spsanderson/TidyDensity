@@ -28,28 +28,28 @@
 #' @export
 #'
 
-tidy_skewness_vec <- function(.x){
+tidy_skewness_vec <- function(.x) {
 
-    # Tidyeval ----
-    x_term <- .x
+  # Tidyeval ----
+  x_term <- .x
 
-    # Checks ----
-    if(!is.numeric(x_term)){
-        stop(call. = FALSE, ".x must be a numeric vector.")
-    }
+  # Checks ----
+  if (!is.numeric(x_term)) {
+    stop(call. = FALSE, ".x must be a numeric vector.")
+  }
 
-    if(length(x_term) < 4){
-        stop(call. = FALSE, ".x must be a numeric vector of 4 or more.")
-    }
+  if (length(x_term) < 4) {
+    stop(call. = FALSE, ".x must be a numeric vector of 4 or more.")
+  }
 
-    # Calculate
-    n      <- length(x_term)
-    mu     <- mean(x_term, na.rm = TRUE)
-    n_diff <- (x_term - mu)^3
-    nu     <- (1/n * sum(n_diff))
-    d_diff <- (x_term - mu)^2
-    de     <- (1/n * sum(d_diff))^(3/2)
-    s      <- nu/de
-    return(s)
-    print(s)
+  # Calculate
+  n <- length(x_term)
+  mu <- mean(x_term, na.rm = TRUE)
+  n_diff <- (x_term - mu)^3
+  nu <- (1 / n * sum(n_diff))
+  d_diff <- (x_term - mu)^2
+  de <- (1 / n * sum(d_diff))^(3 / 2)
+  s <- nu / de
+  return(s)
+  print(s)
 }

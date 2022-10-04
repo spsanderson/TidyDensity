@@ -24,25 +24,24 @@
 #' @export
 #'
 
-bootstrap_p_vec <- function(.x){
+bootstrap_p_vec <- function(.x) {
 
-    # Tidyeval ----
-    x_term <- .x
+  # Tidyeval ----
+  x_term <- .x
 
-    # Checks ----
-    if (!is.numeric(.x)){
-        rlang::abort(
-            message = "'.x' must be a numeric vector",
-            use_cli_format = TRUE
-        )
-    }
+  # Checks ----
+  if (!is.numeric(.x)) {
+    rlang::abort(
+      message = "'.x' must be a numeric vector",
+      use_cli_format = TRUE
+    )
+  }
 
-    # Get ecdf
-    e <- stats::ecdf(x_term)
+  # Get ecdf
+  e <- stats::ecdf(x_term)
 
-    # Return ----
-    ret <- e(x_term)
+  # Return ----
+  ret <- e(x_term)
 
-    return(ret)
-
+  return(ret)
 }

@@ -37,65 +37,64 @@
 #' @export
 #'
 
-util_weibull_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_weibull_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    x_surv <- survival::Surv(x_term)
-    minx <- min(x_term)
-    maxx <- max(x_term)
-    n <- length(x_term)
-    unique_terms <- length(unique(x_term))
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  x_surv <- survival::Surv(x_term)
+  minx <- min(x_term)
+  maxx <- max(x_term)
+  n <- length(x_term)
+  unique_terms <- length(unique(x_term))
 
-    # Checks ----
-    if (!inherits(x_surv, "Surv") | !inherits(.x, "numeric")){
-        rlang::abort(
-            message = "The '.x' parameter must be a numeric vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    # Make survival regression model
-    yw <- survival::survreg(x_surv ~ 1, dist = "weibull")
-
-    w_scale <- w_scale <- as.numeric(exp(stats::coefficients(yw)[[1]]))
-    w_shape <- 1/yw$scale
-
-    # Return Tible ----
-    if(.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_weibull(.n = n, .shape = round(w_shape, 3), .scale = round(w_scale, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = 'Weibull',
-        samp_size = n,
-        min = minx,
-        max = maxx,
-        method = "NIST",
-        shape = w_shape,
-        scale = w_scale,
-        shape_ratio = (w_shape/w_scale)
+  # Checks ----
+  if (!inherits(x_surv, "Surv") | !inherits(.x, "numeric")) {
+    rlang::abort(
+      message = "The '.x' parameter must be a numeric vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "weibull"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  # Make survival regression model
+  yw <- survival::survreg(x_surv ~ 1, dist = "weibull")
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  w_scale <- w_scale <- as.numeric(exp(stats::coefficients(yw)[[1]]))
+  w_shape <- 1 / yw$scale
 
-    return(output)
+  # Return Tible ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_weibull(.n = n, .shape = round(w_shape, 3), .scale = round(w_scale, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
 
+  ret <- dplyr::tibble(
+    dist_type = "Weibull",
+    samp_size = n,
+    min = minx,
+    max = maxx,
+    method = "NIST",
+    shape = w_shape,
+    scale = w_scale,
+    shape_ratio = (w_shape / w_scale)
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "weibull"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

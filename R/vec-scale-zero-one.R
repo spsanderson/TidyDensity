@@ -26,8 +26,10 @@
 #' dens_2 <- density(vec_2)
 #' max_x <- max(dens_1$x, dens_2$x)
 #' max_y <- max(dens_1$y, dens_2$y)
-#' plot(dens_1, asp = max_y/max_x, main = "Density vec_1 (Red) and vec_2 (Blue)",
-#'  col = "red", xlab = "", ylab = "Density of Vec 1 and Vec 2")
+#' plot(dens_1,
+#'   asp = max_y / max_x, main = "Density vec_1 (Red) and vec_2 (Blue)",
+#'   col = "red", xlab = "", ylab = "Density of Vec 1 and Vec 2"
+#' )
 #' lines(dens_2, col = "blue")
 #'
 #' @return
@@ -36,21 +38,20 @@
 #' @export
 #'
 
-tidy_scale_zero_one_vec <- function(.x){
+tidy_scale_zero_one_vec <- function(.x) {
 
-    # Tidyeval ----
-    x_term <- .x
+  # Tidyeval ----
+  x_term <- .x
 
-    # Checks ----
-    if(!is.numeric(x_term)){
-        stop(call. = FALSE, ".x must be a numeric verctor.")
-    }
+  # Checks ----
+  if (!is.numeric(x_term)) {
+    stop(call. = FALSE, ".x must be a numeric verctor.")
+  }
 
-    max_x <- max(x_term)
-    min_x <- min(x_term)
+  max_x <- max(x_term)
+  min_x <- min(x_term)
 
-    zero_one_scaled <- (x_term - min_x) / (max_x - min_x)
+  zero_one_scaled <- (x_term - min_x) / (max_x - min_x)
 
-    return(zero_one_scaled)
-
+  return(zero_one_scaled)
 }

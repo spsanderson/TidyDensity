@@ -44,90 +44,96 @@
 #'
 
 tidy_inverse_weibull <- function(.n = 50, .shape = 1, .rate = 1,
-                                 .scale = 1/.rate, .num_sims = 1) {
+                                 .scale = 1 / .rate, .num_sims = 1) {
 
-    # Tidyeval ----
-    n <- as.integer(.n)
-    num_sims <- as.integer(.num_sims)
-    shape <- as.numeric(.shape)
-    scale <- as.numeric(.scale)
-    rate  <- as.numeric(.rate)
+  # Tidyeval ----
+  n <- as.integer(.n)
+  num_sims <- as.integer(.num_sims)
+  shape <- as.numeric(.shape)
+  scale <- as.numeric(.scale)
+  rate <- as.numeric(.rate)
 
-    # Checks ----
-    if (!is.integer(n) | n < 0) {
-        rlang::abort(
-            "The parameters '.n' must be of class integer. Please pass a whole
+  # Checks ----
+  if (!is.integer(n) | n < 0) {
+    rlang::abort(
+      "The parameters '.n' must be of class integer. Please pass a whole
             number like 50 or 100. It must be greater than 0."
-        )
-    }
+    )
+  }
 
-    if (!is.integer(num_sims) | num_sims < 0) {
-        rlang::abort(
-            "The parameter `.num_sims' must be of class integer. Please pass a
+  if (!is.integer(num_sims) | num_sims < 0) {
+    rlang::abort(
+      "The parameter `.num_sims' must be of class integer. Please pass a
             whole number like 50 or 100. It must be greater than 0."
-        )
-    }
-
-    if (!is.numeric(shape) | !is.numeric(scale) | !is.numeric(rate)) {
-        rlang::abort(
-            "The parameters of '.shape','.rate', and '.scale' must be of class numeric."
-        )
-    }
-
-    if (shape <= 0 | rate <= 0 | scale <= 0) {
-        rlang::abort(
-            "The parameters of '.shape','.rate', and '.scale' must be greater than 0."
-        )
-    }
-
-    x <- seq(1, num_sims, 1)
-
-    # ps <- seq(-n, n - 1, 2)
-    qs <- seq(0, 1, (1 / (n - 1)))
-    ps <- qs
-
-    df <- dplyr::tibble(sim_number = as.factor(x)) %>%
-        dplyr::group_by(sim_number) %>%
-        dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(actuar::rinvweibull(n = n, shape = shape,
-                                                   scale = scale, rate = rate))) %>%
-        dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
-                                   purrr::set_names("dx", "dy") %>%
-                                   dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(actuar::pinvweibull(ps, shape = shape,
-                                               scale = scale, rate = rate))) %>%
-        dplyr::mutate(q = list(actuar::qinvweibull(tidy_scale_zero_one_vec(unlist(y)), shape = shape,
-                                               scale = scale, rate = rate))) %>%
-        tidyr::unnest(cols = c(x, y, d, p, q)) %>%
-        dplyr::ungroup()
-
-    param_grid <- dplyr::tibble(.shape, .scale, .rate)
-
-    # Attach descriptive attributes to tibble
-    attr(df, ".shape") <- .shape
-    attr(df, ".scale") <- .scale
-    attr(df, ".rate") <- .rate
-    attr(df, ".n") <- .n
-    attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_inverse_weibull"
-    attr(df, "ps") <- ps
-    attr(df, "qs") <- qs
-    attr(df, "param_grid") <- param_grid
-    attr(df, "param_grid_txt") <- paste0(
-        "c(",
-        paste(param_grid[, names(param_grid)], collapse = ", "),
-        ")"
     )
-    attr(df, "dist_with_params") <- paste0(
-        "Inverse Weibull",
-        " ",
-        paste0(
-            "c(",
-            paste(param_grid[, names(param_grid)], collapse = ", "),
-            ")"
-        )
-    )
+  }
 
-    # Return final result as function output
-    return(df)
+  if (!is.numeric(shape) | !is.numeric(scale) | !is.numeric(rate)) {
+    rlang::abort(
+      "The parameters of '.shape','.rate', and '.scale' must be of class numeric."
+    )
+  }
+
+  if (shape <= 0 | rate <= 0 | scale <= 0) {
+    rlang::abort(
+      "The parameters of '.shape','.rate', and '.scale' must be greater than 0."
+    )
+  }
+
+  x <- seq(1, num_sims, 1)
+
+  # ps <- seq(-n, n - 1, 2)
+  qs <- seq(0, 1, (1 / (n - 1)))
+  ps <- qs
+
+  df <- dplyr::tibble(sim_number = as.factor(x)) %>%
+    dplyr::group_by(sim_number) %>%
+    dplyr::mutate(x = list(1:n)) %>%
+    dplyr::mutate(y = list(actuar::rinvweibull(
+      n = n, shape = shape,
+      scale = scale, rate = rate
+    ))) %>%
+    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
+      purrr::set_names("dx", "dy") %>%
+      dplyr::as_tibble())) %>%
+    dplyr::mutate(p = list(actuar::pinvweibull(ps,
+      shape = shape,
+      scale = scale, rate = rate
+    ))) %>%
+    dplyr::mutate(q = list(actuar::qinvweibull(tidy_scale_zero_one_vec(unlist(y)),
+      shape = shape,
+      scale = scale, rate = rate
+    ))) %>%
+    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
+    dplyr::ungroup()
+
+  param_grid <- dplyr::tibble(.shape, .scale, .rate)
+
+  # Attach descriptive attributes to tibble
+  attr(df, ".shape") <- .shape
+  attr(df, ".scale") <- .scale
+  attr(df, ".rate") <- .rate
+  attr(df, ".n") <- .n
+  attr(df, ".num_sims") <- .num_sims
+  attr(df, "tibble_type") <- "tidy_inverse_weibull"
+  attr(df, "ps") <- ps
+  attr(df, "qs") <- qs
+  attr(df, "param_grid") <- param_grid
+  attr(df, "param_grid_txt") <- paste0(
+    "c(",
+    paste(param_grid[, names(param_grid)], collapse = ", "),
+    ")"
+  )
+  attr(df, "dist_with_params") <- paste0(
+    "Inverse Weibull",
+    " ",
+    paste0(
+      "c(",
+      paste(param_grid[, names(param_grid)], collapse = ", "),
+      ")"
+    )
+  )
+
+  # Return final result as function output
+  return(df)
 }

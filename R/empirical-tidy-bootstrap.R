@@ -34,62 +34,60 @@
 #'
 
 tidy_bootstrap <- function(.x, .num_sims = 2000, .proportion = 0.8,
-                           .distribution_type = "continuous"){
+                           .distribution_type = "continuous") {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    n <- length(x_term)
-    dist_type <- tolower(as.character(.distribution_type))
-    num_sims <- as.integer(.num_sims)
-    prop <- as.numeric(.proportion)
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  n <- length(x_term)
+  dist_type <- tolower(as.character(.distribution_type))
+  num_sims <- as.integer(.num_sims)
+  prop <- as.numeric(.proportion)
 
-    # Checks ----
-    if (!is.vector(x_term)) {
-        rlang::abort(
-            message = "You must pass a vector as the .x argument to this function.",
-            use_cli_format = TRUE
-        )
-    }
+  # Checks ----
+  if (!is.vector(x_term)) {
+    rlang::abort(
+      message = "You must pass a vector as the .x argument to this function.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (prop <= 0 | prop > 1){
-        rlang::abort(
-            message = "The '.proportion' parameter must be greater than 0 and up to or including 1.",
-            use_cli_format = TRUE
-        )
-    }
+  if (prop <= 0 | prop > 1) {
+    rlang::abort(
+      message = "The '.proportion' parameter must be greater than 0 and up to or including 1.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (!dist_type %in% c("continuous","discrete")){
-        rlang::abort(
-            message = "You must choose either 'continuous' or 'discrete'.",
-            use_cli_format = TRUE
-        )
-    }
+  if (!dist_type %in% c("continuous", "discrete")) {
+    rlang::abort(
+      message = "You must choose either 'continuous' or 'discrete'.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (num_sims < 2000){
-        rlang::warn(
-            message = "Setting '.num_sims' to less than 2000 means that results can be
+  if (num_sims < 2000) {
+    rlang::warn(
+      message = "Setting '.num_sims' to less than 2000 means that results can be
       potentially unstable. Consider setting to 2000 or more.",
-            use_cli_format = TRUE
-        )
-    }
+      use_cli_format = TRUE
+    )
+  }
 
-    # Data ----
-    df <- dplyr::tibble(sim_number = as.factor(1:num_sims)) %>%
-        dplyr::group_by(sim_number) %>%
-        dplyr::mutate(bootstrap_samples = list(
-            sample(x = x_term, size = floor(prop * n) ,replace = TRUE)
-          )
-        ) %>%
-        dplyr::ungroup()
+  # Data ----
+  df <- dplyr::tibble(sim_number = as.factor(1:num_sims)) %>%
+    dplyr::group_by(sim_number) %>%
+    dplyr::mutate(bootstrap_samples = list(
+      sample(x = x_term, size = floor(prop * n), replace = TRUE)
+    )) %>%
+    dplyr::ungroup()
 
-    # Attach descriptive attributes to tibble
-    attr(df, "distribution_family_type") <- dist_type
-    attr(df, ".x") <- .x
-    attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_bootstrap_nested"
-    attr(df, "dist_with_params") <- "Empirical"
+  # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- dist_type
+  attr(df, ".x") <- .x
+  attr(df, ".num_sims") <- .num_sims
+  attr(df, "tibble_type") <- "tidy_bootstrap_nested"
+  attr(df, "dist_with_params") <- "Empirical"
 
-    # Return ----
-    return(df)
-
+  # Return ----
+  return(df)
 }

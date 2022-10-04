@@ -7,7 +7,8 @@ None
 None
 
 ## Minor Fixes and Improvements
-None
+Fix #291 - Update `tidy_stat_tbl()` to fix `tibble` output so it no longer ignores
+passed arguments and fix `data.table` to directly pass ... arguments.
 
 # TidyDensity 1.2.3
 

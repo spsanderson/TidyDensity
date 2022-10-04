@@ -43,83 +43,83 @@
 
 tidy_t <- function(.n = 50, .df = 1, .ncp = 0, .num_sims = 1) {
 
-    # Tidyeval ----
-    n <- as.integer(.n)
-    num_sims <- as.integer(.num_sims)
-    df <- as.numeric(.df)
-    ncp <- as.numeric(.ncp)
+  # Tidyeval ----
+  n <- as.integer(.n)
+  num_sims <- as.integer(.num_sims)
+  df <- as.numeric(.df)
+  ncp <- as.numeric(.ncp)
 
-    # Checks ----
-    if (!is.integer(n) | n < 0) {
-        rlang::abort(
-            message = "The parameters '.n' must be of class integer. Please pass a whole
+  # Checks ----
+  if (!is.integer(n) | n < 0) {
+    rlang::abort(
+      message = "The parameters '.n' must be of class integer. Please pass a whole
             number like 50 or 100. It must be greater than 0.",
-            use_cli_format = TRUE
-        )
-    }
+      use_cli_format = TRUE
+    )
+  }
 
-    if (!is.integer(num_sims) | num_sims < 0) {
-        rlang::abort(
-            message = "The parameter `.num_sims' must be of class integer. Please pass a
+  if (!is.integer(num_sims) | num_sims < 0) {
+    rlang::abort(
+      message = "The parameter `.num_sims' must be of class integer. Please pass a
             whole number like 50 or 100. It must be greater than 0.",
-            use_cli_format = TRUE
-        )
-    }
+      use_cli_format = TRUE
+    )
+  }
 
-    if (!is.numeric(df) | !is.numeric(ncp) | df <= 0) {
-        rlang::abort(
-            message = "The parameters of '.df', and '.ncp' must be of class numeric.
+  if (!is.numeric(df) | !is.numeric(ncp) | df <= 0) {
+    rlang::abort(
+      message = "The parameters of '.df', and '.ncp' must be of class numeric.
             Please pass a number like 1 or 1.1 etc. The '.df' parameter must be
             greater than 0.",
-            use_cli_format = TRUE
-        )
-    }
-
-    x <- seq(1, num_sims, 1)
-
-    # ps <- seq(-n, n - 1, 2)
-    qs <- seq(0, 1, (1 / (n - 1)))
-    ps <- qs
-
-    df <- dplyr::tibble(sim_number = as.factor(x)) %>%
-        dplyr::group_by(sim_number) %>%
-        dplyr::mutate(x = list(1:n)) %>%
-        dplyr::mutate(y = list(stats::rt(n = n, df = df, ncp = ncp))) %>%
-        dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
-                                   purrr::set_names("dx", "dy") %>%
-                                   dplyr::as_tibble())) %>%
-        dplyr::mutate(p = list(stats::pt(ps, df = df, ncp = ncp))) %>%
-        dplyr::mutate(q = list(stats::qt(tidy_scale_zero_one_vec(unlist(y)), df = df, ncp = ncp))) %>%
-        tidyr::unnest(cols = c(x, y, d, p, q)) %>%
-        dplyr::ungroup()
-
-    param_grid <- dplyr::tibble(.df, .ncp)
-
-    # Attach descriptive attributes to tibble
-    attr(df, "distribution_family_type") <- "continuous"
-    attr(df, ".df") <- .df
-    attr(df, ".ncp") <- .ncp
-    attr(df, ".n") <- .n
-    attr(df, ".num_sims") <- .num_sims
-    attr(df, "tibble_type") <- "tidy_t"
-    attr(df, "ps") <- ps
-    attr(df, "qs") <- qs
-    attr(df, "param_grid") <- param_grid
-    attr(df, "param_grid_txt") <- paste0(
-        "c(",
-        paste(param_grid[, names(param_grid)], collapse = ", "),
-        ")"
+      use_cli_format = TRUE
     )
-    attr(df, "dist_with_params") <- paste0(
-        "T Distribution",
-        " ",
-        paste0(
-            "c(",
-            paste(param_grid[, names(param_grid)], collapse = ", "),
-            ")"
-        )
-    )
+  }
 
-    # Return final result as function output
-    return(df)
+  x <- seq(1, num_sims, 1)
+
+  # ps <- seq(-n, n - 1, 2)
+  qs <- seq(0, 1, (1 / (n - 1)))
+  ps <- qs
+
+  df <- dplyr::tibble(sim_number = as.factor(x)) %>%
+    dplyr::group_by(sim_number) %>%
+    dplyr::mutate(x = list(1:n)) %>%
+    dplyr::mutate(y = list(stats::rt(n = n, df = df, ncp = ncp))) %>%
+    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
+      purrr::set_names("dx", "dy") %>%
+      dplyr::as_tibble())) %>%
+    dplyr::mutate(p = list(stats::pt(ps, df = df, ncp = ncp))) %>%
+    dplyr::mutate(q = list(stats::qt(tidy_scale_zero_one_vec(unlist(y)), df = df, ncp = ncp))) %>%
+    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
+    dplyr::ungroup()
+
+  param_grid <- dplyr::tibble(.df, .ncp)
+
+  # Attach descriptive attributes to tibble
+  attr(df, "distribution_family_type") <- "continuous"
+  attr(df, ".df") <- .df
+  attr(df, ".ncp") <- .ncp
+  attr(df, ".n") <- .n
+  attr(df, ".num_sims") <- .num_sims
+  attr(df, "tibble_type") <- "tidy_t"
+  attr(df, "ps") <- ps
+  attr(df, "qs") <- qs
+  attr(df, "param_grid") <- param_grid
+  attr(df, "param_grid_txt") <- paste0(
+    "c(",
+    paste(param_grid[, names(param_grid)], collapse = ", "),
+    ")"
+  )
+  attr(df, "dist_with_params") <- paste0(
+    "T Distribution",
+    " ",
+    paste0(
+      "c(",
+      paste(param_grid[, names(param_grid)], collapse = ", "),
+      ")"
+    )
+  )
+
+  # Return final result as function output
+  return(df)
 }

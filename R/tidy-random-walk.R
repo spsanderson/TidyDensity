@@ -57,24 +57,24 @@ tidy_random_walk <- function(.data, .initial_value = 0, .sample = FALSE,
   # Checks ----
   if (!"tibble_type" %in% names(atb)) {
     rlang::abort(
-        message = "Function expects to take in data from a 'tidy_' distribution
+      message = "Function expects to take in data from a 'tidy_' distribution
             function.",
-        use_cli_format = TRUE
+      use_cli_format = TRUE
     )
   }
 
   if (initial_value < 0) {
     rlang::abort(
-        message = "The .intial_value must be greater than or equal to zero.",
-        use_cli_format = TRUE
+      message = "The .intial_value must be greater than or equal to zero.",
+      use_cli_format = TRUE
     )
   }
 
   if (!value_type %in% c("cum_prod", "cum_sum")) {
     rlang::abort(
-        message = "You chose an unsupported .value_type. Please chose from:
+      message = "You chose an unsupported .value_type. Please chose from:
                      'cum_prod', 'cum_sum'.",
-        use_cli_format = TRUE
+      use_cli_format = TRUE
     )
   }
 

@@ -39,33 +39,32 @@
 #' @export
 #'
 
-tidy_combine_distributions <- function(...){
+tidy_combine_distributions <- function(...) {
 
-    # Add distributions to a list
-    dist_list <- list(...)
+  # Add distributions to a list
+  dist_list <- list(...)
 
-    dist_list <- purrr::compact(dist_list)
+  dist_list <- purrr::compact(dist_list)
 
-    # Checks ----
-    if (length(dist_list) < 2){
-        rlang::abort(
-            message = "You must add at least two distributions to the function",
-            use_cli_format = TRUE
-        )
-    }
+  # Checks ----
+  if (length(dist_list) < 2) {
+    rlang::abort(
+      message = "You must add at least two distributions to the function",
+      use_cli_format = TRUE
+    )
+  }
 
-    # Get the distribution type
-    dist_final_tbl <- purrr::map(
-        .x = dist_list,
-        .f = ~ .x %>%
-            dplyr::mutate(dist_type = attributes(.x)[["dist_with_params"]]) %>%
-            dplyr::mutate(dist_type = as.factor(dist_type))
-    ) %>%
-        purrr::map_dfr(dplyr::as_tibble)
+  # Get the distribution type
+  dist_final_tbl <- purrr::map(
+    .x = dist_list,
+    .f = ~ .x %>%
+      dplyr::mutate(dist_type = attributes(.x)[["dist_with_params"]]) %>%
+      dplyr::mutate(dist_type = as.factor(dist_type))
+  ) %>%
+    purrr::map_dfr(dplyr::as_tibble)
 
-    attr(dist_final_tbl, "tibble_type") <- "tidy_multi_dist_combine"
+  attr(dist_final_tbl, "tibble_type") <- "tidy_multi_dist_combine"
 
-    # Return ---
-    return(dist_final_tbl)
-
+  # Return ---
+  return(dist_final_tbl)
 }

@@ -37,68 +37,67 @@
 #' @export
 #'
 
-util_exponential_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_exponential_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- .x
-    n <- length(x_term)
-    minx <- min(as.numeric(x_term))
-    maxx <- max(as.numeric(x_term))
-    m <- mean(as.numeric(x_term))
-    s2 <- var(as.numeric(x_term))
+  # Tidyeval ----
+  x_term <- .x
+  n <- length(x_term)
+  minx <- min(as.numeric(x_term))
+  maxx <- max(as.numeric(x_term))
+  m <- mean(as.numeric(x_term))
+  s2 <- var(as.numeric(x_term))
 
-    # Checks ----
-    if (!is.numeric(x_term)){
-        rlang::abort(
-            message = "The '.x' term must be a numeric vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (!is.vector(x_term)){
-        rlang::abort(
-            message = "The '.x' term must be a numeric vecotr.",
-            use_cli_format = TRUE
-        )
-    }
-
-    rate <- 1/m
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_exponential(.n = n, .rate = round(rate, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = 'Exponential',
-        samp_size = n,
-        min = minx,
-        max = maxx,
-        mean = m,
-        variance = s2,
-        method = "NIST_MME",
-        rate = rate
+  # Checks ----
+  if (!is.numeric(x_term)) {
+    rlang::abort(
+      message = "The '.x' term must be a numeric vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "exponential"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  if (!is.vector(x_term)) {
+    rlang::abort(
+      message = "The '.x' term must be a numeric vecotr.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  rate <- 1 / m
 
-    return(output)
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_exponential(.n = n, .rate = round(rate, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
 
+  ret <- dplyr::tibble(
+    dist_type = "Exponential",
+    samp_size = n,
+    min = minx,
+    max = maxx,
+    mean = m,
+    variance = s2,
+    method = "NIST_MME",
+    rate = rate
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "exponential"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }

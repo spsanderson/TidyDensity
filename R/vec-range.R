@@ -21,17 +21,16 @@
 #' @export
 #'
 
-tidy_range_statistic <- function(.x){
+tidy_range_statistic <- function(.x) {
 
-    # Tidyeval ----
-    x_term <- .x
+  # Tidyeval ----
+  x_term <- .x
 
-    if(!is.numeric(x_term)){
-        stop(call. = FALSE, ".x must be a numeric vector.")
-    }
+  if (!is.numeric(x_term)) {
+    stop(call. = FALSE, ".x must be a numeric vector.")
+  }
 
-    range_statistic <- base::diff(base::range(x_term))
+  range_statistic <- base::diff(base::range(x_term))
 
-    return(range_statistic)
-
+  return(range_statistic)
 }

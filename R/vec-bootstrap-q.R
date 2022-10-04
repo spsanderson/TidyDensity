@@ -25,21 +25,20 @@
 #' @export
 #'
 
-bootstrap_q_vec <- function(.x){
+bootstrap_q_vec <- function(.x) {
+  x_term <- .x
+  n <- length(x_term)
 
-    x_term <- .x
-    n <- length(x_term)
-
-    if (!is.numeric(.x)){
-        rlang::abort(
-            message = "'.x' must be a numeric vector",
-            use_cli_format = TRUE
-        )
-    }
-
-    ret <- unname(
-        stats::quantile(x_term, probs = seq(0, 1, 1 / (n - 1)), type = 1)
+  if (!is.numeric(.x)) {
+    rlang::abort(
+      message = "'.x' must be a numeric vector",
+      use_cli_format = TRUE
     )
+  }
 
-    return(ret)
+  ret <- unname(
+    stats::quantile(x_term, probs = seq(0, 1, 1 / (n - 1)), type = 1)
+  )
+
+  return(ret)
 }

@@ -40,68 +40,67 @@
 #' @export
 #'
 
-util_poisson_param_estimate <- function(.x, .auto_gen_empirical = TRUE){
+util_poisson_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
-    # Tidyeval ----
-    x_term <- as.numeric(.x)
-    minx <- min(x_term)
-    maxx <- max(x_term)
-    n <- length(x_term)
-    unique_terms <- length(unique(x_term))
+  # Tidyeval ----
+  x_term <- as.numeric(.x)
+  minx <- min(x_term)
+  maxx <- max(x_term)
+  n <- length(x_term)
+  unique_terms <- length(unique(x_term))
 
-    # Checks ----
-    if (!is.vector(x_term, mode = "numeric") || is.factor(x_term)){
-        rlang::abort(
-            message = "'.x' must be a numeric vector.",
-            use_cli_format = TRUE
-        )
-    }
-
-    if (n < 1 || any(x_term < 0) || any(x_term != trunc(x_term))){
-        rlang::abort(
-            message = "'.x' must contain at least one non-missing distinct value.
-      All values of '.x' must be positive integers.",
-            use_cli_format = TRUE
-        )
-    }
-
-    # Get params ----
-    # EnvStats
-    m <- mean(x_term, na.rm = TRUE)
-
-    # Return Tibble ----
-    if (.auto_gen_empirical){
-        te <- tidy_empirical(.x = x_term)
-        td <- tidy_poisson(.n = n, .lambda = round(m, 3))
-        combined_tbl <- tidy_combine_distributions(te, td)
-    }
-
-    ret <- dplyr::tibble(
-        dist_type = "Posson",
-        samp_size = n,
-        min = minx,
-        max = maxx,
-        method = "MLE",
-        lambda = m
+  # Checks ----
+  if (!is.vector(x_term, mode = "numeric") || is.factor(x_term)) {
+    rlang::abort(
+      message = "'.x' must be a numeric vector.",
+      use_cli_format = TRUE
     )
+  }
 
-    # Return ----
-    attr(ret, "tibble_type") <- "parameter_estimation"
-    attr(ret, "family") <- "poisson"
-    attr(ret, "x_term") <- .x
-    attr(ret, "n") <- n
+  if (n < 1 || any(x_term < 0) || any(x_term != trunc(x_term))) {
+    rlang::abort(
+      message = "'.x' must contain at least one non-missing distinct value.
+      All values of '.x' must be positive integers.",
+      use_cli_format = TRUE
+    )
+  }
 
-    if (.auto_gen_empirical){
-        output <- list(
-            combined_data_tbl = combined_tbl,
-            parameter_tbl     = ret
-        )
-    } else {
-        output <- list(
-            parameter_tbl = ret
-        )
-    }
+  # Get params ----
+  # EnvStats
+  m <- mean(x_term, na.rm = TRUE)
 
-    return(output)
+  # Return Tibble ----
+  if (.auto_gen_empirical) {
+    te <- tidy_empirical(.x = x_term)
+    td <- tidy_poisson(.n = n, .lambda = round(m, 3))
+    combined_tbl <- tidy_combine_distributions(te, td)
+  }
 
+  ret <- dplyr::tibble(
+    dist_type = "Posson",
+    samp_size = n,
+    min = minx,
+    max = maxx,
+    method = "MLE",
+    lambda = m
+  )
+
+  # Return ----
+  attr(ret, "tibble_type") <- "parameter_estimation"
+  attr(ret, "family") <- "poisson"
+  attr(ret, "x_term") <- .x
+  attr(ret, "n") <- n
+
+  if (.auto_gen_empirical) {
+    output <- list(
+      combined_data_tbl = combined_tbl,
+      parameter_tbl     = ret
+    )
+  } else {
+    output <- list(
+      parameter_tbl = ret
+    )
+  }
+
+  return(output)
 }
