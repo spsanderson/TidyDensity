@@ -38,6 +38,5 @@ Suggests:
     rmarkdown,
     knitr,
     roxygen2,
-    EnvStats,
-    data.table
+    EnvStats
 VignetteBuilder: knitr
