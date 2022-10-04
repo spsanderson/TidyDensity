@@ -12,7 +12,7 @@ output."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mat
     
     <a class="navbar-brand me-2" href="../index.html">TidyDensity</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.2.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,14 @@ output.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">.data</span>, .x <span class="op">=</span> <span class="va">y</span>, <span class="va">.fns</span>, .return_type <span class="op">=</span> <span class="st">"vector"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span></span>
+<span>  <span class="va">.data</span>,</span>
+<span>  .x <span class="op">=</span> <span class="va">y</span>,</span>
+<span>  <span class="va">.fns</span>,</span>
+<span>  .return_type <span class="op">=</span> <span class="st">"vector"</span>,</span>
+<span>  .use_data_table <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -84,6 +91,12 @@ input data.</p></dd>
 
 <dt>.return_type</dt>
 <dd><p>The default is "vector" which returns an <code>sapply</code> object.</p></dd>
+
+
+<dt>.use_data_table</dt>
+<dd><p>The default is FALSE, TRUE will use data.table under the
+hood and still return a tibble. If this argument is set to TRUE then the
+<code>.return_type</code> parameter will be ignored.</p></dd>
 
 
 <dt>...</dt>
@@ -138,43 +151,62 @@ simulation number information by making column names like <code>sim_number_1</co
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">y</span>, <span class="va">quantile</span>, <span class="st">"vector"</span>, probs <span class="op">=</span> <span class="va">p</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      sim_number_1 sim_number_2 sim_number_3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.5% -1.574021450   -1.9907210   -1.6219304</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25%  -0.751385373   -1.0229021   -0.7830207</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50%   0.003553813   -0.3276397   -0.1488200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75%   0.540024614    0.2988027    0.4527626</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 95%   1.600301839    1.2154139    1.3316968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.5%   -1.7716856   -2.1886886  -1.70756244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25%    -0.3273582   -1.0812283  -0.75190786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50%     0.3685803   -0.3493147   0.06005291</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75%     1.0572760    0.4439078   0.78635335</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95%     2.1283335    1.5813147   1.61173403</span>
 <span class="r-in"><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">y</span>, <span class="va">quantile</span>, <span class="st">"list"</span>, probs <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sim_number_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         2.5%          25%          50%          75%          95% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1.574021450 -0.751385373  0.003553813  0.540024614  1.600301839 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       2.5%        25%        50%        75%        95% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.7716856 -0.3273582  0.3685803  1.0572760  2.1283335 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sim_number_2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       2.5%        25%        50%        75%        95% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1.9907210 -1.0229021 -0.3276397  0.2988027  1.2154139 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.1886886 -1.0812283 -0.3493147  0.4439078  1.5813147 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sim_number_3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       2.5%        25%        50%        75%        95% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1.6219304 -0.7830207 -0.1488200  0.4527626  1.3316968 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        2.5%         25%         50%         75%         95% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.70756244 -0.75190786  0.06005291  0.78635335  1.61173403 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">y</span>, <span class="va">quantile</span>, <span class="st">"tibble"</span>, probs <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number name  quantile</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1          0%    -<span style="color: #BB0000;">2.63</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1          25%   -<span style="color: #BB0000;">0.751</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1          50%    0.003<span style="text-decoration: underline;">55</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1          75%    0.540  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1          100%   2.02   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2          0%    -<span style="color: #BB0000;">2.41</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2          25%   -<span style="color: #BB0000;">1.02</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2          50%   -<span style="color: #BB0000;">0.328</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2          75%    0.299  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2          100%   2.06   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 3          0%    -<span style="color: #BB0000;">1.67</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 3          25%   -<span style="color: #BB0000;">0.783</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 3          50%   -<span style="color: #BB0000;">0.149</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 3          75%    0.453  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 3          100%   1.88   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1          0%     -<span style="color: #BB0000;">2.10</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1          25%    -<span style="color: #BB0000;">0.327</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1          50%     0.369 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1          75%     1.06  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1          100%    2.38  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2          0%     -<span style="color: #BB0000;">2.57</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2          25%    -<span style="color: #BB0000;">1.08</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2          50%    -<span style="color: #BB0000;">0.349</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2          75%     0.444 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2          100%    4.45  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 3          0%     -<span style="color: #BB0000;">1.81</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 3          25%    -<span style="color: #BB0000;">0.752</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 3          50%     0.060<span style="text-decoration: underline;">1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 3          75%     0.786 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 3          100%    2.53  </span>
+<span class="r-in"><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">y</span>, <span class="va">quantile</span>, .use_data_table <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="va">p</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number name  quantile</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1          2.5%   -<span style="color: #BB0000;">1.77</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1          25%    -<span style="color: #BB0000;">0.327</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1          50%     0.369 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1          75%     1.06  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1          95%     2.13  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2          2.5%   -<span style="color: #BB0000;">2.19</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2          25%    -<span style="color: #BB0000;">1.08</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2          50%    -<span style="color: #BB0000;">0.349</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2          75%     0.444 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2          95%     1.58  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 3          2.5%   -<span style="color: #BB0000;">1.71</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 3          25%    -<span style="color: #BB0000;">0.752</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 3          50%     0.060<span style="text-decoration: underline;">1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 3          75%     0.786 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 3          95%     1.61  </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
