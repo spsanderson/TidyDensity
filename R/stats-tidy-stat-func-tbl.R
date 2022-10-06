@@ -112,12 +112,12 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
 
   # If regular tidy_ dist tibble
   if (.use_data_table) {
-    if (purrr::is_empty(passed_args)) {
-      rlang::abort(
-        message = "You must pass function arguments to ... when .use_data_table = TRUE",
-        use_cli_format = TRUE
-      )
-    }
+    # if (purrr::is_empty(passed_args)) {
+    #   rlang::abort(
+    #     message = "You must pass function arguments to ... when .use_data_table = TRUE",
+    #     use_cli_format = TRUE
+    #   )
+    # }
 
     # if ("na.rm" %in% names(passed_args)) {
     #   tmp_args <- passed_args[!names(passed_args) == "na.rm"]
@@ -130,7 +130,7 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
     # }
 
     .x <- deparse(substitute(.x))
-    .datatable.aware <- TRUE
+    #.datatable.aware <- TRUE
 
     # # Benchmark ran 25 at 15.13 seconds
     # # Thank you Akrun https://stackoverflow.com/questions/73938515/keep-names-from-quantile-function-when-used-in-a-data-table/73938561#73938561
