@@ -60,6 +60,11 @@ for the \code{tibble} output with the corresponding simulation numbers as the va
 
 For the \code{sapply} and \code{lapply} outputs the column names will also give the
 simulation number information by making column names like \code{sim_number_1} etc.
+
+There is an option of \code{.use_data_table} which can greatly enhance the speed of
+the calculations performed if used while still returning a \code{tibble}. The calculations
+are performed after turning the input data into a \code{data.table} object, performing
+the necessary calculation and then converting back to a \code{tibble} object.
 }
 \examples{
 tn <- tidy_normal(.num_sims = 3)
