@@ -4,7 +4,7 @@
 None
 
 ## New Features
-None
+1. Fix #302 - Add function `tidy_bernoulli()`
 
 ## Minor Fixes and Improvements
 1. Fix #291 - Update `tidy_stat_tbl()` to fix `tibble` output so it no longer ignores

@@ -49,6 +49,7 @@ tidy_binomial()
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm}
 
 Other Discrete Distribution: 
+\code{\link{tidy_bernoulli}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_poisson}()},
