@@ -56,6 +56,9 @@ Other Discrete Distribution:
 \code{\link{tidy_zero_truncated_binomial}()},
 \code{\link{tidy_zero_truncated_negative_binomial}()},
 \code{\link{tidy_zero_truncated_poisson}()}
+
+Other Bernoulli: 
+\code{\link{util_bernoulli_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH

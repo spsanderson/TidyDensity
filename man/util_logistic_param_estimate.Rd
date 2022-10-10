@@ -52,6 +52,7 @@ util_logistic_param_estimate(t)$parameter_tbl
 }
 \seealso{
 Other Parameter Estimation: 
+\code{\link{util_bernoulli_param_estimate}()},
 \code{\link{util_beta_param_estimate}()},
 \code{\link{util_binomial_param_estimate}()},
 \code{\link{util_cauchy_param_estimate}()},
