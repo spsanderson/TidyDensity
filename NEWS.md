@@ -4,7 +4,7 @@
 None
 
 ## New Features
-1. Fix #302 - Add function `tidy_bernoulli()`
+1. Fix #302 - Add function `tidy_bernoulli()` 
 2. Fix #304 - Add function `util_bernoulli_param_estimate()`
 3. Fix #305 - Add function `util_bernoulli_stats_tbl()`
 
@@ -13,6 +13,7 @@ None
 passed arguments and fix `data.table` to directly pass ... arguments.
 2. Fix #295 - Drop warning message of not passing arguments when .use_data_table = TRUE
 3. Fix #303 - Add `tidy_bernoulli()` to autoplot.
+4. Fix #299 - Update `tidy_stat_tbl()`
 
 # TidyDensity 1.2.3
 
