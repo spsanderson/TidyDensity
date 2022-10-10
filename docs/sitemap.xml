@@ -100,6 +100,9 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_autoplot.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_bernoulli.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_beta.html</loc>
   </url>
   <url>
@@ -257,6 +260,12 @@
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_poisson.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_bernoulli_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_bernoulli_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_param_estimate.html</loc>

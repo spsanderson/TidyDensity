@@ -99,6 +99,7 @@ parameters given some vector of values.</p>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other Parameter Estimation: 
+<code><a href="util_bernoulli_param_estimate.html">util_bernoulli_param_estimate</a>()</code>,
 <code><a href="util_beta_param_estimate.html">util_beta_param_estimate</a>()</code>,
 <code><a href="util_binomial_param_estimate.html">util_binomial_param_estimate</a>()</code>,
 <code><a href="util_cauchy_param_estimate.html">util_cauchy_param_estimate</a>()</code>,
@@ -134,8 +135,8 @@ parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max method   min_est max_est ratio</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Uniform          50  1.06  3.00 NIST_MME    1.09    3.02 0.360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Uniform          50  1.06  3.00 NIST_MLE    1       4    0.25 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Uniform          50  1.14  2.94 NIST_MME    1.04    2.84 0.366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Uniform          50  1.14  2.94 NIST_MLE    1       4    0.25 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">output</span><span class="op">$</span><span class="va">combined_data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="tidy_combined_autoplot.html">tidy_combined_autoplot</a></span><span class="op">(</span><span class="op">)</span></span></span>

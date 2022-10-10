@@ -101,6 +101,7 @@ can then plot out the data using <code>$combined_data_tbl</code> from the functi
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other Parameter Estimation: 
+<code><a href="util_bernoulli_param_estimate.html">util_bernoulli_param_estimate</a>()</code>,
 <code><a href="util_beta_param_estimate.html">util_beta_param_estimate</a>()</code>,
 <code><a href="util_binomial_param_estimate.html">util_binomial_param_estimate</a>()</code>,
 <code><a href="util_cauchy_param_estimate.html">util_cauchy_param_estimate</a>()</code>,
@@ -135,11 +136,11 @@ can then plot out the data using <code>$combined_data_tbl</code> from the functi
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">output</span><span class="op">$</span><span class="va">parameter_tbl</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size     min   max  mean variance method    shape scale shape…¹</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gamma            50 0.002<span style="text-decoration: underline;">05</span>  1.22 0.287    0.269 NIST_MME   1.14 0.252    4.52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gamma            50 0.002<span style="text-decoration: underline;">05</span>  1.22 0.287    0.269 EnvStats…  1.12 0.252    4.43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Gamma            50 0.002<span style="text-decoration: underline;">05</span>  1.22 0.287    0.269 EnvStats…  1.08 0.252    4.30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size    min   max  mean variance method     shape scale shape…¹</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gamma            50 0.011<span style="text-decoration: underline;">9</span>  1.14 0.276    0.227 NIST_MME    1.48 0.187    7.91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gamma            50 0.011<span style="text-decoration: underline;">9</span>  1.14 0.276    0.227 EnvStats_…  1.45 0.187    7.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Gamma            50 0.011<span style="text-decoration: underline;">9</span>  1.14 0.276    0.227 EnvStats_…  1.40 0.187    7.51</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable name ¹​shape_ratio</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">output</span><span class="op">$</span><span class="va">combined_data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
