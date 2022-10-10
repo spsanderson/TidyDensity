@@ -6,6 +6,7 @@ None
 ## New Features
 1. Fix #302 - Add function `tidy_bernoulli()`
 2. Fix #304 - Add function `util_bernoulli_param_estimate()`
+3. Fix #305 - Add function `util_bernoulli_stats_tbl()`
 
 ## Minor Fixes and Improvements
 1. Fix #291 - Update `tidy_stat_tbl()` to fix `tibble` output so it no longer ignores

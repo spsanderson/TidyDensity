@@ -61,7 +61,8 @@ Other Parameter Estimation:
 \code{\link{util_weibull_param_estimate}()}
 
 Other Bernoulli: 
-\code{\link{tidy_bernoulli}()}
+\code{\link{tidy_bernoulli}()},
+\code{\link{util_bernoulli_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

@@ -33,6 +33,7 @@ Other F Distribution:
 \code{\link{tidy_f}()}
 
 Other Distribution Statistics: 
+\code{\link{util_bernoulli_stats_tbl}()},
 \code{\link{util_beta_stats_tbl}()},
 \code{\link{util_binomial_stats_tbl}()},
 \code{\link{util_cauchy_stats_tbl}()},

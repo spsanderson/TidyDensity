@@ -58,7 +58,8 @@ Other Discrete Distribution:
 \code{\link{tidy_zero_truncated_poisson}()}
 
 Other Bernoulli: 
-\code{\link{util_bernoulli_param_estimate}()}
+\code{\link{util_bernoulli_param_estimate}()},
+\code{\link{util_bernoulli_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
