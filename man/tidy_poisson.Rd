@@ -54,6 +54,7 @@ Other Poisson:
 \code{\link{util_poisson_stats_tbl}()}
 
 Other Discrete Distribution: 
+\code{\link{tidy_bernoulli}()},
 \code{\link{tidy_binomial}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_negative_binomial}()},

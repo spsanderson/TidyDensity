@@ -91,7 +91,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
     "tidy_pareto_single_parameter", "tidy_pareto", "tidy_inverse_pareto",
     "tidy_generalized_pareto", "tidy_paralogistic", "tidy_inverse_exponential",
     "tidy_inverse_gamma", "tidy_inverse_weibull", "tidy_burr", "tidy_inverse_burr",
-    "tidy_inverse_gaussian", "tidy_generalized_beta", "tidy_t"
+    "tidy_inverse_gaussian", "tidy_generalized_beta", "tidy_t","tidy_bernoulli"
   )) {
     rlang::abort("The data passed must come from a `tidy_` distribution function.")
   }
@@ -151,7 +151,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       "tidy_zero_truncated_negative_binomial"
     )) {
       paste0("Size: ", atb$.size, " - Prob: ", atb$.prob)
-    } else if (atb$tibble_type %in% c("tidy_geometric", "tidy_zero_truncated_geometric")) {
+    } else if (atb$tibble_type %in% c("tidy_geometric", "tidy_zero_truncated_geometric",
+                                      "tidy_bernoulli")) {
       paste0("Prob: ", atb$.prob)
     } else if (atb$tibble_type %in% c("tidy_pareto_single_parameter")) {
       paste0("Shape: ", atb$.shape, " - Min: ", atb$.min)

@@ -51,6 +51,7 @@ tidy_hypergeometric()
 \url{https://en.wikipedia.org/wiki/Hypergeometric_distribution}
 
 Other Discrete Distribution: 
+\code{\link{tidy_bernoulli}()},
 \code{\link{tidy_binomial}()},
 \code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_poisson}()},

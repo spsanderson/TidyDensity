@@ -35,6 +35,7 @@ Other Gamma:
 \code{\link{util_gamma_param_estimate}()}
 
 Other Distribution Statistics: 
+\code{\link{util_bernoulli_stats_tbl}()},
 \code{\link{util_beta_stats_tbl}()},
 \code{\link{util_binomial_stats_tbl}()},
 \code{\link{util_cauchy_stats_tbl}()},

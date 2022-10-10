@@ -38,6 +38,7 @@ Other Binomial:
 \code{\link{util_negative_binomial_param_estimate}()}
 
 Other Distribution Statistics: 
+\code{\link{util_bernoulli_stats_tbl}()},
 \code{\link{util_beta_stats_tbl}()},
 \code{\link{util_cauchy_stats_tbl}()},
 \code{\link{util_chisquare_stats_tbl}()},
