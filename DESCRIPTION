@@ -24,7 +24,6 @@ Imports:
     plotly,
     tidyr,
     purrr,
-    stringr,
     actuar,
     methods,
     stats,

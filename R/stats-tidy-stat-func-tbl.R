@@ -171,7 +171,8 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
     } else {
       cn <- colnames(ret)
     }
-    cn <- stringr::str_c("sim_number_", cn)
+    #cn <- stringr::str_c("sim_number_", cn)
+    cn <- paste0("sim_number_", cn)
 
     if (is.null(colnames(ret))) {
       names(ret) <- cn
@@ -183,7 +184,8 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
   if (return_type == "list") {
     ret <- lapply(df_tbl, func, ...)
     ln <- names(ret)
-    cn <- stringr::str_c("sim_number_", ln)
+    #cn <- stringr::str_c("sim_number_", ln)
+    cn <- paste0("sim_number_", ln)
     names(ret) <- cn
   }
 
