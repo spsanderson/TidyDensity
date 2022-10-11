@@ -19,6 +19,7 @@ is `dist_type_extractor()` which is used for several functions in the library.
 6. Fix #310 - Update combine-multi-dist to use `dist_type_extractor()`
 7. Fix #311 - Update all `util_dist_stats_tbl()` functions to use `dist_type_extractor()`
 8. Fix #316 - Update all `autoplot` functions for `tidy_bernoulli()`
+9. Fix #312 - UPdate random walk function to use `dist_type_extractor()`
 
 # TidyDensity 1.2.3
 
