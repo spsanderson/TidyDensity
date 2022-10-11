@@ -109,9 +109,10 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
   # for ggplot
   n <- atb$.n
   sims <- atb$.num_sims
-  dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
-    stringr::str_replace_all(pattern = "_", " ") %>%
-    stringr::str_to_title()
+  # dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
+  #   stringr::str_replace_all(pattern = "_", " ") %>%
+  #   stringr::str_to_title()
+  dist_type <- dist_type_extractor(atb$tibble_type)
 
   sub_title <- paste0(
     "Data Points: ", n, " - ",
