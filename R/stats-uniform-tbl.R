@@ -64,9 +64,7 @@ util_uniform_stats_tbl <- function(.data) {
   ret <- dplyr::tibble(
     tidy_function = atb$tibble_type,
     function_call = atb$dist_with_params,
-    distribution = atb$tibble_type %>%
-      stringr::str_remove("tidy_") %>%
-      stringr::str_to_title(),
+    distribution = dist_type_extractor(atb$tibble_type),
     distribution_type = atb$distribution_family_type,
     points = atb$.n,
     simulations = atb$.num_sims,
