@@ -51,9 +51,10 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
   atb <- attributes(.data)
   n <- atb$all$.n
   sims <- atb$all$.num_sims
-  dist_type <- stringr::str_remove(atb$all$tibble_type, "tidy_") %>%
-    stringr::str_replace_all(pattern = "_", " ") %>%
-    stringr::str_to_title()
+  # dist_type <- stringr::str_remove(atb$all$tibble_type, "tidy_") %>%
+  #   stringr::str_replace_all(pattern = "_", " ") %>%
+  #   stringr::str_to_title()
+  dist_type <- dist_type_extractor(atb$all$tibble_type)
 
   sub_title <- paste0(
     "Data Points: ", n, " - ",
