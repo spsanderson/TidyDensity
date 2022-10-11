@@ -74,12 +74,13 @@ tidy_multi_single_dist <- function(.tidy_dist = NULL,
   atb <- dff$results[[1]] %>% attributes()
 
   # Make Dist Type for column ----
-  dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
-    stringr::str_replace_all(pattern = "_", " ") %>%
-    stringr::str_to_title()
+  # dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
+  #   stringr::str_replace_all(pattern = "_", " ") %>%
+  #   stringr::str_to_title()
+
+  dist_type <- dist_type_extractor(atb$tibble_type)
 
   # Get column names from the param_grid in order to make teh dist_type column ----
-  # Get column names from the param_grid in order to make the dist_type column ----
   cols <- names(param_grid %>% dplyr::select(-c(.n, .num_sims)))
 
   if (length(cols) == 1) {

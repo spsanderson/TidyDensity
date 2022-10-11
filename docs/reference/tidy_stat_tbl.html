@@ -155,62 +155,62 @@ the necessary calculation and then converting back to a <code>tibble</code> obje
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">y</span>, <span class="va">quantile</span>, <span class="st">"vector"</span>, probs <span class="op">=</span> <span class="va">p</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      sim_number_1 sim_number_2 sim_number_3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.5% -1.762111228   -1.7270136   -1.7530808</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25%  -0.664332692   -0.2857820   -0.8858138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50%  -0.003734871    0.2738234   -0.2669106</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75%   0.557941940    1.0602053    0.4704243</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 95%   1.753987176    1.7414017    1.1752064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.5%  -2.06271343   -1.6858257   -1.8377483</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25%   -0.89231070   -0.6371119   -0.9081756</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50%   -0.05390428   -0.1477999    0.0264237</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75%    0.57906055    0.5406522    0.6626329</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95%    1.63141412    1.4790906    1.2962458</span>
 <span class="r-in"><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">y</span>, <span class="va">quantile</span>, <span class="st">"list"</span>, probs <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sim_number_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         2.5%          25%          50%          75%          95% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1.762111228 -0.664332692 -0.003734871  0.557941940  1.753987176 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        2.5%         25%         50%         75%         95% </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.06271343 -0.89231070 -0.05390428  0.57906055  1.63141412 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sim_number_2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       2.5%        25%        50%        75%        95% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1.7270136 -0.2857820  0.2738234  1.0602053  1.7414017 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.6858257 -0.6371119 -0.1477999  0.5406522  1.4790906 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sim_number_3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       2.5%        25%        50%        75%        95% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1.7530808 -0.8858138 -0.2669106  0.4704243  1.1752064 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.8377483 -0.9081756  0.0264237  0.6626329  1.2962458 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">y</span>, <span class="va">quantile</span>, <span class="st">"tibble"</span>, probs <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number name  quantile</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1          2.5%  -<span style="color: #BB0000;">1.76</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1          25%   -<span style="color: #BB0000;">0.664</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1          50%   -<span style="color: #BB0000;">0.003</span><span style="color: #BB0000; text-decoration: underline;">73</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1          75%    0.558  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1          95%    1.75   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2          2.5%  -<span style="color: #BB0000;">1.73</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2          25%   -<span style="color: #BB0000;">0.286</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2          50%    0.274  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2          75%    1.06   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2          95%    1.74   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 3          2.5%  -<span style="color: #BB0000;">1.75</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 3          25%   -<span style="color: #BB0000;">0.886</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 3          50%   -<span style="color: #BB0000;">0.267</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 3          75%    0.470  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 3          95%    1.18   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1          2.5%   -<span style="color: #BB0000;">2.06</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1          25%    -<span style="color: #BB0000;">0.892</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1          50%    -<span style="color: #BB0000;">0.053</span><span style="color: #BB0000; text-decoration: underline;">9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1          75%     0.579 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1          95%     1.63  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2          2.5%   -<span style="color: #BB0000;">1.69</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2          25%    -<span style="color: #BB0000;">0.637</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2          50%    -<span style="color: #BB0000;">0.148</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2          75%     0.541 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2          95%     1.48  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 3          2.5%   -<span style="color: #BB0000;">1.84</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 3          25%    -<span style="color: #BB0000;">0.908</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 3          50%     0.026<span style="text-decoration: underline;">4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 3          75%     0.663 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 3          95%     1.30  </span>
 <span class="r-in"><span><span class="fu">tidy_stat_tbl</span><span class="op">(</span><span class="va">tn</span>, <span class="va">y</span>, <span class="va">quantile</span>, .use_data_table <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="va">p</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number name  quantile</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1          2.5%  -<span style="color: #BB0000;">1.76</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1          25%   -<span style="color: #BB0000;">0.664</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1          50%   -<span style="color: #BB0000;">0.003</span><span style="color: #BB0000; text-decoration: underline;">73</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1          75%    0.558  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1          95%    1.75   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2          2.5%  -<span style="color: #BB0000;">1.73</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2          25%   -<span style="color: #BB0000;">0.286</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2          50%    0.274  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2          75%    1.06   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2          95%    1.74   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 3          2.5%  -<span style="color: #BB0000;">1.75</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 3          25%   -<span style="color: #BB0000;">0.886</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 3          50%   -<span style="color: #BB0000;">0.267</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 3          75%    0.470  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 3          95%    1.18   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1          2.5%   -<span style="color: #BB0000;">2.06</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1          25%    -<span style="color: #BB0000;">0.892</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1          50%    -<span style="color: #BB0000;">0.053</span><span style="color: #BB0000; text-decoration: underline;">9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1          75%     0.579 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1          95%     1.63  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2          2.5%   -<span style="color: #BB0000;">1.69</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2          25%    -<span style="color: #BB0000;">0.637</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2          50%    -<span style="color: #BB0000;">0.148</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2          75%     0.541 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2          95%     1.48  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 3          2.5%   -<span style="color: #BB0000;">1.84</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 3          25%    -<span style="color: #BB0000;">0.908</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 3          50%     0.026<span style="text-decoration: underline;">4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 3          75%     0.663 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 3          95%     1.30  </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
