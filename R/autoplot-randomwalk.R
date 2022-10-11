@@ -93,7 +93,8 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
       "tidy_zero_truncated_negative_binomial"
     )) {
       paste0("Size: ", atb$all$.size, " - Prob: ", atb$all$.prob)
-    } else if (atb$all$tibble_type %in% c("tidy_geometric", "tidy_zero_truncated_geometric")) {
+    } else if (atb$all$tibble_type %in% c("tidy_geometric", "tidy_zero_truncated_geometric",
+                                          "tidy_bernoulli")) {
       paste0("Prob: ", atb$all$.prob)
     } else if (atb$all$tibble_type %in% c("tidy_pareto_single_parameter")) {
       paste0("Shape: ", atb$all$.shape, " - Min: ", atb$all$.min)
