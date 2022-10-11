@@ -14,6 +14,8 @@ passed arguments and fix `data.table` to directly pass ... arguments.
 2. Fix #295 - Drop warning message of not passing arguments when .use_data_table = TRUE
 3. Fix #303 - Add `tidy_bernoulli()` to autoplot.
 4. Fix #299 - Update `tidy_stat_tbl()`
+5. Fix #309 - Add function for internal use to drop dependency of stringr. Function
+is `dist_type_extractor()` which is used for several functions in the library.
 
 # TidyDensity 1.2.3
 

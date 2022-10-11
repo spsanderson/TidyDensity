@@ -75,6 +75,10 @@ tidy_bernoulli <- function(.n = 50, .prob = 0.1, .num_sims = 1) {
 
   x <- seq(1, num_sims, 1) %>% as.integer()
 
+  # ps <- seq(-n, n - 1, 2)
+  qs <- seq(0, 1, (1 / (n - 1)))
+  ps <- qs
+
   df <- dplyr::tibble(sim_number = as.factor(x)) %>%
     dplyr::group_by(sim_number) %>%
     dplyr::mutate(x = list(1:n)) %>%
@@ -95,6 +99,8 @@ tidy_bernoulli <- function(.n = 50, .prob = 0.1, .num_sims = 1) {
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims
   attr(df, "tibble_type") <- "tidy_bernoulli"
+  attr(df, "ps") <- ps
+  attr(df, "qs") <- qs
   attr(df, "param_grid") <- param_grid
   attr(df, "param_grid_txt") <- paste0(
     "c(",
