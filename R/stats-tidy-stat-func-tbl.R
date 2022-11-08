@@ -106,9 +106,16 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
 
     # # Benchmark ran 25 at 15.13 seconds
     # # Thank you Akrun https://stackoverflow.com/questions/73938515/keep-names-from-quantile-function-when-used-in-a-data-table/73938561#73938561
-    dt <- dplyr::as_tibble(.data) %>%
-      dplyr::select(sim_number, {{ value_var_expr }}) %>%
-      data.table::as.data.table()
+    if (atb$tibble_type == "tidy_bootstrap_nested") {
+        dt <- dplyr::as_tibble(.data) %>%
+            TidyDensity::bootstrap_unnest_tbl() %>%
+            dplyr::select(sim_number, {{ value_var_expr }}) %>%
+            data.table::as.data.table()
+    } else {
+        dt <- dplyr::as_tibble(.data) %>%
+            dplyr::select(sim_number, {{ value_var_expr }}) %>%
+            data.table::as.data.table()
+    }
 
     # names(dt) <- c("sim_number","y")
 
