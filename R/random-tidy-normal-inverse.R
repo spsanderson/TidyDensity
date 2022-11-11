@@ -95,11 +95,11 @@ tidy_inverse_normal <- function(.n = 50, .mean = 1, .shape = 1, .dispersion = 1 
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pinvgauss(ps,
+    dplyr::mutate(p = list(actuar::pinvgauss(unlist(y),
       mean = mu, shape = shape,
       dispersion = dispers
     ))) %>%
-    dplyr::mutate(q = list(actuar::qinvgauss(tidy_scale_zero_one_vec(unlist(y)),
+    dplyr::mutate(q = list(actuar::qinvgauss(unlist(p),
       mean = mu, shape = shape,
       dispersion = dispers
     ))) %>%

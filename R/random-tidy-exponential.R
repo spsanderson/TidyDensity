@@ -81,8 +81,8 @@ tidy_exponential <- function(.n = 50, .rate = 1, .num_sims = 1) {
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pexp(ps, rate = rate))) %>%
-    dplyr::mutate(q = list(stats::qexp(tidy_scale_zero_one_vec(unlist(y)), rate = rate))) %>%
+    dplyr::mutate(p = list(stats::pexp(unlist(y), rate = rate))) %>%
+    dplyr::mutate(q = list(stats::qexp(unlist(p), rate = rate))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

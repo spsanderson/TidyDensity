@@ -99,12 +99,12 @@ tidy_inverse_burr <- function(.n = 50, .shape1 = 1, .shape2 = 1, .rate = 1,
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pinvburr(ps,
+    dplyr::mutate(p = list(actuar::pinvburr(unlist(y),
       shape1 = shape1,
       shape2 = shape2, rate = rate,
       scale = scale
     ))) %>%
-    dplyr::mutate(q = list(actuar::qinvburr(tidy_scale_zero_one_vec(unlist(y)),
+    dplyr::mutate(q = list(actuar::qinvburr(unlist(p),
       shape1 = shape1,
       shape2 = shape2, rate = rate,
       scale = scale

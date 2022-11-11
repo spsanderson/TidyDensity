@@ -35,7 +35,7 @@
 #' @param .num_sims The number of randomly generated simulations you want.
 #'
 #' @examples
-#' tidy_zero_truncated_binomial()
+#' tidy_zero_truncated_negative_binomial()
 #' @return
 #' A tibble of randomly generated data.
 #'
@@ -92,8 +92,8 @@ tidy_zero_truncated_negative_binomial <- function(.n = 50, .size = 0, .prob = 1,
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pztnbinom(ps, size = size, prob = prob))) %>%
-    dplyr::mutate(q = list(actuar::qztnbinom(tidy_scale_zero_one_vec(unlist(y)), size = size, prob = prob))) %>%
+    dplyr::mutate(p = list(actuar::pztnbinom(unlist(y), size = size, prob = prob))) %>%
+    dplyr::mutate(q = list(actuar::qztnbinom(unlist(p), size = size, prob = prob))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
@@ -126,3 +126,4 @@ tidy_zero_truncated_negative_binomial <- function(.n = 50, .size = 0, .prob = 1,
   # Return final result as function output
   return(df)
 }
+

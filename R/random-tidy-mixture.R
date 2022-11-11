@@ -48,7 +48,7 @@
 tidy_mixture_density <- function(...) {
 
   # Add distributions to a list, all base R and TidyDensity
-  dist_list <- list(...)
+  dist_list <- list(...) %>% purrr::compact()
 
   # Check that list is of length 2 or more before proceeding
   if (length(dist_list) < 2) {

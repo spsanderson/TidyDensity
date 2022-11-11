@@ -96,11 +96,11 @@ tidy_inverse_weibull <- function(.n = 50, .shape = 1, .rate = 1,
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pinvweibull(ps,
+    dplyr::mutate(p = list(actuar::pinvweibull(unlist(y),
       shape = shape,
       scale = scale, rate = rate
     ))) %>%
-    dplyr::mutate(q = list(actuar::qinvweibull(tidy_scale_zero_one_vec(unlist(y)),
+    dplyr::mutate(q = list(actuar::qinvweibull(unlist(p),
       shape = shape,
       scale = scale, rate = rate
     ))) %>%

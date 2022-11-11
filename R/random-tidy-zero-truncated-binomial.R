@@ -42,7 +42,7 @@
 #' @export
 #'
 
-tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sims = 1) {
+tidy_zero_truncated_binomial <- function(.n = 50, .size = 1, .prob = 1, .num_sims = 1) {
 
   # Tidyeval ----
   n <- as.integer(.n)
@@ -71,8 +71,8 @@ tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sim
     )
   }
 
-  if (size < 0) {
-    rlang::abort("The parameter of .size must be greater than or equal to 0.")
+  if (size < 1) {
+    rlang::abort("The parameter of .size must be greater than or equal to 1.")
   }
 
   if (prob > 1 | prob < 0) {
@@ -92,8 +92,8 @@ tidy_zero_truncated_binomial <- function(.n = 50, .size = 0, .prob = 1, .num_sim
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pztbinom(ps, size = size, prob = prob))) %>%
-    dplyr::mutate(q = list(actuar::qztbinom(tidy_scale_zero_one_vec(unlist(y)), size = size, prob = prob))) %>%
+    dplyr::mutate(p = list(actuar::pztbinom(unlist(y), size = size, prob = prob))) %>%
+    dplyr::mutate(q = list(actuar::qztbinom(unlist(p), size = size, prob = prob))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

@@ -88,8 +88,8 @@ tidy_f <- function(.n = 50, .df1 = 1, .df2 = 1, .ncp = 0, .num_sims = 1) {
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pf(ps, df1 = df1, df2 = df2, ncp = ncp))) %>%
-    dplyr::mutate(q = list(stats::qf(tidy_scale_zero_one_vec(unlist(y)), df1 = df1, df2 = df2, ncp = ncp))) %>%
+    dplyr::mutate(p = list(stats::pf(unlist(y), df1 = df1, df2 = df2, ncp = ncp))) %>%
+    dplyr::mutate(q = list(stats::qf(unlist(p), df1 = df1, df2 = df2, ncp = ncp))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

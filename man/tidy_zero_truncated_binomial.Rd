@@ -4,7 +4,7 @@
 \alias{tidy_zero_truncated_binomial}
 \title{Tidy Randomly Generated Binomial Distribution Tibble}
 \usage{
-tidy_zero_truncated_binomial(.n = 50, .size = 0, .prob = 1, .num_sims = 1)
+tidy_zero_truncated_binomial(.n = 50, .size = 1, .prob = 1, .num_sims = 1)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}

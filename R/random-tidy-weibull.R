@@ -87,8 +87,8 @@ tidy_weibull <- function(.n = 50, .shape = 1, .scale = 1, .num_sims = 1) {
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pweibull(ps, shape = shape, scale = scale))) %>%
-    dplyr::mutate(q = list(stats::qweibull(tidy_scale_zero_one_vec(unlist(y)), shape = shape, scale = scale))) %>%
+    dplyr::mutate(p = list(stats::pweibull(unlist(y), shape = shape, scale = scale))) %>%
+    dplyr::mutate(q = list(stats::qweibull(unlist(p), shape = shape, scale = scale))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
