@@ -84,8 +84,8 @@ tidy_uniform <- function(.n = 50, .min = 0, .max = 1, .num_sims = 1) {
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::punif(ps, min = min_val, max = max_val))) %>%
-    dplyr::mutate(q = list(stats::qunif(tidy_scale_zero_one_vec(unlist(y)), min = min_val, max = max_val))) %>%
+    dplyr::mutate(p = list(stats::punif(unlist(y), min = min_val, max = max_val))) %>%
+    dplyr::mutate(q = list(stats::qunif(unlist(p), min = min_val, max = max_val))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

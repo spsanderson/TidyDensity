@@ -91,8 +91,8 @@ tidy_inverse_exponential <- function(.n = 50, .rate = 1, .scale = 1 / .rate, .nu
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pinvexp(ps, rate = rate, scale = scale))) %>%
-    dplyr::mutate(q = list(actuar::qinvexp(tidy_scale_zero_one_vec(unlist(y)), rate = rate, scale = scale))) %>%
+    dplyr::mutate(p = list(actuar::pinvexp(unlist(y), rate = rate, scale = scale))) %>%
+    dplyr::mutate(q = list(actuar::qinvexp(unlist(p), rate = rate, scale = scale))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

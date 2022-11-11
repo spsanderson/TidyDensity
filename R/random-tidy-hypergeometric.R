@@ -88,9 +88,9 @@ tidy_hypergeometric <- function(.n = 50, .m = 0, .nn = 0, .k = 0, .num_sims = 1)
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::phyper(ps, m = m, n = nn, k = k))) %>%
+    dplyr::mutate(p = list(stats::phyper(unlist(y), m = m, n = nn, k = k))) %>%
     # dplyr::mutate(p = list(stats::phyper(unlist(x), m = m, n = nn, k = k))) %>%
-    dplyr::mutate(q = list(stats::qhyper(tidy_scale_zero_one_vec(unlist(y)), m = m, n = nn, k = k))) %>%
+    dplyr::mutate(q = list(stats::qhyper(unlist(p), m = m, n = nn, k = k))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

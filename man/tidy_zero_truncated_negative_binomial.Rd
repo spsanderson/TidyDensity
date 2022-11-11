@@ -48,7 +48,7 @@ This function uses the underlying \code{actuar::rztnbinom()}, and its underlying
 \code{p}, \code{d}, and \code{q} functions. For more information please see \code{\link[actuar:ZeroTruncatedNegativeBinomial]{actuar::rztnbinom()}}
 }
 \examples{
-tidy_zero_truncated_binomial()
+tidy_zero_truncated_negative_binomial()
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}

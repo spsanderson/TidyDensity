@@ -83,8 +83,8 @@ tidy_zero_truncated_poisson <- function(.n = 50, .lambda = 1, .num_sims = 1) {
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pztpois(ps, lambda = lambda))) %>%
-    dplyr::mutate(q = list(actuar::qztpois(tidy_scale_zero_one_vec(unlist(y)), lambda = lambda))) %>%
+    dplyr::mutate(p = list(actuar::pztpois(unlist(y), lambda = lambda))) %>%
+    dplyr::mutate(q = list(actuar::qztpois(unlist(p), lambda = lambda))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

@@ -95,11 +95,11 @@ tidy_inverse_gamma <- function(.n = 50, .shape = 1, .rate = 1, .scale = 1 / .rat
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pinvgamma(ps,
+    dplyr::mutate(p = list(actuar::pinvgamma(unlist(y),
       shape = shape,
       rate = rate, scale = scl
     ))) %>%
-    dplyr::mutate(q = list(actuar::qinvgamma(tidy_scale_zero_one_vec(unlist(y)),
+    dplyr::mutate(q = list(actuar::qinvgamma(unlist(p),
       shape = shape,
       rate = rate, scale = scl
     ))) %>%

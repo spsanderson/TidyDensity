@@ -87,8 +87,8 @@ tidy_cauchy <- function(.n = 50, .location = 0, .scale = 1, .num_sims = 1) {
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pcauchy(ps, location = location, scale = scale))) %>%
-    dplyr::mutate(q = list(stats::qcauchy(tidy_scale_zero_one_vec(unlist(y)), location = location, scale = scale))) %>%
+    dplyr::mutate(p = list(stats::pcauchy(unlist(y), location = location, scale = scale))) %>%
+    dplyr::mutate(q = list(stats::qcauchy(unlist(p), location = location, scale = scale))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 

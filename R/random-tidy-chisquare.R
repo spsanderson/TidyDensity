@@ -87,8 +87,8 @@ tidy_chisquare <- function(.n = 50, .df = 1, .ncp = 1, .num_sims = 1) {
     dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
       purrr::set_names("dx", "dy") %>%
       dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pchisq(ps, df = df, ncp = ncp))) %>%
-    dplyr::mutate(q = list(stats::qchisq(tidy_scale_zero_one_vec(unlist(y)), df = df, ncp = ncp))) %>%
+    dplyr::mutate(p = list(stats::pchisq(unlist(y), df = df, ncp = ncp))) %>%
+    dplyr::mutate(q = list(stats::qchisq(unlist(p), df = df, ncp = ncp))) %>%
     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
     dplyr::ungroup()
 
