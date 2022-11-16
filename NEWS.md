@@ -1,5 +1,14 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+None
+
+## New Features
+None
+
+## Minor Fixes and Improvements
+None
+
 # TidyDensity 1.2.4
 
 ## Breaking Changes
