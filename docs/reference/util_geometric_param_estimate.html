@@ -18,7 +18,7 @@ with the estimated geometric data."><!-- mathjax --><script src="https://cdnjs.c
     
     <a class="navbar-brand me-2" href="../index.html">TidyDensity</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.4.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -138,10 +138,10 @@ It will attempt to estimate the prob parameter of a geometric distribution.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">output</span><span class="op">$</span><span class="va">parameter_tbl</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max  mean variance sum_x method        shape</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Geometric        50     0    52  8.54     112.   427 EnvStats_MME  0.105</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Geometric        50     0    52  8.54     112.   427 EnvStats_MVUE 0.103</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max  mean variance sum_x method         shape</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Geometric        50     0    50  9.44     108.   472 EnvStats_MME  0.095<span style="text-decoration: underline;">8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Geometric        50     0    50  9.44     108.   472 EnvStats_MVUE 0.094<span style="text-decoration: underline;">0</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">output</span><span class="op">$</span><span class="va">combined_data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="tidy_combined_autoplot.html">tidy_combined_autoplot</a></span><span class="op">(</span><span class="op">)</span></span></span>
