@@ -2,8 +2,10 @@ Package: TidyDensity
 Title: Functions for Tidy Analysis and Generation of Random Data
 Version: 1.2.4.9000
 Authors@R: c(
-    person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre")),
-    person("Steven Sanderson", role = "cph"))
+    person("Steven","Sanderson", email = "spsanderson@gmail.com", role = c("aut","cre","cph"),
+      comment = c(ORCID = "0009-0006-7661-8247")
+      )
+    )
 Description: 
     To make it easy to generate random numbers based upon the underlying stats 
     distribution functions. All data is returned in a tidy and structured
@@ -13,7 +15,7 @@ Description:
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 URL: https://github.com/spsanderson/TidyDensity
 BugReports: https://github.com/spsanderson/TidyDensity/issues
 Imports: 
