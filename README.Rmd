@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# TidyDensity <img src="man/figures/tidy_density_logo.png" width="147" height="170" align="right" />
+# TidyDensity <img src="man/figures/logo.png" width="147" height="170" align="right" />
 
 <!-- badges: start -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/TidyDensity)](https://cran.r-project.org/package=TidyDensity)
