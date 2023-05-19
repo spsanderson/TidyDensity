@@ -78,7 +78,7 @@ util_burr_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
         return(-sum(log(bll)))
     }
 
-    brmod <- optim(
+    brmod <- stats::optim(
         c(
             .shape1 = 0,
             .shape2 = 0,
