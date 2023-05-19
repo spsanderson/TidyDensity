@@ -91,8 +91,8 @@ util_burr_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
     est_params <- exp(brmod$par)
     shape1 <- est_params[[1]]
     shape2 <- est_params[[2]]
-    rate <- est_params[[3]]
-    scale <- 1/rate
+    scale <- est_params[[3]]
+    rate <- 1/scale
 
     # Return Tibble ----
     if (.auto_gen_empirical) {
