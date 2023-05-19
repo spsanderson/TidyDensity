@@ -26,7 +26,7 @@ mle, see EnvStats::elnorm()
     
     <a class="navbar-brand me-2" href="../index.html">TidyDensity</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.4.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.5.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,6 +114,7 @@ parameters given some vector of values.</p>
 <code><a href="util_bernoulli_param_estimate.html">util_bernoulli_param_estimate</a>()</code>,
 <code><a href="util_beta_param_estimate.html">util_beta_param_estimate</a>()</code>,
 <code><a href="util_binomial_param_estimate.html">util_binomial_param_estimate</a>()</code>,
+<code><a href="util_burr_param_estimate.html">util_burr_param_estimate</a>()</code>,
 <code><a href="util_cauchy_param_estimate.html">util_cauchy_param_estimate</a>()</code>,
 <code><a href="util_exponential_param_estimate.html">util_exponential_param_estimate</a>()</code>,
 <code><a href="util_gamma_param_estimate.html">util_gamma_param_estimate</a>()</code>,
@@ -159,8 +160,8 @@ parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max method        mean_log sd_log shape_ratio</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Lognormal        50  1.19  93.0 EnvStats_MVUE     2.17  0.966        2.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Lognormal        50  1.19  93.0 EnvStats_MME      2.17  0.957        2.27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Lognormal        50 0.587  41.3 EnvStats_MVUE     1.98  0.959        2.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Lognormal        50 0.587  41.3 EnvStats_MME      1.98  0.949        2.08</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
