@@ -26,7 +26,7 @@ MVUE
     
     <a class="navbar-brand me-2" href="../index.html">TidyDensity</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.4.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.5.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,6 +114,7 @@ deviation parameters given some vector of values.</p>
 <code><a href="util_bernoulli_param_estimate.html">util_bernoulli_param_estimate</a>()</code>,
 <code><a href="util_beta_param_estimate.html">util_beta_param_estimate</a>()</code>,
 <code><a href="util_binomial_param_estimate.html">util_binomial_param_estimate</a>()</code>,
+<code><a href="util_burr_param_estimate.html">util_burr_param_estimate</a>()</code>,
 <code><a href="util_cauchy_param_estimate.html">util_cauchy_param_estimate</a>()</code>,
 <code><a href="util_exponential_param_estimate.html">util_exponential_param_estimate</a>()</code>,
 <code><a href="util_gamma_param_estimate.html">util_gamma_param_estimate</a>()</code>,
@@ -160,8 +161,8 @@ deviation parameters given some vector of values.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max method               mu stan_dev shape_ratio</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gaussian         50 -<span style="color: #BB0000;">1.81</span>  1.59 EnvStats_MME_MLE -<span style="color: #BB0000;">0.166</span>    0.759      -<span style="color: #BB0000;">0.219</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gaussian         50 -<span style="color: #BB0000;">1.81</span>  1.59 EnvStats_MVUE    -<span style="color: #BB0000;">0.166</span>    0.767      -<span style="color: #BB0000;">0.217</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Gaussian         50 -<span style="color: #BB0000;">2.91</span>  2.12 EnvStats_MME_MLE 0.091<span style="text-decoration: underline;">8</span>    0.886       0.104</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Gaussian         50 -<span style="color: #BB0000;">2.91</span>  2.12 EnvStats_MVUE    0.091<span style="text-decoration: underline;">8</span>    0.895       0.102</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
