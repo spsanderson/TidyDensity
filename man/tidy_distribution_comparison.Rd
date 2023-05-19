@@ -4,13 +4,20 @@
 \alias{tidy_distribution_comparison}
 \title{Compare Empirical Data to Distributions}
 \usage{
-tidy_distribution_comparison(.x, .distribution_type = "continuous")
+tidy_distribution_comparison(
+  .x,
+  .distribution_type = "continuous",
+  .round_to_place = 3
+)
 }
 \arguments{
 \item{.x}{The data set being passed to the function}
 
 \item{.distribution_type}{What kind of data is it, can be one of \code{continuous}
 or \code{discrete}}
+
+\item{.round_to_place}{How many decimal places should the parameter estimates
+be rounded off to for distibution construction. The default is 3}
 }
 \value{
 An invisible list object. A tibble is printed.

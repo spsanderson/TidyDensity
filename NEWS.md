@@ -7,7 +7,9 @@ None
 None
 
 ## Minor Fixes and Improvements
-None
+1. Fix #335 - Update function `tidy_distribution_comparison()` to add a parameter
+of `.round_to_place` which allows a user to round the parameter estimates passed
+to their corresponding distribution parameters.
 
 # TidyDensity 1.2.4
 
