@@ -46,6 +46,7 @@ output$combined_data_tbl \%>\%
 Other Parameter Estimation: 
 \code{\link{util_beta_param_estimate}()},
 \code{\link{util_binomial_param_estimate}()},
+\code{\link{util_burr_param_estimate}()},
 \code{\link{util_cauchy_param_estimate}()},
 \code{\link{util_exponential_param_estimate}()},
 \code{\link{util_gamma_param_estimate}()},

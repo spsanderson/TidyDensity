@@ -87,7 +87,8 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Burr: 
-\code{\link{tidy_burr}()}
+\code{\link{tidy_burr}()},
+\code{\link{util_burr_param_estimate}()}
 
 Other Inverse Distribution: 
 \code{\link{tidy_inverse_exponential}()},

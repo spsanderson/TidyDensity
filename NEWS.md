@@ -4,12 +4,13 @@
 None
 
 ## New Features
-None
+1. Fix #333 - Add function `util_burr_param_estimate()`
 
 ## Minor Fixes and Improvements
 1. Fix #335 - Update function `tidy_distribution_comparison()` to add a parameter
 of `.round_to_place` which allows a user to round the parameter estimates passed
 to their corresponding distribution parameters.
+2. Fix #336 - Update logo name to logo.png
 
 # TidyDensity 1.2.4
 
