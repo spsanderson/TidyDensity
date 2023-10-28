@@ -84,19 +84,29 @@ convert_to_ts <- function(.data, .return_ts = TRUE, .pivot_longer = FALSE){
                          ts())
     df <- base::do.call(cbind, df)
 
+    # Return TS
+    if (ret_ts){return(df)}
+
+    # Return tibble
     if (!ret_ts & !pvt_long){
         df <- df |>
             dplyr::as_tibble()
+        return(df)
     }
 
-    if (!ret_ts & pvt_long){
+    # Return long tibble
+    if (!ret_ts & pvt_long & ncol(df) > 1){
         df <- df |>
             dplyr::as_tibble() |>
             tidyr::pivot_longer(cols = tidyr::everything()) |>
             dplyr::arrange(as.numeric(name)) |>
             purrr::set_names("sim_number","y")
+        return(df)
     }
 
-    # Return
-    return(df)
+    if (!ret_ts & pvt_long & ncol(df) == 1){
+        df <- df |>
+            dplyr::as_tibble()
+        return(df)
+    }
 }
