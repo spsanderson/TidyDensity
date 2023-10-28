@@ -7,6 +7,9 @@ None
 
 ## New Features
 1. Fix #333 - Add function `util_burr_param_estimate()`
+2. Fix #351 - Add functino `convert_to_ts()` which will convet a `tidy_` distribution
+into a time series in either `ts` format or `tibble` you can also have it set to 
+wide or long by using `.pivot_longer` set to TRUE and `.ret_ts` set to FALSE
 
 ## Minor Fixes and Improvements
 1. Fix #335 - Update function `tidy_distribution_comparison()` to add a parameter
