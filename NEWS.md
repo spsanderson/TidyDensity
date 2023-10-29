@@ -10,7 +10,7 @@ wide or long by using `.pivot_longer` set to TRUE and `.ret_ts` set to FALSE
 2. Fix #348 - Add function `util_burr_stats_tbl()`
 
 ## Minor Fixes and Improvements
-None
+1. Fix #344 - Fix `util_burr_param_estimate()`
 
 # TidyDensity 1.2.5
 
