@@ -63,7 +63,8 @@ Other Parameter Estimation:
 
 Other Burr: 
 \code{\link{tidy_burr}()},
-\code{\link{tidy_inverse_burr}()}
+\code{\link{tidy_inverse_burr}()},
+\code{\link{util_burr_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

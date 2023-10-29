@@ -88,7 +88,8 @@ Other Continuous Distribution:
 
 Other Burr: 
 \code{\link{tidy_inverse_burr}()},
-\code{\link{util_burr_param_estimate}()}
+\code{\link{util_burr_param_estimate}()},
+\code{\link{util_burr_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
