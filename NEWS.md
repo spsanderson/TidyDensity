@@ -4,9 +4,10 @@
 None
 
 ## New Features
-1. Fix #351 - Add function `convert_to_ts()` which will convet a `tidy_` distribution
+1. Fix #351 - Add function `convert_to_ts()` which will convert a `tidy_` distribution
 into a time series in either `ts` format or `tibble` you can also have it set to 
 wide or long by using `.pivot_longer` set to TRUE and `.ret_ts` set to FALSE
+2. Fix #348 - Add function `util_burr_stats_tbl()`
 
 ## Minor Fixes and Improvements
 None
