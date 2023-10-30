@@ -81,7 +81,7 @@ convert_to_ts <- function(.data, .return_ts = TRUE, .pivot_longer = FALSE){
     df <- df |>
         base::split(~ sim_number) |>
         base::lapply(function(x) x[,"y"] |>
-                         ts())
+                         stats::ts())
     df <- base::do.call(cbind, df)
 
     # Return TS
