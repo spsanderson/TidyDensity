@@ -77,5 +77,9 @@ reference:
      desc: Helpers mainly for internal use
      contents:
      -  has_concept("Helper")
+  -  title: Utilities
+     desc: Utility Functions
+     contents:
+     -  has_concept("Utility")
 
 search:

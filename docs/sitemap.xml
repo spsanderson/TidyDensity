@@ -73,6 +73,9 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/color_blind.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/convert_to_ts.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/csd.html</loc>
   </url>
   <url>
@@ -284,6 +287,9 @@
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_burr_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_burr_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_param_estimate.html</loc>

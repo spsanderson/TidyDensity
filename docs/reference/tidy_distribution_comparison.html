@@ -12,7 +12,7 @@ to help find the distribution that could be the best fit."><meta property="og:im
     
     <a class="navbar-brand me-2" href="../index.html">TidyDensity</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.5.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.6.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@ to help find the distribution that could be the best fit."><meta property="og:im
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Compare Empirical Data to Distributions</h1>
-      <small class="dont-index">Source: <a href="https://github.com/spsanderson/TidyDensity/blob/HEAD/R/util-distribution-comparison.R" class="external-link"><code>R/util-distribution-comparison.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/spsanderson/TidyDensity/blob/HEAD/R/utils-distribution-comparison.R" class="external-link"><code>R/utils-distribution-comparison.R</code></a></small>
       <div class="d-none name"><code>tidy_distribution_comparison.Rd</code></div>
     </div>
 
@@ -164,79 +164,79 @@ against the emprical density.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $deviance_tbl</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 352 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name                       value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Empirical                  0.451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Beta c(1.107, 1.577, 0)    0.369</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Cauchy c(19.2, 7.375)     -<span style="color: #BB0000;">0.294</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Exponential c(0.05)        0.403</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Gamma c(11.47, 1.752)     -<span style="color: #BB0000;">0.468</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Logistic c(20.091, 3.27)   0.142</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Lognormal c(2.958, 0.293)  0.212</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Pareto c(10.4, 1.624)      0.137</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Uniform c(8.341, 31.841)   0.123</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Weibull c(3.579, 22.288)   0.451</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name                         value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Empirical                  0.451  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Beta c(1.107, 1.577, 0)    0.189  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Cauchy c(19.2, 7.375)     -<span style="color: #BB0000;">0.451</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Exponential c(0.05)        0.099<span style="text-decoration: underline;">0</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Gamma c(11.47, 1.752)     -<span style="color: #BB0000;">0.220</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Logistic c(20.091, 3.27)   0.154  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Lognormal c(2.958, 0.293)  0.005<span style="text-decoration: underline;">02</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Pareto c(10.4, 1.624)      0.095<span style="text-decoration: underline;">3</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Uniform c(8.341, 31.841)  -<span style="color: #BB0000;">0.515</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Weibull c(3.579, 22.288)  -<span style="color: #BB0000;">0.337</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 342 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $total_deviance_tbl</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    dist_with_params          abs_tot_deviance</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Exponential c(0.05)                  0.221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Pareto c(10.4, 1.624)                1.29 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Beta c(1.107, 1.577, 0)              1.63 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Lognormal c(2.958, 0.293)            2.47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Gamma c(11.47, 1.752)                2.81 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Uniform c(8.341, 31.841)             2.91 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Weibull c(3.579, 22.288)             3.54 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Logistic c(20.091, 3.27)             3.62 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Gaussian c(20.091, 5.932)            5.89 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Cauchy c(19.2, 7.375)                8.96 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Logistic c(20.091, 3.27)             0.183</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Lognormal c(2.958, 0.293)            1.37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Gaussian c(20.091, 5.932)            2.24 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Uniform c(8.341, 31.841)             2.39 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Weibull c(3.579, 22.288)             3.33 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Beta c(1.107, 1.577, 0)              3.99 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Gamma c(11.47, 1.752)                4.04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Pareto c(10.4, 1.624)                7.21 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Exponential c(0.05)                  7.46 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Cauchy c(19.2, 7.375)               12.5  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $aic_tbl</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    dist_type                 aic_value abs_aic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Beta c(1.107, 1.577, 0)       -<span style="color: #BB0000;">3.69</span>    3.69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Pareto c(10.4, 1.624)         25.7    25.7 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Gaussian c(20.091, 5.932)   -<span style="color: #BB0000;">173.</span>    173.  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Logistic c(20.091, 3.27)    -<span style="color: #BB0000;">174.</span>    174.  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Gamma c(11.47, 1.752)       -<span style="color: #BB0000;">194.</span>    194.  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Lognormal c(2.958, 0.293)   -<span style="color: #BB0000;">195.</span>    195.  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Weibull c(3.579, 22.288)    -<span style="color: #BB0000;">204.</span>    204.  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Uniform c(8.341, 31.841)    -<span style="color: #BB0000;">223.</span>    223.  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Cauchy c(19.2, 7.375)       -<span style="color: #BB0000;">246.</span>    246.  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Exponential c(0.05)         -<span style="color: #BB0000;">303.</span>    303.  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Beta c(1.107, 1.577, 0)        14.9    14.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Pareto c(10.4, 1.624)          86.9    86.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Gamma c(11.47, 1.752)        -<span style="color: #BB0000;">157.</span>    157. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Weibull c(3.579, 22.288)     -<span style="color: #BB0000;">168.</span>    168. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Gaussian c(20.091, 5.932)    -<span style="color: #BB0000;">192.</span>    192. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Logistic c(20.091, 3.27)     -<span style="color: #BB0000;">195.</span>    195. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Uniform c(8.341, 31.841)     -<span style="color: #BB0000;">195.</span>    195. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Exponential c(0.05)          -<span style="color: #BB0000;">202.</span>    202. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Cauchy c(19.2, 7.375)        -<span style="color: #BB0000;">218.</span>    218. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Lognormal c(2.958, 0.293)    -<span style="color: #BB0000;">227.</span>    227. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $kolmogorov_smirnov_tbl</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    dist_type              ks_statistic ks_pvalue ks_method alternative dist_char</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Beta c(1.107, 1.577, …        0.781  0.000<span style="text-decoration: underline;">500</span> Monte-Ca… two-sided   Beta c(1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Cauchy c(19.2, 7.375)         0.688  0.000<span style="text-decoration: underline;">500</span> Monte-Ca… two-sided   Cauchy c…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Exponential c(0.05)           0.406  0.010<span style="text-decoration: underline;">5</span>   Monte-Ca… two-sided   Exponent…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Gamma c(11.47, 1.752)         0.156  0.826    Monte-Ca… two-sided   Gamma c(…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Logistic c(20.091, 3.…        0.125  0.967    Monte-Ca… two-sided   Logistic…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Lognormal c(2.958, 0.…        0.156  0.845    Monte-Ca… two-sided   Lognorma…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Pareto c(10.4, 1.624)         0.844  0.000<span style="text-decoration: underline;">500</span> Monte-Ca… two-sided   Pareto c…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Uniform c(8.341, 31.8…        0.188  0.633    Monte-Ca… two-sided   Uniform …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Weibull c(3.579, 22.2…        0.188  0.656    Monte-Ca… two-sided   Weibull …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Gaussian c(20.091, 5.…        0.219  0.455    Monte-Ca… two-sided   Gaussian…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Beta c(1.107, 1.577, …       0.781   0.000<span style="text-decoration: underline;">500</span> Monte-Ca… two-sided   Beta c(1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Cauchy c(19.2, 7.375)        0.562   0.000<span style="text-decoration: underline;">500</span> Monte-Ca… two-sided   Cauchy c…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Exponential c(0.05)          0.438   0.007<span style="text-decoration: underline;">00</span>  Monte-Ca… two-sided   Exponent…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Gamma c(11.47, 1.752)        0.25    0.276    Monte-Ca… two-sided   Gamma c(…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Logistic c(20.091, 3.…       0.125   0.970    Monte-Ca… two-sided   Logistic…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Lognormal c(2.958, 0.…       0.093<span style="text-decoration: underline;">8</span>  1        Monte-Ca… two-sided   Lognorma…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Pareto c(10.4, 1.624)        0.688   0.000<span style="text-decoration: underline;">500</span> Monte-Ca… two-sided   Pareto c…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Uniform c(8.341, 31.8…       0.25    0.267    Monte-Ca… two-sided   Uniform …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Weibull c(3.579, 22.2…       0.125   0.964    Monte-Ca… two-sided   Weibull …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Gaussian c(20.091, 5.…       0.188   0.627    Monte-Ca… two-sided   Gaussian…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $multi_metric_tbl</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    dist_type abs_tot_deviance aic_value abs_aic ks_statistic ks_pvalue ks_method</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Exponent…            0.221   -<span style="color: #BB0000;">303.</span>    303.          0.406  0.010<span style="text-decoration: underline;">5</span>   Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Pareto c…            1.29      25.7    25.7         0.844  0.000<span style="text-decoration: underline;">500</span> Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Beta c(1…            1.63      -<span style="color: #BB0000;">3.69</span>    3.69        0.781  0.000<span style="text-decoration: underline;">500</span> Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Lognorma…            2.47    -<span style="color: #BB0000;">195.</span>    195.          0.156  0.845    Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Gamma c(…            2.81    -<span style="color: #BB0000;">194.</span>    194.          0.156  0.826    Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Uniform …            2.91    -<span style="color: #BB0000;">223.</span>    223.          0.188  0.633    Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Weibull …            3.54    -<span style="color: #BB0000;">204.</span>    204.          0.188  0.656    Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Logistic…            3.62    -<span style="color: #BB0000;">174.</span>    174.          0.125  0.967    Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Gaussian…            5.89    -<span style="color: #BB0000;">173.</span>    173.          0.219  0.455    Monte-Ca…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Cauchy c…            8.96    -<span style="color: #BB0000;">246.</span>    246.          0.688  0.000<span style="text-decoration: underline;">500</span> Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Logistic…            0.183    -<span style="color: #BB0000;">195.</span>    195.        0.125   0.970    Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Lognorma…            1.37     -<span style="color: #BB0000;">227.</span>    227.        0.093<span style="text-decoration: underline;">8</span>  1        Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Gaussian…            2.24     -<span style="color: #BB0000;">192.</span>    192.        0.188   0.627    Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Uniform …            2.39     -<span style="color: #BB0000;">195.</span>    195.        0.25    0.267    Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Weibull …            3.33     -<span style="color: #BB0000;">168.</span>    168.        0.125   0.964    Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Beta c(1…            3.99       14.9    14.9       0.781   0.000<span style="text-decoration: underline;">500</span> Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Gamma c(…            4.04     -<span style="color: #BB0000;">157.</span>    157.        0.25    0.276    Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Pareto c…            7.21       86.9    86.9       0.688   0.000<span style="text-decoration: underline;">500</span> Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Exponent…            7.46     -<span style="color: #BB0000;">202.</span>    202.        0.438   0.007<span style="text-decoration: underline;">00</span>  Monte-Ca…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Cauchy c…           12.5      -<span style="color: #BB0000;">218.</span>    218.        0.562   0.000<span style="text-decoration: underline;">500</span> Monte-Ca…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: alternative &lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,".x")</span>
