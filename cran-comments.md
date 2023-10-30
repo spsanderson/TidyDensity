@@ -2,5 +2,4 @@
 
 0 errors | 0 warnings | 1 note
 
-* Add some functions
-* Fix performance bug.
+* Fix a bug and add a couple functions.
