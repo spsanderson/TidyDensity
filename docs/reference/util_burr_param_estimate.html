@@ -18,7 +18,7 @@ function and combined with the estimated Burr data."><meta property="og:image" c
     
     <a class="navbar-brand me-2" href="../index.html">TidyDensity</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.5.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.6.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,7 +121,8 @@ It will attempt to estimate the prob parameter of a Burr distribution.</p>
 <code><a href="util_weibull_param_estimate.html">util_weibull_param_estimate</a>()</code></p>
 <p>Other Burr: 
 <code><a href="tidy_burr.html">tidy_burr</a>()</code>,
-<code><a href="tidy_inverse_burr.html">tidy_inverse_burr</a>()</code></p></div>
+<code><a href="tidy_inverse_burr.html">tidy_inverse_burr</a>()</code>,
+<code><a href="util_burr_stats_tbl.html">util_burr_stats_tbl</a>()</code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -140,7 +141,7 @@ It will attempt to estimate the prob parameter of a Burr distribution.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max  mean shape1 shape2  rate scale</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Burr             50 0.442  15.9  4.47   2.50   1.75 0.145  6.90</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Burr             50 0.269  30.1  5.56   1.08   1.78 0.264  3.79</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">output</span><span class="op">$</span><span class="va">combined_data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="tidy_combined_autoplot.html">tidy_combined_autoplot</a></span><span class="op">(</span><span class="op">)</span></span></span>

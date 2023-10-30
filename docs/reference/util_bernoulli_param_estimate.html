@@ -18,7 +18,7 @@ function and combined with the estimated Bernoulli data."><meta property="og:ima
     
     <a class="navbar-brand me-2" href="../index.html">TidyDensity</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.5.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.6.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,6 +132,7 @@ It will attempt to estimate the prob parameter of a Bernoulli distribution.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package 'ggplot2' was built under R version 4.2.3</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidy_bernoulli.html">tidy_bernoulli</a></span><span class="op">(</span>.prob <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu">util_bernoulli_param_estimate</span><span class="op">(</span><span class="va">tb</span><span class="op">)</span></span></span>
@@ -140,7 +141,7 @@ It will attempt to estimate the prob parameter of a Bernoulli distribution.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   dist_type samp_size   min   max  mean variance sum_x  prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Bernoulli        50     0     1  0.08   0.073<span style="text-decoration: underline;">6</span>     4  0.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Bernoulli        50     0     1  0.22    0.172    11  0.22</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">output</span><span class="op">$</span><span class="va">combined_data_tbl</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="tidy_combined_autoplot.html">tidy_combined_autoplot</a></span><span class="op">(</span><span class="op">)</span></span></span>
