@@ -1,5 +1,14 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+None
+
+## New Features
+1. Fix #360 - Add function `tidy_triangular()`
+
+## Minor Fixes and Improvements
+None
+
 # TidyDensity 1.2.6
 
 ## Breaking Changes
