@@ -7,6 +7,8 @@ None
 1. Fix #360 - Add function `tidy_triangular()`
 2. Fix #361 - Add function `util_triangular_param_estimate()`
 3. Fix #362 - Add function `util_triangular_stats_tbl()`
+4. Fix #364 - Add function `triangle_plot()`
+5. Fix #363 - Add triangular to `tidy_autoplot()`
 
 ## Minor Fixes and Improvements
 None
