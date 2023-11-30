@@ -5,6 +5,8 @@ None
 
 ## New Features
 1. Fix #360 - Add function `tidy_triangular()`
+2. Fix #361 - Add function `util_triangular_param_estimate()`
+3. Fix #362 - Add function `util_triangular_stats_tbl()`
 
 ## Minor Fixes and Improvements
 None
