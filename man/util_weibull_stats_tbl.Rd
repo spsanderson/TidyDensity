@@ -53,6 +53,7 @@ Other Distribution Statistics:
 \code{\link{util_pareto_stats_tbl}()},
 \code{\link{util_poisson_stats_tbl}()},
 \code{\link{util_t_stats_tbl}()},
+\code{\link{util_triangular_stats_tbl}()},
 \code{\link{util_uniform_stats_tbl}()}
 }
 \author{
