@@ -91,7 +91,8 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
     "tidy_pareto_single_parameter", "tidy_pareto", "tidy_inverse_pareto",
     "tidy_generalized_pareto", "tidy_paralogistic", "tidy_inverse_exponential",
     "tidy_inverse_gamma", "tidy_inverse_weibull", "tidy_burr", "tidy_inverse_burr",
-    "tidy_inverse_gaussian", "tidy_generalized_beta", "tidy_t","tidy_bernoulli"
+    "tidy_inverse_gaussian", "tidy_generalized_beta", "tidy_t","tidy_bernoulli",
+    "tidy_triangular"
   )) {
     rlang::abort("The data passed must come from a `tidy_` distribution function.")
   }
@@ -109,9 +110,6 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
   # for ggplot
   n <- atb$.n
   sims <- atb$.num_sims
-  # dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
-  #   stringr::str_replace_all(pattern = "_", " ") %>%
-  #   stringr::str_to_title()
   dist_type <- dist_type_extractor(atb$tibble_type)
 
   sub_title <- paste0(
@@ -196,6 +194,12 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
         "Scale: ", atb$.scale, " - ",
         "Rate: ", atb$.rate
       )
+    } else if (atb$tibble_type == "tidy_triangular") {
+        paste0(
+            "Min: ", atb$.min, " - ",
+            "Max: ", atb$.max, " - ",
+            "Mode: ", atb$.mode
+        )
     }
   )
 
