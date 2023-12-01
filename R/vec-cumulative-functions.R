@@ -19,13 +19,21 @@
 #' cvar(x)
 #'
 #' @return
-#' A numeric vector
+#' A numeric vector. Note: The first entry will always be
+#' NaN.
 #'
 #' @export
 #'
 
 cvar <- function(.x) {
-  sapply(seq_along(.x), function(k, z) stats::var(z[1:k]), z = .x)
+  n <- length(.x)
+  csumx <- base::cumsum(.x)
+  cmeanx <- cmean(.x)
+
+  p1 <- base::cumsum(.x^2)
+  p2 <- -2 * cmeanx * csumx
+  p3 <- (1:n) * cmeanx^2
+  (p1 + p2 + p3) / ((1:n) - 1)
 }
 
 #' Cumulative Skewness
@@ -112,13 +120,14 @@ ckurtosis <- function(.x) {
 #' csd(x)
 #'
 #' @return
-#' A numeric vector
+#' A numeric vector. Note: The first entry will always be
+#' NaN.
 #'
 #' @export
 #'
 
 csd <- function(.x) {
-  sapply(seq_along(.x), function(k, z) stats::sd(z[1:k]), z = .x)
+  sqrt(cvar(.x))
 }
 
 #' Cumulative Median
