@@ -10,7 +10,8 @@ csd(.x)
 \item{.x}{A numeric vector}
 }
 \value{
-A numeric vector
+A numeric vector. Note: The first entry will always be
+NaN.
 }
 \description{
 A function to return the cumulative standard deviation of a vector.
