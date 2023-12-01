@@ -11,7 +11,7 @@ None
 5. Fix #363 - Add triangular to `tidy_autoplot()`
 
 ## Minor Fixes and Improvements
-None
+1. Fix #372 and #373 - Update `cvar()` and `csd()` to a vectorized approach from @kokbent
 
 # TidyDensity 1.2.6
 
