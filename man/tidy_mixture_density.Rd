@@ -45,7 +45,7 @@ The output is a list object with three components.
 }
 \itemize{
 \item input_fns - A list of the functions and their parameters passed to the function
-itsefl
+itself
 }
 }
 \examples{

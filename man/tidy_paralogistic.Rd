@@ -9,7 +9,8 @@ tidy_paralogistic(
   .shape = 1,
   .rate = 1,
   .scale = 1/.rate,
-  .num_sims = 1
+  .num_sims = 1,
+  .return_tibble = TRUE
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ tidy_paralogistic(
 \item{.scale}{Must be strictly positive.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.

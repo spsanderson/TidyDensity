@@ -24,7 +24,8 @@
 #'     .n = 50,
 #'     .mean = c(-1, 0, 1),
 #'     .sd = 1,
-#'     .num_sims = 3
+#'     .num_sims = 3,
+#'     .return_tibble = TRUE
 #'   )
 #' )
 #'

@@ -4,7 +4,13 @@
 \alias{tidy_negative_binomial}
 \title{Tidy Randomly Generated Negative Binomial Distribution Tibble}
 \usage{
-tidy_negative_binomial(.n = 50, .size = 1, .prob = 0.1, .num_sims = 1)
+tidy_negative_binomial(
+  .n = 50,
+  .size = 1,
+  .prob = 0.1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -16,6 +22,9 @@ positive, need not be integer.}
 \item{.prob}{Probability of success on each trial where 0 < .prob <= 1.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -46,6 +55,7 @@ This function uses the underlying \code{stats::rnbinom()}, and its underlying
 }
 \examples{
 tidy_negative_binomial()
+
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}

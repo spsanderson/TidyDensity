@@ -23,7 +23,7 @@
 #'
 #' 3. Input Functions
 #' -  input_fns - A list of the functions and their parameters passed to the function
-#' itsefl
+#' itself
 #'
 #' @description Create mixture model data and resulting density and line plots.
 #'

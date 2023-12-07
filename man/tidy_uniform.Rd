@@ -4,7 +4,7 @@
 \alias{tidy_uniform}
 \title{Tidy Randomly Generated Uniform Distribution Tibble}
 \usage{
-tidy_uniform(.n = 50, .min = 0, .max = 1, .num_sims = 1)
+tidy_uniform(.n = 50, .min = 0, .max = 1, .num_sims = 1, .return_tibble = TRUE)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +14,9 @@ tidy_uniform(.n = 50, .min = 0, .max = 1, .num_sims = 1)
 \item{.max}{An upper limit of the distribution}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +47,7 @@ This function uses the underlying \code{stats::runif()}, and its underlying
 }
 \examples{
 tidy_uniform()
+
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3662.htm}

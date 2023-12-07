@@ -32,22 +32,29 @@
 #' @param .df Degrees of freedom, Inf is allowed.
 #' @param .ncp Non-centrality parameter.
 #' @param .num_sims The number of randomly generated simulations you want.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_t()
+#'
 #' @return
 #' A tibble of randomly generated data.
 #'
-#' @export
-#'
+#' @name tidy_t
+NULL
 
-tidy_t <- function(.n = 50, .df = 1, .ncp = 0, .num_sims = 1) {
+#' @export
+#' @rdname tidy_t
+
+tidy_t <- function(.n = 50, .df = 1, .ncp = 0, .num_sims = 1, .return_tibble = TRUE) {
 
   # Tidyeval ----
   n <- as.integer(.n)
   num_sims <- as.integer(.num_sims)
-  df <- as.numeric(.df)
+  deg_f <- as.numeric(.df)
   ncp <- as.numeric(.ncp)
+  ret_tbl <- as.logical(.return_tibble)
 
   # Checks ----
   if (!is.integer(n) | n < 0) {
@@ -66,7 +73,7 @@ tidy_t <- function(.n = 50, .df = 1, .ncp = 0, .num_sims = 1) {
     )
   }
 
-  if (!is.numeric(df) | !is.numeric(ncp) | df <= 0) {
+  if (!is.numeric(deg_f) | !is.numeric(ncp) | deg_f <= 0) {
     rlang::abort(
       message = "The parameters of '.df', and '.ncp' must be of class numeric.
             Please pass a number like 1 or 1.1 etc. The '.df' parameter must be
@@ -81,18 +88,28 @@ tidy_t <- function(.n = 50, .df = 1, .ncp = 0, .num_sims = 1) {
   qs <- seq(0, 1, (1 / (n - 1)))
   ps <- qs
 
-  df <- dplyr::tibble(sim_number = as.factor(x)) %>%
-    dplyr::group_by(sim_number) %>%
-    dplyr::mutate(x = list(1:n)) %>%
-    dplyr::mutate(y = list(stats::rt(n = n, df = df, ncp = ncp))) %>%
-    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
-      purrr::set_names("dx", "dy") %>%
-      dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pt(unlist(y), df = df, ncp = ncp))) %>%
-    dplyr::mutate(q = list(stats::qt(unlist(p), df = df, ncp = ncp))) %>%
-    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
-    dplyr::ungroup()
+  # Create a data.table with one row per simulation
+  df <- data.table::CJ(sim_number = factor(1:num_sims), x = 1:n)
 
+  # Group the data by sim_number and add columns for x and y
+  df[, y := stats::rt(n = .N, df = deg_f, ncp = ncp)]
+
+  # Compute the density of the y values and add columns for dx and dy
+  df[, c("dx", "dy") := density(y, n = n)[c("x", "y")], by = sim_number]
+
+  # Compute the p-values for the y values and add a column for p
+  df[, p := stats::pt(y, df = deg_f, ncp = ncp)]
+
+  # Compute the q-values for the p-values and add a column for q
+  df[, q := stats::qt(p, df = deg_f, ncp = ncp)]
+
+  if(.return_tibble){
+    df <- dplyr::as_tibble(df)
+  } else {
+    data.table::setkey(df, NULL)
+  }
+
+  # Create a tibble of the parameter grid
   param_grid <- dplyr::tibble(.df, .ncp)
 
   # Attach descriptive attributes to tibble
@@ -101,6 +118,7 @@ tidy_t <- function(.n = 50, .df = 1, .ncp = 0, .num_sims = 1) {
   attr(df, ".ncp") <- .ncp
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims
+  attr(df, ".ret_tbl") <- .return_tibble
   attr(df, "tibble_type") <- "tidy_t"
   attr(df, "ps") <- ps
   attr(df, "qs") <- qs

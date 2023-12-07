@@ -24,7 +24,8 @@ tidy_triangular(
 
 \item{.num_sims}{The number of simulations to perform.}
 
-\item{.return_tibble}{A logical value indicating whether to return the result as a tibble. Default is TRUE.}
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -42,7 +43,6 @@ further analysis.
 }
 \examples{
 tidy_triangular(.return_tibble = TRUE)
-tidy_triangular(.return_tibble = FALSE)
 
 }
 \seealso{

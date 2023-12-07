@@ -4,7 +4,7 @@
 \alias{tidy_geometric}
 \title{Tidy Randomly Generated Geometric Distribution Tibble}
 \usage{
-tidy_geometric(.n = 50, .prob = 1, .num_sims = 1)
+tidy_geometric(.n = 50, .prob = 1, .num_sims = 1, .return_tibble = TRUE)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -12,6 +12,9 @@ tidy_geometric(.n = 50, .prob = 1, .num_sims = 1)
 \item{.prob}{A probability of success in each trial 0 < prob <= 1.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -42,6 +45,7 @@ This function uses the underlying \code{stats::rgeom()}, and its underlying
 }
 \examples{
 tidy_geometric()
+
 }
 \seealso{
 \url{https://en.wikipedia.org/wiki/Geometric_distribution}

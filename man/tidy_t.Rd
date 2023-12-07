@@ -4,7 +4,7 @@
 \alias{tidy_t}
 \title{Tidy Randomly Generated T Distribution Tibble}
 \usage{
-tidy_t(.n = 50, .df = 1, .ncp = 0, .num_sims = 1)
+tidy_t(.n = 50, .df = 1, .ncp = 0, .num_sims = 1, .return_tibble = TRUE)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +14,9 @@ tidy_t(.n = 50, .df = 1, .ncp = 0, .num_sims = 1)
 \item{.ncp}{Non-centrality parameter.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +47,7 @@ This function uses the underlying \code{stats::rt()}, and its underlying
 }
 \examples{
 tidy_t()
+
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3664.htm}

@@ -4,7 +4,13 @@
 \alias{tidy_inverse_pareto}
 \title{Tidy Randomly Generated Inverse Pareto Distribution Tibble}
 \usage{
-tidy_inverse_pareto(.n = 50, .shape = 1, .scale = 1, .num_sims = 1)
+tidy_inverse_pareto(
+  .n = 50,
+  .shape = 1,
+  .scale = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_inverse_pareto(.n = 50, .shape = 1, .scale = 1, .num_sims = 1)
 \item{.scale}{Must be positive.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +53,7 @@ This function uses the underlying \code{actuar::rinvpareto()}, and its underlyin
 }
 \examples{
 tidy_inverse_pareto()
+
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}

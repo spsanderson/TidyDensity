@@ -45,7 +45,8 @@
 #'     .n = 500,
 #'     .mean = c(-2, 0, 2),
 #'     .sd = 1,
-#'     .num_sims = 5
+#'     .num_sims = 5,
+#'     .return_tibble = TRUE
 #'   )
 #' )
 #'

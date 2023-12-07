@@ -35,18 +35,24 @@
 #' @param .scale Must be positive.
 #' @param .rate An alternative way to specify the `.scale` argument
 #' @param .num_sims The number of randomly generated simulations you want.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_generalized_pareto()
+#'
 #' @return
 #' A tibble of randomly generated data.
 #'
+#' @name tidy_generalized_pareto
+NULL
+
 #' @export
-#'
+#' @rdname tidy_generalized_pareto
 
 tidy_generalized_pareto <- function(.n = 50, .shape1 = 1, .shape2 = 1,
                                     .rate = 1, .scale = 1 / .rate,
-                                    .num_sims = 1) {
+                                    .num_sims = 1, .return_tibble = TRUE) {
 
   # Tidyeval ----
   n <- as.integer(.n)
@@ -55,6 +61,7 @@ tidy_generalized_pareto <- function(.n = 50, .shape1 = 1, .shape2 = 1,
   shape2 <- as.numeric(.shape2)
   rate <- as.numeric(.rate)
   scale <- as.numeric(.scale)
+  ret_tbl <- as.logical(.return_tibble)
 
   # Checks ----
   if (!is.integer(n) | n < 0) {
@@ -96,30 +103,31 @@ tidy_generalized_pareto <- function(.n = 50, .shape1 = 1, .shape2 = 1,
   qs <- seq(0, 1, (1 / (n - 1)))
   ps <- qs
 
-  df <- dplyr::tibble(sim_number = as.factor(x)) %>%
-    dplyr::group_by(sim_number) %>%
-    dplyr::mutate(x = list(1:n)) %>%
-    dplyr::mutate(y = list(actuar::rgenpareto(
-      n = n, shape1 = shape1,
-      shape2 = shape2, rate = rate,
-      scale = scale
-    ))) %>%
-    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
-      purrr::set_names("dx", "dy") %>%
-      dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(actuar::pgenpareto(unlist(y),
-      shape1 = shape1,
-      shape2 = shape2, rate = rate,
-      scale = scale
-    ))) %>%
-    dplyr::mutate(q = list(actuar::qgenpareto(unlist(p),
-      shape1 = shape1,
-      shape2 = shape2, rate = rate,
-      scale = scale
-    ))) %>%
-    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
-    dplyr::ungroup()
+  # Create a data.table with one row per simulation
+  df <- data.table::CJ(sim_number = factor(1:num_sims), x = 1:n)
 
+  # Group the data by sim_number and add columns for x and y
+  df[, y := actuar::rgenpareto(n = .N, shape1 = shape1, shape2 = shape2,
+                               rate = rate, scale = scale)]
+
+  # Compute the density of the y values and add columns for dx and dy
+  df[, c("dx", "dy") := density(y, n = n)[c("x", "y")], by = sim_number]
+
+  # Compute the p-values for the y values and add a column for p
+  df[, p := actuar::pgenpareto(y, shape1 = shape1, shape2 = shape2,
+                               rate = rate, scale = scale)]
+
+  # Compute the q-values for the p-values and add a column for q
+  df[, q := actuar::qgenpareto(p, shape1 = shape1, shape2 = shape2,
+                               rate = rate, scale = scale)]
+
+  if(.return_tibble){
+    df <- dplyr::as_tibble(df)
+  } else {
+    data.table::setkey(df, NULL)
+  }
+
+  # Create a tibble of the parameter grid
   param_grid <- dplyr::tibble(.shape1, .shape2, .rate, .scale)
 
   # Attach descriptive attributes to tibble
@@ -130,6 +138,7 @@ tidy_generalized_pareto <- function(.n = 50, .shape1 = 1, .shape2 = 1,
   attr(df, ".scale") <- .scale
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims
+  attr(df, ".ret_tbl") <- .return_tibble
   attr(df, "tibble_type") <- "tidy_generalized_pareto"
   attr(df, "ps") <- ps
   attr(df, "qs") <- qs

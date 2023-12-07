@@ -33,21 +33,26 @@
 #' @param .n The number of randomly generated points you want.
 #' @param .prob The probability of success/failure.
 #' @param .num_sims The number of randomly generated simulations you want.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_bernoulli()
 #' @return
 #' A tibble of randomly generated data.
-#'
+#' @name tidy_bernoulli
+NULL
+
 #' @export
-#'
+#' @rdname tidy_bernoulli
 
-tidy_bernoulli <- function(.n = 50, .prob = 0.1, .num_sims = 1) {
+tidy_bernoulli <- function(.n = 50, .prob = 0.1, .num_sims = 1, .return_tibble = TRUE) {
 
-  # Tidyeval ----
+  # Arguments
   n <- as.integer(.n)
   num_sims <- as.integer(.num_sims)
   pr <- as.numeric(.prob)
+  ret_tbl <- as.logical(.return_tibble)
 
   # Checks ----
   if (!is.integer(n) | n < 0) {
@@ -73,23 +78,26 @@ tidy_bernoulli <- function(.n = 50, .prob = 0.1, .num_sims = 1) {
     )
   }
 
-  x <- seq(1, num_sims, 1) %>% as.integer()
+  # Create a data.table with one row per simulation
+  df <- data.table::CJ(sim_number = factor(1:num_sims), x = 1:n)
 
-  # ps <- seq(-n, n - 1, 2)
-  qs <- seq(0, 1, (1 / (n - 1)))
-  ps <- qs
+  # Group the data by sim_number and add columns for x and y
+  df[, y := stats::rbinom(n = .N, size = 1, prob = pr)]
 
-  df <- dplyr::tibble(sim_number = as.factor(x)) %>%
-    dplyr::group_by(sim_number) %>%
-    dplyr::mutate(x = list(1:n)) %>%
-    dplyr::mutate(y = list(stats::rbinom(n = n, size = 1, prob = pr))) %>%
-    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
-      purrr::set_names("dx", "dy") %>%
-      dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pbinom(unlist(y), size = 1, prob = pr))) %>%
-    dplyr::mutate(q = list(stats::qbinom(unlist(p), size = 1, prob = pr))) %>%
-    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
-    dplyr::ungroup()
+  # Compute the density of the y values and add columns for dx and dy
+  df[, c("dx", "dy") := density(y, n = n)[c("x", "y")], by = sim_number]
+
+  # Compute the p-values for the y values and add a column for p
+  df[, p := stats::pbinom(y, size = 1, prob = pr)]
+
+  # Compute the q-values for the p-values and add a column for q
+  df[, q := stats::qbinom(p, size = 1, prob = pr)]
+
+  if(.return_tibble){
+    df <- dplyr::as_tibble(df)
+  } else {
+    data.table::setkey(df, NULL)
+  }
 
   param_grid <- dplyr::tibble(.prob)
 
@@ -98,9 +106,8 @@ tidy_bernoulli <- function(.n = 50, .prob = 0.1, .num_sims = 1) {
   attr(df, ".prob") <- .prob
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims
+  attr(df, ".ret_tbl") <- .return_tibble
   attr(df, "tibble_type") <- "tidy_bernoulli"
-  attr(df, "ps") <- ps
-  attr(df, "qs") <- qs
   attr(df, "param_grid") <- param_grid
   attr(df, "param_grid_txt") <- paste0(
     "c(",
@@ -117,6 +124,5 @@ tidy_bernoulli <- function(.n = 50, .prob = 0.1, .num_sims = 1) {
     )
   )
 
-  # Return final result as function output
   return(df)
 }

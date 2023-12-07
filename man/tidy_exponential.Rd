@@ -4,7 +4,7 @@
 \alias{tidy_exponential}
 \title{Tidy Randomly Generated Exponential Distribution Tibble}
 \usage{
-tidy_exponential(.n = 50, .rate = 1, .num_sims = 1)
+tidy_exponential(.n = 50, .rate = 1, .num_sims = 1, .return_tibble = TRUE)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -12,6 +12,9 @@ tidy_exponential(.n = 50, .rate = 1, .num_sims = 1)
 \item{.rate}{A vector of rates}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -42,6 +45,7 @@ This function uses the underlying \code{stats::rexp()}, and its underlying
 }
 \examples{
 tidy_exponential()
+
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3667.htm}

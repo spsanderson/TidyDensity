@@ -34,22 +34,30 @@
 #' @param .scale The standard deviation of the randomly generated data. This is
 #' strictly from 0 to infinity.
 #' @param .num_sims The number of randomly generated simulations you want.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_gamma()
+#'
 #' @return
 #' A tibble of randomly generated data.
 #'
-#' @export
-#'
+#' @name tidy_gamma
+NULL
 
-tidy_gamma <- function(.n = 50, .shape = 1, .scale = 0.3, .num_sims = 1) {
+#' @export
+#' @rdname tidy_gamma
+
+tidy_gamma <- function(.n = 50, .shape = 1, .scale = 0.3, .num_sims = 1,
+                       .return_tibble = TRUE) {
 
   # Tidyeval ----
   n <- as.integer(.n)
   num_sims <- as.integer(.num_sims)
   shp <- .shape
   scle <- .scale
+  ret_tbl <- as.logical(.return_tibble)
 
   # Checks ----
   if (!is.integer(n) | n < 0) {
@@ -85,18 +93,28 @@ tidy_gamma <- function(.n = 50, .shape = 1, .scale = 0.3, .num_sims = 1) {
   qs <- seq(0, 1, (1 / (n - 1)))
   ps <- qs
 
-  df <- dplyr::tibble(sim_number = as.factor(x)) %>%
-    dplyr::group_by(sim_number) %>%
-    dplyr::mutate(x = list(1:n)) %>%
-    dplyr::mutate(y = list(stats::rgamma(n = n, shape = shp, scale = scle))) %>%
-    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
-      purrr::set_names("dx", "dy") %>%
-      dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pgamma(unlist(y), shape = shp, scale = scle))) %>%
-    dplyr::mutate(q = list(stats::qgamma(unlist(p), shape = shp, scale = scle))) %>%
-    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
-    dplyr::ungroup()
+  # Create a data.table with one row per simulation
+  df <- data.table::CJ(sim_number = factor(1:num_sims), x = 1:n)
 
+  # Group the data by sim_number and add columns for x and y
+  df[, y := stats::rgamma(n = .N, shape = shp, scale = scle)]
+
+  # Compute the density of the y values and add columns for dx and dy
+  df[, c("dx", "dy") := density(y, n = n)[c("x", "y")], by = sim_number]
+
+  # Compute the p-values for the y values and add a column for p
+  df[, p := stats::pgamma(y, shape = shp, scale = scle)]
+
+  # Compute the q-values for the p-values and add a column for q
+  df[, p := stats::qgamma(p, shape = shp, scale = scle)]
+
+  if(.return_tibble){
+    df <- dplyr::as_tibble(df)
+  } else {
+    data.table::setkey(df, NULL)
+  }
+
+  # Create a tibble of the parameter grid
   param_grid <- dplyr::tibble(.shape, .scale)
 
   # Attach descriptive attributes to tibble
@@ -105,6 +123,7 @@ tidy_gamma <- function(.n = 50, .shape = 1, .scale = 0.3, .num_sims = 1) {
   attr(df, ".scale") <- .scale
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims
+  attr(df, ".ret_tbl") <- .return_tibble
   attr(df, "tibble_type") <- "tidy_gamma"
   attr(df, "ps") <- ps
   attr(df, "qs") <- qs

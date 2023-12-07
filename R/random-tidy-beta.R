@@ -34,16 +34,22 @@
 #' @param .shape2 A non-negative parameter of the Beta distribution.
 #' @param .ncp The `non-centrality parameter` of the Beta distribution.
 #' @param .num_sims The number of randomly generated simulations you want.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_beta()
+#'
 #' @return
 #' A tibble of randomly generated data.
-#'
-#' @export
-#'
+#' @name tidy_beta
+NULL
 
-tidy_beta <- function(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1) {
+#' @export
+#' @rdname tidy_beta
+
+tidy_beta <- function(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1,
+                      .return_tibble = TRUE) {
 
   # Tidyeval ----
   n <- as.integer(.n)
@@ -51,6 +57,7 @@ tidy_beta <- function(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1
   shape1 <- as.numeric(.shape1)
   shape2 <- as.numeric(.shape2)
   ncp <- as.numeric(.ncp)
+  ret_tbl <- as.logical(.return_tibble)
 
   # Checks ----
   if (!is.integer(n) | n < 0) {
@@ -81,17 +88,26 @@ tidy_beta <- function(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1
   qs <- seq(0, 1, (1 / (n - 1)))
   ps <- qs
 
-  df <- dplyr::tibble(sim_number = as.factor(x)) %>%
-    dplyr::group_by(sim_number) %>%
-    dplyr::mutate(x = list(1:n)) %>%
-    dplyr::mutate(y = list(stats::rbeta(n = n, shape1 = shape1, shape2 = shape2, ncp = ncp))) %>%
-    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
-      purrr::set_names("dx", "dy") %>%
-      dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(stats::pbeta(unlist(y), shape1 = shape1, shape2 = shape2, ncp = ncp))) %>%
-    dplyr::mutate(q = list(stats::qbeta(unlist(p), shape1 = shape1, shape2 = shape2, ncp = ncp))) %>%
-    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
-    dplyr::ungroup()
+  # Create a data.table with one row per simulation
+  df <- data.table::CJ(sim_number = factor(1:num_sims), x = 1:n)
+
+  # Group the data by sim_number and add columns for x and y
+  df[, y := stats::rbeta(n = .N, shape1 = shape1, shape2 = shape2, ncp = ncp)]
+
+  # Compute the density of the y values and add columns for dx and dy
+  df[, c("dx", "dy") := density(y, n = n)[c("x", "y")], by = sim_number]
+
+  # Compute the p-values for the y values and add a column for p
+  df[, p := stats::pbeta(y, shape1 = shape1, shape2 = shape2, ncp = ncp)]
+
+  # Compute the q-values for the p-values and add a column for q
+  df[, q := stats::qbeta(p, shape1 = shape1, shape2 = shape2, ncp = ncp)]
+
+  if(.return_tibble){
+    df <- dplyr::as_tibble(df)
+  } else {
+    data.table::setkey(df, NULL)
+  }
 
   param_grid <- dplyr::tibble(.shape1, .shape2, .ncp)
 
@@ -102,6 +118,7 @@ tidy_beta <- function(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1
   attr(df, ".ncp") <- .ncp
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims
+  attr(df, ".ret_tbl") <- .return_tibble
   attr(df, "tibble_type") <- "tidy_beta"
   attr(df, "ps") <- ps
   attr(df, "qs") <- qs

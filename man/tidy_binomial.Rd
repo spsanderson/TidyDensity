@@ -4,7 +4,13 @@
 \alias{tidy_binomial}
 \title{Tidy Randomly Generated Binomial Distribution Tibble}
 \usage{
-tidy_binomial(.n = 50, .size = 0, .prob = 1, .num_sims = 1)
+tidy_binomial(
+  .n = 50,
+  .size = 0,
+  .prob = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_binomial(.n = 50, .size = 0, .prob = 1, .num_sims = 1)
 \item{.prob}{Probability of success on each trial.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.

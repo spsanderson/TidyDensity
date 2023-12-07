@@ -4,7 +4,13 @@
 \alias{tidy_weibull}
 \title{Tidy Randomly Generated Weibull Distribution Tibble}
 \usage{
-tidy_weibull(.n = 50, .shape = 1, .scale = 1, .num_sims = 1)
+tidy_weibull(
+  .n = 50,
+  .shape = 1,
+  .scale = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_weibull(.n = 50, .shape = 1, .scale = 1, .num_sims = 1)
 \item{.scale}{Scale parameter defaults to 1.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +53,7 @@ This function uses the underlying \code{stats::rweibull()}, and its underlying
 }
 \examples{
 tidy_weibull()
+
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3669.htm}
