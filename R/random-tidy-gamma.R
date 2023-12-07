@@ -34,8 +34,8 @@
 #' @param .scale The standard deviation of the randomly generated data. This is
 #' strictly from 0 to infinity.
 #' @param .num_sims The number of randomly generated simulations you want.
-#' @param .return_tibble Should the function return a tibble. FALSE will return
-#' a data.table object.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_gamma()
@@ -97,16 +97,16 @@ tidy_gamma <- function(.n = 50, .shape = 1, .scale = 0.3, .num_sims = 1,
   df <- data.table::CJ(sim_number = factor(1:num_sims), x = 1:n)
 
   # Group the data by sim_number and add columns for x and y
-  df[, y := stats::rgamma(n = .N, shape = shape, scale = scle)]
+  df[, y := stats::rgamma(n = .N, shape = shp, scale = scle)]
 
   # Compute the density of the y values and add columns for dx and dy
   df[, c("dx", "dy") := density(y, n = n)[c("x", "y")], by = sim_number]
 
   # Compute the p-values for the y values and add a column for p
-  df[, p := stats::pgamma(y, shape = shape, scale = scle)]
+  df[, p := stats::pgamma(y, shape = shp, scale = scle)]
 
   # Compute the q-values for the p-values and add a column for q
-  df[, p := stats::qgamma(p, shape = shape, scale = scle)]
+  df[, p := stats::qgamma(p, shape = shp, scale = scle)]
 
   if(.return_tibble){
     df <- dplyr::as_tibble(df)

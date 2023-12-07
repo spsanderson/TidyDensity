@@ -12,6 +12,9 @@ None
 
 ## Minor Fixes and Improvements
 1. Fix #372 and #373 - Update `cvar()` and `csd()` to a vectorized approach from @kokbent
+which speeds these up by over 100x
+2. Fix #350 - Update all `tidy_` distribution functions to generate data using `data.table` 
+this in many instances has resulted in a speed up of 30% or more.
 
 # TidyDensity 1.2.6
 

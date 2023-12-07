@@ -7,6 +7,6 @@ globalVariables(
     "name", "prob", "rate", "sd_log", "shape1", "shape2", "size", "total", "total_deviance",
     "abs_aic", "aic_value", "data", "dist_with_params", "ks", "lm", "lm_model", "mu",
     "stan_dev", "tidy_ks", "prop", "dens_tbl", "cih", "cil", "mstat", "stat", ".",
-    "variable"
+    "variable",".N"
   )
 )

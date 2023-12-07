@@ -13,8 +13,8 @@ tidy_bernoulli(.n = 50, .prob = 0.1, .num_sims = 1, .return_tibble = TRUE)
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
 
-\item{.return_tibble}{Should the function return a tibble. FALSE will return
-a data.table object.}
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.

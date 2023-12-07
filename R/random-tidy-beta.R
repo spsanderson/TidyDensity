@@ -34,11 +34,12 @@
 #' @param .shape2 A non-negative parameter of the Beta distribution.
 #' @param .ncp The `non-centrality parameter` of the Beta distribution.
 #' @param .num_sims The number of randomly generated simulations you want.
-#' @param .return_tibble Should the function return a tibble. FALSE will return
-#' a data.table object.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_beta()
+#'
 #' @return
 #' A tibble of randomly generated data.
 #' @name tidy_beta

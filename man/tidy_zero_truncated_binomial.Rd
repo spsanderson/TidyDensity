@@ -4,7 +4,13 @@
 \alias{tidy_zero_truncated_binomial}
 \title{Tidy Randomly Generated Binomial Distribution Tibble}
 \usage{
-tidy_zero_truncated_binomial(.n = 50, .size = 1, .prob = 1, .num_sims = 1)
+tidy_zero_truncated_binomial(
+  .n = 50,
+  .size = 1,
+  .prob = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_zero_truncated_binomial(.n = 50, .size = 1, .prob = 1, .num_sims = 1)
 \item{.prob}{Probability of success on each trial 0 <= prob <= 1.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{A logical value indicating whether to return the result
+as a tibble. Default is TRUE.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +53,7 @@ This function uses the underlying \code{actuar::rztbinom()}, and its underlying
 }
 \examples{
 tidy_zero_truncated_binomial()
+
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}

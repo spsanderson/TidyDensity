@@ -31,8 +31,8 @@
 #' @param .n The number of randomly generated points you want.
 #' @param .prob A probability of success in each trial 0 < prob <= 1.
 #' @param .num_sims The number of randomly generated simulations you want.
-#' @param .return_tibble Should the function return a tibble. FALSE will return
-#' a data.table object.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_geometric()

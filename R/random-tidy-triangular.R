@@ -19,11 +19,11 @@
 #' @param .max The maximum value of the triangular distribution.
 #' @param .mode The mode (peak) value of the triangular distribution.
 #' @param .num_sims The number of simulations to perform.
-#' @param .return_tibble A logical value indicating whether to return the result as a tibble. Default is TRUE.
+#' @param .return_tibble A logical value indicating whether to return the result
+#' as a tibble. Default is TRUE.
 #'
 #' @examples
 #' tidy_triangular(.return_tibble = TRUE)
-#' tidy_triangular(.return_tibble = FALSE)
 #'
 #' @return
 #' A tibble of randomly generated data.
@@ -98,6 +98,7 @@ tidy_triangular <- function(.n = 50, .min = 0, .max = 1,
         data.table::setkey(df, NULL)
     }
 
+    # Create tibble of parameter grid
     param_grid <- dplyr::tibble(mn, mx, md)
 
     # Attach descriptive attributes to tibble
