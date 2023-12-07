@@ -9,7 +9,8 @@ tidy_inverse_normal(
   .mean = 1,
   .shape = 1,
   .dispersion = 1/.shape,
-  .num_sims = 1
+  .num_sims = 1,
+  .return_tibble = TRUE
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ tidy_inverse_normal(
 \item{.dispersion}{An alternative way to specify the \code{.shape}.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{Should the function return a tibble. FALSE will return
+a data.table object.}
 }
 \value{
 A tibble of randomly generated data.
@@ -51,6 +55,7 @@ more information please see \code{\link[=rinvgauss]{rinvgauss()}}
 }
 \examples{
 tidy_inverse_normal()
+
 }
 \seealso{
 Other Continuous Distribution: 

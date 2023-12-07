@@ -4,7 +4,13 @@
 \alias{tidy_cauchy}
 \title{Tidy Randomly Generated Cauchy Distribution Tibble}
 \usage{
-tidy_cauchy(.n = 50, .location = 0, .scale = 1, .num_sims = 1)
+tidy_cauchy(
+  .n = 50,
+  .location = 0,
+  .scale = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_cauchy(.n = 50, .location = 0, .scale = 1, .num_sims = 1)
 \item{.scale}{The scale parameter, must be greater than or equal to 0.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{Should the function return a tibble. FALSE will return
+a data.table object.}
 }
 \value{
 A tibble of randomly generated data.

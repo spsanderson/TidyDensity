@@ -4,7 +4,13 @@
 \alias{tidy_pareto1}
 \title{Tidy Randomly Generated Pareto Single Parameter Distribution Tibble}
 \usage{
-tidy_pareto1(.n = 50, .shape = 1, .min = 1, .num_sims = 1)
+tidy_pareto1(
+  .n = 50,
+  .shape = 1,
+  .min = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_pareto1(.n = 50, .shape = 1, .min = 1, .num_sims = 1)
 \item{.min}{The lower bound of the support of the distribution.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{Should the function return a tibble. FALSE will return
+a data.table object.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +53,7 @@ This function uses the underlying \code{actuar::rpareto1()}, and its underlying
 }
 \examples{
 tidy_pareto1()
+
 }
 \seealso{
 \url{https://openacttexts.github.io/Loss-Data-Analytics/ChapSummaryDistributions.html}

@@ -4,7 +4,13 @@
 \alias{tidy_lognormal}
 \title{Tidy Randomly Generated Lognormal Distribution Tibble}
 \usage{
-tidy_lognormal(.n = 50, .meanlog = 0, .sdlog = 1, .num_sims = 1)
+tidy_lognormal(
+  .n = 50,
+  .meanlog = 0,
+  .sdlog = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_lognormal(.n = 50, .meanlog = 0, .sdlog = 1, .num_sims = 1)
 \item{.sdlog}{Standard deviation of the distribution on the log scale with default 1}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{Should the function return a tibble. FALSE will return
+a data.table object.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +53,7 @@ This function uses the underlying \code{stats::rlnorm()}, and its underlying
 }
 \examples{
 tidy_lognormal()
+
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3669.htm}

@@ -4,7 +4,13 @@
 \alias{tidy_logistic}
 \title{Tidy Randomly Generated Logistic Distribution Tibble}
 \usage{
-tidy_logistic(.n = 50, .location = 0, .scale = 1, .num_sims = 1)
+tidy_logistic(
+  .n = 50,
+  .location = 0,
+  .scale = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_logistic(.n = 50, .location = 0, .scale = 1, .num_sims = 1)
 \item{.scale}{The scale parameter}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{Should the function return a tibble. FALSE will return
+a data.table object.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +53,7 @@ This function uses the underlying \code{stats::rlogis()}, and its underlying
 }
 \examples{
 tidy_logistic()
+
 }
 \seealso{
 \url{https://en.wikipedia.org/wiki/Logistic_distribution}

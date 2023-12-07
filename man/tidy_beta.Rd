@@ -4,7 +4,14 @@
 \alias{tidy_beta}
 \title{Tidy Randomly Generated Beta Distribution Tibble}
 \usage{
-tidy_beta(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1)
+tidy_beta(
+  .n = 50,
+  .shape1 = 1,
+  .shape2 = 1,
+  .ncp = 0,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -16,6 +23,9 @@ tidy_beta(.n = 50, .shape1 = 1, .shape2 = 1, .ncp = 0, .num_sims = 1)
 \item{.ncp}{The \verb{non-centrality parameter} of the Beta distribution.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{Should the function return a tibble. FALSE will return
+a data.table object.}
 }
 \value{
 A tibble of randomly generated data.

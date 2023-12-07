@@ -4,7 +4,13 @@
 \alias{tidy_chisquare}
 \title{Tidy Randomly Generated Chisquare (Non-Central) Distribution Tibble}
 \usage{
-tidy_chisquare(.n = 50, .df = 1, .ncp = 1, .num_sims = 1)
+tidy_chisquare(
+  .n = 50,
+  .df = 1,
+  .ncp = 1,
+  .num_sims = 1,
+  .return_tibble = TRUE
+)
 }
 \arguments{
 \item{.n}{The number of randomly generated points you want.}
@@ -14,6 +20,9 @@ tidy_chisquare(.n = 50, .df = 1, .ncp = 1, .num_sims = 1)
 \item{.ncp}{Non-centrality parameter, must be non-negative.}
 
 \item{.num_sims}{The number of randomly generated simulations you want.}
+
+\item{.return_tibble}{Should the function return a tibble. FALSE will return
+a data.table object.}
 }
 \value{
 A tibble of randomly generated data.
@@ -44,6 +53,7 @@ This function uses the underlying \code{stats::rchisq()}, and its underlying
 }
 \examples{
 tidy_chisquare()
+
 }
 \seealso{
 \url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda3666.htm}
