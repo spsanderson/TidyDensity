@@ -18,8 +18,9 @@ use `data.table` under the hood to generate data.
 which speeds these up by over 100x
 2. Fix #350 - Update all `tidy_` distribution functions to generate data using `data.table` 
 this in many instances has resulted in a speed up of 30% or more.
-3. Fix #379 - Replace the use of `dplyr::cur_data()` as it was deprectated in 
+3. Fix #379 - Replace the use of `dplyr::cur_data()` as it was deprecated in 
 dplyr in favor of using `dplyr::pick()`
+4. Fix #381 - Add `tidy_triangular()` to all autoplot functions.
 
 # TidyDensity 1.2.6
 

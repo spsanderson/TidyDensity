@@ -138,6 +138,12 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
         "Scale: ", atb$all$.scale, " - ",
         "Rate: ", atb$all$.rate
       )
+    } else if (atb$tibble_type == "tidy_triangular") {
+      paste0(
+        "Min: ", atb$.min, " - ",
+        "Max: ", atb$.max, " - ",
+        "Mode: ", atb$.mode
+      )
     }
   )
 
