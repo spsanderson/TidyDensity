@@ -1,7 +1,10 @@
 # TidyDensity (development version)
 
 ## Breaking Changes
-None
+1. Fix #350 - This has caused the function `tidy_multi_single_dist()` to be modified
+in that it now requires the user to pass the parameter of `.return_tibbl` with either
+TRUE or FALSE as it was introduced into the `tidy_` distribution functions which now
+use `data.table` under the hood to generate data.
 
 ## New Features
 1. Fix #360 - Add function `tidy_triangular()`
@@ -15,6 +18,8 @@ None
 which speeds these up by over 100x
 2. Fix #350 - Update all `tidy_` distribution functions to generate data using `data.table` 
 this in many instances has resulted in a speed up of 30% or more.
+3. Fix #379 - Replace the use of `dplyr::cur_data()` as it was deprectated in 
+dplyr in favor of using `dplyr::pick()`
 
 # TidyDensity 1.2.6
 

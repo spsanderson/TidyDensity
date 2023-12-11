@@ -69,7 +69,8 @@ tidy_multi_single_dist <- function(.tidy_dist = NULL,
 
   # Run call on the grouped df ----
   dff <- param_grid %>%
-    dplyr::mutate(results = purrr::pmap(dplyr::cur_data(), match.fun(td)))
+    dplyr::mutate(results = purrr::pmap(dplyr::pick(dplyr::everything()), match.fun(td)))
+    #dplyr::mutate(results = purrr::pmap(dplyr::cur_data(), match.fun(td)))
 
   # Get the attributes to be used later on ----
   atb <- dff$results[[1]] %>% attributes()
