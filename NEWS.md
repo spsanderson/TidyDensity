@@ -23,6 +23,7 @@ dplyr in favor of using `dplyr::pick()`
 4. Fix #381 - Add `tidy_triangular()` to all autoplot functions.
 5. Fix #385 - For `tidy_multi_dist_autoplot()` the `.plot_type = "quantile"` did
 not work.
+6. Fix #383 - Update all autoplot functions to use linewidth instead of size.
 
 # TidyDensity 1.2.6
 
