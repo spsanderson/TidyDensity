@@ -41,7 +41,7 @@
 #' @export
 #'
 
-tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
+tidy_random_walk_autoplot <- function(.data, .line_size = .5, .geom_rug = FALSE,
                                       .geom_smooth = FALSE, .interactive = FALSE) {
 
   # Tidyeval ----
@@ -165,7 +165,7 @@ tidy_random_walk_autoplot <- function(.data, .line_size = 1, .geom_rug = FALSE,
       x = x, y = random_walk_value,
       group = sim_number, color = sim_number
     )) +
-    ggplot2::geom_line(size = line_size) +
+    ggplot2::geom_line(linewidth = line_size) +
     ggplot2::theme_minimal() +
     ggplot2::labs(
       title = "Random Walk Plot",

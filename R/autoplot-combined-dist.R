@@ -134,7 +134,7 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
           color = dist_type
         )
       ) +
-      ggplot2::geom_line(size = line_size) +
+      ggplot2::geom_line(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
         title = "Density Plot",
@@ -163,7 +163,7 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
           color = dist_type
         )
       ) +
-      ggplot2::geom_line(size = line_size) +
+      ggplot2::geom_line(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
         title = "Quantile Plot",
@@ -182,7 +182,7 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
           color = dist_type
         )
       ) +
-      ggplot2::stat_ecdf(size = line_size) +
+      ggplot2::stat_ecdf(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
         title = "Probability Plot",
@@ -201,7 +201,7 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
         )
       ) +
       ggplot2::stat_qq(size = point_size) +
-      ggplot2::stat_qq_line(size = line_size) +
+      ggplot2::stat_qq_line(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
         title = "QQ Plot",
@@ -211,11 +211,11 @@ tidy_combined_autoplot <- function(.data, .plot_type = "density", .line_size = .
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "mcmc") {
     plt <- data_tbl %>%
-      dplyr::group_by(sim_number) %>%
+      dplyr::group_by(sim_number, dist_type) %>%
       dplyr::mutate(cmy = dplyr::cummean(y)) %>%
       dplyr::ungroup() %>%
       ggplot2::ggplot(ggplot2::aes(
-        x = x, y = cmy, group = sim_number, color = sim_number
+        x = x, y = cmy, group = interaction(dist_type, sim_number), color = sim_number
       )) +
       ggplot2::geom_line() +
       ggplot2::theme_minimal() +

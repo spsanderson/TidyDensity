@@ -6,7 +6,7 @@
 \usage{
 tidy_random_walk_autoplot(
   .data,
-  .line_size = 1,
+  .line_size = 0.5,
   .geom_rug = FALSE,
   .geom_smooth = FALSE,
   .interactive = FALSE

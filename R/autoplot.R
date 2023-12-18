@@ -220,7 +220,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       ggplot2::ggplot(
         ggplot2::aes(x = dx, y = dy, group = sim_number, color = sim_number)
       ) +
-      ggplot2::geom_line(size = line_size) +
+      ggplot2::geom_line(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
         title = "Density Plot",
@@ -258,7 +258,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
           x = x, y = q, group = sim_number, color = sim_number
         )
       ) +
-      ggplot2::geom_line(size = line_size) +
+      ggplot2::geom_line(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
         title = "Quantile Plot",
@@ -271,7 +271,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       ggplot2::ggplot(
         ggplot2::aes(x = y, color = sim_number, group = sim_number)
       ) +
-      ggplot2::stat_ecdf(size = line_size) +
+      ggplot2::stat_ecdf(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
         title = "Probability Plot",
@@ -287,7 +287,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
         )
       ) +
       ggplot2::stat_qq(size = point_size) +
-      ggplot2::stat_qq_line(size = line_size) +
+      ggplot2::stat_qq_line(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::labs(
         title = "QQ Plot",
@@ -303,7 +303,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       ggplot2::ggplot(ggplot2::aes(
         x = x, y = cmy, group = sim_number, color = sim_number
       )) +
-      ggplot2::geom_line() +
+      ggplot2::geom_line(linewidth = line_size) +
       ggplot2::theme_minimal() +
       ggplot2::scale_x_continuous(trans = "log10") +
       ggplot2::labs(
