@@ -72,7 +72,7 @@ This function will spit out one of the following plots:
 tn <- tidy_multi_single_dist(
   .tidy_dist = "tidy_normal",
   .param_list = list(
-    .n = 500,
+    .n = 100,
     .mean = c(-2, 0, 2),
     .sd = 1,
     .num_sims = 5,

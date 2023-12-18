@@ -42,7 +42,7 @@
 #' tn <- tidy_multi_single_dist(
 #'   .tidy_dist = "tidy_normal",
 #'   .param_list = list(
-#'     .n = 500,
+#'     .n = 100,
 #'     .mean = c(-2, 0, 2),
 #'     .sd = 1,
 #'     .num_sims = 5,
@@ -254,8 +254,8 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
   } else if (plot_type == "quantile") {
     ## EDIT
     data_tbl <- data_tbl %>%
-      dplyr::select(sim_number, q) %>%
-      dplyr::group_by(sim_number) %>%
+      dplyr::select(sim_number, dist_name, q) %>%
+      dplyr::group_by(sim_number, dist_name) %>%
       dplyr::arrange(q) %>%
       dplyr::mutate(x = 1:dplyr::n()) %>%
       dplyr::ungroup()

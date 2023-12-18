@@ -21,6 +21,8 @@ this in many instances has resulted in a speed up of 30% or more.
 3. Fix #379 - Replace the use of `dplyr::cur_data()` as it was deprecated in 
 dplyr in favor of using `dplyr::pick()`
 4. Fix #381 - Add `tidy_triangular()` to all autoplot functions.
+5. Fix #385 - For `tidy_multi_dist_autoplot()` the `.plot_type = "quantile"` did
+not work.
 
 # TidyDensity 1.2.6
 
