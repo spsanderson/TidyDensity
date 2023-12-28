@@ -42,16 +42,17 @@
 #' will return an interactive `plotly` plot.
 #'
 #' @examples
-#' tidy_normal(.num_sims = 5) %>%
+#' tidy_normal(.num_sims = 5) |>
 #'   tidy_autoplot()
 #'
-#' tidy_normal(.num_sims = 20) %>%
+#' tidy_normal(.num_sims = 20) |>
 #'   tidy_autoplot(.plot_type = "qq")
 #' @return
 #' A ggplot or a plotly plot.
-#'
+#' @name tidy_autoplot
+NULL
 #' @export
-#'
+#' @rdname tidy_autoplot
 
 tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
                           .geom_point = FALSE, .point_size = 1,
@@ -216,7 +217,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
   }
 
   if (plot_type == "density" & atb$distribution_family_type == "continuous") {
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(x = dx, y = dy, group = sim_number, color = sim_number)
       ) +
@@ -229,7 +230,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       ) +
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "density" & atb$distribution_family_type == "discrete") {
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(ggplot2::aes(x = y, group = sim_number, fill = sim_number)) +
       ggplot2::geom_histogram(
         alpha = 0.318, color = "#e9ecef",
@@ -245,14 +246,14 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "quantile") {
     ## EDIT
-    data_tbl <- data_tbl %>%
-      dplyr::select(sim_number, q) %>%
-      dplyr::group_by(sim_number) %>%
-      dplyr::arrange(q) %>%
-      dplyr::mutate(x = 1:dplyr::n()) %>%
+    data_tbl <- data_tbl |>
+      dplyr::select(sim_number, q) |>
+      dplyr::group_by(sim_number) |>
+      dplyr::arrange(q) |>
+      dplyr::mutate(x = 1:dplyr::n()) |>
       dplyr::ungroup()
     ## End EDIT
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(
           x = x, y = q, group = sim_number, color = sim_number
@@ -267,7 +268,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       ) +
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "probability") {
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(x = y, color = sim_number, group = sim_number)
       ) +
@@ -280,7 +281,7 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       ) +
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "qq") {
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(
           sample = y, color = sim_number, group = sim_number
@@ -296,10 +297,10 @@ tidy_autoplot <- function(.data, .plot_type = "density", .line_size = .5,
       ) +
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "mcmc") {
-    plt <- data_tbl %>%
-      dplyr::group_by(sim_number) %>%
-      dplyr::mutate(cmy = dplyr::cummean(y)) %>%
-      dplyr::ungroup() %>%
+    plt <- data_tbl |>
+      dplyr::group_by(sim_number) |>
+      dplyr::mutate(cmy = dplyr::cummean(y)) |>
+      dplyr::ungroup() |>
       ggplot2::ggplot(ggplot2::aes(
         x = x, y = cmy, group = sim_number, color = sim_number
       )) +
