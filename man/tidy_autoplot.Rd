@@ -72,10 +72,10 @@ This function will spit out one of the following plots:
 }
 }
 \examples{
-tidy_normal(.num_sims = 5) \%>\%
+tidy_normal(.num_sims = 5) |>
   tidy_autoplot()
 
-tidy_normal(.num_sims = 20) \%>\%
+tidy_normal(.num_sims = 20) |>
   tidy_autoplot(.plot_type = "qq")
 }
 \seealso{

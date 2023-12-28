@@ -5,6 +5,8 @@
 in that it now requires the user to pass the parameter of `.return_tibbl` with either
 TRUE or FALSE as it was introduced into the `tidy_` distribution functions which now
 use `data.table` under the hood to generate data.
+2. Fix #371 - Modify code to use the native `|>` pipe instead of the `%>%` which 
+has caused a need to update the minimum R version to 4.1.0
 
 ## New Features
 1. Fix #360 - Add function `tidy_triangular()`
