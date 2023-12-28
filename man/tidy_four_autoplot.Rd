@@ -67,7 +67,7 @@ This function will spit out one of the following plots:
 }
 }
 \examples{
-tidy_normal(.num_sims = 5) \%>\%
+tidy_normal(.num_sims = 5) |>
   tidy_four_autoplot()
 
 }

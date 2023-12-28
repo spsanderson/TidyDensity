@@ -36,7 +36,7 @@ output <- util_uniform_param_estimate(x)
 
 output$parameter_tbl
 
-output$combined_data_tbl \%>\%
+output$combined_data_tbl |>
   tidy_combined_autoplot()
 
 }

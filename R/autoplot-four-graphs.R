@@ -39,7 +39,7 @@
 #' will return an interactive `plotly` plot.
 #'
 #' @examples
-#' tidy_normal(.num_sims = 5) %>%
+#' tidy_normal(.num_sims = 5) |>
 #'   tidy_four_autoplot()
 #'
 #' @return

@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_poisson() %>%
-#'   util_poisson_stats_tbl() %>%
+#' tidy_poisson() |>
+#'   util_poisson_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

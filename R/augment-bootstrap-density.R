@@ -22,11 +22,11 @@
 #' @examples
 #' x <- mtcars$mpg
 #'
-#' tidy_bootstrap(x) %>%
+#' tidy_bootstrap(x) |>
 #'   bootstrap_density_augment()
 #'
-#' tidy_bootstrap(x) %>%
-#'   bootstrap_unnest_tbl() %>%
+#' tidy_bootstrap(x) |>
+#'   bootstrap_unnest_tbl() |>
 #'   bootstrap_density_augment()
 #'
 #' @return
@@ -56,7 +56,7 @@ bootstrap_density_augment <- function(.data) {
 
   # Add density data
   if (atb$tibble_type == "tidy_bootstrap_nested") {
-    df_tbl <- dplyr::as_tibble(.data) %>%
+    df_tbl <- dplyr::as_tibble(.data) |>
       TidyDensity::bootstrap_unnest_tbl()
   }
 
@@ -64,18 +64,18 @@ bootstrap_density_augment <- function(.data) {
     df_tbl <- dplyr::as_tibble(.data)
   }
 
-  df_tbl <- df_tbl %>%
-    dplyr::nest_by(sim_number) %>%
+  df_tbl <- df_tbl |>
+    dplyr::nest_by(sim_number) |>
     dplyr::mutate(dens_tbl = list(
       stats::density(unlist(data),
         n = nrow(data)
-      )[c("x", "y")] %>%
-        purrr::set_names("dx", "dy") %>%
+      )[c("x", "y")] |>
+        purrr::set_names("dx", "dy") |>
         dplyr::as_tibble()
-    )) %>%
-    tidyr::unnest(cols = c(data, dens_tbl)) %>%
-    dplyr::mutate(x = dplyr::row_number()) %>%
-    dplyr::ungroup() %>%
+    )) |>
+    tidyr::unnest(cols = c(data, dens_tbl)) |>
+    dplyr::mutate(x = dplyr::row_number()) |>
+    dplyr::ungroup() |>
     dplyr::select(sim_number, x, y, dx, dy, dplyr::everything())
 
   # Return

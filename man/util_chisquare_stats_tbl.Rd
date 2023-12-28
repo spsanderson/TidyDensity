@@ -23,8 +23,8 @@ passed from a \code{tidy_} distribution function.
 \examples{
 library(dplyr)
 
-tidy_chisquare() \%>\%
-  util_chisquare_stats_tbl() \%>\%
+tidy_chisquare() |>
+  util_chisquare_stats_tbl() |>
   glimpse()
 
 }

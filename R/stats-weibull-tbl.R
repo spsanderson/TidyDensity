@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_weibull() %>%
-#'   util_weibull_stats_tbl() %>%
+#' tidy_weibull() |>
+#'   util_weibull_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

@@ -25,12 +25,12 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' tg <- tidy_geometric(.prob = .1) %>% pull(y)
+#' tg <- tidy_geometric(.prob = .1) |> pull(y)
 #' output <- util_geometric_param_estimate(tg)
 #'
 #' output$parameter_tbl
 #'
-#' output$combined_data_tbl %>%
+#' output$combined_data_tbl |>
 #'   tidy_combined_autoplot()
 #'
 #' @return

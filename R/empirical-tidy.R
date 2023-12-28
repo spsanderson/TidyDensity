@@ -41,35 +41,35 @@ tidy_empirical <- function(.x, .num_sims = 1, .distribution_type = "continuous")
   ## New P
   e <- stats::ecdf(x_term)
 
-  df <- dplyr::tibble(sim_number = as.factor(1:num_sims)) %>%
-    dplyr::group_by(sim_number) %>%
-    dplyr::mutate(x = list(1:n)) %>%
+  df <- dplyr::tibble(sim_number = as.factor(1:num_sims)) |>
+    dplyr::group_by(sim_number) |>
+    dplyr::mutate(x = list(1:n)) |>
     dplyr::mutate(y = ifelse(
       num_sims == 1,
       list(x_term),
       list(sample(x_term, replace = TRUE))
-    )) %>%
-    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] %>%
-      purrr::set_names("dx", "dy") %>%
-      dplyr::as_tibble())) %>%
-    dplyr::mutate(p = list(e(unlist(y)))) %>%
-    dplyr::mutate(q = NA) %>%
-    tidyr::unnest(cols = c(x, y, d, p, q)) %>%
+    )) |>
+    dplyr::mutate(d = list(density(unlist(y), n = n)[c("x", "y")] |>
+      purrr::set_names("dx", "dy") |>
+      dplyr::as_tibble())) |>
+    dplyr::mutate(p = list(e(unlist(y)))) |>
+    dplyr::mutate(q = NA) |>
+    tidyr::unnest(cols = c(x, y, d, p, q)) |>
     dplyr::ungroup()
 
-  q_vec <- df %>%
-    dplyr::select(sim_number, y) %>%
-    dplyr::group_by(sim_number) %>%
+  q_vec <- df |>
+    dplyr::select(sim_number, y) |>
+    dplyr::group_by(sim_number) |>
     dplyr::mutate(
       q = rep(
         stats::quantile(y, probs = seq(0, 1, 1 / (n - 1)), type = 1),
         1
       )
-    ) %>%
-    dplyr::ungroup() %>%
+    ) |>
+    dplyr::ungroup() |>
     dplyr::select(q)
 
-  df <- df %>%
+  df <- df |>
     dplyr::mutate(q = q_vec$q)
 
   # Attach descriptive attributes to tibble
@@ -108,24 +108,24 @@ tidy_empirical <- function(.x, .num_sims = 1, .distribution_type = "continuous")
 #
 #   p_vec <- dft$y
 #
-#   df <- dplyr::tibble(sim_number = as.factor(1)) %>%
-#     dplyr::group_by(sim_number) %>%
-#     dplyr::mutate(x = list(1:n)) %>%
-#     dplyr::mutate(y = NA) %>%
-#     dplyr::mutate(d = list(density(unlist(x), n = n)[c("x", "y")] %>%
-#       purrr::set_names("dx", "dy") %>%
-#       dplyr::as_tibble())) %>%
-#     dplyr::mutate(p = list(p_vec)) %>%
-#     dplyr::mutate(q = NA) %>%
-#     dplyr::mutate(y = list(d[[1]][["dy"]])) %>%
-#     tidyr::unnest(cols = c(x, y, d, p, q)) %>%
+#   df <- dplyr::tibble(sim_number = as.factor(1)) |>
+#     dplyr::group_by(sim_number) |>
+#     dplyr::mutate(x = list(1:n)) |>
+#     dplyr::mutate(y = NA) |>
+#     dplyr::mutate(d = list(density(unlist(x), n = n)[c("x", "y")] |>
+#       purrr::set_names("dx", "dy") |>
+#       dplyr::as_tibble())) |>
+#     dplyr::mutate(p = list(p_vec)) |>
+#     dplyr::mutate(q = NA) |>
+#     dplyr::mutate(y = list(d[[1]][["dy"]])) |>
+#     tidyr::unnest(cols = c(x, y, d, p, q)) |>
 #     dplyr::ungroup()
 #
-#   q_vec <- stats::quantile(df$y, probs = seq(0, 1, 1 / (n - 1)), type = 1) %>%
-#     dplyr::as_tibble() %>%
+#   q_vec <- stats::quantile(df$y, probs = seq(0, 1, 1 / (n - 1)), type = 1) |>
+#     dplyr::as_tibble() |>
 #     dplyr::rename("q" = "value")
 #
-#   df <- df %>%
+#   df <- df |>
 #     dplyr::mutate(q = q_vec$q)
 #
 #   attr(df, ".x") <- .x

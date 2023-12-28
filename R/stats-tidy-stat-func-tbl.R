@@ -107,13 +107,13 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
     # # Benchmark ran 25 at 15.13 seconds
     # # Thank you Akrun https://stackoverflow.com/questions/73938515/keep-names-from-quantile-function-when-used-in-a-data-table/73938561#73938561
     if (atb$tibble_type == "tidy_bootstrap_nested") {
-        dt <- dplyr::as_tibble(.data) %>%
-            TidyDensity::bootstrap_unnest_tbl() %>%
-            dplyr::select(sim_number, {{ value_var_expr }}) %>%
+        dt <- dplyr::as_tibble(.data) |>
+            TidyDensity::bootstrap_unnest_tbl() |>
+            dplyr::select(sim_number, {{ value_var_expr }}) |>
             data.table::as.data.table()
     } else {
-        dt <- dplyr::as_tibble(.data) %>%
-            dplyr::select(sim_number, {{ value_var_expr }}) %>%
+        dt <- dplyr::as_tibble(.data) |>
+            dplyr::select(sim_number, {{ value_var_expr }}) |>
             data.table::as.data.table()
     }
 
@@ -123,9 +123,9 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
       dt[, as.list(func(.SD[[1]], ...)), by = sim_number, .SDcols = .x],
       id.var = "sim_number",
       value.name = func_chr
-    ) %>%
-      dplyr::as_tibble() %>%
-      dplyr::arrange(sim_number, variable) %>%
+    ) |>
+      dplyr::as_tibble() |>
+      dplyr::arrange(sim_number, variable) |>
       dplyr::rename(name = variable)
 
     return(ret)
@@ -134,24 +134,24 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
   # Check to see if it is a bootstrap tibble first
   # Is it a Bootstrap Nested tibble?
   if (atb$tibble_type == "tidy_bootstrap_nested") {
-    df_tbl <- dplyr::as_tibble(.data) %>%
-      TidyDensity::bootstrap_unnest_tbl() %>%
-      split(.$sim_number) %>%
-      purrr::map(.f = ~ .x %>% dplyr::pull(y))
+    df_tbl <- dplyr::as_tibble(.data) |>
+      TidyDensity::bootstrap_unnest_tbl()
+    df_tbl <- base::split(df_tbl, df_tbl$sim_number) |>
+      purrr::map(\(x) x |> dplyr::pull(y))
   }
 
   # Is it an unnested bootstrap tibble?
   if (atb$tibble_type == "tidy_bootstrap") {
-    df_tbl <- dplyr::as_tibble(.data) %>%
-      split(.$sim_number) %>%
-      purrr::map(.f = ~ .x %>% dplyr::pull(y))
+    df_tbl <- dplyr::as_tibble(.data)
+    df_tbl <- base::split(df_tbl, df_tbl$sim_number) |>
+      purrr::map(\(x) x |> dplyr::pull(y))
   }
 
   # If regular tidy_ dist tibble ----
   if (!atb$tibble_type %in% c("tidy_bootstrap", "tidy_bootstrap_nested")) {
-    df_tbl <- dplyr::as_tibble(.data) %>%
-      split(.$sim_number) %>%
-      purrr::map(.f = ~ .x %>% dplyr::pull({{ value_var_expr }}))
+    df_tbl <- dplyr::as_tibble(.data)
+    df_tbl <- base::split(df_tbl, df_tbl$sim_number) |>
+      purrr::map(\(x) x |> dplyr::pull({{ value_var_expr }}))
   }
 
   # New Param Args ----
@@ -205,22 +205,22 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
     )
 
     if (is.null(args)) {
-      ret <- ret %>%
-        purrr::map(~ cbind(.x, name = names(.x))) %>%
-        purrr::imap(~ cbind(.x, sim_number = .y)) %>%
-        purrr::map_df(dplyr::as_tibble) %>%
-        dplyr::select(sim_number, .x, dplyr::everything()) %>%
-        dplyr::mutate(.x = as.numeric(.x)) %>%
-        dplyr::mutate(sim_number = factor(sim_number)) %>%
+      ret <- ret |>
+        purrr::map(~ cbind(.x, name = names(.x))) |>
+        purrr::imap(~ cbind(.x, sim_number = .y)) |>
+        purrr::map_df(dplyr::as_tibble) |>
+        dplyr::select(sim_number, .x, dplyr::everything()) |>
+        dplyr::mutate(.x = as.numeric(.x)) |>
+        dplyr::mutate(sim_number = factor(sim_number)) |>
         dplyr::rename(value = .x)
     } else {
-      ret <- ret %>%
-        purrr::map(~ cbind(.x, name = names(.x))) %>%
-        purrr::imap(.f = ~ cbind(.x, sim_number = .y)) %>%
-        purrr::map_df(dplyr::as_tibble) %>%
-        dplyr::select(sim_number, .x, dplyr::everything()) %>%
-        dplyr::mutate(.x = as.numeric(.x)) %>%
-        dplyr::mutate(sim_number = factor(sim_number)) %>%
+      ret <- ret |>
+        purrr::map(~ cbind(.x, name = names(.x))) |>
+        purrr::imap(.f = ~ cbind(.x, sim_number = .y)) |>
+        purrr::map_df(dplyr::as_tibble) |>
+        dplyr::select(sim_number, .x, dplyr::everything()) |>
+        dplyr::mutate(.x = as.numeric(.x)) |>
+        dplyr::mutate(sim_number = factor(sim_number)) |>
         dplyr::rename(value = .x)
     }
 
@@ -228,13 +228,13 @@ tidy_stat_tbl <- function(.data, .x = y, .fns, .return_type = "vector",
     if ("name" %in% names(ret)) {
       names(ret) <- cn
     } else {
-      ret <- ret %>%
+      ret <- ret |>
         dplyr::mutate(name = 1)
 
       names(ret) <- cn
     }
 
-    ret <- ret %>% dplyr::select(sim_number, name, dplyr::everything())
+    ret <- ret |> dplyr::select(sim_number, name, dplyr::everything())
   }
 
   # Return

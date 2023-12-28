@@ -44,7 +44,7 @@ output <- util_negative_binomial_param_estimate(x, .size = 1)
 
 output$parameter_tbl
 
-output$combined_data_tbl \%>\%
+output$combined_data_tbl |>
   tidy_combined_autoplot()
 
 t <- rnbinom(50, 1, .1)

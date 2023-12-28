@@ -74,11 +74,11 @@ tidy_bootstrap <- function(.x, .num_sims = 2000, .proportion = 0.8,
   }
 
   # Data ----
-  df <- dplyr::tibble(sim_number = as.factor(1:num_sims)) %>%
-    dplyr::group_by(sim_number) %>%
+  df <- dplyr::tibble(sim_number = as.factor(1:num_sims)) |>
+    dplyr::group_by(sim_number) |>
     dplyr::mutate(bootstrap_samples = list(
       sample(x = x_term, size = floor(prop * n), replace = TRUE)
-    )) %>%
+    )) |>
     dplyr::ungroup()
 
   # Attach descriptive attributes to tibble

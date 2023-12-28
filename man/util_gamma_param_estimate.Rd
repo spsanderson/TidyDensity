@@ -31,12 +31,12 @@ This function will see if the given vector \code{.x} is a numeric vector.
 library(dplyr)
 library(ggplot2)
 
-tg <- tidy_gamma(.shape = 1, .scale = .3) \%>\% pull(y)
+tg <- tidy_gamma(.shape = 1, .scale = .3) |> pull(y)
 output <- util_gamma_param_estimate(tg)
 
 output$parameter_tbl
 
-output$combined_data_tbl \%>\%
+output$combined_data_tbl |>
   tidy_combined_autoplot()
 
 }

@@ -27,12 +27,12 @@
 #' will return an interactive `plotly` plot.
 #'
 #' @examples
-#' tidy_normal(.sd = .1, .num_sims = 5) %>%
-#'   tidy_random_walk(.value_type = "cum_sum") %>%
+#' tidy_normal(.sd = .1, .num_sims = 5) |>
+#'   tidy_random_walk(.value_type = "cum_sum") |>
 #'   tidy_random_walk_autoplot()
 #'
-#' tidy_normal(.sd = .1, .num_sims = 20) %>%
-#'   tidy_random_walk(.value_type = "cum_sum", .sample = TRUE, .replace = TRUE) %>%
+#' tidy_normal(.sd = .1, .num_sims = 20) |>
+#'   tidy_random_walk(.value_type = "cum_sum", .sample = TRUE, .replace = TRUE) |>
 #'   tidy_random_walk_autoplot()
 #'
 #' @return
@@ -51,8 +51,8 @@ tidy_random_walk_autoplot <- function(.data, .line_size = .5, .geom_rug = FALSE,
   atb <- attributes(.data)
   n <- atb$all$.n
   sims <- atb$all$.num_sims
-  # dist_type <- stringr::str_remove(atb$all$tibble_type, "tidy_") %>%
-  #   stringr::str_replace_all(pattern = "_", " ") %>%
+  # dist_type <- stringr::str_remove(atb$all$tibble_type, "tidy_") |>
+  #   stringr::str_replace_all(pattern = "_", " ") |>
   #   stringr::str_to_title()
   dist_type <- dist_type_extractor(atb$all$tibble_type)
 
@@ -160,7 +160,7 @@ tidy_random_walk_autoplot <- function(.data, .line_size = .5, .geom_rug = FALSE,
   data_tbl <- dplyr::as_tibble(.data)
 
   # Plot ----
-  plt <- data_tbl %>%
+  plt <- data_tbl |>
     ggplot2::ggplot(ggplot2::aes(
       x = x, y = random_walk_value,
       group = sim_number, color = sim_number

@@ -32,10 +32,10 @@
 #'
 #' output$parameter_tbl
 #'
-#' output$combined_data_tbl %>%
+#' output$combined_data_tbl |>
 #'   tidy_combined_autoplot()
 #'
-#' tb <- tidy_lognormal(.meanlog = 2, .sdlog = 1) %>% pull(y)
+#' tb <- tidy_lognormal(.meanlog = 2, .sdlog = 1) |> pull(y)
 #' util_lognormal_param_estimate(tb)$parameter_tbl
 #'
 #' @return

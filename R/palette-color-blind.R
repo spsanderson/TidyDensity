@@ -19,7 +19,7 @@ color_blind <- function() {
 #' @export
 td_scale_fill_colorblind <- function(..., theme = "td") {
   pal <- switch(theme,
-    "td" = unname(color_blind()) %>% rep(100)
+    "td" = unname(color_blind()) |> rep(100)
   )
 
   ggplot2::scale_fill_manual(values = pal)
@@ -33,7 +33,7 @@ td_scale_fill_colorblind <- function(..., theme = "td") {
 #' @export
 td_scale_color_colorblind <- function(..., theme = "td") {
   pal <- switch(theme,
-    "td" = unname(color_blind()) %>% rep(100)
+    "td" = unname(color_blind()) |> rep(100)
   )
 
   ggplot2::scale_color_manual(values = pal)

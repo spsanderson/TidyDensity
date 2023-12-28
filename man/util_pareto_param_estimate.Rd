@@ -42,10 +42,10 @@ output <- util_pareto_param_estimate(x)
 
 output$parameter_tbl
 
-output$combined_data_tbl \%>\%
+output$combined_data_tbl |>
   tidy_combined_autoplot()
 
-t <- tidy_pareto(50, 1, 1) \%>\% pull(y)
+t <- tidy_pareto(50, 1, 1) |> pull(y)
 util_pareto_param_estimate(t)$parameter_tbl
 
 }

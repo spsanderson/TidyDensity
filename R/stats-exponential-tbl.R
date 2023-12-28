@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_exponential() %>%
-#'   util_exponential_stats_tbl() %>%
+#' tidy_exponential() |>
+#'   util_exponential_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

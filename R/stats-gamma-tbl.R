@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_gamma() %>%
-#'   util_gamma_stats_tbl() %>%
+#' tidy_gamma() |>
+#'   util_gamma_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

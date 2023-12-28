@@ -29,11 +29,11 @@ those functions.
 \examples{
 x <- mtcars$mpg
 
-tidy_bootstrap(x) \%>\%
+tidy_bootstrap(x) |>
   bootstrap_density_augment()
 
-tidy_bootstrap(x) \%>\%
-  bootstrap_unnest_tbl() \%>\%
+tidy_bootstrap(x) |>
+  bootstrap_unnest_tbl() |>
   bootstrap_density_augment()
 
 }

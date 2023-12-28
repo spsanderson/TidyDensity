@@ -61,7 +61,7 @@ output <- util_hypergeometric_param_estimate(th, .total = 50, .k = 5)
 
 output$parameter_tbl
 
-output$combined_data_tbl \%>\%
+output$combined_data_tbl |>
   tidy_combined_autoplot()
 
 }
