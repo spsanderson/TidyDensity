@@ -96,88 +96,88 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous",
 
     # Get parameter estimates for distributions
     if (dist_type == "continuous") {
-        b <- try(util_beta_param_estimate(x_term)$parameter_tbl %>%
-                     dplyr::filter(method == "NIST_MME") %>%
-                     dplyr::select(dist_type, shape1, shape2) %>%
+        b <- try(util_beta_param_estimate(x_term)$parameter_tbl |>
+                     dplyr::filter(method == "NIST_MME") |>
+                     dplyr::select(dist_type, shape1, shape2) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(b, "try-error")) {
             tb <- tidy_beta(.n = n, .shape1 = round(b[[2]], rt), .shape2 = round(b[[3]], rt))
         }
 
-        c <- try(util_cauchy_param_estimate(x_term)$parameter_tbl %>%
-                     dplyr::select(dist_type, location, scale) %>%
+        c <- try(util_cauchy_param_estimate(x_term)$parameter_tbl |>
+                     dplyr::select(dist_type, location, scale) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(c, "try-error")) {
             tc <- tidy_cauchy(.n = n, .location = round(c[[2]], rt), .scale = round(c[[3]], rt))
         }
 
-        e <- try(util_exponential_param_estimate(x_term)$parameter_tbl %>%
-                     dplyr::select(dist_type, rate) %>%
-                     dplyr::mutate(param_2 = NA) %>%
+        e <- try(util_exponential_param_estimate(x_term)$parameter_tbl |>
+                     dplyr::select(dist_type, rate) |>
+                     dplyr::mutate(param_2 = NA) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(e, "try-error")) {
             te <- tidy_exponential(.n = n, .rate = round(e[[2]], rt))
         }
 
-        g <- try(util_gamma_param_estimate(x_term)$parameter_tbl %>%
-                     dplyr::filter(method == "NIST_MME") %>%
-                     dplyr::select(dist_type, shape, scale) %>%
+        g <- try(util_gamma_param_estimate(x_term)$parameter_tbl |>
+                     dplyr::filter(method == "NIST_MME") |>
+                     dplyr::select(dist_type, shape, scale) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(g, "try-error")) {
             tg <- tidy_gamma(.n = n, .shape = round(g[[2]], rt), .scale = round(g[[3]], rt))
         }
 
-        l <- try(util_logistic_param_estimate(x_term)$parameter_tbl %>%
-                     dplyr::filter(method == "EnvStats_MME") %>%
-                     dplyr::select(dist_type, location, scale) %>%
+        l <- try(util_logistic_param_estimate(x_term)$parameter_tbl |>
+                     dplyr::filter(method == "EnvStats_MME") |>
+                     dplyr::select(dist_type, location, scale) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(l, "try-error")) {
             tl <- tidy_logistic(.n = n, .location = round(l[[2]], rt), .scale = round(l[[3]], rt))
         }
 
-        ln <- try(util_lognormal_param_estimate(x_term)$parameter_tbl %>%
-                      dplyr::filter(method == "EnvStats_MME") %>%
-                      dplyr::select(dist_type, mean_log, sd_log) %>%
+        ln <- try(util_lognormal_param_estimate(x_term)$parameter_tbl |>
+                      dplyr::filter(method == "EnvStats_MME") |>
+                      dplyr::select(dist_type, mean_log, sd_log) |>
                       purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(ln, "try-error")) {
             tln <- tidy_lognormal(.n = n, .meanlog = round(ln[[2]], rt), .sdlog = round(ln[[3]], rt))
         }
 
-        p <- try(util_pareto_param_estimate(x_term)$parameter_tbl %>%
-                     dplyr::filter(method == "MLE") %>%
-                     dplyr::select(dist_type, shape, scale) %>%
+        p <- try(util_pareto_param_estimate(x_term)$parameter_tbl |>
+                     dplyr::filter(method == "MLE") |>
+                     dplyr::select(dist_type, shape, scale) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(p, "try-error")) {
             tp <- tidy_pareto(.n = n, .shape = round(p[[2]], rt), .scale = round(p[[3]], rt))
         }
 
-        u <- try(util_uniform_param_estimate(x_term)$parameter_tbl %>%
-                     dplyr::filter(method == "NIST_MME") %>%
-                     dplyr::select(dist_type, min_est, max_est) %>%
+        u <- try(util_uniform_param_estimate(x_term)$parameter_tbl |>
+                     dplyr::filter(method == "NIST_MME") |>
+                     dplyr::select(dist_type, min_est, max_est) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(u, "try-error")) {
             tu <- tidy_uniform(.n = n, .min = round(u[[2]], rt), .max = round(u[[3]], rt))
         }
 
-        w <- try(util_weibull_param_estimate(x_term)$parameter_tbl %>%
-                     dplyr::select(dist_type, shape, scale) %>%
+        w <- try(util_weibull_param_estimate(x_term)$parameter_tbl |>
+                     dplyr::select(dist_type, shape, scale) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(w, "try-error")) {
             tw <- tidy_weibull(.n = n, .shape = round(w[[2]], rt), .scale = round(w[[3]], rt))
         }
 
-        nn <- try(util_normal_param_estimate(x_term)$parameter_tbl %>%
-                      dplyr::filter(method == "EnvStats_MME_MLE") %>%
-                      dplyr::select(dist_type, mu, stan_dev) %>%
+        nn <- try(util_normal_param_estimate(x_term)$parameter_tbl |>
+                      dplyr::filter(method == "EnvStats_MME_MLE") |>
+                      dplyr::select(dist_type, mu, stan_dev) |>
                       purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(n, "try-error")) {
@@ -218,28 +218,28 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous",
             }
         )
     } else {
-        bn <- try(util_binomial_param_estimate(trunc(tidy_scale_zero_one_vec(x_term)))$parameter_tbl %>%
-                      dplyr::select(dist_type, size, prob) %>%
+        bn <- try(util_binomial_param_estimate(trunc(tidy_scale_zero_one_vec(x_term)))$parameter_tbl |>
+                      dplyr::select(dist_type, size, prob) |>
                       purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(bn, "try-error")) {
             tb <- tidy_binomial(.n = n, .size = round(bn[[2]], rt), .prob = round(bn[[3]], rt))
         }
 
-        ge <- try(util_geometric_param_estimate(trunc(x_term))$parameter_tbl %>%
-                      dplyr::filter(method == "EnvStats_MME") %>%
-                      dplyr::select(dist_type, shape) %>%
-                      dplyr::mutate(param_2 = NA) %>%
+        ge <- try(util_geometric_param_estimate(trunc(x_term))$parameter_tbl |>
+                      dplyr::filter(method == "EnvStats_MME") |>
+                      dplyr::select(dist_type, shape) |>
+                      dplyr::mutate(param_2 = NA) |>
                       purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(ge, "try-error")) {
             tg <- tidy_geometric(.n = n, .prob = round(ge[[2]], rt))
         }
 
-        h <- try(util_hypergeometric_param_estimate(.x = trunc(x_term), .total = n, .k = n)$parameter_tbl %>%
-                     tidyr::drop_na() %>%
-                     dplyr::slice(1) %>%
-                     dplyr::select(dist_type, m, total) %>%
+        h <- try(util_hypergeometric_param_estimate(.x = trunc(x_term), .total = n, .k = n)$parameter_tbl |>
+                     tidyr::drop_na() |>
+                     dplyr::slice(1) |>
+                     dplyr::select(dist_type, m, total) |>
                      purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(h, "try-error")) {
@@ -251,9 +251,9 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous",
             )
         }
 
-        po <- try(util_poisson_param_estimate(trunc(x_term))$parameter_tbl %>%
-                      dplyr::select(dist_type, lambda) %>%
-                      dplyr::mutate(param_2 = NA) %>%
+        po <- try(util_poisson_param_estimate(trunc(x_term))$parameter_tbl |>
+                      dplyr::select(dist_type, lambda) |>
+                      dplyr::mutate(param_2 = NA) |>
                       purrr::set_names("dist_type", "param_1", "param_2"))
 
         if (!inherits(po, "try-error")) {
@@ -278,69 +278,69 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous",
     }
 
     # Deviance calculations ----
-    deviance_tbl <- comp_tbl %>%
-        dplyr::select(dist_type, x, y) %>%
-        dplyr::group_by(dist_type, x) %>%
-        dplyr::mutate(y = stats::median(y)) %>%
-        dplyr::ungroup() %>%
-        dplyr::group_by(dist_type) %>%
-        dplyr::mutate(y = tidy_scale_zero_one_vec(y)) %>%
-        dplyr::ungroup() %>%
+    deviance_tbl <- comp_tbl |>
+        dplyr::select(dist_type, x, y) |>
+        dplyr::group_by(dist_type, x) |>
+        dplyr::mutate(y = stats::median(y)) |>
+        dplyr::ungroup() |>
+        dplyr::group_by(dist_type) |>
+        dplyr::mutate(y = tidy_scale_zero_one_vec(y)) |>
+        dplyr::ungroup() |>
         tidyr::pivot_wider(
             id_cols = x,
             names_from = dist_type,
             values_from = y
-        ) %>%
-        dplyr::select(x, Empirical, dplyr::everything()) %>%
+        ) |>
+        dplyr::select(x, Empirical, dplyr::everything()) |>
         dplyr::mutate(
             dplyr::across(
                 .cols = -c(x, Empirical),
                 .fns = ~ Empirical - .
             )
-        ) %>%
-        tidyr::drop_na() %>%
+        ) |>
+        tidyr::drop_na() |>
         tidyr::pivot_longer(
             cols = -x
-        ) %>%
+        ) |>
         dplyr::select(-x)
 
-    total_deviance_tbl <- deviance_tbl %>%
-        dplyr::filter(!name == "Empirical") %>%
-        dplyr::group_by(name) %>%
-        dplyr::summarise(total_deviance = sum(value)) %>%
-        dplyr::ungroup() %>%
-        dplyr::mutate(total_deviance = abs(total_deviance)) %>%
-        dplyr::arrange(abs(total_deviance)) %>%
+    total_deviance_tbl <- deviance_tbl |>
+        dplyr::filter(!name == "Empirical") |>
+        dplyr::group_by(name) |>
+        dplyr::summarise(total_deviance = sum(value)) |>
+        dplyr::ungroup() |>
+        dplyr::mutate(total_deviance = abs(total_deviance)) |>
+        dplyr::arrange(abs(total_deviance)) |>
         dplyr::rename(
             dist_with_params = name,
             abs_tot_deviance = total_deviance
         )
 
     # AIC Data ----
-    emp_data_tbl <- comp_tbl %>%
-        dplyr::select(dist_type, x, dy) %>%
+    emp_data_tbl <- comp_tbl |>
+        dplyr::select(dist_type, x, dy) |>
         dplyr::filter(dist_type == "Empirical")
 
-    aic_tbl <- comp_tbl %>%
-        dplyr::filter(!dist_type == "Empirical") %>%
-        dplyr::select(dist_type, dy) %>%
-        tidyr::nest(data = dy) %>%
+    aic_tbl <- comp_tbl |>
+        dplyr::filter(!dist_type == "Empirical") |>
+        dplyr::select(dist_type, dy) |>
+        tidyr::nest(data = dy) |>
         dplyr::mutate(
             lm_model = purrr::map(
                 data,
                 function(df) stats::lm(dy ~ emp_data_tbl$dy, data = df)
             )
-        ) %>%
-        dplyr::mutate(aic_value = purrr::map(lm_model, stats::AIC)) %>%
-        dplyr::mutate(aic_value = unlist(aic_value)) %>%
-        dplyr::mutate(abs_aic = abs(aic_value)) %>%
-        dplyr::arrange(abs_aic) %>%
+        ) |>
+        dplyr::mutate(aic_value = purrr::map(lm_model, stats::AIC)) |>
+        dplyr::mutate(aic_value = unlist(aic_value)) |>
+        dplyr::mutate(abs_aic = abs(aic_value)) |>
+        dplyr::arrange(abs_aic) |>
         dplyr::select(dist_type, aic_value, abs_aic)
 
-    ks_tbl <- comp_tbl %>%
-        dplyr::filter(dist_type != "Empirical") %>%
-        dplyr::select(dist_type, dy) %>%
-        tidyr::nest(data = dy) %>%
+    ks_tbl <- comp_tbl |>
+        dplyr::filter(dist_type != "Empirical") |>
+        dplyr::select(dist_type, dy) |>
+        tidyr::nest(data = dy) |>
         dplyr::mutate(
             ks = purrr::map(
                 .x = data,
@@ -352,20 +352,20 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous",
                 )
             ),
             tidy_ks = purrr::map(ks, broom::tidy)
-        ) %>%
-        tidyr::unnest(cols = tidy_ks) %>%
-        dplyr::select(-c(data, ks)) %>%
-        dplyr::mutate(dist_char = as.character(dist_type)) %>%
+        ) |>
+        tidyr::unnest(cols = tidy_ks) |>
+        dplyr::select(-c(data, ks)) |>
+        dplyr::mutate(dist_char = as.character(dist_type)) |>
         purrr::set_names(
             "dist_type", "ks_statistic", "ks_pvalue", "ks_method", "alternative",
             "dist_char"
         )
 
-    multi_metric_tbl <- total_deviance_tbl %>%
-        dplyr::mutate(dist_with_params = as.factor(dist_with_params)) %>%
-        dplyr::inner_join(aic_tbl, by = c("dist_with_params" = "dist_type")) %>%
-        dplyr::inner_join(ks_tbl, by = c("dist_with_params" = "dist_char")) %>%
-        dplyr::select(dist_type, dplyr::everything(), -dist_with_params) %>%
+    multi_metric_tbl <- total_deviance_tbl |>
+        dplyr::mutate(dist_with_params = as.factor(dist_with_params)) |>
+        dplyr::inner_join(aic_tbl, by = c("dist_with_params" = "dist_type")) |>
+        dplyr::inner_join(ks_tbl, by = c("dist_with_params" = "dist_char")) |>
+        dplyr::select(dist_type, dplyr::everything(), -dist_with_params) |>
         dplyr::mutate(dist_type = as.factor(dist_type))
 
     # Return ----
