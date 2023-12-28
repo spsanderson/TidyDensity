@@ -50,10 +50,10 @@
 #'   )
 #' )
 #'
-#' tn %>%
+#' tn |>
 #'   tidy_multi_dist_autoplot()
 #'
-#' tn %>%
+#' tn |>
 #'   tidy_multi_dist_autoplot(.plot_type = "qq")
 #'
 #' @return
@@ -223,7 +223,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
   }
 
   if (plot_type == "density" & atb$all$distribution_family_type == "continuous") {
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(x = dx, y = dy, group = interaction(dist_name, sim_number), color = dist_name)
       ) +
@@ -236,7 +236,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
       ) +
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "density" & atb$all$distribution_family_type == "discrete") {
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(x = y, group = interaction(dist_name, sim_number), fill = dist_name)
       ) +
@@ -253,14 +253,14 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "quantile") {
     ## EDIT
-    data_tbl <- data_tbl %>%
-      dplyr::select(sim_number, dist_name, q) %>%
-      dplyr::group_by(sim_number, dist_name) %>%
-      dplyr::arrange(q) %>%
-      dplyr::mutate(x = 1:dplyr::n()) %>%
+    data_tbl <- data_tbl |>
+      dplyr::select(sim_number, dist_name, q) |>
+      dplyr::group_by(sim_number, dist_name) |>
+      dplyr::arrange(q) |>
+      dplyr::mutate(x = 1:dplyr::n()) |>
       dplyr::ungroup()
     ## End EDIT
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(
           x = x, y = q, group = interaction(dist_name, sim_number), color = dist_name
@@ -275,7 +275,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
       ) +
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "probability") {
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(
           x = y, group = interaction(dist_name, sim_number), color = dist_name
@@ -290,7 +290,7 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
       ) +
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "qq") {
-    plt <- data_tbl %>%
+    plt <- data_tbl |>
       ggplot2::ggplot(
         ggplot2::aes(
           sample = y, group = interaction(dist_name, sim_number), color = dist_name
@@ -306,10 +306,10 @@ tidy_multi_dist_autoplot <- function(.data, .plot_type = "density", .line_size =
       ) +
       ggplot2::theme(legend.position = leg_pos)
   } else if (plot_type == "mcmc") {
-    plt <- data_tbl %>%
-      dplyr::group_by(sim_number, dist_name) %>%
-      dplyr::mutate(cmy = dplyr::cummean(y)) %>%
-      dplyr::ungroup() %>%
+    plt <- data_tbl |>
+      dplyr::group_by(sim_number, dist_name) |>
+      dplyr::mutate(cmy = dplyr::cummean(y)) |>
+      dplyr::ungroup() |>
       ggplot2::ggplot(ggplot2::aes(
         x = x, y = cmy, group = interaction(dist_name, sim_number), color = sim_number
       )) +

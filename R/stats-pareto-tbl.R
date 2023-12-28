@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_pareto() %>%
-#'   util_pareto_stats_tbl() %>%
+#' tidy_pareto() |>
+#'   util_pareto_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

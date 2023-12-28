@@ -68,22 +68,22 @@ tidy_multi_single_dist <- function(.tidy_dist = NULL,
   names(param_grid) <- methods::formalArgs(td)
 
   # Run call on the grouped df ----
-  dff <- param_grid %>%
+  dff <- param_grid |>
     dplyr::mutate(results = purrr::pmap(dplyr::pick(dplyr::everything()), match.fun(td)))
     #dplyr::mutate(results = purrr::pmap(dplyr::cur_data(), match.fun(td)))
 
   # Get the attributes to be used later on ----
-  atb <- dff$results[[1]] %>% attributes()
+  atb <- dff$results[[1]] |> attributes()
 
   # Make Dist Type for column ----
-  # dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") %>%
-  #   stringr::str_replace_all(pattern = "_", " ") %>%
+  # dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") |>
+  #   stringr::str_replace_all(pattern = "_", " ") |>
   #   stringr::str_to_title()
 
   dist_type <- dist_type_extractor(atb$tibble_type)
 
   # Get column names from the param_grid in order to make teh dist_type column ----
-  cols <- names(param_grid %>% dplyr::select(-c(.n, .num_sims)))
+  cols <- names(param_grid |> dplyr::select(-c(.n, .num_sims)))
 
   if (length(cols) == 1) {
     dff$dist_name <- paste0(dist_type, " c(", dff[, cols], ")")
@@ -101,11 +101,11 @@ tidy_multi_single_dist <- function(.tidy_dist = NULL,
   #   ")"
   # )
 
-  df_unnested_tbl <- dff %>%
-    tidyr::unnest(results) %>%
-    dplyr::ungroup() %>%
-    dplyr::select(sim_number, dist_name, x:q) %>%
-    dplyr::mutate(dist_name = as.factor(dist_name)) %>%
+  df_unnested_tbl <- dff |>
+    tidyr::unnest(results) |>
+    dplyr::ungroup() |>
+    dplyr::select(sim_number, dist_name, x:q) |>
+    dplyr::mutate(dist_name = as.factor(dist_name)) |>
     dplyr::arrange(sim_number, dist_name)
 
   # Attach attributes ----

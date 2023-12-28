@@ -32,7 +32,7 @@
 #'
 #' output$parameter_tbl
 #'
-#' output$combined_data_tbl %>%
+#' output$combined_data_tbl |>
 #'   tidy_combined_autoplot()
 #'
 #' t <- rnorm(50, 0, 1)

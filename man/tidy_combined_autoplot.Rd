@@ -77,10 +77,10 @@ combined_tbl <- tidy_combine_distributions(
 
 combined_tbl
 
-combined_tbl \%>\%
+combined_tbl |>
   tidy_combined_autoplot()
 
-combined_tbl \%>\%
+combined_tbl |>
   tidy_combined_autoplot(.plot_type = "qq")
 
 }

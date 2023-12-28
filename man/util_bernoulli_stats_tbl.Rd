@@ -23,8 +23,8 @@ passed from a \code{tidy_} distribution function.
 \examples{
 library(dplyr)
 
-tidy_bernoulli() \%>\%
-  util_bernoulli_stats_tbl() \%>\%
+tidy_bernoulli() |>
+  util_bernoulli_stats_tbl() |>
   glimpse()
 
 }

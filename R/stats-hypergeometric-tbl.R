@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_hypergeometric() %>%
-#'   util_hypergeometric_stats_tbl() %>%
+#' tidy_hypergeometric() |>
+#'   util_hypergeometric_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

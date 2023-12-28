@@ -28,8 +28,8 @@ tibble.
 \examples{
 x <- mtcars$mpg
 
-tidy_bootstrap(x) \%>\%
-  bootstrap_unnest_tbl() \%>\%
+tidy_bootstrap(x) |>
+  bootstrap_unnest_tbl() |>
   bootstrap_q_augment(y)
 
 }

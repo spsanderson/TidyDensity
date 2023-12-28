@@ -80,10 +80,10 @@ tn <- tidy_multi_single_dist(
   )
 )
 
-tn \%>\%
+tn |>
   tidy_multi_dist_autoplot()
 
-tn \%>\%
+tn |>
   tidy_multi_dist_autoplot(.plot_type = "qq")
 
 }

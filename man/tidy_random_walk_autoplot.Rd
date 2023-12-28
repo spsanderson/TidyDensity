@@ -45,12 +45,12 @@ This function will produce a simple random walk plot from a \code{tidy_}
 distribution function.
 }
 \examples{
-tidy_normal(.sd = .1, .num_sims = 5) \%>\%
-  tidy_random_walk(.value_type = "cum_sum") \%>\%
+tidy_normal(.sd = .1, .num_sims = 5) |>
+  tidy_random_walk(.value_type = "cum_sum") |>
   tidy_random_walk_autoplot()
 
-tidy_normal(.sd = .1, .num_sims = 20) \%>\%
-  tidy_random_walk(.value_type = "cum_sum", .sample = TRUE, .replace = TRUE) \%>\%
+tidy_normal(.sd = .1, .num_sims = 20) |>
+  tidy_random_walk(.value_type = "cum_sum", .sample = TRUE, .replace = TRUE) |>
   tidy_random_walk_autoplot()
 
 }

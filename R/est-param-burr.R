@@ -25,12 +25,12 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' tb <- tidy_burr(.shape1 = 1, .shape2 = 2, .rate = .3) %>% pull(y)
+#' tb <- tidy_burr(.shape1 = 1, .shape2 = 2, .rate = .3) |> pull(y)
 #' output <- util_burr_param_estimate(tb)
 #'
 #' output$parameter_tbl
 #'
-#' output$combined_data_tbl %>%
+#' output$combined_data_tbl |>
 #'   tidy_combined_autoplot()
 #'
 #' @return

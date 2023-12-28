@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_normal() %>%
-#'   util_normal_stats_tbl() %>%
+#' tidy_normal() |>
+#'   util_normal_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

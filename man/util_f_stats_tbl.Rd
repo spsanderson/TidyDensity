@@ -23,8 +23,8 @@ passed from a \code{tidy_} distribution function.
 \examples{
 library(dplyr)
 
-tidy_f() \%>\%
-  util_f_stats_tbl() \%>\%
+tidy_f() |>
+  util_f_stats_tbl() |>
   glimpse()
 
 }

@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_geometric() %>%
-#'   util_geometric_stats_tbl() %>%
+#' tidy_geometric() |>
+#'   util_geometric_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return
@@ -50,9 +50,9 @@ util_geometric_stats_tbl <- function(.data) {
   p <- atb$.prob
 
   stat_mean <- (1 - p) / p
-  stat_mode <- data_tbl %>%
-    dplyr::filter(p == max(p)) %>%
-    dplyr::pull(y) %>%
+  stat_mode <- data_tbl |>
+    dplyr::filter(p == max(p)) |>
+    dplyr::pull(y) |>
     max()
   stat_sd <- sqrt((1 - p) / p)
   stat_skewness <- (2 - p) / sqrt(1 - p)

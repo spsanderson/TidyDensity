@@ -41,7 +41,7 @@ output <- util_binomial_param_estimate(tb)
 
 output$parameter_tbl
 
-output$combined_data_tbl \%>\%
+output$combined_data_tbl |>
   tidy_combined_autoplot()
 
 }

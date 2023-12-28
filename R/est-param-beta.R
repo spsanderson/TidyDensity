@@ -38,7 +38,7 @@
 #'
 #' output$parameter_tbl
 #'
-#' output$combined_data_tbl %>%
+#' output$combined_data_tbl |>
 #'   tidy_combined_autoplot()
 #'
 #' tb <- rbeta(50, 2.5, 1.4)

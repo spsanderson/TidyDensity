@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_lognormal() %>%
-#'   util_lognormal_stats_tbl() %>%
+#' tidy_lognormal() |>
+#'   util_lognormal_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

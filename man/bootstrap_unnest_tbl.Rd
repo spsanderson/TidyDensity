@@ -26,7 +26,7 @@ not work unless the data comes from that function.
 tb <- tidy_bootstrap(.x = mtcars$mpg)
 bootstrap_unnest_tbl(tb)
 
-bootstrap_unnest_tbl(tb) \%>\%
+bootstrap_unnest_tbl(tb) |>
   tidy_distribution_summary_tbl(sim_number)
 
 }

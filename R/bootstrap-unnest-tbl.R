@@ -18,7 +18,7 @@
 #' tb <- tidy_bootstrap(.x = mtcars$mpg)
 #' bootstrap_unnest_tbl(tb)
 #'
-#' bootstrap_unnest_tbl(tb) %>%
+#' bootstrap_unnest_tbl(tb) |>
 #'   tidy_distribution_summary_tbl(sim_number)
 #'
 #' @return
@@ -41,7 +41,7 @@ bootstrap_unnest_tbl <- function(.data) {
   }
 
   # Data ----
-  df <- tidyr::unnest(.data, bootstrap_samples) %>%
+  df <- tidyr::unnest(.data, bootstrap_samples) |>
     purrr::set_names("sim_number", "y")
 
   # Return ----

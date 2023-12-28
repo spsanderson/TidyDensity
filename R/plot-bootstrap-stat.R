@@ -42,10 +42,10 @@
 #' @examples
 #' x <- mtcars$mpg
 #'
-#' tidy_bootstrap(x) %>%
+#' tidy_bootstrap(x) |>
 #'   bootstrap_stat_plot(y, "cmean")
 #'
-#' tidy_bootstrap(x, .num_sims = 10) %>%
+#' tidy_bootstrap(x, .num_sims = 10) |>
 #'   bootstrap_stat_plot(y,
 #'     .stat = "chmean", .show_groups = TRUE,
 #'     .show_ci_label = FALSE
@@ -99,7 +99,7 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
 
   # Data ----
   if (atb$tibble_type == "tidy_bootstrap_nested") {
-    df_tbl <- dplyr::as_tibble(.data) %>%
+    df_tbl <- dplyr::as_tibble(.data) |>
       TidyDensity::bootstrap_unnest_tbl()
   }
 
@@ -109,8 +109,8 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
 
   # Manipulation
   if (show_groups) {
-    df_tbl <- df_tbl %>%
-      dplyr::group_by(sim_number) %>%
+    df_tbl <- df_tbl |>
+      dplyr::group_by(sim_number) |>
       dplyr::mutate(
         stat = switch(stat_fn,
           "cmean" = TidyDensity::cmean(y),
@@ -126,17 +126,17 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
           "cskewness" = TidyDensity::cskewness(y),
           "ckurtosis" = TidyDensity::ckurtosis(y)
         )
-      ) %>%
-      dplyr::mutate(x = dplyr::row_number()) %>%
-      dplyr::ungroup() %>%
-      dplyr::group_by(x) %>%
-      dplyr::mutate(cil = TidyDensity::ci_lo(stat, .na_rm = TRUE)) %>%
-      dplyr::mutate(cih = TidyDensity::ci_hi(stat, .na_rm = TRUE)) %>%
-      dplyr::mutate(mstat = mean(stat, na.rm = TRUE)) %>%
+      ) |>
+      dplyr::mutate(x = dplyr::row_number()) |>
+      dplyr::ungroup() |>
+      dplyr::group_by(x) |>
+      dplyr::mutate(cil = TidyDensity::ci_lo(stat, .na_rm = TRUE)) |>
+      dplyr::mutate(cih = TidyDensity::ci_hi(stat, .na_rm = TRUE)) |>
+      dplyr::mutate(mstat = mean(stat, na.rm = TRUE)) |>
       dplyr::ungroup()
   } else {
-    df_tbl <- df_tbl %>%
-      dplyr::group_by(sim_number) %>%
+    df_tbl <- df_tbl |>
+      dplyr::group_by(sim_number) |>
       dplyr::mutate(
         stat = switch(stat_fn,
           "cmean" = TidyDensity::cmean(y),
@@ -152,15 +152,15 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
           "cskewness" = TidyDensity::cskewness(y),
           "ckurtosis" = TidyDensity::ckurtosis(y)
         )
-      ) %>%
-      dplyr::mutate(x = dplyr::row_number()) %>%
-      dplyr::ungroup() %>%
-      dplyr::group_by(x) %>%
+      ) |>
+      dplyr::mutate(x = dplyr::row_number()) |>
+      dplyr::ungroup() |>
+      dplyr::group_by(x) |>
       dplyr::summarise(
         cil = TidyDensity::ci_lo(stat, .na_rm = TRUE),
         cih = TidyDensity::ci_hi(stat, .na_rm = TRUE),
         stat = mean(stat, na.rm = TRUE)
-      ) %>%
+      ) |>
       dplyr::ungroup()
   }
 
@@ -183,7 +183,7 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
   sub_title <- paste0("Cumulative Statistic: ", y_txt)
   cap <- paste0("Simulations: ", atb$.num_sims)
   if (show_groups) {
-    p <- df_tbl %>%
+    p <- df_tbl |>
       ggplot2::ggplot(ggplot2::aes(x = x, y = stat, group = sim_number)) +
       ggplot2::geom_line(color = "lightgray") +
       ggplot2::geom_line(ggplot2::aes(y = mstat),
@@ -206,7 +206,7 @@ bootstrap_stat_plot <- function(.data, .value, .stat = "cmean",
         caption = cap
       )
   } else {
-    p <- df_tbl %>%
+    p <- df_tbl |>
       ggplot2::ggplot(ggplot2::aes(x = x, y = stat)) +
       ggplot2::geom_line(color = "red", linetype = "dashed") +
       ggplot2::geom_line(ggplot2::aes(y = cil),

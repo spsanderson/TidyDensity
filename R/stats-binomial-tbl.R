@@ -16,8 +16,8 @@
 #' @examples
 #' library(dplyr)
 #'
-#' tidy_binomial() %>%
-#'   util_binomial_stats_tbl() %>%
+#' tidy_binomial() |>
+#'   util_binomial_stats_tbl() |>
 #'   glimpse()
 #'
 #' @return

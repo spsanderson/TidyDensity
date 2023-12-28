@@ -25,12 +25,12 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' tb <- tidy_bernoulli(.prob = .1) %>% pull(y)
+#' tb <- tidy_bernoulli(.prob = .1) |> pull(y)
 #' output <- util_bernoulli_param_estimate(tb)
 #'
 #' output$parameter_tbl
 #'
-#' output$combined_data_tbl %>%
+#' output$combined_data_tbl |>
 #'   tidy_combined_autoplot()
 #'
 #' @return

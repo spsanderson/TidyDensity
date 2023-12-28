@@ -33,7 +33,7 @@
 #'
 #' output$parameter_tbl
 #'
-#' output$combined_data_tbl %>%
+#' output$combined_data_tbl |>
 #'   tidy_combined_autoplot()
 #'
 #' t <- rnbinom(50, 1, .1)
