@@ -62,10 +62,31 @@ cvar <- function(.x) {
 #'
 
 cskewness <- function(.x) {
-  skewness <- function(.x) {
-    sqrt(length(.x)) * sum((.x - mean(.x))^3) / (sum((.x - mean(.x))^2)^(3 / 2))
+  n <- length(.x)
+
+  if (n == 0L) {
+    return(.x)
+  } else if (n == 1L) {
+    return(0)
   }
-  sapply(seq_along(.x), function(k, z) skewness(z[1:k]), z = .x)
+
+  m2 <- m3  <- term1 <- 0
+  out <- numeric(n)
+  out[1] <- NaN
+  m1 <- .x[1]
+
+  for (i in 2:n) {
+    n0 <- i - 1
+    delta <- x[i] - m1
+    delta_n <- delta/i
+    m1 <- m1 + delta_n
+    term1 <- delta*delta_n*n0
+    m3 <- m3 + term1*delta_n*(n0 - 1) - 3*delta_n*m2
+    m2 <- m2 + term1
+    out[i] <- sqrt(i)*m3/m2^1.5
+  }
+
+  out
 }
 
 #' Cumulative Kurtosis
