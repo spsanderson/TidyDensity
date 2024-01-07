@@ -26,6 +26,8 @@ dplyr in favor of using `dplyr::pick()`
 5. Fix #385 - For `tidy_multi_dist_autoplot()` the `.plot_type = "quantile"` did
 not work.
 6. Fix #383 - Update all autoplot functions to use linewidth instead of size.
+7. Fix #375 - Update `cskewness()` to take advantage of vectorization with a speedup
+of 124x faster.
 
 # TidyDensity 1.2.6
 
