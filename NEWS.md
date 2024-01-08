@@ -28,6 +28,8 @@ not work.
 6. Fix #383 - Update all autoplot functions to use linewidth instead of size.
 7. Fix #375 - Update `cskewness()` to take advantage of vectorization with a speedup
 of 124x faster.
+8. Fix #393 - Update `ckurtosis()` with vectorization to improve speed by 121x per
+benchmark testing.
 
 # TidyDensity 1.2.6
 
