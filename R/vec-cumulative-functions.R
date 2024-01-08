@@ -62,31 +62,19 @@ cvar <- function(.x) {
 #'
 
 cskewness <- function(.x) {
-  n <- length(.x)
-
-  if (n == 0L) {
-    return(.x)
-  } else if (n == 1L) {
-    return(0)
-  }
-
-  m2 <- m3  <- term1 <- 0
-  out <- numeric(n)
-  out[1] <- NaN
-  m1 <- .x[1]
-
-  for (i in 2:n) {
-    n0 <- i - 1
-    delta <- x[i] - m1
-    delta_n <- delta/i
-    m1 <- m1 + delta_n
-    term1 <- delta*delta_n*n0
-    m3 <- m3 + term1*delta_n*(n0 - 1) - 3*delta_n*m2
-    m2 <- m2 + term1
-    out[i] <- sqrt(i)*m3/m2^1.5
-  }
-
-  out
+  # rescale `y` to avoid detrimental impacts by outliers
+  y <- scale(.x)
+  # cumulative length of y
+  k <- seq_along(y)
+  # cumulative n-th raw moments of y
+  m3 <- cumsum(y^3)
+  m2 <- cumsum(y^2)
+  m1 <- cumsum(y)
+  u <- m1 / k
+  # expand cubic terms and refactor skewness in terms of num/den
+  num <- (m3 - 3 * u * m2 + 3 * u^2 * m1 - k * u^3) / k
+  den <- sqrt((m2 + k * u^2 - 2 * u * m1) / k)^3
+  c(NaN, (num / den)[-1])
 }
 
 #' Cumulative Kurtosis
@@ -115,10 +103,18 @@ cskewness <- function(.x) {
 #'
 
 ckurtosis <- function(.x) {
-  kurtosis <- function(.x) {
-    length(.x) * sum((.x - mean(.x))^4) / (sum((.x - mean(.x))^2)^2)
-  }
-  sapply(seq_along(.x), function(k, z) kurtosis(z[1:k]), z = .x)
+  x <- scale(.x)
+  k <- seq_along(x)
+  # Cumulative nth raw moment
+  m4 <- cumsum(x^4)
+  m3 <- cumsum(x^3)
+  m2 <- cumsum(x^2)
+  m1 <- cumsum(x)
+  u <- m1 / k
+  # Expand quartic terms and refactor kurtosis in terms of num/den
+  num <- (m4 - 4 * u * m3 + 6 * u^2 * m2 - 4 * u^3 * m1 + k * u^4) / k
+  den <- (m2 + k * u^2 - 2 * u * m1) / k
+  c(NaN, (num / den^2)[-1])
 }
 
 #' Cumulative Standard Deviation
