@@ -250,6 +250,9 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_t.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_triangular.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_uniform.html</loc>
   </url>
   <url>
@@ -266,6 +269,9 @@
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_poisson.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/triangle_plot.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_bernoulli_param_estimate.html</loc>
@@ -365,6 +371,12 @@
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_param_estimate.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_stats_tbl.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_t_stats_tbl.html</loc>
