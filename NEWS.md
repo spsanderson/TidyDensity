@@ -1,4 +1,4 @@
-# TidyDensity (development version)
+# TidyDensity 1.3.0
 
 ## Breaking Changes
 1. Fix #350 - This has caused the function `tidy_multi_single_dist()` to be modified
