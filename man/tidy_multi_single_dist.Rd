@@ -27,6 +27,7 @@ the same family in order to view how shapes change with parameter changes. You
 can then visualize the differences however you choose.
 }
 \examples{
+
 tidy_multi_single_dist(
   .tidy_dist = "tidy_normal",
   .param_list = list(
@@ -35,6 +36,17 @@ tidy_multi_single_dist(
     .sd = 1,
     .num_sims = 3,
     .return_tibble = TRUE
+  )
+)
+
+tidy_multi_single_dist(
+  .tidy_dist = "tidy_normal",
+  .param_list = list(
+    .n = 50,
+    .mean = c(-1, 0, 1),
+    .sd = 1,
+    .num_sims = 3,
+    .return_tibble = FALSE
   )
 )
 

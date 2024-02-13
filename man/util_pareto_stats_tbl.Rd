@@ -32,8 +32,8 @@ tidy_pareto() |>
 Other Pareto: 
 \code{\link{tidy_generalized_pareto}()},
 \code{\link{tidy_inverse_pareto}()},
-\code{\link{tidy_pareto1}()},
 \code{\link{tidy_pareto}()},
+\code{\link{tidy_pareto1}()},
 \code{\link{util_pareto_param_estimate}()}
 
 Other Distribution Statistics: 
