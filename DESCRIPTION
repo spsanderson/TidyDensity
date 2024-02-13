@@ -40,6 +40,5 @@ Imports:
 Suggests: 
     rmarkdown,
     knitr,
-    roxygen2,
     EnvStats
 VignetteBuilder: knitr
