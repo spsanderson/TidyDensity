@@ -18,6 +18,7 @@
 #' want to pass through to the TidyDensity `tidy_` distribution function.
 #'
 #' @examples
+#'
 #' tidy_multi_single_dist(
 #'   .tidy_dist = "tidy_normal",
 #'   .param_list = list(
@@ -26,6 +27,17 @@
 #'     .sd = 1,
 #'     .num_sims = 3,
 #'     .return_tibble = TRUE
+#'   )
+#' )
+#'
+#' tidy_multi_single_dist(
+#'   .tidy_dist = "tidy_normal",
+#'   .param_list = list(
+#'     .n = 50,
+#'     .mean = c(-1, 0, 1),
+#'     .sd = 1,
+#'     .num_sims = 3,
+#'     .return_tibble = FALSE
 #'   )
 #' )
 #'
@@ -70,16 +82,11 @@ tidy_multi_single_dist <- function(.tidy_dist = NULL,
   # Run call on the grouped df ----
   dff <- param_grid |>
     dplyr::mutate(results = purrr::pmap(dplyr::pick(dplyr::everything()), match.fun(td)))
-    #dplyr::mutate(results = purrr::pmap(dplyr::cur_data(), match.fun(td)))
 
   # Get the attributes to be used later on ----
   atb <- dff$results[[1]] |> attributes()
 
   # Make Dist Type for column ----
-  # dist_type <- stringr::str_remove(atb$tibble_type, "tidy_") |>
-  #   stringr::str_replace_all(pattern = "_", " ") |>
-  #   stringr::str_to_title()
-
   dist_type <- dist_type_extractor(atb$tibble_type)
 
   # Get column names from the param_grid in order to make teh dist_type column ----
@@ -95,18 +102,16 @@ tidy_multi_single_dist <- function(.tidy_dist = NULL,
     )
   }
 
-  # dff$dist_name <- paste0(
-  #   paste0(dist_type, " c("),
-  #   apply(dff[, cols], 1, paste0, collapse = ", "),
-  #   ")"
-  # )
-
   df_unnested_tbl <- dff |>
     tidyr::unnest(results) |>
     dplyr::ungroup() |>
     dplyr::select(sim_number, dist_name, x:q) |>
     dplyr::mutate(dist_name = as.factor(dist_name)) |>
     dplyr::arrange(sim_number, dist_name)
+
+  if (params$.return_tibble == FALSE) {
+    df_unnested_tbl <- data.table::as.data.table(df_unnested_tbl)
+  }
 
   # Attach attributes ----
   attr(df_unnested_tbl, "all") <- atb

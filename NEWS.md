@@ -7,7 +7,7 @@ None
 None
 
 ## Minor Fixes and Improvements
-None
+1. Fix #401 - Update `tidy_multi_single_dist()` to respect the `.return_tibble` parameter
 
 # TidyDensity 1.3.0
 
