@@ -58,6 +58,10 @@ result <- convert_to_ts(x)
 head(result)
 
 }
+\seealso{
+Other Utility: 
+\code{\link{quantile_normalize}()}
+}
 \author{
 Steven P. Sanderson II, MPH
 }
