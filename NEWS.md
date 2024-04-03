@@ -8,6 +8,8 @@ None
 
 ## Minor Fixes and Improvements
 1. Fix #401 - Update `tidy_multi_single_dist()` to respect the `.return_tibble` parameter
+2. Fix $406 - Updaet `tidy_multi_single_dist()` to exclude the `.return_tibble` parameter
+from returning in the distribution parameters.
 
 # TidyDensity 1.3.0
 
