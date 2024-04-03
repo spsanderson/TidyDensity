@@ -89,8 +89,8 @@ tidy_multi_single_dist <- function(.tidy_dist = NULL,
   # Make Dist Type for column ----
   dist_type <- dist_type_extractor(atb$tibble_type)
 
-  # Get column names from the param_grid in order to make teh dist_type column ----
-  cols <- names(param_grid |> dplyr::select(-c(.n, .num_sims)))
+  # Get column names from the param_grid in order to make the dist_type column ----
+  cols <- names(param_grid |> dplyr::select(-c(.n, .num_sims, .return_tibble)))
 
   if (length(cols) == 1) {
     dff$dist_name <- paste0(dist_type, " c(", dff[, cols], ")")
