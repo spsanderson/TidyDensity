@@ -125,19 +125,19 @@ will return a plot with <code>ggplot2::ggeom_point()</code></p></dd>
 
 <dt>.geom_rug</dt>
 <dd><p>A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
-will return the use of <code><a href="https://ggplot2.tidyverse.org/reference/geom_rug.html" class="external-link">ggplot2::geom_rug()</a></code></p></dd>
+will return the use of <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_rug.html" class="external-link">ggplot2::geom_rug()</a></code></p></dd>
 
 
 <dt>.geom_smooth</dt>
 <dd><p>A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
-will return the use of <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">ggplot2::geom_smooth()</a></code> The <code>aes</code> parameter of group is
+will return the use of <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_smooth.html" class="external-link">ggplot2::geom_smooth()</a></code> The <code>aes</code> parameter of group is
 set to FALSE. This ensures a single smoothing band returned with SE also set to
 FALSE. Color is set to 'black' and <code>linetype</code> is 'dashed'.</p></dd>
 
 
 <dt>.geom_jitter</dt>
 <dd><p>A Boolean value of TRUE/FALSE, FALSE is the default. TRUE
-will return the use of <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" class="external-link">ggplot2::geom_jitter()</a></code></p></dd>
+will return the use of <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_jitter.html" class="external-link">ggplot2::geom_jitter()</a></code></p></dd>
 
 
 <dt>.interactive</dt>
@@ -182,18 +182,18 @@ will return an interactive <code>plotly</code> plot.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">combined_tbl</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number     x       y    dx       dy     p       q dist_type       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1              1  0.876  -<span style="color: #BB0000;">3.87</span> 0.000<span style="text-decoration: underline;">204</span> 0.809  0.876  Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1              2 -<span style="color: #BB0000;">1.22</span>   -<span style="color: #BB0000;">3.72</span> 0.000<span style="text-decoration: underline;">537</span> 0.111 -<span style="color: #BB0000;">1.22</span>   Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1              3  1.14   -<span style="color: #BB0000;">3.57</span> 0.001<span style="text-decoration: underline;">26</span>  0.872  1.14   Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1              4 -<span style="color: #BB0000;">0.077</span><span style="color: #BB0000; text-decoration: underline;">0</span> -<span style="color: #BB0000;">3.42</span> 0.002<span style="text-decoration: underline;">68</span>  0.469 -<span style="color: #BB0000;">0.077</span><span style="color: #BB0000; text-decoration: underline;">0</span> Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1              5  1.25   -<span style="color: #BB0000;">3.27</span> 0.005<span style="text-decoration: underline;">13</span>  0.894  1.25   Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1              6 -<span style="color: #BB0000;">0.261</span>  -<span style="color: #BB0000;">3.11</span> 0.008<span style="text-decoration: underline;">95</span>  0.397 -<span style="color: #BB0000;">0.261</span>  Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1              7  0.998  -<span style="color: #BB0000;">2.96</span> 0.014<span style="text-decoration: underline;">4</span>   0.841  0.998  Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1              8 -<span style="color: #BB0000;">0.445</span>  -<span style="color: #BB0000;">2.81</span> 0.021<span style="text-decoration: underline;">5</span>   0.328 -<span style="color: #BB0000;">0.445</span>  Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1              9  0.286  -<span style="color: #BB0000;">2.66</span> 0.030<span style="text-decoration: underline;">4</span>   0.612  0.286  Gaussian c(0, 1)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1             10  0.668  -<span style="color: #BB0000;">2.51</span> 0.041<span style="text-decoration: underline;">4</span>   0.748  0.668  Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    sim_number     x       y    dx       dy      p       q dist_type       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1              1 -<span style="color: #BB0000;">1.36</span>   -<span style="color: #BB0000;">3.52</span> 0.000<span style="text-decoration: underline;">368</span> 0.086<span style="text-decoration: underline;">4</span> -<span style="color: #BB0000;">1.36</span>   Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1              2 -<span style="color: #BB0000;">1.20</span>   -<span style="color: #BB0000;">3.37</span> 0.001<span style="text-decoration: underline;">02</span>  0.116  -<span style="color: #BB0000;">1.20</span>   Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1              3  0.804  -<span style="color: #BB0000;">3.22</span> 0.002<span style="text-decoration: underline;">54</span>  0.789   0.804  Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1              4  0.969  -<span style="color: #BB0000;">3.06</span> 0.005<span style="text-decoration: underline;">65</span>  0.834   0.969  Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1              5 -<span style="color: #BB0000;">1.09</span>   -<span style="color: #BB0000;">2.91</span> 0.011<span style="text-decoration: underline;">3</span>   0.138  -<span style="color: #BB0000;">1.09</span>   Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1              6 -<span style="color: #BB0000;">1.38</span>   -<span style="color: #BB0000;">2.76</span> 0.020<span style="text-decoration: underline;">3</span>   0.083<span style="text-decoration: underline;">5</span> -<span style="color: #BB0000;">1.38</span>   Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1              7 -<span style="color: #BB0000;">0.672</span>  -<span style="color: #BB0000;">2.61</span> 0.033<span style="text-decoration: underline;">1</span>   0.251  -<span style="color: #BB0000;">0.672</span>  Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1              8  0.371  -<span style="color: #BB0000;">2.46</span> 0.049<span style="text-decoration: underline;">8</span>   0.645   0.371  Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1              9  1.44   -<span style="color: #BB0000;">2.30</span> 0.069<span style="text-decoration: underline;">9</span>   0.925   1.44   Gaussian c(0, 1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1             10 -<span style="color: #BB0000;">0.039</span><span style="color: #BB0000; text-decoration: underline;">4</span> -<span style="color: #BB0000;">2.15</span> 0.093<span style="text-decoration: underline;">1</span>   0.484  -<span style="color: #BB0000;">0.039</span><span style="color: #BB0000; text-decoration: underline;">4</span> Gaussian c(0, 1)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 140 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">combined_tbl</span> <span class="op">|&gt;</span></span></span>

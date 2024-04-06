@@ -60,6 +60,7 @@ data.frame(sample1 = rnorm(30),
 \code{\link{order}}: Order the elements of a vector.
 
 Other Utility: 
+\code{\link{check_duplicate_rows}()},
 \code{\link{convert_to_ts}()}
 }
 \author{

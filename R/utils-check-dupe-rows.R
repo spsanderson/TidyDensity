@@ -1,5 +1,10 @@
 #' Check for Duplicate Rows in a Data Frame
 #'
+#' @family Utility
+#'
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description
 #' This function checks for duplicate rows in a data frame.
 #'
 #' @param data A data frame.

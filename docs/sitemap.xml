@@ -16,6 +16,9 @@
     <loc>https://www.spsanderson.com/TidyDensity/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/CONTRIBUTING.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/index.html</loc>
   </url>
   <url>
@@ -50,6 +53,9 @@
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/cgmean.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/check_duplicate_rows.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/chmean.html</loc>
@@ -92,6 +98,9 @@
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/quantile_normalize.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/td_scale_color_colorblind.html</loc>
