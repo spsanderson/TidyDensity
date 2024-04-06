@@ -5,6 +5,7 @@ None
 
 ## New Features
 1. Fix #405 - Add function `quantile_normalization()` to normalize data using quantiles.
+2. Fix #409 - Add function `check_duplilcate_rows()` to check for duplicate rows in a data frame.
 
 ## Minor Fixes and Improvements
 1. Fix #401 - Update `tidy_multi_single_dist()` to respect the `.return_tibble` parameter
