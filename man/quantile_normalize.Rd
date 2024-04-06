@@ -4,10 +4,12 @@
 \alias{quantile_normalize}
 \title{Perform quantile normalization on a numeric matrix/data.frame}
 \usage{
-quantile_normalize(.data)
+quantile_normalize(.data, .return_tibble = FALSE)
 }
 \arguments{
 \item{.data}{A numeric matrix where each column represents a sample.}
+
+\item{.return_tibble}{A logical value that determines if the output should be a tibble. Default is 'FALSE'.}
 }
 \value{
 A list object that has the following:
@@ -36,12 +38,18 @@ This function performs quantile normalization on a numeric matrix by following t
 \examples{
 # Create a sample numeric matrix
 data <- matrix(rnorm(20), ncol = 4)
+
 # Perform quantile normalization
 normalized_data <- quantile_normalize(data)
 normalized_data
 
 as.data.frame(normalized_data$normalized_data) |>
- sapply(function(x) quantile(x, probs = seq(0,1,1/4)))
+  sapply(function(x) quantile(x, probs = seq(0, 1, 1 / 4)))
+
+quantile_normalize(
+data.frame(sample1 = rnorm(30),
+           sample2 = rnorm(30)),
+           .return_tibble = TRUE)
 
 }
 \seealso{
