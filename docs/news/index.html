@@ -61,12 +61,14 @@
 </div>
 <div class="section level3">
 <h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
-<p>None</p>
-</div>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/405" class="external-link">#405</a> - Add function <code>quantile_normalization()</code> to normalize data using quantiles.</li>
+<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/409" class="external-link">#409</a> - Add function <code>check_duplilcate_rows()</code> to check for duplicate rows in a data frame.</li>
+</ol></div>
 <div class="section level3">
 <h3 id="minor-fixes-and-improvements-development-version">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-development-version"></a></h3>
-<p>None</p>
-</div>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/401" class="external-link">#401</a> - Update <code><a href="../reference/tidy_multi_single_dist.html">tidy_multi_single_dist()</a></code> to respect the <code>.return_tibble</code> parameter</li>
+<li>Fix $406 - Updaet <code><a href="../reference/tidy_multi_single_dist.html">tidy_multi_single_dist()</a></code> to exclude the <code>.return_tibble</code> parameter from returning in the distribution parameters.</li>
+</ol></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.0" id="tidydensity-130">TidyDensity 1.3.0<a class="anchor" aria-label="anchor" href="#tidydensity-130"></a></h2><p class="text-muted">CRAN release: 2024-01-09</p>
@@ -92,7 +94,7 @@
 <h3 id="minor-fixes-and-improvements-1-3-0">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-1-3-0"></a></h3>
 <ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/372" class="external-link">#372</a> and <a href="https://github.com/spsanderson/TidyDensity/issues/373" class="external-link">#373</a> - Update <code><a href="../reference/cvar.html">cvar()</a></code> and <code><a href="../reference/csd.html">csd()</a></code> to a vectorized approach from <a href="https://github.com/kokbent" class="external-link">@kokbent</a> which speeds these up by over 100x</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/350" class="external-link">#350</a> - Update all <code>tidy_</code> distribution functions to generate data using <code>data.table</code> this in many instances has resulted in a speed up of 30% or more.</li>
-<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/379" class="external-link">#379</a> - Replace the use of <code><a href="https://dplyr.tidyverse.org/reference/deprec-context.html" class="external-link">dplyr::cur_data()</a></code> as it was deprecated in dplyr in favor of using <code><a href="https://dplyr.tidyverse.org/reference/pick.html" class="external-link">dplyr::pick()</a></code>
+<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/379" class="external-link">#379</a> - Replace the use of <code><a href="https://rdrr.io/pkg/dplyr/man/deprec-context.html" class="external-link">dplyr::cur_data()</a></code> as it was deprecated in dplyr in favor of using <code><a href="https://rdrr.io/pkg/dplyr/man/pick.html" class="external-link">dplyr::pick()</a></code>
 </li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/381" class="external-link">#381</a> - Add <code><a href="../reference/tidy_triangular.html">tidy_triangular()</a></code> to all autoplot functions.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/385" class="external-link">#385</a> - For <code><a href="../reference/tidy_multi_dist_autoplot.html">tidy_multi_dist_autoplot()</a></code> the <code>.plot_type = "quantile"</code> did not work.</li>
@@ -230,7 +232,7 @@
 <ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/210" class="external-link">#210</a> - Fix param_grid order on internal which affected attributes and thus the display of the order of the parameters.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/211" class="external-link">#211</a> - Add High and Low CI to <code><a href="../reference/tidy_distribution_summary_tbl.html">tidy_distribution_summary_tbl()</a></code>
 </li>
-<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/213" class="external-link">#213</a> - Use <code><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">purrr::compact()</a></code> on the list of distributions passed in order to prevent the issue occurring in <a href="https://github.com/spsanderson/TidyDensity/issues/212" class="external-link">#212</a></li>
+<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/213" class="external-link">#213</a> - Use <code><a href="https://rdrr.io/pkg/purrr/man/keep.html" class="external-link">purrr::compact()</a></code> on the list of distributions passed in order to prevent the issue occurring in <a href="https://github.com/spsanderson/TidyDensity/issues/212" class="external-link">#212</a></li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/212" class="external-link">#212</a> - Make <code><a href="../reference/tidy_distribution_comparison.html">tidy_distribution_comparison()</a></code> more robust in terms of handling bad or erroneous data.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/216" class="external-link">#216</a> - Add an attribute of “tibble_type” to <code><a href="../reference/tidy_multi_single_dist.html">tidy_multi_single_dist()</a></code> which helps it to work with other functions like <code><a href="../reference/tidy_random_walk.html">tidy_random_walk()</a></code>
 </li>

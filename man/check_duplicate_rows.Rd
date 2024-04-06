@@ -32,4 +32,12 @@ check_duplicate_rows(data)
 }
 \seealso{
 \code{\link{duplicated}}, \code{\link{anyDuplicated}}
+
+Other Utility: 
+\code{\link{convert_to_ts}()},
+\code{\link{quantile_normalize}()}
 }
+\author{
+Steven P. Sanderson II, MPH
+}
+\concept{Utility}

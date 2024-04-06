@@ -60,6 +60,7 @@ head(result)
 }
 \seealso{
 Other Utility: 
+\code{\link{check_duplicate_rows}()},
 \code{\link{quantile_normalize}()}
 }
 \author{
