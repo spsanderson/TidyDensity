@@ -30,7 +30,8 @@ tidy_chisquare() |>
 }
 \seealso{
 Other Chisquare: 
-\code{\link{tidy_chisquare}()}
+\code{\link{tidy_chisquare}()},
+\code{\link{util_chisquare_param_estimate}()}
 
 Other Distribution Statistics: 
 \code{\link{util_bernoulli_stats_tbl}()},

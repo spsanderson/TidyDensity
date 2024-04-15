@@ -6,10 +6,11 @@ None
 ## New Features
 1. Fix #405 - Add function `quantile_normalization()` to normalize data using quantiles.
 2. Fix #409 - Add function `check_duplilcate_rows()` to check for duplicate rows in a data frame.
+3. Fix #414 - Add function `util_chisquare_param_estimate()` to estimate the parameters of the chi-square distribution.
 
 ## Minor Fixes and Improvements
 1. Fix #401 - Update `tidy_multi_single_dist()` to respect the `.return_tibble` parameter
-2. Fix $406 - Updaet `tidy_multi_single_dist()` to exclude the `.return_tibble` parameter
+2. Fix $406 - Update `tidy_multi_single_dist()` to exclude the `.return_tibble` parameter
 from returning in the distribution parameters.
 
 # TidyDensity 1.3.0

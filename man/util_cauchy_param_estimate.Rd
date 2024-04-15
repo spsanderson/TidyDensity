@@ -46,6 +46,7 @@ Other Parameter Estimation:
 \code{\link{util_beta_param_estimate}()},
 \code{\link{util_binomial_param_estimate}()},
 \code{\link{util_burr_param_estimate}()},
+\code{\link{util_chisquare_param_estimate}()},
 \code{\link{util_exponential_param_estimate}()},
 \code{\link{util_gamma_param_estimate}()},
 \code{\link{util_geometric_param_estimate}()},
