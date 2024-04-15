@@ -87,6 +87,7 @@ Other Continuous Distribution:
 \code{\link{tidy_zero_truncated_geometric}()}
 
 Other Chisquare: 
+\code{\link{util_chisquare_param_estimate}()},
 \code{\link{util_chisquare_stats_tbl}()}
 }
 \author{

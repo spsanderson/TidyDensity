@@ -36,7 +36,8 @@ Imports:
     nloptr,
     broom,
     tidyselect,
-    data.table
+    data.table,
+    bbmle
 Suggests: 
     rmarkdown,
     knitr,
