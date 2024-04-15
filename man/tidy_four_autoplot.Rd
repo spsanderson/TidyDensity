@@ -52,6 +52,7 @@ a quoted string of one of the following:
 \item \code{quantile}
 \item \code{probablity}
 \item \code{qq}
+\item \code{mcmc}
 }
 
 If the number of simulations exceeds 9 then the legend will not print. The plot
@@ -64,6 +65,7 @@ This function will spit out one of the following plots:
 \item \code{quantile}
 \item \code{probability}
 \item \code{qq}
+\item \code{mcmc}
 }
 }
 \examples{

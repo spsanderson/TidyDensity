@@ -9,6 +9,7 @@
 #' -  `quantile`
 #' -  `probability`
 #' -  `qq`
+#' -  `mcmc`
 #'
 #' @description This is an auto plotting function that will take in a `tidy_`
 #' distribution function and a few arguments, one being the plot type, which is
@@ -17,6 +18,7 @@
 #' -  `quantile`
 #' -  `probablity`
 #' -  `qq`
+#' -  `mcmc`
 #'
 #' If the number of simulations exceeds 9 then the legend will not print. The plot
 #' subtitle is put together by the attributes of the table passed to the function.
