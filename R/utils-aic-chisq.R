@@ -13,8 +13,9 @@
 #'
 #' @examples
 #' # Example 1: Calculate AIC for a sample dataset
-#' data <- c(1, 2, 3, 4, 5)
-#' util_chisq_aic(data)
+#' set.seed(123)
+#' x <- rchisq(30, df = 3)
+#' util_chisq_aic(x)
 #'
 #' @return
 #' The AIC value calculated based on the fitted chi-square distribution to the provided data.
@@ -40,7 +41,7 @@ util_chisq_aic <- function(.x) {
 
   # Fit chi-square distribution to sample data (rchisq)
   fit_chisq <- stats::optim(
-    c(pe$degrees_of_freedom, pe$ncp),
+    c(pe$dof, pe$ncp),
     neg_log_lik_chisq,
     data = x
   )

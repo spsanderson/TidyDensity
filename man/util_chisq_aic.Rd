@@ -21,8 +21,9 @@ This function calculates the Akaike Information Criterion (AIC) for a chi-square
 }
 \examples{
 # Example 1: Calculate AIC for a sample dataset
-data <- c(1, 2, 3, 4, 5)
-util_chisq_aic(data)
+set.seed(123)
+x <- rchisq(30, df = 3)
+util_chisq_aic(x)
 
 }
 \seealso{
