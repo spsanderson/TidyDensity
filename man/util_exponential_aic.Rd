@@ -44,6 +44,7 @@ Other Utility:
 \code{\link{quantile_normalize}()},
 \code{\link{tidy_mcmc_sampling}()},
 \code{\link{util_beta_aic}()},
+\code{\link{util_binomial_aic}()},
 \code{\link{util_cauchy_aic}()},
 \code{\link{util_chisq_aic}()},
 \code{\link{util_gamma_aic}()},
