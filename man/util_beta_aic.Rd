@@ -49,6 +49,7 @@ Other Utility:
 \code{\link{tidy_mcmc_sampling}()},
 \code{\link{util_cauchy_aic}()},
 \code{\link{util_chisq_aic}()},
+\code{\link{util_exponential_aic}()},
 \code{\link{util_normal_aic}()}
 }
 \author{
