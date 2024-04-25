@@ -55,7 +55,7 @@ util_hypergeometric_aic <- function(.x) {
 
   # Calculate AIC
   k_hypergeometric <- 3 # Number of parameters for hypergeometric distribution (m, n, and k)
-  logLik_hypergeometric <- sum(dhyper(x, m = m, n = n, k = k, log = TRUE))
+  logLik_hypergeometric <- sum(stats::dhyper(x, m = m, n = n, k = k, log = TRUE))
   AIC_hypergeometric <- 2 * k_hypergeometric - 2 * logLik_hypergeometric
 
   # Return AIC

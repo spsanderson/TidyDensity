@@ -60,11 +60,11 @@ util_beta_aic <- function(.x) {
     shape2 <- par[2]
     ncp <- par[3]
     n <- length(data)
-    -sum(dbeta(data, shape1, shape2, ncp, log = TRUE))
+    -sum(stats::dbeta(data, shape1, shape2, ncp, log = TRUE))
   }
 
   # Fit beta distribution using optim
-  fit_beta <- optim(
+  fit_beta <- stats::optim(
     c(trunc(pe$shape1), trunc(pe$shape2), 0),
     neg_log_lik_beta,
     data = x

@@ -127,7 +127,7 @@ util_chisquare_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
   neg_log_likelihood <- function(params) {
     df <- params[1]
     ncp <- params[2]
-    sum_densities <- sum(dchisq(x_term, df = df, ncp = ncp, log = TRUE))
+    sum_densities <- sum(stats::dchisq(x_term, df = df, ncp = ncp, log = TRUE))
     return(-sum_densities)
   }
 
@@ -135,7 +135,7 @@ util_chisquare_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
   initial_params <- c(trunc(var(x_term)/2), trunc(mean(x_term)))
 
   # Optimize parameters using optim() function
-  opt_result <- optim(par = initial_params, fn = neg_log_likelihood)
+  opt_result <- stats::optim(par = initial_params, fn = neg_log_likelihood)
 
   # Extract estimated parameters
   doff <- opt_result$par[1]

@@ -29,7 +29,7 @@ util_normal_aic <- function(.x) {
   x <- as.numeric(.x)
 
   # Get parameters
-  pe <- TidyDensity::util_normal_param_estimate(x)$parameter_tbl |> head(1)
+  pe <- TidyDensity::util_normal_param_estimate(x)$parameter_tbl |> utils::head(1)
 
   # Negative log-likelihood function for normal distribution
   neg_log_lik_norm <- function(par, data) {
@@ -40,7 +40,7 @@ util_normal_aic <- function(.x) {
   }
 
   # Fit normal distribution to population data (rnorm)
-  fit_norm <- optim(
+  fit_norm <- stats::optim(
     c(pe$mu, pe$stan_dev),
     neg_log_lik_norm,
     data = x

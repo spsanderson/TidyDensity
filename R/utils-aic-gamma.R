@@ -54,7 +54,7 @@ util_gamma_aic <- function(.x) {
     shape <- par[1]
     scale <- par[2]
     n <- length(data)
-    -sum(dgamma(data, shape = shape, scale = scale, log = TRUE))
+    -sum(stats::dgamma(data, shape = shape, scale = scale, log = TRUE))
   }
 
   # Get initial parameter estimates: method of moments
@@ -62,7 +62,7 @@ util_gamma_aic <- function(.x) {
     subset(method == "EnvStats_MMUE")
 
   # Fit gamma distribution using optim
-  fit_gamma <- optim(
+  fit_gamma <- stats::optim(
     c(pe$shape, pe$scale),
     neg_log_lik_gamma,
     data = x

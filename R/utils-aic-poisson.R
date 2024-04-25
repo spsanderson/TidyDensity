@@ -50,7 +50,7 @@ util_poisson_aic <- function(.x) {
 
   # Calculate AIC
   k_poisson <- 1 # Number of parameters for Poisson distribution (lambda)
-  logLik_poisson <- sum(dpois(x, lambda = lambda, log = TRUE))
+  logLik_poisson <- sum(stats::dpois(x, lambda = lambda, log = TRUE))
   AIC_poisson <- 2 * k_poisson - 2 * logLik_poisson
 
   # Return AIC

@@ -57,7 +57,7 @@ util_cauchy_aic <- function(.x) {
     location <- par[1]
     scale <- par[2]
     n <- length(data)
-    -sum(dcauchy(data, location = location, scale = scale, log = TRUE))
+    -sum(stats::dcauchy(data, location = location, scale = scale, log = TRUE))
   }
 
   # Get initial parameter estimates (you might need to adjust this depending on your data)
@@ -65,7 +65,7 @@ util_cauchy_aic <- function(.x) {
   pe <- TidyDensity::util_cauchy_param_estimate(x)$parameter_tbl
 
   # Fit Cauchy distribution using optim
-  fit_cauchy <- optim(
+  fit_cauchy <- stats::optim(
     c(pe$location, pe$scale),
     neg_log_lik_cauchy,
     data = x

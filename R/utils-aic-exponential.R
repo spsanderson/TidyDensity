@@ -45,14 +45,14 @@ util_exponential_aic <- function(.x) {
   neg_log_lik_exponential <- function(par, data) {
     rate <- par[1]
     n <- length(data)
-    -sum(dexp(data, rate = rate, log = TRUE))
+    -sum(stats::dexp(data, rate = rate, log = TRUE))
   }
 
   # Get initial parameter estimate: reciprocal of the mean of the data
   pe <- TidyDensity::util_exponential_param_estimate(x)$parameter_tbl
 
   # Fit exponential distribution using optim
-  fit_exponential <- optim(
+  fit_exponential <- stats::optim(
     pe$rate,
     neg_log_lik_exponential,
     data = x,

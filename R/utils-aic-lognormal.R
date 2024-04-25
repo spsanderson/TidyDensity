@@ -52,7 +52,7 @@ util_lognormal_aic <- function(.x) {
     meanlog <- par[1]
     sdlog <- par[2]
     n <- length(data)
-    -sum(dlnorm(data, meanlog = meanlog, sdlog = sdlog, log = TRUE))
+    -sum(stats::dlnorm(data, meanlog = meanlog, sdlog = sdlog, log = TRUE))
   }
 
   # Get initial parameter estimates: method of moments
@@ -62,7 +62,7 @@ util_lognormal_aic <- function(.x) {
   sdlog_est <- sqrt(m2 - m1^2)
 
   # Fit log-normal distribution using optim
-  fit_lognormal <- optim(
+  fit_lognormal <- stats::optim(
     c(meanlog_est, sdlog_est),
     neg_log_lik_lognormal,
     data = x
