@@ -65,7 +65,7 @@ util_beta_aic <- function(.x) {
 
   # Fit beta distribution using optim
   fit_beta <- optim(
-    c(pe$shape1, pe$shape2, 0),
+    c(trunc(pe$shape1), trunc(pe$shape2), 0),
     neg_log_lik_beta,
     data = x
   )

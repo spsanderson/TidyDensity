@@ -37,7 +37,7 @@ Imports:
     broom,
     tidyselect,
     data.table,
-    bbmle
+    stringr
 Suggests: 
     rmarkdown,
     knitr,

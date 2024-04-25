@@ -333,21 +333,105 @@ tidy_distribution_comparison <- function(.x, .distribution_type = "continuous",
     dplyr::select(dist_type, x, dy) |>
     dplyr::filter(dist_type == "Empirical")
 
+  # aic_tbl <- comp_tbl |>
+  #   dplyr::filter(!dist_type == "Empirical") |>
+  #   dplyr::select(dist_type, dy) |>
+  #   tidyr::nest(data = dy) |>
+  #   dplyr::mutate(
+  #     lm_model = purrr::map(
+  #       data,
+  #       function(df) stats::lm(dy ~ emp_data_tbl$dy, data = df)
+  #     )
+  #   ) |>
+  #   dplyr::mutate(aic_value = purrr::map(lm_model, stats::AIC)) |>
+  #   dplyr::mutate(aic_value = unlist(aic_value)) |>
+  #   dplyr::mutate(abs_aic = abs(aic_value)) |>
+  #   dplyr::arrange(abs_aic) |>
+  #   dplyr::select(dist_type, aic_value, abs_aic)
   aic_tbl <- comp_tbl |>
-    dplyr::filter(!dist_type == "Empirical") |>
-    dplyr::select(dist_type, dy) |>
-    tidyr::nest(data = dy) |>
-    dplyr::mutate(
-      lm_model = purrr::map(
-        data,
-        function(df) stats::lm(dy ~ emp_data_tbl$dy, data = df)
-      )
-    ) |>
-    dplyr::mutate(aic_value = purrr::map(lm_model, stats::AIC)) |>
-    dplyr::mutate(aic_value = unlist(aic_value)) |>
-    dplyr::mutate(abs_aic = abs(aic_value)) |>
-    dplyr::arrange(abs_aic) |>
-    dplyr::select(dist_type, aic_value, abs_aic)
+    dplyr::select(dist_type, y) |>
+    dplyr::filter(!stringr::str_detect(dist_type, "Empirical")) |>
+    tidyr::nest(data = y) |>
+    dplyr::mutate(aic_value = dplyr::case_when(
+      # Beta
+      stringr::str_detect(dist_type, "Beta") ~ tryCatch(
+        util_beta_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Cauchy
+      stringr::str_detect(dist_type, "Cauchy") ~ tryCatch(
+        util_cauchy_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Chi-Squared
+      stringr::str_detect(dist_type, "Chisquare") ~ tryCatch(
+        util_chisquare_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Exponential
+      stringr::str_detect(dist_type, "Exponential") ~ tryCatch(
+        util_exponential_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Gamma
+      stringr::str_detect(dist_type, "Gamma") ~ tryCatch(
+        util_gamma_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Logistic
+      stringr::str_detect(dist_type, "Logistic") ~ tryCatch(
+        util_logistic_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Lognormal
+      stringr::str_detect(dist_type, "Lognormal") ~ tryCatch(
+        util_lognormal_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Normal
+      stringr::str_detect(dist_type, "Gaussian") ~ tryCatch(
+        util_normal_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Pareto
+      stringr::str_detect(dist_type, "Pareto") ~ tryCatch(
+        util_pareto_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Uniform
+      stringr::str_detect(dist_type, "Uniform") ~ tryCatch(
+        util_uniform_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Weibull
+      stringr::str_detect(dist_type, "Weibull") ~ tryCatch(
+        util_weibull_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Binomcial
+      stringr::str_detect(dist_type, "Binomial") ~ tryCatch(
+        util_binomial_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Geometric
+      stringr::str_detect(dist_type, "Geometric") ~ tryCatch(
+        util_geometric_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Hypergeometric
+      stringr::str_detect(dist_type, "Hypergeometric") ~ tryCatch(
+        util_hypergeometric_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      # Poisson
+      stringr::str_detect(dist_type, "Poisson") ~ tryCatch(
+        util_poisson_aic(x_term),
+        error = function(e) NA_real_
+      ),
+      TRUE ~ NA_real_
+    )) |>
+    dplyr::select(-data) |>
+    dplyr::mutate(abs_aic = abs(aic_value))
 
   ks_tbl <- comp_tbl |>
     dplyr::filter(dist_type != "Empirical") |>
