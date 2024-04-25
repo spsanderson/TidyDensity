@@ -61,7 +61,8 @@ data.frame(sample1 = rnorm(30),
 
 Other Utility: 
 \code{\link{check_duplicate_rows}()},
-\code{\link{convert_to_ts}()}
+\code{\link{convert_to_ts}()},
+\code{\link{tidy_mcmc_sampling}()}
 }
 \author{
 Steven P. Sanderson II, MPH

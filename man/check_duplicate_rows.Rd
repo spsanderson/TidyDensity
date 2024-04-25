@@ -35,7 +35,8 @@ check_duplicate_rows(data)
 
 Other Utility: 
 \code{\link{convert_to_ts}()},
-\code{\link{quantile_normalize}()}
+\code{\link{quantile_normalize}()},
+\code{\link{tidy_mcmc_sampling}()}
 }
 \author{
 Steven P. Sanderson II, MPH

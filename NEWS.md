@@ -9,12 +9,15 @@ None
 3. Fix #414 - Add function `util_chisquare_param_estimate()` to estimate the parameters of the chi-square distribution.
 4. Fix #417 - Add function `tidy_mcmc_sampling()` to sample from a distribution using MCMC.
 This outputs the function sampled data and a diagnostic plot.
+5. Fix #420 - Add functions `util_dist_aic()` functions to calculate the AIC for a distribution.
 
 ## Minor Fixes and Improvements
 1. Fix #401 - Update `tidy_multi_single_dist()` to respect the `.return_tibble` parameter
 2. Fix #406 - Update `tidy_multi_single_dist()` to exclude the `.return_tibble` parameter
 from returning in the distribution parameters.
 3. Fix #413 - Update documentation to include `mcmc` where applicable.
+4. Fix #240 - Update `tidy_distribution_comparison()` to include the new AIC calculations
+from the dedicated `util_dist_aic()` functions.
 
 # TidyDensity 1.3.0
 

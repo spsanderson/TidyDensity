@@ -95,36 +95,51 @@ util_chisquare_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
   }
 
   # Parameters ----
-  estimate_chisq_params <- function(data) {
-    # Negative log-likelihood function
-    negLogLik <- function(df, ncp) {
-      -sum(stats::dchisq(data, df = df, ncp = ncp, log = TRUE))
-    }
-
-    # Initial values (adjust based on your data if necessary)
-    start_vals <- list(df = trunc(var(data)/2), ncp = trunc(mean(data)))
-
-    # MLE using bbmle
-    mle_fit <- bbmle::mle2(negLogLik, start = start_vals)
-    # Return estimated parameters as a named vector
-    df <- dplyr::tibble(
-      est_df = bbmle::coef(mle_fit)[1],
-      est_ncp = bbmle::coef(mle_fit)[2]
-    )
-    return(df)
+  # estimate_chisq_params <- function(data) {
+  #   # Negative log-likelihood function
+  #   negLogLik <- function(df, ncp) {
+  #     -sum(stats::dchisq(data, df = df, ncp = ncp, log = TRUE))
+  #   }
+  #
+  #   # Initial values (adjust based on your data if necessary)
+  #   start_vals <- list(df = trunc(var(data)/2), ncp = trunc(mean(data)))
+  #
+  #   # MLE using bbmle
+  #   mle_fit <- bbmle::mle2(negLogLik, start = start_vals)
+  #   # Return estimated parameters as a named vector
+  #   df <- dplyr::tibble(
+  #     est_df = bbmle::coef(mle_fit)[1],
+  #     est_ncp = bbmle::coef(mle_fit)[2]
+  #   )
+  #   return(df)
+  # }
+  #
+  # safe_estimates <- {
+  #   purrr::possibly(
+  #     estimate_chisq_params,
+  #     otherwise = NA_real_,
+  #     quiet = TRUE
+  #   )
+  # }
+  #
+  # estimates <- safe_estimates(x_term)
+  # Define negative log-likelihood function
+  neg_log_likelihood <- function(params) {
+    df <- params[1]
+    ncp <- params[2]
+    sum_densities <- sum(dchisq(x_term, df = df, ncp = ncp, log = TRUE))
+    return(-sum_densities)
   }
 
-  safe_estimates <- {
-    purrr::possibly(
-      estimate_chisq_params,
-      otherwise = NA_real_,
-      quiet = TRUE
-    )
-  }
+  # Initial guess for parameters
+  initial_params <- c(trunc(var(x_term)/2), trunc(mean(x_term)))
 
-  estimates <- safe_estimates(x_term)
-  doff <- estimates$est_df |> unname()
-  ncp <- estimates$est_ncp |> unname()
+  # Optimize parameters using optim() function
+  opt_result <- optim(par = initial_params, fn = neg_log_likelihood)
+
+  # Extract estimated parameters
+  doff <- opt_result$par[1]
+  ncp <- opt_result$par[2]
 
   # Return Tibble ----
   if (.auto_gen_empirical) {
@@ -139,7 +154,7 @@ util_chisquare_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
     min = minx,
     max = maxx,
     mean = mean(x_term),
-    degrees_of_freedom = doff,
+    dof = doff,
     ncp = ncp
   )
 

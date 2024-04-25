@@ -31,10 +31,10 @@
 #' result <- tidy_mcmc_sampling(data, "median", "cmedian", 500)
 #' result
 #'
-#' @rdname tidy_mcmc_sampling
+#' @name tidy_mcmc_sampling
 NULL
 
-#' @name tidy_mcmc_sampling
+#' @rdname tidy_mcmc_sampling
 #' @export
 tidy_mcmc_sampling <- function(.x, .fns = "mean", .cum_fns = "cmean",
                                .num_sims = 2000) {
