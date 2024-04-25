@@ -38,6 +38,7 @@ Continuous:
 \itemize{
 \item tidy_beta
 \item tidy_cauchy
+\item tidy_chisquare
 \item tidy_exponential
 \item tidy_gamma
 \item tidy_logistic
@@ -73,8 +74,7 @@ function against the given data.
 The \code{deviance_tbl} and the \code{total_deviance_tbl} just give the simple difference
 from the actual density to the estimated density for the given estimated distribution.
 
-The \code{aic_tbl} will provide the \code{AIC} for a \code{lm} model of the estimated density
-against the emprical density.
+The \code{aic_tbl} will provide the \code{AIC} for liklehood of the distribution.
 
 The \code{kolmogorov_smirnov_tbl} for now provides a \code{two.sided} estimate of the
 \code{ks.test} of the estimated density against the empirical.
@@ -89,6 +89,7 @@ xd <- trunc(xc)
 output_d <- tidy_distribution_comparison(xd, "discrete")
 
 output_c
+output_d
 
 }
 \author{

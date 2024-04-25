@@ -61,7 +61,8 @@ head(result)
 \seealso{
 Other Utility: 
 \code{\link{check_duplicate_rows}()},
-\code{\link{quantile_normalize}()}
+\code{\link{quantile_normalize}()},
+\code{\link{tidy_mcmc_sampling}()}
 }
 \author{
 Steven P. Sanderson II, MPH
