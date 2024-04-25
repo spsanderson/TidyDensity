@@ -31,7 +31,8 @@ Other Utility:
 \code{\link{check_duplicate_rows}()},
 \code{\link{convert_to_ts}()},
 \code{\link{quantile_normalize}()},
-\code{\link{tidy_mcmc_sampling}()}
+\code{\link{tidy_mcmc_sampling}()},
+\code{\link{util_chisq_aic}()}
 }
 \author{
 Steven P. Sanderson II, MPH
