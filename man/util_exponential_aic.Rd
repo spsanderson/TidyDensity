@@ -48,6 +48,7 @@ Other Utility:
 \code{\link{util_chisq_aic}()},
 \code{\link{util_gamma_aic}()},
 \code{\link{util_logistic_aic}()},
+\code{\link{util_lognormal_aic}()},
 \code{\link{util_normal_aic}()}
 }
 \author{
