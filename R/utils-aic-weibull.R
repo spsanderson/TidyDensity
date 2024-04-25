@@ -53,14 +53,14 @@ util_weibull_aic <- function(.x) {
     shape <- par[1]
     scale <- par[2]
     n <- length(data)
-    -sum(dweibull(data, shape = shape, scale = scale, log = TRUE))
+    -sum(stats::dweibull(data, shape = shape, scale = scale, log = TRUE))
   }
 
   # Get initial parameter estimates: method of moments
   pe <- TidyDensity::util_weibull_param_estimate(x)$parameter_tbl
 
   # Fit Weibull distribution using optim
-  fit_weibull <- optim(
+  fit_weibull <- stats::optim(
     c(pe$shape, pe$scale),
     neg_log_lik_weibull,
     data = x

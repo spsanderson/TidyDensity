@@ -28,7 +28,7 @@ util_chisq_aic <- function(.x) {
   x <- as.numeric(.x)
 
   # Get parameters
-  pe <- TidyDensity::util_chisquare_param_estimate(x)$parameter_tbl |> head(1)
+  pe <- TidyDensity::util_chisquare_param_estimate(x)$parameter_tbl |> utils::head(1)
 
   # Negative log-likelihood function for chi-square distribution
   neg_log_lik_chisq <- function(par, data) {
@@ -39,7 +39,7 @@ util_chisq_aic <- function(.x) {
   }
 
   # Fit chi-square distribution to sample data (rchisq)
-  fit_chisq <- optim(
+  fit_chisq <- stats::optim(
     c(pe$degrees_of_freedom, pe$ncp),
     neg_log_lik_chisq,
     data = x

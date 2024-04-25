@@ -60,7 +60,7 @@ util_pareto_aic <- function(.x) {
     subset(method == "MLE")
 
   # Fit Pareto distribution using optim
-  fit_pareto <- optim(
+  fit_pareto <- stats::optim(
     c(pe$shape, pe$scale),
     neg_log_lik_pareto,
     data = x

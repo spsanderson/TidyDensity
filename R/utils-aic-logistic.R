@@ -53,7 +53,7 @@ util_logistic_aic <- function(.x) {
     location <- par[1]
     scale <- par[2]
     n <- length(data)
-    -sum(dlogis(data, location = location, scale = scale, log = TRUE))
+    -sum(stats::dlogis(data, location = location, scale = scale, log = TRUE))
   }
 
   # Get initial parameter estimates: method of moments
@@ -61,7 +61,7 @@ util_logistic_aic <- function(.x) {
     subset(method == "EnvStats_MLE")
 
   # Fit logistic distribution using optim
-  fit_logistic <- optim(
+  fit_logistic <- stats::optim(
     c(pe$location, pe$scale),
     neg_log_lik_logistic,
     data = x

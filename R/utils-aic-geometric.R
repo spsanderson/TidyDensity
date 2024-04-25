@@ -51,7 +51,7 @@ util_geometric_aic <- function(.x) {
 
   # Calculate AIC
   k_geometric <- 1 # Number of parameters for geometric distribution (prob)
-  logLik_geometric <- sum(dgeom(x, prob = prob, log = TRUE))
+  logLik_geometric <- sum(stats::dgeom(x, prob = prob, log = TRUE))
   AIC_geometric <- 2 * k_geometric - 2 * logLik_geometric
 
   # Return AIC
