@@ -35,6 +35,7 @@ Other Utility:
 \code{\link{util_cauchy_aic}()},
 \code{\link{util_exponential_aic}()},
 \code{\link{util_gamma_aic}()},
+\code{\link{util_logistic_aic}()},
 \code{\link{util_normal_aic}()}
 }
 \author{
