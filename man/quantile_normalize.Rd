@@ -63,6 +63,7 @@ Other Utility:
 \code{\link{check_duplicate_rows}()},
 \code{\link{convert_to_ts}()},
 \code{\link{tidy_mcmc_sampling}()},
+\code{\link{util_chisq_aic}()},
 \code{\link{util_normal_aic}()}
 }
 \author{
