@@ -40,7 +40,8 @@ Other Utility:
 \code{\link{util_logistic_aic}()},
 \code{\link{util_lognormal_aic}()},
 \code{\link{util_pareto_aic}()},
-\code{\link{util_uniform_aic}()}
+\code{\link{util_uniform_aic}()},
+\code{\link{util_weibull_aic}()}
 }
 \author{
 Steven P. Sanderson II, MPH
