@@ -25,11 +25,13 @@ distribution fitted to the provided data.
 
 Initial parameter estimates: The choice of initial values can impact the
 convergence of the optimization.
+
 Optimization method: You might explore different optimization methods within
 optim for potentially better performance.
 Data transformation: Depending on your data, you may need to apply
-transformations (e.g., scaling to \link{0,1} interval) before fitting the beta
+transformations (e.g., scaling to \verb{[0,1]} interval) before fitting the beta
 distribution.
+
 Goodness-of-fit: While AIC is a useful metric for model comparison, it's
 recommended to also assess the goodness-of-fit of the chosen model using
 visualization and other statistical tests.

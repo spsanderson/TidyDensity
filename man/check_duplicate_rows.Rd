@@ -7,7 +7,7 @@
 check_duplicate_rows(.data)
 }
 \arguments{
-\item{data}{A data frame.}
+\item{.data}{A data frame.}
 }
 \value{
 A logical vector indicating whether each row is a duplicate or not.

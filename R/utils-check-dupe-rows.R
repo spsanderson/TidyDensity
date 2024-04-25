@@ -7,7 +7,7 @@
 #' @description
 #' This function checks for duplicate rows in a data frame.
 #'
-#' @param data A data frame.
+#' @param .data A data frame.
 #' @return A logical vector indicating whether each row is a duplicate or not.
 #' @details This function checks for duplicate rows by comparing each row in the
 #' data frame to every other row. If a row is identical to another row, it is

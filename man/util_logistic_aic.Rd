@@ -41,7 +41,7 @@ visualization and other statistical tests.
 # Example 1: Calculate AIC for a sample dataset
 set.seed(123)
 x <- rlogis(30)
-util_logistic_aic(data)
+util_logistic_aic(x)
 
 }
 \seealso{
