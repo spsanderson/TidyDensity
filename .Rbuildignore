@@ -17,3 +17,4 @@ img
 ^index\.Rmd$
 ^Meta$
 ^CRAN-SUBMISSION$
+^CONTRIBUTING\.md$
