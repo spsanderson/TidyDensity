@@ -205,6 +205,9 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_lognormal.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_mcmc_sampling.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_mixture_density.html</loc>
   </url>
   <url>
@@ -289,10 +292,16 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_bernoulli_stats_tbl.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_aic.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_binomial_aic.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_binomial_param_estimate.html</loc>
@@ -307,13 +316,25 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_burr_stats_tbl.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_aic.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_stats_tbl.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_chisquare_param_estimate.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_chisquare_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_chisq_aic.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_exponential_aic.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_exponential_param_estimate.html</loc>
@@ -325,10 +346,16 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_f_stats_tbl.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_aic.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_aic.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_param_estimate.html</loc>
@@ -337,16 +364,25 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_stats_tbl.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_aic.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_stats_tbl.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_aic.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_lognormal_aic.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_lognormal_param_estimate.html</loc>
@@ -361,10 +397,16 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_negative_binomial_stats_tbl.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_aic.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_aic.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_estimate.html</loc>
@@ -374,6 +416,9 @@
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_aic.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_param_estimate.html</loc>
@@ -391,10 +436,16 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_t_stats_tbl.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_aic.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_weibull_aic.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_weibull_param_estimate.html</loc>
