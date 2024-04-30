@@ -15,8 +15,8 @@ None
 None
 
 ## New Features
-1. Fix #405 - Add function `quantile_normalization()` to normalize data using quantiles.
-2. Fix #409 - Add function `check_duplilcate_rows()` to check for duplicate rows in a data frame.
+1. Fix #405 - Add function `quantile_normalize()` to normalize data using quantiles.
+2. Fix #409 - Add function `check_duplicate_rows()` to check for duplicate rows in a data frame.
 3. Fix #414 - Add function `util_chisquare_param_estimate()` to estimate the parameters of the chi-square distribution.
 4. Fix #417 - Add function `tidy_mcmc_sampling()` to sample from a distribution using MCMC.
 This outputs the function sampled data and a diagnostic plot.
