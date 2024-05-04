@@ -13,12 +13,13 @@
 #' parameter `.x` will be run through the `tidy_empirical()` function and combined
 #' with the estimated negative binomial data.
 #'
-#' Two different methods of shape parameters are supplied:
+#' Three different methods of shape parameters are supplied:
 #' -  MLE/MME
 #' -  MMUE
+#' -  MLE via \code{\link[stats]{optim}} function.
 #'
 #' @param .x The vector of data to be passed to the function.
-#' @param .size The size parameter.
+#' @param .size The size parameter, the default is 1.
 #' @param .auto_gen_empirical This is a boolean value of TRUE/FALSE with default
 #' set to TRUE. This will automatically create the `tidy_empirical()` output
 #' for the `.x` parameter and use the `tidy_combine_distributions()`. The user
@@ -45,7 +46,7 @@
 #' @export
 #'
 
-util_negative_binomial_param_estimate <- function(.x, .size,
+util_negative_binomial_param_estimate <- function(.x, .size = 1,
                                                   .auto_gen_empirical = TRUE) {
 
   # Tidyeval ----
@@ -62,7 +63,7 @@ util_negative_binomial_param_estimate <- function(.x, .size,
 
   # Checks ----
   if (!is.vector(x_term, mode = "numeric") || is.factor(x_term) ||
-    !is.vector(size, mode = "numeric") || is.factor(size)) {
+      !is.vector(size, mode = "numeric") || is.factor(size)) {
     rlang::abort(
       message = "'.x' and '.size' must be numeric vectors.",
       use_cli_format = TRUE
@@ -88,7 +89,7 @@ util_negative_binomial_param_estimate <- function(.x, .size,
   }
 
   if (!all(x_term == trunc(x_term)) || any(x_term < 0) || !all(size == trunc(size)) ||
-    any(size < 1)) {
+      any(size < 1)) {
     rlang::abort(
       message = "All values of '.x' must be non-negative integers, and all values
       of '.size' must be positive integers.",
@@ -106,26 +107,47 @@ util_negative_binomial_param_estimate <- function(.x, .size,
   es_mvue_size <- size
   es_mvue_prob <- (size - 1) / (size + sum_x - 1)
 
+  # MLE Method
+  # Negative log-likelihood function for optimization
+  nll_func <- function(params) {
+    size <- params[1]
+    mu <- params[2]
+    -sum(dnbinom(x, size = size, mu = mu, log = TRUE))
+  }
+
+  # Initial parameter guesses (you might need to adjust these based on your data)
+  initial_params <- c(size = 1, mu = mean(x))
+
+  # Optimize using optim()
+  optim_result <- optim(initial_params, nll_func)
+
+  # Extract estimated parameters
+  mle_size <- optim_result$par[1]
+  mle_mu <- optim_result$par[2]
+  mle_prob <- mle_size / (mle_size + mle_mu)
+
   # Return Tibble ----
   if (.auto_gen_empirical) {
     te <- tidy_empirical(.x = x_term)
     td <- tidy_negative_binomial(
-      .n = n, .size = round(es_mme_size, 3),
-      .prob = round(es_mme_prob, 3)
+      .n = n, .size = round(mle_size, 3),
+      .prob = round(mle_prob, 3)
     )
     combined_tbl <- tidy_combine_distributions(te, td)
   }
 
   ret <- dplyr::tibble(
-    dist_type = rep("Negative Binomial", 2),
-    samp_size = rep(n, 2),
-    min = rep(minx, 2),
-    max = rep(maxx, 2),
-    mean = rep(m, 2),
-    method = c("EnvStats_MME_MLE", "EnvStats_MMUE"),
-    size = c(es_mme_size, es_mvue_size),
-    prob = c(es_mme_prob, es_mvue_prob),
-    shape_ratio = c(es_mme_size / es_mme_prob, es_mvue_size / es_mvue_prob)
+    dist_type = rep("Negative Binomial", 3),
+    samp_size = rep(n, 3),
+    min = rep(minx, 3),
+    max = rep(maxx, 3),
+    mean = c(rep(m, 2), mle_mu),
+    method = c("EnvStats_MME_MLE", "EnvStats_MMUE", "MLE_Optim"),
+    size = c(es_mme_size, es_mvue_size, mle_size),
+    prob = c(es_mme_prob, es_mvue_prob, mle_prob),
+    shape_ratio = c(es_mme_size / es_mme_prob,
+                    es_mvue_size / es_mvue_prob,
+                    mle_size / mle_prob)
   )
 
   # Return ----

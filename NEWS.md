@@ -4,10 +4,11 @@
 None
 
 ## New Features
-None
+1. #468 - Add function `util_negative_binomial_aic()` to calculate the AIC for the negative binomial distribution.
 
 ## Minor Improvements and Fixes
-None
+1. Fix #468 - Update `util_negative_binomial_param_estimate()` to add the use of
+`optim()` for parameter estimation.
 
 # TidyDensity 1.4.0
 
