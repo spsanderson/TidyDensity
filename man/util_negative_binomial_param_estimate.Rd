@@ -75,7 +75,8 @@ Other Parameter Estimation:
 \code{\link{util_poisson_param_estimate}()},
 \code{\link{util_triangular_param_estimate}()},
 \code{\link{util_uniform_param_estimate}()},
-\code{\link{util_weibull_param_estimate}()}
+\code{\link{util_weibull_param_estimate}()},
+\code{\link{util_ztn_binomial_param_estimate}()}
 
 Other Binomial: 
 \code{\link{tidy_binomial}()},
@@ -83,7 +84,8 @@ Other Binomial:
 \code{\link{tidy_zero_truncated_binomial}()},
 \code{\link{tidy_zero_truncated_negative_binomial}()},
 \code{\link{util_binomial_param_estimate}()},
-\code{\link{util_binomial_stats_tbl}()}
+\code{\link{util_binomial_stats_tbl}()},
+\code{\link{util_ztn_binomial_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH
