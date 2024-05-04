@@ -4,12 +4,16 @@
 \alias{util_negative_binomial_param_estimate}
 \title{Estimate Negative Binomial Parameters}
 \usage{
-util_negative_binomial_param_estimate(.x, .size, .auto_gen_empirical = TRUE)
+util_negative_binomial_param_estimate(
+  .x,
+  .size = 1,
+  .auto_gen_empirical = TRUE
+)
 }
 \arguments{
 \item{.x}{The vector of data to be passed to the function.}
 
-\item{.size}{The size parameter.}
+\item{.size}{The size parameter, the default is 1.}
 
 \item{.auto_gen_empirical}{This is a boolean value of TRUE/FALSE with default
 set to TRUE. This will automatically create the \code{tidy_empirical()} output
@@ -25,10 +29,11 @@ The function will return a list output by default, and  if the parameter
 parameter \code{.x} will be run through the \code{tidy_empirical()} function and combined
 with the estimated negative binomial data.
 
-Two different methods of shape parameters are supplied:
+Three different methods of shape parameters are supplied:
 \itemize{
 \item MLE/MME
 \item MMUE
+\item MLE via \code{\link[stats]{optim}} function.
 }
 }
 \details{

@@ -59,6 +59,7 @@ Other Utility:
 \code{\link{util_geometric_aic}()},
 \code{\link{util_hypergeometric_aic}()},
 \code{\link{util_logistic_aic}()},
+\code{\link{util_negative_binomial_aic}()},
 \code{\link{util_normal_aic}()},
 \code{\link{util_pareto_aic}()},
 \code{\link{util_poisson_aic}()},
