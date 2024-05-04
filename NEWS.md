@@ -5,6 +5,7 @@ None
 
 ## New Features
 1. #468 - Add function `util_negative_binomial_aic()` to calculate the AIC for the negative binomial distribution.
+2. #470 - Add function `util_ztn_binomial_param_estimate()` and `util_rztnbinom_aic()` to estimate the parameters and calculate the AIC for the zero-truncated negative binomial distribution.
 
 ## Minor Improvements and Fixes
 1. Fix #468 - Update `util_negative_binomial_param_estimate()` to add the use of

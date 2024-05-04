@@ -61,7 +61,8 @@ Other Parameter Estimation:
 \code{\link{util_poisson_param_estimate}()},
 \code{\link{util_triangular_param_estimate}()},
 \code{\link{util_uniform_param_estimate}()},
-\code{\link{util_weibull_param_estimate}()}
+\code{\link{util_weibull_param_estimate}()},
+\code{\link{util_ztn_binomial_param_estimate}()}
 
 Other Geometric: 
 \code{\link{tidy_geometric}()},

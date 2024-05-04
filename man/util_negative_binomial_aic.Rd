@@ -7,27 +7,35 @@
 util_negative_binomial_aic(.x)
 }
 \arguments{
-\item{.x}{A numeric vector containing the data to be fitted to a negative binomial distribution.}
+\item{.x}{A numeric vector containing the data to be fitted to a negative
+binomial distribution.}
 }
 \value{
 The AIC value calculated based on the fitted negative binomial distribution to the provided data.
 }
 \description{
-This function estimates the parameters size (r) and probability (prob) of a negative binomial distribution from the provided data and then calculates the AIC value based on the fitted distribution.
+This function estimates the parameters size (r) and probability (prob) of a
+negative binomial distribution from the provided data and then calculates
+the AIC value based on the fitted distribution.
 }
 \details{
 This function calculates the Akaike Information Criterion (AIC) for a negative binomial distribution fitted to the provided data.
 
-This function fits a negative binomial distribution to the provided data. It estimates the parameters size (r) and probability (prob) of the negative binomial distribution from the data.
-Then, it calculates the AIC value based on the fitted distribution.
+This function fits a negative binomial distribution to the provided data.
+It estimates the parameters size (r) and probability (prob) of the negative
+binomial distribution from the data. Then, it calculates the AIC value based
+on the fitted distribution.
 
-Initial parameter estimates: The function uses the method of moments estimate as a starting point for the size (r) parameter of the negative binomial distribution,
+Initial parameter estimates: The function uses the method of moments estimate
+as a starting point for the size (r) parameter of the negative binomial distribution,
 and the probability (prob) is estimated based on the mean and variance of the data.
 
-Optimization method: Since the parameters are directly calculated from the data, no optimization is needed.
+Optimization method: Since the parameters are directly calculated from the data,
+no optimization is needed.
 
-Goodness-of-fit: While AIC is a useful metric for model comparison, it's recommended to also assess the goodness-of-fit of the chosen
-model using visualization and other statistical tests.
+Goodness-of-fit: While AIC is a useful metric for model comparison, it's
+recommended to also assess the goodness-of-fit of the chosen model using
+visualization and other statistical tests.
 }
 \examples{
 # Example 1: Calculate AIC for a sample dataset
@@ -55,6 +63,7 @@ Other Utility:
 \code{\link{util_normal_aic}()},
 \code{\link{util_pareto_aic}()},
 \code{\link{util_poisson_aic}()},
+\code{\link{util_rztnbinom_aic}()},
 \code{\link{util_uniform_aic}()},
 \code{\link{util_weibull_aic}()}
 }

@@ -35,7 +35,8 @@ Other Binomial:
 \code{\link{tidy_zero_truncated_binomial}()},
 \code{\link{tidy_zero_truncated_negative_binomial}()},
 \code{\link{util_binomial_param_estimate}()},
-\code{\link{util_negative_binomial_param_estimate}()}
+\code{\link{util_negative_binomial_param_estimate}()},
+\code{\link{util_ztn_binomial_param_estimate}()}
 
 Other Distribution Statistics: 
 \code{\link{util_bernoulli_stats_tbl}()},
