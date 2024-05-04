@@ -32,7 +32,8 @@ tidy_poisson() |>
 Other Poisson: 
 \code{\link{tidy_poisson}()},
 \code{\link{tidy_zero_truncated_poisson}()},
-\code{\link{util_poisson_param_estimate}()}
+\code{\link{util_poisson_param_estimate}()},
+\code{\link{util_zero_truncated_poisson_param_estimate}()}
 
 Other Distribution Statistics: 
 \code{\link{util_bernoulli_stats_tbl}()},

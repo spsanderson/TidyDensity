@@ -75,7 +75,8 @@ Other Utility:
 \code{\link{util_pareto_aic}()},
 \code{\link{util_poisson_aic}()},
 \code{\link{util_uniform_aic}()},
-\code{\link{util_weibull_aic}()}
+\code{\link{util_weibull_aic}()},
+\code{\link{util_ztp_aic}()}
 }
 \author{
 Steven P. Sanderson II, MPH
