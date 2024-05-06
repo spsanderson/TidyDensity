@@ -17,18 +17,18 @@
 #' # Example 1: Calculate AIC for a sample dataset
 #' set.seed(123)
 #' x <- rztpois(30, lambda = 3)
-#' util_ztp_aic(x)
+#' util_zero_truncated_poisson_aic(x)
 #'
 #' @return
 #' The AIC value calculated based on the fitted zero-truncated poisson distribution to the provided data.
 #'
-#' @name util_ztp_aic
+#' @name util_zero_truncated_poisson_aic
 NULL
 
 #' @export
-#' @rdname util_ztp_aic
+#' @rdname util_zero_truncated_poisson_aic
 
-util_ztp_aic <- function(.x) {
+util_zero_truncated_poisson_aic <- function(.x) {
   # Validate input
   if (!is.numeric(.x) || any(!is.na(.x) & .x != as.integer(.x)) || any(.x < 0)) {
     stop("Input data (.x) must be a numeric vector of non-negative integers.")
