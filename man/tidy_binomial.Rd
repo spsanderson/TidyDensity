@@ -73,7 +73,8 @@ Other Binomial:
 \code{\link{util_binomial_param_estimate}()},
 \code{\link{util_binomial_stats_tbl}()},
 \code{\link{util_negative_binomial_param_estimate}()},
-\code{\link{util_ztn_binomial_param_estimate}()}
+\code{\link{util_ztn_binomial_param_estimate}()},
+\code{\link{util_ztn_binomial_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH
