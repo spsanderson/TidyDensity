@@ -33,7 +33,8 @@ Other Poisson:
 \code{\link{tidy_poisson}()},
 \code{\link{tidy_zero_truncated_poisson}()},
 \code{\link{util_poisson_param_estimate}()},
-\code{\link{util_zero_truncated_poisson_param_estimate}()}
+\code{\link{util_zero_truncated_poisson_param_estimate}()},
+\code{\link{util_zero_truncated_poisson_stats_tbl}()}
 
 Other Distribution Statistics: 
 \code{\link{util_bernoulli_stats_tbl}()},
@@ -56,6 +57,7 @@ Other Distribution Statistics:
 \code{\link{util_triangular_stats_tbl}()},
 \code{\link{util_uniform_stats_tbl}()},
 \code{\link{util_weibull_stats_tbl}()},
+\code{\link{util_zero_truncated_poisson_stats_tbl}()},
 \code{\link{util_ztn_binomial_stats_tbl}()}
 }
 \author{
