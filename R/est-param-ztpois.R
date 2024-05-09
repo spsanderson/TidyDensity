@@ -85,7 +85,7 @@ util_zero_truncated_poisson_param_estimate <- function(.x, .auto_gen_empirical =
   # Optimize to find lambda that minimizes negative log-likelihood
   optim_result <- stats::optim(par = 1, fn = neg_loglik, data = x_term,
                                method = "Brent",
-                               lower = 0, upper = max(x))
+                               lower = 0, upper = max(x_term))
 
   # Extract estimated lambda
   lambda_est <- optim_result$par
@@ -109,7 +109,7 @@ util_zero_truncated_poisson_param_estimate <- function(.x, .auto_gen_empirical =
   # Return ----
   attr(ret, "tibble_type") <- "parameter_estimation"
   attr(ret, "family") <- "zero truncated poisson"
-  attr(ret, "x_term") <- .x
+  attr(ret, "x_term") <- x_term
   attr(ret, "n") <- n
 
   if (.auto_gen_empirical) {

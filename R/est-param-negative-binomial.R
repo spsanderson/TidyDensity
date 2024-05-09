@@ -112,11 +112,11 @@ util_negative_binomial_param_estimate <- function(.x, .size = 1,
   nll_func <- function(params) {
     size <- params[1]
     mu <- params[2]
-    -sum(dnbinom(x, size = size, mu = mu, log = TRUE))
+    -sum(dnbinom(x_term, size = size, mu = mu, log = TRUE))
   }
 
   # Initial parameter guesses (you might need to adjust these based on your data)
-  initial_params <- c(size = 1, mu = mean(x))
+  initial_params <- c(size = 1, mu = mean(x_term))
 
   # Optimize using optim()
   optim_result <- optim(initial_params, nll_func)

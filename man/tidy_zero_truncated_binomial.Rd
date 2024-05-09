@@ -74,8 +74,8 @@ Other Binomial:
 \code{\link{util_binomial_param_estimate}()},
 \code{\link{util_binomial_stats_tbl}()},
 \code{\link{util_negative_binomial_param_estimate}()},
-\code{\link{util_ztn_binomial_param_estimate}()},
-\code{\link{util_ztn_binomial_stats_tbl}()}
+\code{\link{util_zero_truncated_negative_binomial_param_estimate}()},
+\code{\link{util_zero_truncated_negative_binomial_stats_tbl}()}
 
 Other Zero Truncated Distribution: 
 \code{\link{tidy_zero_truncated_geometric}()},

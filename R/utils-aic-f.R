@@ -3,6 +3,14 @@
 #' This function calculates the Akaike Information Criterion (AIC) for an F
 #' distribution fitted to the provided data.
 #'
+#' @family Utility
+#' @author Steven P. Sanderson II, MPH
+#'
+#' @description
+#' This function estimates the parameters of a F distribution from the provided
+#' data using maximum likelihood estimation, and then calculates the AIC value
+#' based on the fitted distribution.
+#'
 #' @param .x A numeric vector containing the data to be fitted to an F
 #' distribution.
 #'
@@ -34,10 +42,10 @@ NULL
 
 util_f_aic <- function(.x) {
   # Tidyeval
-  x <- as.numeric(.x)
+  x_term <- as.numeric(.x)
 
   # Get initial parameter estimates
-  pe <- TidyDensity::util_f_param_estimate(x)$parameter_tbl |>
+  pe <- TidyDensity::util_f_param_estimate(x_term)$parameter_tbl |>
     dplyr::filter(method == "MLE")
 
   # Negative log-likelihood function for the F-distribution

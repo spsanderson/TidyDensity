@@ -5,9 +5,14 @@ None
 
 ## New Features
 1. #468 - Add function `util_negative_binomial_aic()` to calculate the AIC for the negative binomial distribution.
-2. #470 - Add function `util_ztn_binomial_param_estimate()` and `util_rztnbinom_aic()` to estimate the parameters and calculate the AIC for the zero-truncated negative binomial distribution. Also added `util_ztn_binomial_stats_tbl()`
+2. #470 - Add function `util_zero_truncated_negative_binomial_param_estimate()` to
+estimate the parameters of the zero-truncated negative binomial distribution.
+Add function `util_zero_truncated_negative_binomial_aic()` to calculate the AIC for the zero-truncated negative binomial distribution.
+Add function `util_zero_truncated_negative_binomial_stats_tbl()` to create a summary table of the zero-truncated negative binomial distribution.
 3. #471 - Add function `util_zero_truncated_poisson_param_estimate()` to estimate
-the parameters of the zero-truncated Poisson distribution. Add function `util_zero_truncated_poisson_aic()` to calculate the AIC for the zero-truncated Poisson distribution. Add function `util_zero_truncated_poisson_stats_tbl()` to create a summary table of the zero-truncated Poisson distribution.
+the parameters of the zero-truncated Poisson distribution. 
+Add function `util_zero_truncated_poisson_aic()` to calculate the AIC for the zero-truncated Poisson distribution. 
+Add function `util_zero_truncated_poisson_stats_tbl()` to create a summary table of the zero-truncated Poisson distribution.
 4. #472 - Add function `util_f_param_estimate()` and `util_f_aic()` to estimate the parameters and calculate the AIC for the F distribution.
 
 ## Minor Improvements and Fixes

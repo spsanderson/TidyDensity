@@ -29,7 +29,7 @@
 #' library(actuar)
 #'
 #' x <- as.integer(mtcars$mpg)
-#' output <- util_ztn_binomial_param_estimate(x)
+#' output <- util_zero_truncated_negative_binomial_param_estimate(x)
 #'
 #' output$parameter_tbl
 #'
@@ -38,15 +38,19 @@
 #'
 #' set.seed(123)
 #' t <- rztnbinom(100, 10, .1)
-#' util_ztn_binomial_param_estimate(t)$parameter_tbl
+#' util_zero_truncated_negative_binomial_param_estimate(t)$parameter_tbl
 #'
+#' @name util_zero_truncated_negative_binomial_param_estimate
+NULL
+
 #' @return
 #' A tibble/list
 #'
+#' @rdname util_zero_truncated_negative_binomial_param_estimate
 #' @export
 #'
 
-util_ztn_binomial_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
+util_zero_truncated_negative_binomial_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
 
   # Check if actuar library is installed
   if (!requireNamespace("actuar", quietly = TRUE)) {
