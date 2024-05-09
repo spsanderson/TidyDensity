@@ -6,13 +6,14 @@ None
 ## New Features
 1. #468 - Add function `util_negative_binomial_aic()` to calculate the AIC for the negative binomial distribution.
 2. #470 - Add function `util_ztn_binomial_param_estimate()` and `util_rztnbinom_aic()` to estimate the parameters and calculate the AIC for the zero-truncated negative binomial distribution. Also added `util_ztn_binomial_stats_tbl()`
-3. #467 - Add function `util_zero_truncated_poisson_param_estimate()` to estimate
+3. #471 - Add function `util_zero_truncated_poisson_param_estimate()` to estimate
 the parameters of the zero-truncated Poisson distribution. Add function `util_zero_truncated_poisson_aic()` to calculate the AIC for the zero-truncated Poisson distribution. Add function `util_zero_truncated_poisson_stats_tbl()` to create a summary table of the zero-truncated Poisson distribution.
 4. #472 - Add function `util_f_param_estimate()` and `util_f_aic()` to estimate the parameters and calculate the AIC for the F distribution.
 
 ## Minor Improvements and Fixes
 1. Fix #468 - Update `util_negative_binomial_param_estimate()` to add the use of
 `optim()` for parameter estimation.
+2. Fix #465 - Add names to columns when `.return_tibble = TRUE` for `quantile_normalize()`
 
 # TidyDensity 1.4.0
 

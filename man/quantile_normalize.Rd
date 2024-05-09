@@ -47,8 +47,8 @@ as.data.frame(normalized_data$normalized_data) |>
   sapply(function(x) quantile(x, probs = seq(0, 1, 1 / 4)))
 
 quantile_normalize(
-data.frame(sample1 = rnorm(30),
-           sample2 = rnorm(30)),
+data.frame(rnorm(30),
+           rnorm(30)),
            .return_tibble = TRUE)
 
 }

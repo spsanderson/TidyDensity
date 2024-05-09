@@ -41,8 +41,8 @@
 #'   sapply(function(x) quantile(x, probs = seq(0, 1, 1 / 4)))
 #'
 #' quantile_normalize(
-#' data.frame(sample1 = rnorm(30),
-#'            sample2 = rnorm(30)),
+#' data.frame(rnorm(30),
+#'            rnorm(30)),
 #'            .return_tibble = TRUE)
 #'
 #' @seealso
@@ -137,15 +137,15 @@ quantile_normalize <- function(.data, .return_tibble = FALSE) {
     )
   }
 
-  return(
-    list(
-      normalized_data = normalized_data,
-      row_means = row_means,
-      #sorted_data = sorted_data,
-      #column_rank_indices = rank_indices,
-      duplicated_ranks = duplicated_ranks,
-      duplicated_rank_row_indices = duplicated_rank_vector,
-      duplicated_rank_data = duplicated_rank_data
-    )
+  output <- list(
+    normalized_data = normalized_data,
+    row_means = row_means,
+    #sorted_data = sorted_data,
+    #column_rank_indices = rank_indices,
+    duplicated_ranks = duplicated_ranks,
+    duplicated_rank_row_indices = duplicated_rank_vector,
+    duplicated_rank_data = duplicated_rank_data
   )
+
+  return(output)
 }
