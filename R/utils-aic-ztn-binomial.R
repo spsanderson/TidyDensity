@@ -43,18 +43,18 @@
 #' x <- rztnbinom(30, size = 2, prob = 0.4)
 #'
 #' # Calculate AIC
-#' util_rztnbinom_aic(x)
+#' util_zero_truncated_negative_binomial_aic(x)
 #'
 #' @return The AIC value calculated based on the fitted ZTNB distribution to
 #'   the provided data.
 #'
-#' @name util_rztnbinom_aic
+#' @name util_zero_truncated_negative_binomial_aic
 NULL
 
 #' @export
-#' @rdname util_rztnbinom_aic
+#' @rdname util_zero_truncated_negative_binomial_aic
 
-util_rztnbinom_aic <- function(.x) {
+util_zero_truncated_negative_binomial_aic <- function(.x) {
   # Check if actuar library is installed
   if (!requireNamespace("actuar", quietly = TRUE)) {
     stop("The 'actuar' package is needed for this function. Please install it with: install.packages('actuar')")
@@ -64,7 +64,7 @@ util_rztnbinom_aic <- function(.x) {
   x <- as.numeric(.x)
 
   # Get parameters
-  pe <- util_ztn_binomial_param_estimate(x)$parameter_tbl
+  pe <- TidyDensity::util_zero_truncated_negative_binomial_param_estimate(x)$parameter_tbl
 
   # Negative log-likelihood function for zero-truncated negative binomial distribution
   neg_log_lik_rztnbinom <- function(par, data) {

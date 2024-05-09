@@ -112,16 +112,20 @@ This function takes a numeric matrix as input and returns a quantile-normalized 
 <code><a href="util_cauchy_aic.html">util_cauchy_aic</a>()</code>,
 <code><a href="util_chisq_aic.html">util_chisq_aic</a>()</code>,
 <code><a href="util_exponential_aic.html">util_exponential_aic</a>()</code>,
+<code><a href="util_f_aic.html">util_f_aic</a>()</code>,
 <code><a href="util_gamma_aic.html">util_gamma_aic</a>()</code>,
 <code><a href="util_geometric_aic.html">util_geometric_aic</a>()</code>,
 <code><a href="util_hypergeometric_aic.html">util_hypergeometric_aic</a>()</code>,
 <code><a href="util_logistic_aic.html">util_logistic_aic</a>()</code>,
 <code><a href="util_lognormal_aic.html">util_lognormal_aic</a>()</code>,
+<code><a href="util_negative_binomial_aic.html">util_negative_binomial_aic</a>()</code>,
 <code><a href="util_normal_aic.html">util_normal_aic</a>()</code>,
 <code><a href="util_pareto_aic.html">util_pareto_aic</a>()</code>,
 <code><a href="util_poisson_aic.html">util_poisson_aic</a>()</code>,
 <code><a href="util_uniform_aic.html">util_uniform_aic</a>()</code>,
-<code><a href="util_weibull_aic.html">util_weibull_aic</a>()</code></p></div>
+<code><a href="util_weibull_aic.html">util_weibull_aic</a>()</code>,
+<code><a href="util_zero_truncated_negative_binomial_aic.html">util_zero_truncated_negative_binomial_aic</a>()</code>,
+<code><a href="util_zero_truncated_poisson_aic.html">util_zero_truncated_poisson_aic</a>()</code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -176,24 +180,24 @@ This function takes a numeric matrix as input and returns a quantile-normalized 
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100%  1.5541985  1.5541985  1.5541985  1.5541985</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">quantile_normalize</span><span class="op">(</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>sample1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>           sample2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>           <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>           .return_tibble <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>There are duplicated ranks the input data.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $normalized_data</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 30 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    sample1 sample2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  -<span style="color: #BB0000;">0.341</span>  1.51  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>  -<span style="color: #BB0000;">0.744</span>  0.983 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>   0.109  0.645 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>   0.346 -<span style="color: #BB0000;">0.150</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>   1.26  -<span style="color: #BB0000;">0.316</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>  -<span style="color: #BB0000;">0.551</span> -<span style="color: #BB0000;">0.874</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>   0.346 -<span style="color: #BB0000;">1.60</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>   0.719 -<span style="color: #BB0000;">0.031</span><span style="color: #BB0000; text-decoration: underline;">5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  -<span style="color: #BB0000;">1.81</span>  -<span style="color: #BB0000;">0.670</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  -<span style="color: #BB0000;">1.37</span>  -<span style="color: #BB0000;">0.403</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    rnorm.30. rnorm.30..1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>    -<span style="color: #BB0000;">0.341</span>      1.51  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>    -<span style="color: #BB0000;">0.744</span>      0.983 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     0.109      0.645 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     0.346     -<span style="color: #BB0000;">0.150</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1.26      -<span style="color: #BB0000;">0.316</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>    -<span style="color: #BB0000;">0.551</span>     -<span style="color: #BB0000;">0.874</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     0.346     -<span style="color: #BB0000;">1.60</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     0.719     -<span style="color: #BB0000;">0.031</span><span style="color: #BB0000; text-decoration: underline;">5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>    -<span style="color: #BB0000;">1.81</span>      -<span style="color: #BB0000;">0.670</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    -<span style="color: #BB0000;">1.37</span>      -<span style="color: #BB0000;">0.403</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 20 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $row_means</span>

@@ -55,8 +55,8 @@ Other Distribution Statistics:
 \code{\link{util_t_stats_tbl}()},
 \code{\link{util_triangular_stats_tbl}()},
 \code{\link{util_uniform_stats_tbl}()},
-\code{\link{util_zero_truncated_poisson_stats_tbl}()},
-\code{\link{util_ztn_binomial_stats_tbl}()}
+\code{\link{util_zero_truncated_negative_binomial_stats_tbl}()},
+\code{\link{util_zero_truncated_poisson_stats_tbl}()}
 }
 \author{
 Steven P. Sanderson II, MPH

@@ -61,12 +61,17 @@
 </div>
 <div class="section level3">
 <h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
-<p>None</p>
-</div>
+<ol style="list-style-type: decimal"><li>#468 - Add function <code><a href="../reference/util_negative_binomial_aic.html">util_negative_binomial_aic()</a></code> to calculate the AIC for the negative binomial distribution.</li>
+<li>#470 - Add function <code><a href="../reference/util_zero_truncated_negative_binomial_param_estimate.html">util_zero_truncated_negative_binomial_param_estimate()</a></code> to estimate the parameters of the zero-truncated negative binomial distribution. Add function <code><a href="../reference/util_zero_truncated_negative_binomial_aic.html">util_zero_truncated_negative_binomial_aic()</a></code> to calculate the AIC for the zero-truncated negative binomial distribution. Add function <code><a href="../reference/util_zero_truncated_negative_binomial_stats_tbl.html">util_zero_truncated_negative_binomial_stats_tbl()</a></code> to create a summary table of the zero-truncated negative binomial distribution.</li>
+<li>#471 - Add function <code><a href="../reference/util_zero_truncated_poisson_param_estimate.html">util_zero_truncated_poisson_param_estimate()</a></code> to estimate the parameters of the zero-truncated Poisson distribution. Add function <code><a href="../reference/util_zero_truncated_poisson_aic.html">util_zero_truncated_poisson_aic()</a></code> to calculate the AIC for the zero-truncated Poisson distribution. Add function <code><a href="../reference/util_zero_truncated_poisson_stats_tbl.html">util_zero_truncated_poisson_stats_tbl()</a></code> to create a summary table of the zero-truncated Poisson distribution.</li>
+<li>#472 - Add function <code><a href="../reference/util_f_param_estimate.html">util_f_param_estimate()</a></code> and <code><a href="../reference/util_f_aic.html">util_f_aic()</a></code> to estimate the parameters and calculate the AIC for the F distribution.</li>
+</ol></div>
 <div class="section level3">
 <h3 id="minor-improvements-and-fixes-development-version">Minor Improvements and Fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-fixes-development-version"></a></h3>
-<p>None</p>
-</div>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/468" class="external-link">#468</a> - Update <code><a href="../reference/util_negative_binomial_param_estimate.html">util_negative_binomial_param_estimate()</a></code> to add the use of <code><a href="https://rdrr.io/r/stats/optim.html" class="external-link">optim()</a></code> for parameter estimation.</li>
+<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/465" class="external-link">#465</a> - Add names to columns when <code>.return_tibble = TRUE</code> for <code><a href="../reference/quantile_normalize.html">quantile_normalize()</a></code>
+</li>
+</ol></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.0" id="tidydensity-140">TidyDensity 1.4.0<a class="anchor" aria-label="anchor" href="#tidydensity-140"></a></h2><p class="text-muted">CRAN release: 2024-04-26</p>

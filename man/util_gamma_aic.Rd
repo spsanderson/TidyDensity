@@ -56,6 +56,7 @@ Other Utility:
 \code{\link{util_cauchy_aic}()},
 \code{\link{util_chisq_aic}()},
 \code{\link{util_exponential_aic}()},
+\code{\link{util_f_aic}()},
 \code{\link{util_geometric_aic}()},
 \code{\link{util_hypergeometric_aic}()},
 \code{\link{util_logistic_aic}()},
@@ -64,9 +65,9 @@ Other Utility:
 \code{\link{util_normal_aic}()},
 \code{\link{util_pareto_aic}()},
 \code{\link{util_poisson_aic}()},
-\code{\link{util_rztnbinom_aic}()},
 \code{\link{util_uniform_aic}()},
 \code{\link{util_weibull_aic}()},
+\code{\link{util_zero_truncated_negative_binomial_aic}()},
 \code{\link{util_zero_truncated_poisson_aic}()}
 }
 \author{

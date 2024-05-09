@@ -18,19 +18,19 @@
 #' library(dplyr)
 #'
 #' tidy_zero_truncated_negative_binomial(.size = 1, .prob = 0.1) |>
-#'  util_ztn_binomial_stats_tbl() |>
+#'  util_zero_truncated_negative_binomial_stats_tbl() |>
 #'  glimpse()
 #'
 #'
 #' @return A tibble with distribution statistics.
 #'
-#' @name util_ztn_binomial_stats_tbl
+#' @name util_zero_truncated_negative_binomial_stats_tbl
 NULL
 
 #' @export
-#' @rdname util_ztn_binomial_stats_tbl
+#' @rdname util_zero_truncated_negative_binomial_stats_tbl
 
-util_ztn_binomial_stats_tbl <- function(.data) {
+util_zero_truncated_negative_binomial_stats_tbl <- function(.data) {
 
   # Immediate check for tidy_ distribution function
   if (!"tibble_type" %in% names(attributes(.data))) {

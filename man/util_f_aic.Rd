@@ -15,10 +15,14 @@ The AIC value calculated based on the fitted F distribution to the
 provided data.
 }
 \description{
-This function calculates the Akaike Information Criterion (AIC) for an F
-distribution fitted to the provided data.
+This function estimates the parameters of a F distribution from the provided
+data using maximum likelihood estimation, and then calculates the AIC value
+based on the fitted distribution.
 }
 \details{
+This function calculates the Akaike Information Criterion (AIC) for an F
+distribution fitted to the provided data.
+
 This function fits an F distribution to the input data using maximum
 likelihood estimation and then computes the Akaike Information Criterion (AIC)
 based on the fitted distribution.
@@ -35,4 +39,32 @@ util_f_aic(x)
 \seealso{
 \code{\link[stats]{rf}} for generating F-distributed data,
 \code{\link[stats]{optim}} for optimization.
+
+Other Utility: 
+\code{\link{check_duplicate_rows}()},
+\code{\link{convert_to_ts}()},
+\code{\link{quantile_normalize}()},
+\code{\link{tidy_mcmc_sampling}()},
+\code{\link{util_beta_aic}()},
+\code{\link{util_binomial_aic}()},
+\code{\link{util_cauchy_aic}()},
+\code{\link{util_chisq_aic}()},
+\code{\link{util_exponential_aic}()},
+\code{\link{util_gamma_aic}()},
+\code{\link{util_geometric_aic}()},
+\code{\link{util_hypergeometric_aic}()},
+\code{\link{util_logistic_aic}()},
+\code{\link{util_lognormal_aic}()},
+\code{\link{util_negative_binomial_aic}()},
+\code{\link{util_normal_aic}()},
+\code{\link{util_pareto_aic}()},
+\code{\link{util_poisson_aic}()},
+\code{\link{util_uniform_aic}()},
+\code{\link{util_weibull_aic}()},
+\code{\link{util_zero_truncated_negative_binomial_aic}()},
+\code{\link{util_zero_truncated_poisson_aic}()}
 }
+\author{
+Steven P. Sanderson II, MPH
+}
+\concept{Utility}
