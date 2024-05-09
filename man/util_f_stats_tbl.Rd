@@ -30,7 +30,8 @@ tidy_f() |>
 }
 \seealso{
 Other F Distribution: 
-\code{\link{tidy_f}()}
+\code{\link{tidy_f}()},
+\code{\link{util_f_param_estimate}()}
 
 Other Distribution Statistics: 
 \code{\link{util_bernoulli_stats_tbl}()},
