@@ -4,20 +4,23 @@
 None
 
 ## New Features
-1. #468 - Add function `util_negative_binomial_aic()` to calculate the AIC for the negative binomial distribution.
-2. #470 - Add function `util_zero_truncated_negative_binomial_param_estimate()` to
+1. Fix #468 - Add function `util_negative_binomial_aic()` to calculate the AIC for the negative binomial distribution.
+2. Fix #470 - Add function `util_zero_truncated_negative_binomial_param_estimate()` to
 estimate the parameters of the zero-truncated negative binomial distribution.
 Add function `util_zero_truncated_negative_binomial_aic()` to calculate the AIC for the zero-truncated negative binomial distribution.
 Add function `util_zero_truncated_negative_binomial_stats_tbl()` to create a summary table of the zero-truncated negative binomial distribution.
-3. #471 - Add function `util_zero_truncated_poisson_param_estimate()` to estimate
+3. Fix #471 - Add function `util_zero_truncated_poisson_param_estimate()` to estimate
 the parameters of the zero-truncated Poisson distribution. 
 Add function `util_zero_truncated_poisson_aic()` to calculate the AIC for the zero-truncated Poisson distribution. 
 Add function `util_zero_truncated_poisson_stats_tbl()` to create a summary table of the zero-truncated Poisson distribution.
-4. #472 - Add function `util_f_param_estimate()` and `util_f_aic()` to estimate the parameters and calculate the AIC for the F distribution.
-5. #482 - Add function `util_zero_truncated_geometric_param_estimate()` to estimate the parameters of the zero-truncated geometric distribution.
+4. Fix #472 - Add function `util_f_param_estimate()` and `util_f_aic()` to estimate the parameters and calculate the AIC for the F distribution.
+5. Fix #482 - Add function `util_zero_truncated_geometric_param_estimate()` to estimate the parameters of the zero-truncated geometric distribution.
 Add function `util_zero_truncated_geometric_aic()` to calculate the AIC for the zero-truncated geometric distribution.
 Add function `util_zero_truncated_geometric_stats_tbl()` to create a summary table of the zero-truncated geometric distribution.
-6. #481 - Add function `util_triangular_aic()` to calculate the AIC for the triangular distribution.
+6. Fix #481 - Add function `util_triangular_aic()` to calculate the AIC for the triangular distribution.
+7. Fix #480 - Add function `util_t_param_estimate()` to estimate the parameters of the
+T distribution. 
+Add function `util_t_aic()` to calculate the AIC for the T distribution.
 
 ## Minor Improvements and Fixes
 1. Fix #468 - Update `util_negative_binomial_param_estimate()` to add the use of

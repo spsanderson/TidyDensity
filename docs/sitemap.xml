@@ -439,10 +439,19 @@
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_rztnbinom_aic.html</loc>
   </url>
   <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_aic.html</loc>
+  </url>
+  <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_stats_tbl.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_t_aic.html</loc>
+  </url>
+  <url>
+    <loc>https://www.spsanderson.com/TidyDensity/reference/util_t_param_estimate.html</loc>
   </url>
   <url>
     <loc>https://www.spsanderson.com/TidyDensity/reference/util_t_stats_tbl.html</loc>
