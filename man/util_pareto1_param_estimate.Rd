@@ -82,8 +82,8 @@ Other Pareto:
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_pareto}()},
 \code{\link{tidy_pareto1}()},
+\code{\link{util_pareto1_aic}()},
 \code{\link{util_pareto1_stats_tbl}()},
-\code{\link{util_pareto_aic}()},
 \code{\link{util_pareto_param_estimate}()},
 \code{\link{util_pareto_stats_tbl}()}
 }

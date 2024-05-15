@@ -34,17 +34,17 @@
 #' # Example 1: Calculate AIC for a sample dataset
 #' set.seed(123)
 #' x <- tidy_pareto1()$y
-#' util_pareto_aic(x)
+#' util_pareto1_aic(x)
 #'
 #' @return
 #' The AIC value calculated based on the fitted Pareto distribution to the provided data.
 #'
-#' @name util_pareto_aic
+#' @name util_pareto1_aic
 NULL
 
 #' @export
-#' @rdname util_pareto_aic
-util_pareto_aic <- function(.x) {
+#' @rdname util_pareto1_aic
+util_pareto1_aic <- function(.x) {
   # Tidyeval
   x <- as.numeric(.x)
   n <- length(x)
