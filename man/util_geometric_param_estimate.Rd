@@ -54,6 +54,7 @@ Other Parameter Estimation:
 \code{\link{util_f_param_estimate}()},
 \code{\link{util_gamma_param_estimate}()},
 \code{\link{util_hypergeometric_param_estimate}()},
+\code{\link{util_inverse_burr_param_estimate}()},
 \code{\link{util_inverse_pareto_param_estimate}()},
 \code{\link{util_inverse_weibull_param_estimate}()},
 \code{\link{util_logistic_param_estimate}()},
