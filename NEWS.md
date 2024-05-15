@@ -24,6 +24,9 @@ Add function `util_t_aic()` to calculate the AIC for the T distribution.
 8. Fix #479 - Add function `util_pareto1_param_estimate()` to estimate the parameters of the Pareto Type I distribution.
 Add function `util_pareto1_aic()` to calculate the AIC for the Pareto Type I distribution.
 Add function `util_pareto1_stats_tbl()` to create a summary table of the Pareto Type I distribution.
+9. Fix #478 - Add function `util_paralogistic_param_estimate()` to estimate the parameters of the paralogistic distribution.
+Add function `util_paralogistic_aic()` to calculate the AIC for the paralogistic distribution.
+Add fnction `util_paralogistic_stats_tbl()` to create a summary table of the paralogistic distribution.
 
 ## Minor Improvements and Fixes
 1. Fix #468 - Update `util_negative_binomial_param_estimate()` to add the use of
