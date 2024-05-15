@@ -52,6 +52,7 @@ Other Utility:
 \code{\link{util_exponential_aic}()},
 \code{\link{util_f_aic}()},
 \code{\link{util_gamma_aic}()},
+\code{\link{util_generalized_beta_aic}()},
 \code{\link{util_generalized_pareto_aic}()},
 \code{\link{util_geometric_aic}()},
 \code{\link{util_hypergeometric_aic}()},

@@ -42,6 +42,7 @@ Other Distribution Statistics:
 \code{\link{util_exponential_stats_tbl}()},
 \code{\link{util_f_stats_tbl}()},
 \code{\link{util_gamma_stats_tbl}()},
+\code{\link{util_generalized_beta_stats_tbl}()},
 \code{\link{util_geometric_stats_tbl}()},
 \code{\link{util_hypergeometric_stats_tbl}()},
 \code{\link{util_inverse_burr_stats_tbl}()},
