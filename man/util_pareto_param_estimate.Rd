@@ -66,6 +66,7 @@ Other Parameter Estimation:
 \code{\link{util_lognormal_param_estimate}()},
 \code{\link{util_negative_binomial_param_estimate}()},
 \code{\link{util_normal_param_estimate}()},
+\code{\link{util_pareto1_param_estimate}()},
 \code{\link{util_poisson_param_estimate}()},
 \code{\link{util_t_param_estimate}()},
 \code{\link{util_triangular_param_estimate}()},
@@ -80,6 +81,9 @@ Other Pareto:
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_pareto}()},
 \code{\link{tidy_pareto1}()},
+\code{\link{util_pareto1_aic}()},
+\code{\link{util_pareto1_param_estimate}()},
+\code{\link{util_pareto1_stats_tbl}()},
 \code{\link{util_pareto_stats_tbl}()}
 }
 \author{
