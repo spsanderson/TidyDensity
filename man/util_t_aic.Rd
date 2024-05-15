@@ -58,6 +58,7 @@ Other Utility:
 \code{\link{util_lognormal_aic}()},
 \code{\link{util_negative_binomial_aic}()},
 \code{\link{util_normal_aic}()},
+\code{\link{util_paralogistic_aic}()},
 \code{\link{util_pareto1_aic}()},
 \code{\link{util_pareto_aic}()},
 \code{\link{util_poisson_aic}()},

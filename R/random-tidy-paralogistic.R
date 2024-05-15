@@ -114,13 +114,13 @@ tidy_paralogistic <- function(.n = 50, .shape = 1, .rate = 1, .scale = 1 / .rate
   }
 
   # Create a tibble of the parameter grid
-  param_grid <- dplyr::tibble(.shape, .rate, .scale)
+  param_grid <- dplyr::tibble(.shape, .rate, round(.scale, 3))
 
   # Attach descriptive attributes to tibble
   attr(df, "distribution_family_type") <- "continuous"
   attr(df, ".shape") <- .shape
   attr(df, ".rate") <- .rate
-  attr(df, ".scale") <- .scale
+  attr(df, ".scale") <- round(.scale, 3)
   attr(df, ".n") <- .n
   attr(df, ".num_sims") <- .num_sims
   attr(df, ".ret_tbl") <- .return_tibble
