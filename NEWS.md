@@ -39,6 +39,9 @@ Add function `util_inverse_burr_stats_tbl()` to create a summary table of the In
 13. Fix #474 - Add function `util_generalized_pareto_param_estimate()` to estimate the parameters of the Generalized Pareto distribution.
 Add function `util_generalized_pareto_aic()` to calculate the AIC for the Generalized Pareto distribution.
 Add function `util_generalized_pareto_stats_tbl()` to create a summary table of the Generalized Pareto distribution.
+14. Fix #473 - Add function `util_generalized_beta_param_estimate()` to estimate the parameters of the Generalized Gamma distribution.
+Add function `util_generalized_beta_aic()` to calculate the AIC for the Generalized Gamma distribution.
+Add function `util_generalized_beta_stats_tbl()` to create a summary table of the Generalized Gamma distribution.
 
 ## Minor Improvements and Fixes
 1. Fix #468 - Update `util_negative_binomial_param_estimate()` to add the use of
