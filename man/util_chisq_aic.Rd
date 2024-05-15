@@ -40,6 +40,7 @@ Other Utility:
 \code{\link{util_gamma_aic}()},
 \code{\link{util_geometric_aic}()},
 \code{\link{util_hypergeometric_aic}()},
+\code{\link{util_inverse_pareto_aic}()},
 \code{\link{util_inverse_weibull_aic}()},
 \code{\link{util_logistic_aic}()},
 \code{\link{util_lognormal_aic}()},
