@@ -21,6 +21,9 @@ Add function `util_zero_truncated_geometric_stats_tbl()` to create a summary tab
 7. Fix #480 - Add function `util_t_param_estimate()` to estimate the parameters of the
 T distribution. 
 Add function `util_t_aic()` to calculate the AIC for the T distribution.
+8. Fix #479 - Add function `util_pareto1_param_estimate()` to estimate the parameters of the Pareto Type I distribution.
+Add function `util_pareto1_aic()` to calculate the AIC for the Pareto Type I distribution.
+Add function `util_pareto1_stats_tbl()` to create a summary table of the Pareto Type I distribution.
 
 ## Minor Improvements and Fixes
 1. Fix #468 - Update `util_negative_binomial_param_estimate()` to add the use of

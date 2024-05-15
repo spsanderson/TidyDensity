@@ -59,6 +59,7 @@ Other Distribution Statistics:
 \code{\link{util_lognormal_stats_tbl}()},
 \code{\link{util_negative_binomial_stats_tbl}()},
 \code{\link{util_normal_stats_tbl}()},
+\code{\link{util_pareto1_stats_tbl}()},
 \code{\link{util_pareto_stats_tbl}()},
 \code{\link{util_poisson_stats_tbl}()},
 \code{\link{util_t_stats_tbl}()},

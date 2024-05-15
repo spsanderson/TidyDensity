@@ -34,6 +34,9 @@ Other Pareto:
 \code{\link{tidy_inverse_pareto}()},
 \code{\link{tidy_pareto}()},
 \code{\link{tidy_pareto1}()},
+\code{\link{util_pareto1_param_estimate}()},
+\code{\link{util_pareto1_stats_tbl}()},
+\code{\link{util_pareto_aic}()},
 \code{\link{util_pareto_param_estimate}()}
 
 Other Distribution Statistics: 
@@ -52,6 +55,7 @@ Other Distribution Statistics:
 \code{\link{util_lognormal_stats_tbl}()},
 \code{\link{util_negative_binomial_stats_tbl}()},
 \code{\link{util_normal_stats_tbl}()},
+\code{\link{util_pareto1_stats_tbl}()},
 \code{\link{util_poisson_stats_tbl}()},
 \code{\link{util_t_stats_tbl}()},
 \code{\link{util_triangular_stats_tbl}()},
