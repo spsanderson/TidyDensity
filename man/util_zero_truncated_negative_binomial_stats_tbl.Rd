@@ -38,6 +38,8 @@ Other Binomial:
 \code{\link{util_binomial_param_estimate}()},
 \code{\link{util_binomial_stats_tbl}()},
 \code{\link{util_negative_binomial_param_estimate}()},
+\code{\link{util_zero_truncated_binomial_param_estimate}()},
+\code{\link{util_zero_truncated_binomial_stats_tbl}()},
 \code{\link{util_zero_truncated_negative_binomial_param_estimate}()}
 
 Other Negative Binomial: 
@@ -72,6 +74,7 @@ Other Distribution Statistics:
 \code{\link{util_triangular_stats_tbl}()},
 \code{\link{util_uniform_stats_tbl}()},
 \code{\link{util_weibull_stats_tbl}()},
+\code{\link{util_zero_truncated_binomial_stats_tbl}()},
 \code{\link{util_zero_truncated_geometric_stats_tbl}()},
 \code{\link{util_zero_truncated_poisson_stats_tbl}()}
 }
