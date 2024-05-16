@@ -89,7 +89,7 @@ util_zero_truncated_binomial_param_estimate <- function(.x, .auto_gen_empirical 
   mle_msg  <- optim_result$message
 
   # Create output tibble
-  ret <- tibble::tibble(
+  ret <- dplyr::tibble(
     dist_type = "Zero-Truncated Binomial",
     samp_size = n,
     min = minx,
