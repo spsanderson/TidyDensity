@@ -77,7 +77,7 @@ util_zero_truncated_binomial_param_estimate <- function(.x, .auto_gen_empirical 
   initial_params <- c(size = max(x_term), prob = 0.5)  # Adjust based on your data
 
   # Optimization using optim()
-  optim_result <- optim(
+  optim_result <- stats::optim(
     par = initial_params,
     fn = nll_func
   ) |>

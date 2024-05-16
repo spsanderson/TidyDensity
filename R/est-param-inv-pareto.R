@@ -74,7 +74,7 @@ util_inverse_pareto_param_estimate <- function(.x, .auto_gen_empirical = TRUE) {
   initial_params <- c(shape = 1, scale = min(x_term))
 
   # Optimize to minimize the negative log-likelihood
-  opt_result <- optim(
+  opt_result <- stats::optim(
     par = initial_params,
     fn = neg_log_lik_invpareto,
     data = x_term,

@@ -74,7 +74,7 @@ util_zero_truncated_negative_binomial_aic <- function(.x) {
   }
 
   # Fit zero-truncated negative binomial distribution to data
-  fit_rztnbinom <- optim(
+  fit_rztnbinom <- stats::optim(
     par = c(size = round(pe$size, 3), prob = round(pe$prob, 3)),
     fn = neg_log_lik_rztnbinom,
     data = x

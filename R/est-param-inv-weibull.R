@@ -68,7 +68,7 @@ util_inverse_weibull_param_estimate <- function(.x, .auto_gen_empirical = TRUE) 
   initial_params <- c(shape = 1, scale = 1)
 
   # Optimize to minimize the negative log-likelihood
-  opt_result <- optim(
+  opt_result <- stats::optim(
     par = initial_params,
     fn = neg_log_lik,
     data = x_term,

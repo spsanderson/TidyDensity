@@ -74,7 +74,7 @@ util_generalized_pareto_param_estimate <- function(.x, .auto_gen_empirical = TRU
   initial_params <- c(shape1 = 1, shape2 = 1, scale = 1)
 
   # Optimize to minimize the negative log-likelihood
-  opt_result <- optim(
+  opt_result <- stats::optim(
     par = initial_params,
     fn = genpareto_lik,
     data = x_term,

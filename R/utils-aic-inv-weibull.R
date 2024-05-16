@@ -61,7 +61,7 @@ util_inverse_weibull_aic <- function(.x) {
   initial_params <- c(shape = 1, scale = 1)
 
   # Fit inverse Weibull distribution using optim
-  fit_invweibull <- optim(
+  fit_invweibull <- stats::optim(
     par = initial_params,
     fn = neg_log_lik_invweibull,
     data = x,
