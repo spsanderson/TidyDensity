@@ -76,7 +76,7 @@ util_zero_truncated_negative_binomial_param_estimate <- function(.x, .auto_gen_e
   initial_params <- c(size = 1, prob = 0.5)  # Adjust based on your data
 
   # Optimization using optim()
-  optim_result <- optim(initial_params, nll_func) |>
+  optim_result <- stats::optim(initial_params, nll_func) |>
     suppressWarnings()
 
   # Extract estimated parameters

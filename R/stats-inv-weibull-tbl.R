@@ -64,7 +64,7 @@ util_inverse_weibull_stats_tbl <- function(.data) {
   initial_params <- c(shape = t, scale = q)
 
   # Optimize to minimize the negative log-likelihood
-  opt_result <- optim(
+  opt_result <- stats::optim(
     par = initial_params,
     fn = neg_log_lik,
     data = data_tbl$y,
@@ -78,7 +78,7 @@ util_inverse_weibull_stats_tbl <- function(.data) {
 
   # Compute statistics
   stat_mean <- mean(actuar::rinvweibull(1e5, shape = iw_shape, scale = iw_scale))
-  stat_median <- quantile(data_tbl$y, 0.5)
+  stat_median <- stats::quantile(data_tbl$y, 0.5)
   stat_mode <- iw_scale * (1 - 1 / iw_shape)^(1 / iw_shape)
   stat_sd <- sqrt(var(actuar::rinvweibull(1e5, shape = iw_shape, scale = iw_scale)))
   stat_coef_var <- stat_sd / stat_mean

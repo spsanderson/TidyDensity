@@ -58,7 +58,7 @@ util_negative_binomial_aic <- function(.x) {
 
   # Calculate AIC
   k_negative_binomial <- 2 # Number of parameters for negative binomial distribution (r and prob)
-  logLik_negative_binomial <- sum(dnbinom(x, size = r, prob = prob, log = TRUE))
+  logLik_negative_binomial <- sum(stats::dnbinom(x, size = r, prob = prob, log = TRUE))
   AIC_negative_binomial <- 2 * k_negative_binomial - 2 * logLik_negative_binomial
 
   # Return AIC

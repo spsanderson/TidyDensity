@@ -77,7 +77,7 @@ util_zero_truncated_binomial_aic <- function(.x) {
   pe <- util_zero_truncated_binomial_param_estimate(x)$parameter_tbl
 
   # Fit zero-truncated binomial distribution to data
-  fit_rztbinom <- optim(
+  fit_rztbinom <- stats::optim(
     par = c(size = round(pe$size, 3), prob = round(pe$prob, 3)),
     fn = neg_log_lik_rztbinom,
     data = x
