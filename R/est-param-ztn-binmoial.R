@@ -84,7 +84,7 @@ util_zero_truncated_negative_binomial_param_estimate <- function(.x, .auto_gen_e
   mle_prob <- optim_result$par[2]
 
   # Create output tibble
-  ret <- tibble::tibble(
+  ret <- dplyr::tibble(
     dist_type = "Zero-Truncated Negative Binomial",
     samp_size = n,
     min = minx,
