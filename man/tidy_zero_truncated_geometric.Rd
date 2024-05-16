@@ -90,7 +90,8 @@ Other Continuous Distribution:
 
 Other Zero Truncated Distribution: 
 \code{\link{tidy_zero_truncated_binomial}()},
-\code{\link{tidy_zero_truncated_poisson}()}
+\code{\link{tidy_zero_truncated_poisson}()},
+\code{\link{util_zero_truncated_binomial_param_estimate}()}
 }
 \author{
 Steven P. Sanderson II, MPH

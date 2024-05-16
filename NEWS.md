@@ -42,6 +42,9 @@ Add function `util_generalized_pareto_stats_tbl()` to create a summary table of 
 14. Fix #473 - Add function `util_generalized_beta_param_estimate()` to estimate the parameters of the Generalized Gamma distribution.
 Add function `util_generalized_beta_aic()` to calculate the AIC for the Generalized Gamma distribution.
 Add function `util_generalized_beta_stats_tbl()` to create a summary table of the Generalized Gamma distribution.
+15. Fix #469 - Add function `util_zero_truncated_binomial_stats_tbl()` to create a summary table of the Zero Truncated binomial distribution.
+Add function `util_zero_truncated_binomial_param_estimate()` to estimate the parameters of the Zero Truncated binomial distribution.
+Add function `util_zero_truncated_binomial_aic()` to calculate the AIC for the Zero Truncated binomial distribution.
 
 ## Minor Improvements and Fixes
 1. Fix #468 - Update `util_negative_binomial_param_estimate()` to add the use of

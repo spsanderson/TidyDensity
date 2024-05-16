@@ -72,6 +72,7 @@ Other Utility:
 \code{\link{util_triangular_aic}()},
 \code{\link{util_uniform_aic}()},
 \code{\link{util_weibull_aic}()},
+\code{\link{util_zero_truncated_binomial_aic}()},
 \code{\link{util_zero_truncated_geometric_aic}()},
 \code{\link{util_zero_truncated_negative_binomial_aic}()},
 \code{\link{util_zero_truncated_poisson_aic}()}
