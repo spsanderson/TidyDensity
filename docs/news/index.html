@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">TidyDensity</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,12 +55,15 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="tidydensity-development-version">TidyDensity (development version)<a class="anchor" aria-label="anchor" href="#tidydensity-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.5.0" id="tidydensity-150">TidyDensity 1.5.0<a class="anchor" aria-label="anchor" href="#tidydensity-150"></a></h2><p class="text-muted">CRAN release: 2024-05-28</p>
 <div class="section level3">
-<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<h3 id="breaking-changes-1-5-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-5-0"></a></h3>
 <p>None</p>
 </div>
 <div class="section level3">
-<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<h3 id="new-features-1-5-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-5-0"></a></h3>
 <ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/468" class="external-link">#468</a> - Add function <code><a href="../reference/util_negative_binomial_aic.html">util_negative_binomial_aic()</a></code> to calculate the AIC for the negative binomial distribution.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/470" class="external-link">#470</a> - Add function <code><a href="../reference/util_zero_truncated_negative_binomial_param_estimate.html">util_zero_truncated_negative_binomial_param_estimate()</a></code> to estimate the parameters of the zero-truncated negative binomial distribution. Add function <code><a href="../reference/util_zero_truncated_negative_binomial_aic.html">util_zero_truncated_negative_binomial_aic()</a></code> to calculate the AIC for the zero-truncated negative binomial distribution. Add function <code><a href="../reference/util_zero_truncated_negative_binomial_stats_tbl.html">util_zero_truncated_negative_binomial_stats_tbl()</a></code> to create a summary table of the zero-truncated negative binomial distribution.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/471" class="external-link">#471</a> - Add function <code><a href="../reference/util_zero_truncated_poisson_param_estimate.html">util_zero_truncated_poisson_param_estimate()</a></code> to estimate the parameters of the zero-truncated Poisson distribution. Add function <code><a href="../reference/util_zero_truncated_poisson_aic.html">util_zero_truncated_poisson_aic()</a></code> to calculate the AIC for the zero-truncated Poisson distribution. Add function <code><a href="../reference/util_zero_truncated_poisson_stats_tbl.html">util_zero_truncated_poisson_stats_tbl()</a></code> to create a summary table of the zero-truncated Poisson distribution.</li>
@@ -78,7 +81,7 @@
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/469" class="external-link">#469</a> - Add function <code><a href="../reference/util_zero_truncated_binomial_stats_tbl.html">util_zero_truncated_binomial_stats_tbl()</a></code> to create a summary table of the Zero Truncated binomial distribution. Add function <code><a href="../reference/util_zero_truncated_binomial_param_estimate.html">util_zero_truncated_binomial_param_estimate()</a></code> to estimate the parameters of the Zero Truncated binomial distribution. Add function <code><a href="../reference/util_zero_truncated_binomial_aic.html">util_zero_truncated_binomial_aic()</a></code> to calculate the AIC for the Zero Truncated binomial distribution.</li>
 </ol></div>
 <div class="section level3">
-<h3 id="minor-improvements-and-fixes-development-version">Minor Improvements and Fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-fixes-development-version"></a></h3>
+<h3 id="minor-improvements-and-fixes-1-5-0">Minor Improvements and Fixes<a class="anchor" aria-label="anchor" href="#minor-improvements-and-fixes-1-5-0"></a></h3>
 <ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/468" class="external-link">#468</a> - Update <code><a href="../reference/util_negative_binomial_param_estimate.html">util_negative_binomial_param_estimate()</a></code> to add the use of <code><a href="https://rdrr.io/r/stats/optim.html" class="external-link">optim()</a></code> for parameter estimation.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/465" class="external-link">#465</a> - Add names to columns when <code>.return_tibble = TRUE</code> for <code><a href="../reference/quantile_normalize.html">quantile_normalize()</a></code>
 </li>
@@ -130,7 +133,7 @@
 <h3 id="minor-fixes-and-improvements-1-3-0">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-1-3-0"></a></h3>
 <ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/372" class="external-link">#372</a> and <a href="https://github.com/spsanderson/TidyDensity/issues/373" class="external-link">#373</a> - Update <code><a href="../reference/cvar.html">cvar()</a></code> and <code><a href="../reference/csd.html">csd()</a></code> to a vectorized approach from <a href="https://github.com/kokbent" class="external-link">@kokbent</a> which speeds these up by over 100x</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/350" class="external-link">#350</a> - Update all <code>tidy_</code> distribution functions to generate data using <code>data.table</code> this in many instances has resulted in a speed up of 30% or more.</li>
-<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/379" class="external-link">#379</a> - Replace the use of <code><a href="https://rdrr.io/pkg/dplyr/man/deprec-context.html" class="external-link">dplyr::cur_data()</a></code> as it was deprecated in dplyr in favor of using <code><a href="https://rdrr.io/pkg/dplyr/man/pick.html" class="external-link">dplyr::pick()</a></code>
+<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/379" class="external-link">#379</a> - Replace the use of <code><a href="https://dplyr.tidyverse.org/reference/deprec-context.html" class="external-link">dplyr::cur_data()</a></code> as it was deprecated in dplyr in favor of using <code><a href="https://dplyr.tidyverse.org/reference/pick.html" class="external-link">dplyr::pick()</a></code>
 </li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/381" class="external-link">#381</a> - Add <code><a href="../reference/tidy_triangular.html">tidy_triangular()</a></code> to all autoplot functions.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/385" class="external-link">#385</a> - For <code><a href="../reference/tidy_multi_dist_autoplot.html">tidy_multi_dist_autoplot()</a></code> the <code>.plot_type = "quantile"</code> did not work.</li>
