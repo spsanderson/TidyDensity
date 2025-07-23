@@ -53,6 +53,7 @@ tidy_bernoulli()
 
 Other Discrete Distribution: 
 \code{\link{tidy_binomial}()},
+\code{\link{tidy_geometric}()},
 \code{\link{tidy_hypergeometric}()},
 \code{\link{tidy_negative_binomial}()},
 \code{\link{tidy_poisson}()},
