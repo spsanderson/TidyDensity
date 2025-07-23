@@ -2,4 +2,4 @@
 
 0 errors | 0 warnings | 1 note
 
-* Add some functions, optimize some code.
+* Fix documentation to prevent archival.
