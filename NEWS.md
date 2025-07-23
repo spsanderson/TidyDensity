@@ -8,6 +8,7 @@ None
 
 ## Minor Fixes and Improvements
 1. Fix #515 - Fix documentation issue with `rinvgauss`
+2. Fix #514 - Fix documentation issue with `tidy_geometric()`
 
 # TidyDensity 1.5.0
 
