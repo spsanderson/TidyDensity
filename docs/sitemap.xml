@@ -1,585 +1,197 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/404.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/articles/getting-started.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_density_augment.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_p_augment.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_p_vec.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_q_augment.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_q_vec.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_stat_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_unnest_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/cgmean.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/check_duplicate_rows.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/chmean.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/ci_hi.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/ci_lo.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/ckurtosis.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/cmean.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/cmedian.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/color_blind.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/convert_to_ts.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/csd.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/cskewness.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/cvar.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/dist_type_extractor.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/quantile_normalize.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/td_scale_color_colorblind.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/td_scale_fill_colorblind.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidyeval.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_autoplot.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_bernoulli.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_beta.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_binomial.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_bootstrap.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_burr.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_cauchy.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_chisquare.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_combined_autoplot.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_combine_distributions.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_distribution_comparison.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_distribution_summary_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_empirical.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_exponential.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_f.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_four_autoplot.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_gamma.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_generalized_beta.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_generalized_pareto.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_geometric.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_hypergeometric.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_burr.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_exponential.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_gamma.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_normal.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_pareto.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_weibull.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_kurtosis_vec.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_logisitc.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_logistic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_lognormal.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_mcmc_sampling.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_mixture_density.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_multi_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_multi_dist_autoplot.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_multi_single_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_negative_binomial.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_normal.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_paralogistic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_pareto.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_pareto1.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_poisson.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_random_walk.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_random_walk_autoplot.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_range_statistic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_rnorm.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_scale_zero_one_vec.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_skewness_vec.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_stat_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_t.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_triangular.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_uniform.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_weibull.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_binomial.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_geometric.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_negative_binomial.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_poisson.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/triangle_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_bernoulli_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_bernoulli_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_binomial_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_binomial_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_binomial_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_burr_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_burr_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_chisquare_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_chisquare_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_chisq_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_exponential_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_exponential_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_exponential_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_f_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_f_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_f_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_beta_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_beta_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_beta_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_pareto_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_pareto_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_pareto_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_burr_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_burr_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_burr_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_pareto_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_pareto_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_pareto_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_weibull_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_weibull_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_weibull_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_invweibull_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_lognormal_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_lognormal_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_lognormal_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_negative_binomial_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_negative_binomial_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_negative_binomial_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_paralogistic_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_paralogistic_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_paralogistic_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto1_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto1_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto1_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_rztnbinom_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_t_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_t_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_t_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_weibull_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_weibull_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_weibull_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncaetd_negative_binomial_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_binomial_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_binomial_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_binomial_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_geometric_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_geometric_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_geometric_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_negative_binomial_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_negative_binomial_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_negative_binomial_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_poisson_aic.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_poisson_param_estimate.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_poisson_stats_tbl.html</loc>
-  </url>
-  <url>
-    <loc>https://www.spsanderson.com/TidyDensity/reference/util_ztn_binomial_param_estimate.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://www.spsanderson.com/TidyDensity/404.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/articles/getting-started.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/articles/index.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/authors.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/CONTRIBUTING.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/index.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/LICENSE-text.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/LICENSE.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/news/index.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_density_augment.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_p_augment.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_p_vec.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_q_augment.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_q_vec.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_stat_plot.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/bootstrap_unnest_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/cgmean.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/check_duplicate_rows.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/chmean.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/ci_hi.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/ci_lo.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/ckurtosis.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/cmean.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/cmedian.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/color_blind.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/convert_to_ts.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/csd.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/cskewness.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/cvar.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/dist_type_extractor.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/index.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/pipe.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/quantile_normalize.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/td_scale_color_colorblind.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/td_scale_fill_colorblind.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidyeval.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_autoplot.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_bernoulli.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_beta.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_binomial.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_bootstrap.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_burr.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_cauchy.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_chisquare.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_combined_autoplot.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_combine_distributions.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_distribution_comparison.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_distribution_summary_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_empirical.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_exponential.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_f.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_four_autoplot.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_gamma.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_generalized_beta.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_generalized_pareto.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_geometric.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_hypergeometric.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_burr.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_exponential.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_gamma.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_normal.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_pareto.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_inverse_weibull.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_kurtosis_vec.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_logisitc.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_logistic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_lognormal.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_mcmc_sampling.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_mixture_density.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_multi_dist.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_multi_dist_autoplot.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_multi_single_dist.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_negative_binomial.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_normal.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_paralogistic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_pareto.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_pareto1.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_poisson.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_random_walk.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_random_walk_autoplot.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_range_statistic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_rnorm.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_scale_zero_one_vec.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_skewness_vec.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_stat_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_t.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_triangular.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_uniform.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_weibull.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_binomial.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_geometric.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_negative_binomial.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/tidy_zero_truncated_poisson.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/triangle_plot.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_bernoulli_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_bernoulli_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_beta_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_binomial_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_binomial_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_binomial_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_burr_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_burr_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_cauchy_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_chisquare_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_chisquare_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_chisq_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_exponential_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_exponential_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_exponential_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_f_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_f_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_f_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_gamma_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_beta_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_beta_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_beta_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_pareto_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_pareto_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_generalized_pareto_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_geometric_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_hypergeometric_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_burr_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_burr_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_burr_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_pareto_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_pareto_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_pareto_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_weibull_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_weibull_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_inverse_weibull_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_invweibull_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_logistic_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_lognormal_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_lognormal_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_lognormal_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_negative_binomial_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_negative_binomial_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_negative_binomial_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_normal_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_paralogistic_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_paralogistic_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_paralogistic_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto1_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto1_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto1_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_pareto_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_poisson_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_rztnbinom_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_triangular_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_t_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_t_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_t_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_uniform_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_weibull_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_weibull_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_weibull_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncaetd_negative_binomial_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_binomial_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_binomial_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_binomial_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_geometric_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_geometric_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_geometric_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_negative_binomial_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_negative_binomial_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_negative_binomial_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_poisson_aic.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_poisson_param_estimate.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_zero_truncated_poisson_stats_tbl.html</loc></url>
+<url><loc>https://www.spsanderson.com/TidyDensity/reference/util_ztn_binomial_param_estimate.html</loc></url>
 </urlset>
+
