@@ -51,7 +51,7 @@ The columns that are output are:
 }
 \details{
 This function uses the underlying \code{actuar::rinvgauss()}. For
-more information please see \code{\link[=rinvgauss]{rinvgauss()}}
+more information please see \code{\link[actuar:InverseGaussian]{actuar::rinvgauss()}}
 }
 \examples{
 tidy_inverse_normal()

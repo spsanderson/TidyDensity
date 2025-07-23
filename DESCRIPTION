@@ -18,6 +18,7 @@ Roxygen: list (markdown = TRUE, roclets = c ("namespace", "rd", "srr::srr_stats_
 RoxygenNote: 7.3.2.9000
 URL: https://github.com/spsanderson/TidyDensity
 BugReports: https://github.com/spsanderson/TidyDensity/issues
+Language: 'en'
 Depends:
     R (>= 4.1.0)
 Imports: 

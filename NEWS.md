@@ -1,5 +1,14 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+None
+
+## New Features
+None
+
+## Minor Fixes and Improvements
+1. Fix #515 - Fix documentation issue with `rinvgauss`
+
 # TidyDensity 1.5.0
 
 ## Breaking Changes

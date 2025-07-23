@@ -7,7 +7,7 @@
 #' @author Steven P. Sanderson II, MPH
 #'
 #' @details This function uses the underlying `actuar::rinvgauss()`. For
-#' more information please see [rinvgauss()]
+#' more information please see [actuar::rinvgauss()]
 #'
 #' @description This function will generate `n` random points from an Inverse Gaussian
 #' distribution with a user provided, `.mean`, `.shape`, `.dispersion`The function
