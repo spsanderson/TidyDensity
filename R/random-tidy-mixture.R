@@ -104,12 +104,11 @@ tidy_mixture_density <- function(..., .combination_type = "stack", .cumulative_s
   # add, subtract, multiply, divide, stack, TRUE, FALSE
   input_call_string <- stringr::str_remove_all(
     string = input_call_string,
-    pattern = "add|subtract|multiply|divide|stack|TRUE|FALSE"
+    pattern = "\\b(add|subtract|multiply|divide|stack|TRUE|FALSE)\\b"
   )
   # Remove extra commas and spaces at the end if they exist
-  input_call_string <- gsub(",\\s*$", "", input_call_string)
-  # Again if necessary
-  input_call_string <- gsub(",\\s*$","", input_call_string)
+  input_call_string <- gsub("(,\\s*)+$", "", input_call_string)
+  # Removed redundant second gsub call
 
   # Parameter validation
   combination_type <- tolower(as.character(.combination_type))
