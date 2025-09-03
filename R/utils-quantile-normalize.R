@@ -12,13 +12,9 @@
 #' @param .data A numeric matrix where each column represents a sample.
 #' @param .return_tibble A logical value that determines if the output should be a tibble. Default is 'FALSE'.
 #'
-#' @return A list object that has the following:
-#' \enumerate{
-#'  \item A numeric matrix that has been quantile normalized.
-#'  \item The row means of the quantile normalized matrix.
-#'  \item The sorted data
-#'  \item The ranked indices
-#' }
+#' @return A numeric matrix (or tibble if .return_tibble = TRUE) that has been quantile normalized.
+#' Each column represents a sample, and the quantile normalization ensures that the distributions
+#' of values for each sample have the same quantiles.
 #'
 #' @details
 #' This function performs quantile normalization on a numeric matrix by following these steps:
@@ -37,7 +33,7 @@
 #' normalized_data <- quantile_normalize(data)
 #' normalized_data
 #'
-#' as.data.frame(normalized_data$normalized_data) |>
+#' as.data.frame(normalized_data) |>
 #'   sapply(function(x) quantile(x, probs = seq(0, 1, 1 / 4)))
 #'
 #' quantile_normalize(
@@ -57,95 +53,87 @@ NULL
 
 #' @export
 #' @rdname quantile_normalize
-# Perform quantile normalization on a numeric matrix 'data_matrix'
 quantile_normalize <- function(.data, .return_tibble = FALSE) {
-  # Checks ----
-  if (!inherits(.data, c("matrix", "data.frame"))) {
-    rlang::abort(
-      message = "The input data must be a numeric matrix or data.frame.",
-      use_cli_format = TRUE
-    )
+  # Check if input is a matrix or data frame
+  if (!is.matrix(.data) && !is.data.frame(.data)) {
+    stop("Input must be a matrix or data frame.")
   }
-
-  if (!all(sapply(.data, is.numeric))) {
-    rlang::abort(
-      message = "The input data must be a numeric matrix or data.frame.",
-      use_cli_format = TRUE
-    )
+  
+  # Convert data frame to matrix for processing
+  if (is.data.frame(.data)) {
+    data <- as.matrix(.data)
+  } else {
+    data <- .data
   }
-
-  # Data ----
-  # Get col_nms
-  col_nms <- colnames(.data)
-  data_matrix <- as.matrix(.data)
-
-  # Step 1: Sort each column
-  sorted_data <- apply(data_matrix, 2, sort)
-
-  # Step 2: Calculate the mean of each row across sorted columns
-  row_means <- rowMeans(sorted_data)
-
-  # Step 3: Replace each column's sorted values with the row means
-  sorted_data <- matrix(
-    row_means,
-    nrow = nrow(sorted_data),
-    ncol = ncol(sorted_data),
-    byrow = TRUE
-  )
-
-  # Step 4: Unsort the columns to their original order
-  # Get rank index
-  rank_indices <- apply(data_matrix, 2, order)
-
-  # Get duplicated rank indices, get the complete data for rows that have a
-  # duplicated rank
-  duplicated_ranks <- rank_indices[check_duplicate_rows(rank_indices), ]
-
-  # Get duplicated rank vector, get the row indices that have duplicated ranks
-  duplicated_rank_vector <- which(check_duplicate_rows(rank_indices))
-
-  # Get duplicated rank data
-  duplicated_rank_data <- data_matrix[duplicated_rank_vector, ]
-
-  # Normalize the data
-  normalized_data <- matrix(nrow = nrow(data_matrix), ncol = ncol(data_matrix))
-  for (i in 1:ncol(data_matrix)) {
-    normalized_data[, i] <- sorted_data[rank_indices[, i], i]
+  
+  # Check if data is numeric
+  if (!is.numeric(data)) {
+    stop("Input data must be numeric.")
   }
-
-  # Add Column Names to all items
-  colnames(normalized_data) <- col_nms
-  colnames(sorted_data) <- col_nms
-
+  
+  # Check for valid dimensions
+  if (nrow(data) == 0 || ncol(data) == 0) {
+    stop("Input data must have non-zero rows and columns.")
+  }
+  
+  # Handle missing values
+  if (any(is.na(data))) {
+    warning("Missing values (NA) detected. They will be ignored during ranking but preserved in output structure.")
+  }
+  
+  # Get dimensions
+  n_rows <- nrow(data)
+  n_cols <- ncol(data)
+  
+  # Create a matrix to store ranks
+  ranks <- matrix(NA, nrow = n_rows, ncol = n_cols)
+  
+  # Rank each column, handling ties with the average method
+  for (j in 1:n_cols) {
+    ranks[, j] <- rank(data[, j], na.last = "keep", ties.method = "average")
+  }
+  
+  # Sort each column and handle NAs
+  sorted_data <- matrix(NA, nrow = n_rows, ncol = n_cols)
+  sort_indices <- matrix(NA, nrow = n_rows, ncol = n_cols)
+  
+  for (j in 1:n_cols) {
+    # Get indices for non-NA values
+    non_na_indices <- which(!is.na(data[, j]))
+    if (length(non_na_indices) > 0) {
+      # Sort only non-NA values
+      sorted_order <- order(data[non_na_indices, j])
+      sorted_data[1:length(non_na_indices), j] <- data[non_na_indices[sorted_order], j]
+      sort_indices[1:length(non_na_indices), j] <- non_na_indices[sorted_order]
+    }
+  }
+  
+  # Compute the mean of each row across sorted columns (ignoring NAs)
+  row_means <- rowMeans(sorted_data, na.rm = TRUE)
+  
+  # If all values in a row are NA, set row mean to NA
+  row_means[!is.finite(row_means)] <- NA
+  
+  # Create output matrix
+  normalized_data <- matrix(NA, nrow = n_rows, ncol = n_cols)
+  
+  # Put the row means back in the original order for each column
+  for (j in 1:n_cols) {
+    # Get indices for non-NA values
+    non_na_indices <- which(!is.na(data[, j]))
+    if (length(non_na_indices) > 0) {
+      # Place row means in original positions of non-NA values
+      normalized_data[sort_indices[1:length(non_na_indices), j], j] <- row_means[1:length(non_na_indices)]
+    }
+  }
+  
+  # Preserve row and column names
+  dimnames(normalized_data) <- dimnames(data)
+  
   # Should output be a tibble?
   if (.return_tibble) {
     normalized_data <- dplyr::as_tibble(normalized_data)
-    row_means <- dplyr::as_tibble(row_means)
-    #sorted_data <- dplyr::as_tibble(sorted_data)
-    #rank_indices <- dplyr::as_tibble(rank_indices)
-    duplicated_ranks <- dplyr::as_tibble(duplicated_ranks)
-    duplicated_rank_data <- dplyr::as_tibble(duplicated_rank_data)
-    duplicated_rank_vector <- dplyr::as_tibble(duplicated_rank_vector) |>
-      dplyr::rename(row_index = value)
   }
-
-  # Return ----
-  if (length(duplicated_rank_vector > 0)) {
-    rlang::warn(
-      message = "There are duplicated ranks the input data.",
-      use_cli_format = TRUE
-    )
-  }
-
-  output <- list(
-    normalized_data = normalized_data,
-    row_means = row_means,
-    #sorted_data = sorted_data,
-    #column_rank_indices = rank_indices,
-    duplicated_ranks = duplicated_ranks,
-    duplicated_rank_row_indices = duplicated_rank_vector,
-    duplicated_rank_data = duplicated_rank_data
-  )
-
-  return(output)
+  
+  return(normalized_data)
 }
