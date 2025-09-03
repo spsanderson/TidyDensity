@@ -35,9 +35,21 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="tidydensity-development-version">TidyDensity (development version)<a class="anchor" aria-label="anchor" href="#tidydensity-development-version"></a></h2>
+<div class="section level3">
+<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/521" class="external-link">#521</a> - Fundamentally redesign of <code><a href="../reference/quantile_normalize.html">quantile_normalize()</a></code> to use a more efficient algorithm. This has resulted in a breaking change as the output is now slightly different. The new algorithm is also faster and more memory efficient.</li>
+</ol></div>
+<div class="section level3">
+<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/510" class="external-link">#510</a> - Add parameter to <code><a href="../reference/tidy_mixture_density.html">tidy_mixture_density()</a></code> to allow for different types of combinations, add, subtract, stack, multiply and divide.</li>
+</ol></div>
+<div class="section level3">
+<h3 id="minor-fixes-and-improvements-development-version">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-development-version"></a></h3>
+<p>None</p>
+</div>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.5.1" id="tidydensity-151">TidyDensity 1.5.1<a class="anchor" aria-label="anchor" href="#tidydensity-151"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.5.1" id="tidydensity-151">TidyDensity 1.5.1<a class="anchor" aria-label="anchor" href="#tidydensity-151"></a></h2><p class="text-muted">CRAN release: 2025-07-23</p>
 <div class="section level3">
 <h3 id="breaking-changes-1-5-1">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-5-1"></a></h3>
 <p>None</p>
@@ -131,7 +143,7 @@
 <h3 id="minor-fixes-and-improvements-1-3-0">Minor Fixes and Improvements<a class="anchor" aria-label="anchor" href="#minor-fixes-and-improvements-1-3-0"></a></h3>
 <ol style="list-style-type: decimal"><li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/372" class="external-link">#372</a> and <a href="https://github.com/spsanderson/TidyDensity/issues/373" class="external-link">#373</a> - Update <code><a href="../reference/cvar.html">cvar()</a></code> and <code><a href="../reference/csd.html">csd()</a></code> to a vectorized approach from <a href="https://github.com/kokbent" class="external-link">@kokbent</a> which speeds these up by over 100x</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/350" class="external-link">#350</a> - Update all <code>tidy_</code> distribution functions to generate data using <code>data.table</code> this in many instances has resulted in a speed up of 30% or more.</li>
-<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/379" class="external-link">#379</a> - Replace the use of <code><a href="https://dplyr.tidyverse.org/reference/deprec-context.html" class="external-link">dplyr::cur_data()</a></code> as it was deprecated in dplyr in favor of using <code><a href="https://dplyr.tidyverse.org/reference/pick.html" class="external-link">dplyr::pick()</a></code>
+<li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/379" class="external-link">#379</a> - Replace the use of <code><a href="https://rdrr.io/pkg/dplyr/man/deprec-context.html" class="external-link">dplyr::cur_data()</a></code> as it was deprecated in dplyr in favor of using <code><a href="https://rdrr.io/pkg/dplyr/man/pick.html" class="external-link">dplyr::pick()</a></code>
 </li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/381" class="external-link">#381</a> - Add <code><a href="../reference/tidy_triangular.html">tidy_triangular()</a></code> to all autoplot functions.</li>
 <li>Fix <a href="https://github.com/spsanderson/TidyDensity/issues/385" class="external-link">#385</a> - For <code><a href="../reference/tidy_multi_dist_autoplot.html">tidy_multi_dist_autoplot()</a></code> the <code>.plot_type = "quantile"</code> did not work.</li>
