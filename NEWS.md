@@ -1,7 +1,8 @@
 # TidyDensity (development version)
 
 ## Breaking Changes
-None
+1. Fix #521 - Fundamentally redesign of `quantile_normalize()` to use a more efficient
+algorithm.
 
 ## New Features
 1. Fix #510 - Add parameter to `tidy_mixture_density()` to allow for different
