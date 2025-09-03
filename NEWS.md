@@ -2,7 +2,8 @@
 
 ## Breaking Changes
 1. Fix #521 - Fundamentally redesign of `quantile_normalize()` to use a more efficient
-algorithm.
+algorithm. This has resulted in a breaking change as the output is now slightly
+different. The new algorithm is also faster and more memory efficient.
 
 ## New Features
 1. Fix #510 - Add parameter to `tidy_mixture_density()` to allow for different

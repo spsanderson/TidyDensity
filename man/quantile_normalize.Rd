@@ -12,13 +12,9 @@ quantile_normalize(.data, .return_tibble = FALSE)
 \item{.return_tibble}{A logical value that determines if the output should be a tibble. Default is 'FALSE'.}
 }
 \value{
-A list object that has the following:
-\enumerate{
-\item A numeric matrix that has been quantile normalized.
-\item The row means of the quantile normalized matrix.
-\item The sorted data
-\item The ranked indices
-}
+A numeric matrix (or tibble if .return_tibble = TRUE) that has been quantile normalized.
+Each column represents a sample, and the quantile normalization ensures that the distributions
+of values for each sample have the same quantiles.
 }
 \description{
 This function will perform quantile normalization on two or more
@@ -43,7 +39,7 @@ data <- matrix(rnorm(20), ncol = 4)
 normalized_data <- quantile_normalize(data)
 normalized_data
 
-as.data.frame(normalized_data$normalized_data) |>
+as.data.frame(normalized_data) |>
   sapply(function(x) quantile(x, probs = seq(0, 1, 1 / 4)))
 
 quantile_normalize(

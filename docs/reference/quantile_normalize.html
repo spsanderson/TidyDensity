@@ -66,11 +66,10 @@ This function takes a numeric matrix as input and returns a quantile-normalized 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list object that has the following:</p><ol><li><p>A numeric matrix that has been quantile normalized.</p></li>
-<li><p>The row means of the quantile normalized matrix.</p></li>
-<li><p>The sorted data</p></li>
-<li><p>The ranked indices</p></li>
-</ol></div>
+    <p>A numeric matrix (or tibble if .return_tibble = TRUE) that has been quantile normalized.
+Each column represents a sample, and the quantile normalization ensures that the distributions
+of values for each sample have the same quantiles.</p>
+    </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function performs quantile normalization on a numeric matrix by following these steps:</p><ol><li><p>Sort each column of the input matrix.</p></li>
@@ -130,40 +129,15 @@ This function takes a numeric matrix as input and returns a quantile-normalized 
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Perform quantile normalization</span></span></span>
 <span class="r-in"><span><span class="va">normalized_data</span> <span class="op">&lt;-</span> <span class="fu">quantile_normalize</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>There are duplicated ranks the input data.</span>
 <span class="r-in"><span><span class="va">normalized_data</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $normalized_data</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             [,1]        [,2]        [,3]        [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  0.37319866  0.09638238  0.37319866  1.54004626</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  0.09638238  1.54004626  0.09638238  0.37319866</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  1.54004626  0.37319866 -0.42145863  0.09638238</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] -0.42145863 -1.50679669 -1.50679669 -0.42145863</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5,] -1.50679669 -0.42145863  1.54004626 -1.50679669</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $row_means</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -1.50679669 -0.42145863  0.09638238  0.37319866  1.54004626</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $duplicated_ranks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3] [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    3    5    5    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    4    3    1    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]    2    4    2    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]    5    2    3    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5,]    1    1    4    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $duplicated_rank_row_indices</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 2 3 4 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $duplicated_rank_data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             [,1]       [,2]       [,3]       [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  1.38971833  1.2812221 -0.1526648 -0.4624666</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] -0.34559938  0.4763355  0.2611230  0.3586378</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] -1.99274559 -0.1654913  0.4106577  0.6868836</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] -0.90521186  0.1113681  2.0819242  1.4073204</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5,] -0.08108218 -1.3057327 -0.6154292 -2.1132792</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  1.54004626  1.54004626 -0.42145863 -0.42145863</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  0.09638238  0.37319866  0.09638238  0.09638238</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] -1.50679669 -0.42145863  0.37319866  0.37319866</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,] -0.42145863  0.09638238  1.54004626  1.54004626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5,]  0.37319866 -1.50679669 -1.50679669 -1.50679669</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">normalized_data</span><span class="op">$</span><span class="va">normalized_data</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">normalized_data</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">x</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span> <span class="op">/</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               V1          V2          V3          V4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0%   -1.50679669 -1.50679669 -1.50679669 -1.50679669</span>
@@ -176,60 +150,20 @@ This function takes a numeric matrix as input and returns a quantile-normalized 
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>           <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>           .return_tibble <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>There are duplicated ranks the input data.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $normalized_data</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 30 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    rnorm.30. rnorm.30..1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>    -<span style="color: #BB0000;">1.12</span>       -<span style="color: #BB0000;">1.14</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>    -<span style="color: #BB0000;">0.162</span>      -<span style="color: #BB0000;">0.104</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1.82       -<span style="color: #BB0000;">0.104</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>    -<span style="color: #BB0000;">0.694</span>       0.151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     0.493       0.683</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>    -<span style="color: #BB0000;">0.298</span>      -<span style="color: #BB0000;">0.274</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     0.229      -<span style="color: #BB0000;">0.390</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     0.649       0.386</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     0.952      -<span style="color: #BB0000;">1.52</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     0.278      -<span style="color: #BB0000;">1.14</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>    -<span style="color: #BB0000;">0.434</span>      -<span style="color: #BB0000;">0.694</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     0.649      -<span style="color: #BB0000;">0.445</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>    -<span style="color: #BB0000;">1.88</span>       -<span style="color: #BB0000;">0.162</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     0.683       0.263</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>    -<span style="color: #BB0000;">1.14</span>        0.600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>    -<span style="color: #BB0000;">0.298</span>      -<span style="color: #BB0000;">0.898</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>    -<span style="color: #BB0000;">0.996</span>      -<span style="color: #BB0000;">0.996</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>    -<span style="color: #BB0000;">1.52</span>       -<span style="color: #BB0000;">1.19</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     0.229       1.82 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>    -<span style="color: #BB0000;">0.898</span>      -<span style="color: #BB0000;">0.104</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 20 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $row_means</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 30 × 1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">1.88</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">1.52</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">1.19</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">1.14</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> -<span style="color: #BB0000;">1.12</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> -<span style="color: #BB0000;">0.996</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> -<span style="color: #BB0000;">0.898</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> -<span style="color: #BB0000;">0.809</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> -<span style="color: #BB0000;">0.694</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> -<span style="color: #BB0000;">0.445</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 20 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $duplicated_ranks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   rnorm.30. rnorm.30..1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         7           7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        11          11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $duplicated_rank_row_indices</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   row_index</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $duplicated_rank_data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   rnorm.30. rnorm.30..1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    -<span style="color: #BB0000;">0.150</span>       -<span style="color: #BB0000;">1.18</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     2.44        -<span style="color: #BB0000;">1.91</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
