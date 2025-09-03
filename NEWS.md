@@ -1,5 +1,15 @@
 # TidyDensity (development version)
 
+## Breaking Changes
+None
+
+## New Features
+1. Fix #510 - Add parameter to `tidy_mixture_density()` to allow for different
+types of combinations, add, subtract, stack, multiply and divide.
+
+## Minor Fixes and Improvements
+None
+
 # TidyDensity 1.5.1
 
 ## Breaking Changes

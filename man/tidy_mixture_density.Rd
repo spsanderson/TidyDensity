@@ -4,11 +4,17 @@
 \alias{tidy_mixture_density}
 \title{Tidy Mixture Data}
 \usage{
-tidy_mixture_density(...)
+tidy_mixture_density(..., .combination_type = "stack", .cumulative_sum = FALSE)
 }
 \arguments{
 \item{...}{The random data you want to pass. Example rnorm(50,0,1) or something
 like tidy_normal(.mean = 5, .sd = 1)}
+
+\item{.combination_type}{A character string specifying how to combine the distributions.
+Options are 'add', 'subtract', 'multiply', 'divide', or 'stack' (default).}
+
+\item{.cumulative_sum}{A logical value indicating whether to apply cumulative sum
+to the result. Default is FALSE.}
 }
 \value{
 A list object
@@ -23,6 +29,17 @@ or of one single type of distribution with a given set of parameters.
 
 For example this function will allow you to mix say tidy_normal(.mean = 0, .sd = 1)
 and tidy_normal(.mean = 5, .sd = 1) or you can mix and match distributions.
+
+The function now supports different combination types:
+\itemize{
+\item 'add': Element-wise addition of distributions (e.g., rnorm(50) + rbeta(50, 0.5, 0.5))
+\item 'subtract': Element-wise subtraction (e.g., rnorm(50) - rbeta(50, 0.5, 0.5))
+\item 'multiply': Element-wise multiplication (e.g., rnorm(50) * rbeta(50, 0.5, 0.5))
+\item 'divide': Element-wise division (e.g., rnorm(50) / rbeta(50, 0.5, 0.5))
+\item 'stack': Combine all data points together (e.g., c(rnorm(50), rbeta(50, 0.5, 0.5)))
+}
+
+When .cumulative_sum = TRUE, the cumulative sum is applied to the combined result.
 
 The output is a list object with three components.
 \enumerate{
@@ -56,6 +73,22 @@ output$data
 output$plots
 
 output$input_fns
+
+# Example with different combination types
+set.seed(123)
+mix_add <- tidy_mixture_density(rnorm(50), rbeta(50, 0.5, 0.5), .combination_type = "add")
+mix_add$input_fns
+
+mix_multiply <- tidy_mixture_density(rnorm(50), rbeta(50, 0.5, 0.5), .combination_type = "multiply")
+mix_multiply$input_fns
+
+mix_stack <- tidy_mixture_density(rnorm(50), rbeta(50, 0.5, 0.5), .combination_type = "stack")
+mix_stack$input_fns
+
+# Example with cumulative sum
+mix_cumsum <- tidy_mixture_density(rnorm(50), rbeta(50, 0.5, 0.5),
+                                  .combination_type = "stack", .cumulative_sum = TRUE)
+mix_cumsum$input_fns
 
 }
 \author{
