@@ -109,7 +109,7 @@ quantile_normalize <- function(.data, .return_tibble = FALSE) {
   }
   
   # Compute the mean of each row across sorted columns (ignoring NAs)
-  row_means <- apply(sorted_data, 1, function(x) mean(x, na.rm = TRUE))
+  row_means <- rowMeans(sorted_data, na.rm = TRUE)
   
   # If all values in a row are NA, set row mean to NA
   row_means[!is.finite(row_means)] <- NA
