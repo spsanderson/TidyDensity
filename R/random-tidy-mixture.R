@@ -10,6 +10,15 @@
 #'
 #' For example this function will allow you to mix say tidy_normal(.mean = 0, .sd = 1)
 #' and tidy_normal(.mean = 5, .sd = 1) or you can mix and match distributions.
+#' 
+#' The function now supports different combination types:
+#' - 'add': Element-wise addition of distributions (e.g., rnorm(50) + rbeta(50, 0.5, 0.5))
+#' - 'subtract': Element-wise subtraction (e.g., rnorm(50) - rbeta(50, 0.5, 0.5))
+#' - 'multiply': Element-wise multiplication (e.g., rnorm(50) * rbeta(50, 0.5, 0.5))
+#' - 'divide': Element-wise division (e.g., rnorm(50) / rbeta(50, 0.5, 0.5))
+#' - 'stack': Combine all data points together (e.g., c(rnorm(50), rbeta(50, 0.5, 0.5)))
+#' 
+#' When .cumulative_sum = TRUE, the cumulative sum is applied to the combined result.
 #'
 #' The output is a list object with three components.
 #' 1. Data
