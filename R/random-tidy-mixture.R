@@ -92,7 +92,7 @@ tidy_mixture_density <- function(..., .combination_type = "stack", .cumulative_s
   # https://stackoverflow.com/questions/71743013/get-formalargs-from-a-list-of-functions-r/71743155#71743155
   l_names <- as.list(substitute(list(...)))[-1L]
   l <- list(...)
-  input_data_tbl <- setNames(l, l_names)
+  input_data_tbl <- stats::setNames(l, l_names)
 
   # input_data_tbl <- dist_fns(...)
   # input_data_tbl <- stats::setNames(list(...), sapply(as.list(match.call())[-1], deparse))
