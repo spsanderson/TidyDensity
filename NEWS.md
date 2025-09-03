@@ -4,7 +4,7 @@
 None
 
 ## New Features
-1. Fix #510 - Add parameter to `tidy_mixture_density()` to allow for differnt
+1. Fix #510 - Add parameter to `tidy_mixture_density()` to allow for different
 types of combinations, add, subtract, stack, multiply and divide.
 
 ## Minor Fixes and Improvements
