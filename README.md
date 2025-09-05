@@ -9,7 +9,7 @@
 ![](https://cranlogs.r-pkg.org/badges/TidyDensity)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/TidyDensity)
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html##stable)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![PRs
 Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 <!-- badges: end -->
@@ -52,16 +52,16 @@ tidy_normal()
 #> # A tibble: 50 × 7
 #>    sim_number     x       y    dx       dy      p       q
 #>    <fct>      <int>   <dbl> <dbl>    <dbl>  <dbl>   <dbl>
-#>  1 1              1 -0.483  -2.84 0.000418 0.315  -0.483 
-#>  2 1              2 -0.324  -2.72 0.00105  0.373  -0.324 
-#>  3 1              3 -0.822  -2.60 0.00242  0.205  -0.822 
-#>  4 1              4  0.636  -2.48 0.00509  0.738   0.636 
-#>  5 1              5 -0.748  -2.35 0.00979  0.227  -0.748 
-#>  6 1              6  1.01   -2.23 0.0173   0.845   1.01  
-#>  7 1              7 -1.52   -2.11 0.0281   0.0648 -1.52  
-#>  8 1              8  0.0280 -1.99 0.0424   0.511   0.0280
-#>  9 1              9  0.375  -1.86 0.0598   0.646   0.375 
-#> 10 1             10 -0.278  -1.74 0.0796   0.391  -0.278 
+#>  1 1              1 -1.87   -3.51 0.000235 0.0307 -1.87  
+#>  2 1              2 -0.839  -3.37 0.000617 0.201  -0.839 
+#>  3 1              3  0.580  -3.22 0.00147  0.719   0.580 
+#>  4 1              4 -0.0620 -3.07 0.00322  0.475  -0.0620
+#>  5 1              5  0.360  -2.92 0.00644  0.641   0.360 
+#>  6 1              6 -0.165  -2.78 0.0118   0.434  -0.165 
+#>  7 1              7 -1.65   -2.63 0.0201   0.0494 -1.65  
+#>  8 1              8 -0.277  -2.48 0.0315   0.391  -0.277 
+#>  9 1              9  1.77   -2.34 0.0461   0.961   1.77  
+#> 10 1             10  0.604  -2.19 0.0628   0.727   0.604 
 #> # ℹ 40 more rows
 ```
 
