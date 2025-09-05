@@ -1,4 +1,4 @@
-# TidyDensity (development version)
+# TidyDensity 1.5.2
 
 ## Breaking Changes
 1. Fix #521 - Fundamentally redesign of `quantile_normalize()` to use a more efficient
