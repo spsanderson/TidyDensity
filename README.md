@@ -257,13 +257,16 @@ tidy_autoplot(multi, .plot_type = "density")
 
 ## Contributing
 
-Contributions are welcome! Please see our [Contributing
-Guide](CONTRIBUTING.md) for details on how to:
+Contributions are welcome! Here’s how you can help:
 
-- Report bugs or request features via [GitHub
+- 🐛 Report bugs or request features via [GitHub
   Issues](https://github.com/spsanderson/TidyDensity/issues)
-- Submit pull requests
-- Follow our [Code of Conduct](CODE_OF_CONDUCT.md)
+- 📝 Submit pull requests for bug fixes or new features
+- 📖 Improve documentation or add examples
+- ⭐ Star the repository to show your support
+
+Please follow our [Code of Conduct](CODE_OF_CONDUCT.md) when
+participating in this project.
 
 ## Citation
 
@@ -283,9 +286,10 @@ citation("TidyDensity")
 
 ## Author
 
-**Steven P. Sanderson II, MPH**  
-- Email: <spsanderson@gmail.com> - ORCID:
-[0009-0006-7661-8247](https://orcid.org/0009-0006-7661-8247)
+**Steven P. Sanderson II, MPH**
+
+- Email: <spsanderson@gmail.com>
+- ORCID: [0009-0006-7661-8247](https://orcid.org/0009-0006-7661-8247)
 
 ## License
 
