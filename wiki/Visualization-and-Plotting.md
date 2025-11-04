@@ -638,10 +638,10 @@ tidy_autoplot(data, .interactive = TRUE)
 
 ## 🎓 Next Steps
 
-- **[Parameter Estimation](Parameter-Estimation)** - Fit distributions to data
-- **[Advanced Features](Advanced-Features)** - Mixture models and more
-- **[Examples and Use Cases](Examples-and-Use-Cases)** - Real-world applications
+- **[Parameter Estimation](Parameter-Estimation.md)** - Fit distributions to data
+- **[Advanced Features](Advanced-Features.md)** - Mixture models and more
+- **[Examples and Use Cases](Examples-and-Use-Cases.md)** - Real-world applications
 
 ---
 
-**Want to see more examples?** Check out the [Examples and Use Cases](Examples-and-Use-Cases) page!
+**Want to see more examples?** Check out the [Examples and Use Cases](Examples-and-Use-Cases.md) page!

@@ -395,10 +395,10 @@ install.packages(c("dplyr", "ggplot2", "tidyr", "purrr"))
 
 Now that you're set up, explore:
 
-1. **[Supported Distributions](Supported-Distributions)** - See all available distributions
-2. **[Visualization and Plotting](Visualization-and-Plotting)** - Learn advanced plotting
-3. **[Parameter Estimation](Parameter-Estimation)** - Fit distributions to your data
-4. **[Examples and Use Cases](Examples-and-Use-Cases)** - Real-world applications
+1. **[Supported Distributions](Supported-Distributions.md)** - See all available distributions
+2. **[Visualization and Plotting](Visualization-and-Plotting.md)** - Learn advanced plotting
+3. **[Parameter Estimation](Parameter-Estimation.md)** - Fit distributions to your data
+4. **[Examples and Use Cases](Examples-and-Use-Cases.md)** - Real-world applications
 
 ---
 
@@ -411,4 +411,4 @@ Now that you're set up, explore:
 
 ---
 
-**Ready to dive deeper?** Continue to [Supported Distributions](Supported-Distributions) to see all available probability distributions!
+**Ready to dive deeper?** Continue to [Supported Distributions](Supported-Distributions.md) to see all available probability distributions!

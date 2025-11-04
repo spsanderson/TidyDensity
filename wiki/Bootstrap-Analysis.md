@@ -622,10 +622,10 @@ stopCluster(cl)
 
 ## 🎓 Next Steps
 
-- **[Advanced Features](Advanced-Features)** - Mixture models and more
-- **[Parameter Estimation](Parameter-Estimation)** - Combine with bootstrap
-- **[Examples and Use Cases](Examples-and-Use-Cases)** - Real-world applications
+- **[Advanced Features](Advanced-Features.md)** - Mixture models and more
+- **[Parameter Estimation](Parameter-Estimation.md)** - Combine with bootstrap
+- **[Examples and Use Cases](Examples-and-Use-Cases.md)** - Real-world applications
 
 ---
 
-**Ready for more?** Check out [Advanced Features](Advanced-Features) or [Examples and Use Cases](Examples-and-Use-Cases)!
+**Ready for more?** Check out [Advanced Features](Advanced-Features.md) or [Examples and Use Cases](Examples-and-Use-Cases.md)!

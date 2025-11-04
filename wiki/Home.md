@@ -5,24 +5,24 @@ Welcome to the **TidyDensity** wiki! This comprehensive guide will help you mast
 ## 📚 Quick Navigation
 
 ### Getting Started
-- **[Installation and Quick Start](Installation-and-Quick-Start)** - Get up and running quickly
-- **[Core Concepts](Core-Concepts)** - Understand the fundamental principles
+- **[Installation and Quick Start](Installation-and-Quick-Start.md)** - Get up and running quickly
+- **[Core Concepts](Core-Concepts.md)** - Understand the fundamental principles
 
 ### Main Features
-- **[Supported Distributions](Supported-Distributions)** - Complete list of 35+ distributions
-- **[Visualization and Plotting](Visualization-and-Plotting)** - Create beautiful visualizations
-- **[Parameter Estimation](Parameter-Estimation)** - Estimate distribution parameters from data
-- **[Bootstrap Analysis](Bootstrap-Analysis)** - Perform robust statistical inference
-- **[Advanced Features](Advanced-Features)** - Mixture models, empirical distributions, and more
+- **[Supported Distributions](Supported-Distributions.md)** - Complete list of 35+ distributions
+- **[Visualization and Plotting](Visualization-and-Plotting.md)** - Create beautiful visualizations
+- **[Parameter Estimation](Parameter-Estimation.md)** - Estimate distribution parameters from data
+- **[Bootstrap Analysis](Bootstrap-Analysis.md)** - Perform robust statistical inference
+- **[Advanced Features](Advanced-Features.md)** - Mixture models, empirical distributions, and more
 
 ### Reference
-- **[Function Reference](Function-Reference)** - Complete function documentation organized by category
-- **[Examples and Use Cases](Examples-and-Use-Cases)** - Real-world examples and tutorials
-- **[FAQ and Troubleshooting](FAQ-and-Troubleshooting)** - Common questions and solutions
+- **[Function Reference](Function-Reference.md)** - Complete function documentation organized by category
+- **[Examples and Use Cases](Examples-and-Use-Cases.md)** - Real-world examples and tutorials
+- **[FAQ and Troubleshooting](FAQ-and-Troubleshooting.md)** - Common questions and solutions
 
 ### Contributing
-- **[Contributing Guidelines](Contributing-Guidelines)** - How to contribute to the project
-- **[Development Setup](Development-Setup)** - Set up your development environment
+- **[Contributing Guidelines](Contributing-Guidelines.md)** - How to contribute to the project
+- **[Development Setup](Development-Setup.md)** - Set up your development environment
 
 ---
 
@@ -162,4 +162,4 @@ citation("TidyDensity")
 
 ---
 
-**Ready to get started?** Check out the [Installation and Quick Start](Installation-and-Quick-Start) guide!
+**Ready to get started?** Check out the [Installation and Quick Start](Installation-and-Quick-Start.md) guide!

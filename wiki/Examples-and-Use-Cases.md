@@ -585,4 +585,4 @@ boot %>%
 
 ---
 
-**Need more help?** Check the [FAQ and Troubleshooting](FAQ-and-Troubleshooting) page!
+**Need more help?** Check the [FAQ and Troubleshooting](FAQ-and-Troubleshooting.md) page!

@@ -467,11 +467,11 @@ Always plot your data and fitted distributions to validate assumptions.
 
 ## 📚 Further Reading
 
-- **Distributions**: [Supported Distributions](Supported-Distributions) - Complete list
-- **Estimation**: [Parameter Estimation](Parameter-Estimation) - Detailed guide
-- **Visualization**: [Visualization and Plotting](Visualization-and-Plotting) - Plotting techniques
-- **Examples**: [Examples and Use Cases](Examples-and-Use-Cases) - Real-world applications
+- **Distributions**: [Supported Distributions](Supported-Distributions.md) - Complete list
+- **Estimation**: [Parameter Estimation](Parameter-Estimation.md) - Detailed guide
+- **Visualization**: [Visualization and Plotting](Visualization-and-Plotting.md) - Plotting techniques
+- **Examples**: [Examples and Use Cases](Examples-and-Use-Cases.md) - Real-world applications
 
 ---
 
-**Ready to apply these concepts?** Check out [Installation and Quick Start](Installation-and-Quick-Start) to begin!
+**Ready to apply these concepts?** Check out [Installation and Quick Start](Installation-and-Quick-Start.md) to begin!

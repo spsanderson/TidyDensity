@@ -627,10 +627,10 @@ util_distribution_comparison(.x = data)
 
 ## 🎓 Next Steps
 
-- **[Bootstrap Analysis](Bootstrap-Analysis)** - Add robustness to your estimates
-- **[Advanced Features](Advanced-Features)** - Mixture models and more
-- **[Examples and Use Cases](Examples-and-Use-Cases)** - Real-world applications
+- **[Bootstrap Analysis](Bootstrap-Analysis.md)** - Add robustness to your estimates
+- **[Advanced Features](Advanced-Features.md)** - Mixture models and more
+- **[Examples and Use Cases](Examples-and-Use-Cases.md)** - Real-world applications
 
 ---
 
-**Ready for more advanced techniques?** Continue to [Bootstrap Analysis](Bootstrap-Analysis) or [Advanced Features](Advanced-Features)!
+**Ready for more advanced techniques?** Continue to [Bootstrap Analysis](Bootstrap-Analysis.md) or [Advanced Features](Advanced-Features.md)!
