@@ -16,6 +16,9 @@ Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-squ
 
 ## Overview
 
+To view the full wiki click here: [Full TidyDensity
+Wiki](https://github.com/spsanderson/TidyDensity/blob/master/wiki/Home.md)
+
 `{TidyDensity}` is a comprehensive R package that makes working with
 random numbers and probability distributions easy, intuitive, and tidy.
 Whether you’re simulating data, exploring distributions, or performing

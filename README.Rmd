@@ -27,6 +27,8 @@ knitr::opts_chunk$set(
 
 ## Overview
 
+To view the full wiki click here: [Full TidyDensity Wiki](https://github.com/spsanderson/TidyDensity/blob/master/wiki/Home.md)
+
 `{TidyDensity}` is a comprehensive R package that makes working with random numbers and probability distributions easy, intuitive, and tidy. Whether you're simulating data, exploring distributions, or performing statistical analysis, TidyDensity provides a unified interface that integrates seamlessly with the tidyverse ecosystem.
 
 ### Key Features
