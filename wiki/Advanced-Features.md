@@ -683,10 +683,10 @@ tidy_autoplot(multi, .plot_type = "density", .interactive = TRUE)
 
 ## 🎓 Next Steps
 
-- **[Examples and Use Cases](Examples-and-Use-Cases)** - Real-world applications
-- **[Function Reference](Function-Reference)** - Complete function documentation
-- **[FAQ and Troubleshooting](FAQ-and-Troubleshooting)** - Common questions
+- **[Examples and Use Cases](Examples-and-Use-Cases.md)** - Real-world applications
+- **[Function Reference](Function-Reference.md)** - Complete function documentation
+- **[FAQ and Troubleshooting](FAQ-and-Troubleshooting.md)** - Common questions
 
 ---
 
-**Ready to see it all in action?** Check out [Examples and Use Cases](Examples-and-Use-Cases) for complete workflows!
+**Ready to see it all in action?** Check out [Examples and Use Cases](Examples-and-Use-Cases.md) for complete workflows!

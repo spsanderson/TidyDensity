@@ -531,8 +531,8 @@ Thank you for contributing to TidyDensity!
 
 - Ask on [GitHub Discussions](https://github.com/spsanderson/TidyDensity/discussions)
 - Email: spsanderson@gmail.com
-- See [Development Setup](Development-Setup) for environment configuration
+- See [Development Setup](Development-Setup.md) for environment configuration
 
 ---
 
-**Ready to contribute?** Check out [Development Setup](Development-Setup) to get your environment ready!
+**Ready to contribute?** Check out [Development Setup](Development-Setup.md) to get your environment ready!

@@ -533,10 +533,10 @@ util_gamma_aic(.x = data)
 
 ## 🎓 Next Steps
 
-- **[Visualization and Plotting](Visualization-and-Plotting)** - Learn to create beautiful plots
-- **[Parameter Estimation](Parameter-Estimation)** - Fit distributions to your data
-- **[Examples and Use Cases](Examples-and-Use-Cases)** - See real-world applications
+- **[Visualization and Plotting](Visualization-and-Plotting.md)** - Learn to create beautiful plots
+- **[Parameter Estimation](Parameter-Estimation.md)** - Fit distributions to your data
+- **[Examples and Use Cases](Examples-and-Use-Cases.md)** - See real-world applications
 
 ---
 
-**Need help choosing?** Check the [FAQ and Troubleshooting](FAQ-and-Troubleshooting) page for guidance!
+**Need help choosing?** Check the [FAQ and Troubleshooting](FAQ-and-Troubleshooting.md) page for guidance!

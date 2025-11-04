@@ -489,4 +489,4 @@ ls("package:TidyDensity")
 
 ---
 
-**Need examples?** Check out [Examples and Use Cases](Examples-and-Use-Cases) for practical applications!
+**Need examples?** Check out [Examples and Use Cases](Examples-and-Use-Cases.md) for practical applications!

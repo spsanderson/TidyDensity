@@ -673,10 +673,10 @@ devtools::document()
 ## 🎓 Next Steps
 
 1. **Set up your environment** following this guide
-2. **Read** [Contributing Guidelines](Contributing-Guidelines) for contribution process
+2. **Read** [Contributing Guidelines](Contributing-Guidelines.md) for contribution process
 3. **Pick an issue** from [GitHub Issues](https://github.com/spsanderson/TidyDensity/issues)
 4. **Start coding!**
 
 ---
 
-**Questions?** Ask on [GitHub Discussions](https://github.com/spsanderson/TidyDensity/discussions) or see [Contributing Guidelines](Contributing-Guidelines)!
+**Questions?** Ask on [GitHub Discussions](https://github.com/spsanderson/TidyDensity/discussions) or see [Contributing Guidelines](Contributing-Guidelines.md)!
