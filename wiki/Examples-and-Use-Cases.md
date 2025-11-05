@@ -463,7 +463,7 @@ total_durations <- numeric(n_sims)
 
 for (i in 1:n_sims) {
   task_durations <- sapply(tasks, function(task) {
-    tidy_triangular(.n = 1, .min = task$min, .max = task$max, .mode = task$mode)$y[1]
+    tidy_triangular(.n = 2, .min = task$min, .max = task$max, .mode = task$mode)$y[1]
   })
   total_durations[i] <- sum(task_durations)
 }
