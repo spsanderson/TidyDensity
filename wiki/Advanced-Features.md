@@ -30,18 +30,18 @@ Mixture models combine multiple probability distributions to model complex data 
 ```r
 library(TidyDensity)
 
-# Create individual distributions
 dist1 <- tidy_normal(.n = 100, .mean = -2, .sd = 0.5)
 dist2 <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)
 
 # Create mixture
 mixture <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "add"
+  dist1,
+  dist2,
+  .combination_type = "add"
 )
 
 # Visualize
-tidy_autoplot(mixture, .plot_type = "density")
+mixture$plots
 ```
 
 ### Mixture Types
@@ -52,8 +52,8 @@ Combines distributions by adding their densities:
 
 ```r
 mixture_add <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "add"
+  dist1, dist2,
+  .combination_type = "add"
 )
 ```
 
@@ -65,8 +65,8 @@ Multiplies distributions:
 
 ```r
 mixture_mult <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "multiply"
+  dist1, dist2,
+  .combination_type = "multiply"
 )
 ```
 
@@ -78,8 +78,8 @@ Subtracts second from first:
 
 ```r
 mixture_sub <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "subtract"
+  dist1, dist2,
+  .combination_type = "subtract"
 )
 ```
 
@@ -91,8 +91,8 @@ Divides first by second:
 
 ```r
 mixture_div <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "divide"
+  dist1, dist2,
+  .combination_type = "divide"
 )
 ```
 
@@ -104,8 +104,8 @@ Stacks distributions vertically:
 
 ```r
 mixture_stack <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "stack"
+  dist1, dist2,
+  .combination_type = "stack"
 )
 ```
 
@@ -121,13 +121,12 @@ dist3 <- tidy_normal(.n = 100, .mean = 3, .sd = 0.5)
 
 # Create mixture
 complex_mixture <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2, dist3),
-  .mixture_type = "add"
+  dist1, dist2, dist3,
+  .combination_type = "add"
 )
 
 # Visualize
-tidy_autoplot(complex_mixture, .plot_type = "density") +
-  labs(title = "Three-Component Mixture Model")
+complex_mixture$plots
 ```
 
 ### Weighted Mixtures
@@ -141,11 +140,11 @@ dist2 <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)   # 25% weight
 
 # Create mixture
 weighted_mixture <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "add"
+  dist1, dist2,
+  .combination_type = "add"
 )
 
-tidy_autoplot(weighted_mixture, .plot_type = "density")
+weighted_mixture$plots
 ```
 
 ### Different Distribution Types
@@ -159,11 +158,11 @@ gamma <- tidy_gamma(.n = 100, .shape = 2, .rate = 0.5)
 
 # Create mixture
 mixed_family <- tidy_mixture_density(
-  .tbl_list = list(normal, gamma),
-  .mixture_type = "add"
+  normal, gamma,
+  .combination_type = "add"
 )
 
-tidy_autoplot(mixed_family, .plot_type = "density")
+mixed_family$plots
 ```
 
 ---
@@ -237,7 +236,7 @@ boot_empirical <- tidy_bootstrap(
 )
 
 # Visualize bootstrap distribution
-tidy_autoplot(boot_empirical, .plot_type = "density")
+bootstrap_stat_plot(boot_empirical, .value = y, .stat = "cmean")
 ```
 
 ---
@@ -251,16 +250,16 @@ tidy_autoplot(boot_empirical, .plot_type = "density")
 comparison <- tidy_multi_single_dist(
   .tidy_dist = "tidy_normal",
   .param_list = list(
-    list(.n = 100, .mean = 0, .sd = 0.5),
-    list(.n = 100, .mean = 0, .sd = 1),
-    list(.n = 100, .mean = 0, .sd = 2),
-    list(.n = 100, .mean = 2, .sd = 1)
+    .n = 100,
+    .mean = c(-2, 0, 2),
+    .sd = 1,
+    .num_sims = 5,
+    .return_tibble = TRUE
   )
 )
 
 # Visualize
-tidy_autoplot(comparison, .plot_type = "density") +
-  labs(title = "Effect of Parameters on Normal Distribution")
+tidy_multi_dist_autoplot(comparison)
 ```
 
 ### Compare Different Distributions
@@ -278,25 +277,6 @@ combined <- tidy_combine_distributions(normal, cauchy, logistic)
 tidy_combined_autoplot(combined)
 ```
 
-### Systematic Parameter Exploration
-
-```r
-# Explore effect of shape parameter in gamma distribution
-shape_values <- seq(1, 5, by = 0.5)
-
-param_list <- lapply(shape_values, function(shape) {
-  list(.n = 100, .shape = shape, .rate = 1)
-})
-
-gamma_comparison <- tidy_multi_single_dist(
-  .tidy_dist = "tidy_gamma",
-  .param_list = param_list
-)
-
-tidy_autoplot(gamma_comparison, .plot_type = "density") +
-  labs(title = "Gamma Distribution: Effect of Shape Parameter")
-```
-
 ---
 
 ## 🚶 Random Walk Generation
@@ -305,30 +285,8 @@ tidy_autoplot(gamma_comparison, .plot_type = "density") +
 
 ```r
 # Generate random walk
-rw <- tidy_random_walk(
-  .n = 100,           # Number of steps
-  .num_walks = 5,     # Number of walks
-  .step_size = 1,     # Step size
-  .sd = 1             # Standard deviation of steps
-)
-
-# Visualize
-tidy_autoplot_random_walk(rw)
-```
-
-### Custom Random Walk
-
-```r
-# Random walk with larger steps
-large_step_rw <- tidy_random_walk(
-  .n = 200,
-  .num_walks = 10,
-  .step_size = 2,
-  .sd = 2
-)
-
-tidy_autoplot_random_walk(large_step_rw) +
-  labs(title = "Random Walk with Larger Steps")
+tidy_normal(.sd = .1, .num_sims = 25) %>%
+  tidy_random_walk()
 ```
 
 ### Random Walk Analysis
@@ -358,7 +316,7 @@ rw_analysis
 ```r
 # Create several distributions
 dist1 <- tidy_normal(.n = 100, .mean = 0, .sd = 1)
-dist2 <- tidy_gamma(.n = 100, .shape = 2, .rate = 1)
+dist2 <- tidy_gamma(.n = 100, .shape = 2, .scale = 1)
 dist3 <- tidy_beta(.n = 100, .shape1 = 2, .shape2 = 5)
 
 # Combine into one tibble
@@ -377,18 +335,17 @@ Create comparison table for same distribution:
 multi <- tidy_multi_single_dist(
   .tidy_dist = "tidy_beta",
   .param_list = list(
-    list(.n = 100, .shape1 = 1, .shape2 = 1),
-    list(.n = 100, .shape1 = 2, .shape2 = 5),
-    list(.n = 100, .shape1 = 5, .shape2 = 2),
-    list(.n = 100, .shape1 = 5, .shape2 = 5)
+    .n = 100,
+    .shape1 = c(1, 2, 5, 5),
+    .shape2 = c(1, 5, 2, 5),
+    .ncp = 0,
+    .num_sims = 5,
+    .return_tibble = TRUE
   )
 )
 
-# Combine
-combined_multi <- tidy_combine_multi_single_dist_tbl(multi)
-
 # Visualize
-tidy_autoplot(combined_multi, .plot_type = "density")
+tidy_autoplot(combined_multi)
 ```
 
 ---
@@ -412,13 +369,10 @@ normalized
 ### Advanced Quantile Normalization
 
 ```r
-# Apply quantile normalization
-quantile_normalized <- quantile_normalize(data)
-
 # Compare original and normalized
 comparison <- data.frame(
   original = data,
-  normalized = quantile_normalized
+  normalized = normalized
 )
 
 comparison
@@ -463,7 +417,8 @@ tri <- tidy_triangular(
 )
 
 # Use specialized plotting
-tidy_autoplot_triangular(tri)
+tidy_autoplot(tri)
+triangle_plot(tri)
 ```
 
 ### Interactive Multi-Distribution Plots
@@ -473,14 +428,16 @@ tidy_autoplot_triangular(tri)
 multi <- tidy_multi_single_dist(
   .tidy_dist = "tidy_normal",
   .param_list = list(
-    list(.n = 100, .mean = -2, .sd = 1),
-    list(.n = 100, .mean = 0, .sd = 1),
-    list(.n = 100, .mean = 2, .sd = 1)
+    .n = 100,
+    .mean = c(-2, 0, 2),
+    .sd = 1,
+    .num_sims = 1,
+    .return_tibble = TRUE
   )
 )
 
 # Interactive plot
-tidy_autoplot(multi, .plot_type = "density", .interactive = TRUE)
+tidy_multi_dist_autoplot(multi, .plot_type = "density", .interactive = TRUE)
 ```
 
 ---
@@ -496,17 +453,11 @@ old <- tidy_normal(.n = 150, .mean = 65, .sd = 5)
 
 # Create mixture model
 age_distribution <- tidy_mixture_density(
-  .tbl_list = list(young, old),
-  .mixture_type = "add"
+  young, old,
+  .combination_type = "add"
 )
 
-# Visualize
-tidy_autoplot(age_distribution, .plot_type = "density") +
-  labs(
-    title = "Age Distribution with Two Peaks",
-    x = "Age (years)",
-    y = "Density"
-  )
+age_distribution$plots
 ```
 
 ### Example 2: Income Distribution
@@ -519,12 +470,11 @@ high_income <- tidy_pareto(.n = 50, .shape = 2, .scale = 100)
 
 # Create mixture
 income_model <- tidy_mixture_density(
-  .tbl_list = list(moderate_income, high_income),
-  .mixture_type = "add"
+  moderate_income, high_income,
+  .combination_type = "add"
 )
 
-tidy_autoplot(income_model, .plot_type = "density") +
-  labs(title = "Income Distribution Model")
+income_model$plots
 ```
 
 ### Example 3: Quality Control
@@ -537,12 +487,11 @@ defective <- tidy_normal(.n = 5, .mean = 100, .sd = 10)
 
 # Mixture model
 qc_distribution <- tidy_mixture_density(
-  .tbl_list = list(good, defective),
-  .mixture_type = "add"
+  good, defective,
+  .combination_type = "add"
 )
 
-tidy_autoplot(qc_distribution, .plot_type = "density") +
-  labs(title = "Product Quality Distribution")
+qc_distribution$plots
 ```
 
 ### Example 4: Financial Returns
@@ -555,15 +504,11 @@ extreme_events <- tidy_cauchy(.n = 10, .location = 0, .scale = 0.05)
 
 # Model returns
 returns_model <- tidy_mixture_density(
-  .tbl_list = list(normal_days, extreme_events),
-  .mixture_type = "add"
+  normal_days, extreme_events,
+  .combination_type = "add"
 )
 
-tidy_autoplot(returns_model, .plot_type = "density") +
-  labs(
-    title = "Financial Returns Distribution",
-    subtitle = "With Fat Tails for Extreme Events"
-  )
+returns_model$plots
 ```
 
 ---
@@ -575,8 +520,8 @@ tidy_autoplot(returns_model, .plot_type = "density") +
 ```r
 # Create complex model
 complex_model <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2, dist3),
-  .mixture_type = "add"
+  dist1, dist2, dist3,
+  .combination_type = "add"
 )
 
 # Save to file
@@ -586,34 +531,17 @@ saveRDS(complex_model, "complex_mixture_model.rds")
 loaded_model <- readRDS("complex_mixture_model.rds")
 ```
 
-### Tip 2: Programmatic Model Generation
-
-```r
-# Generate many distributions programmatically
-generate_mixture <- function(n_components) {
-  dist_list <- lapply(1:n_components, function(i) {
-    tidy_normal(.n = 100, .mean = i * 3, .sd = 0.5)
-  })
-  
-  tidy_mixture_density(.tbl_list = dist_list, .mixture_type = "add")
-}
-
-# Create 5-component mixture
-five_component <- generate_mixture(5)
-tidy_autoplot(five_component, .plot_type = "density")
-```
-
-### Tip 3: Validate Mixture Models
+### Tip 2: Validate Mixture Models
 
 ```r
 # Create mixture
 mixture <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "add"
+  dist1, dist2,
+  .combination_type = "add"
 )
 
 # Extract key statistics
-mixture_stats <- mixture %>%
+mixture_stats <- mixture$data$dist_tbl |>
   summarise(
     mean = mean(y),
     sd = sd(y),
@@ -625,7 +553,7 @@ mixture_stats <- mixture %>%
 mixture_stats
 ```
 
-### Tip 4: Custom Mixture Weights
+### Tip 3: Custom Mixture Weights
 
 ```r
 # Control relative weights by .n parameter
@@ -634,11 +562,11 @@ light_right <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)  # 25%
 
 # Create weighted mixture
 weighted <- tidy_mixture_density(
-  .tbl_list = list(heavy_left, light_right),
-  .mixture_type = "add"
+  heavy_left, light_right,
+  .combination_type = "add"
 )
 
-tidy_autoplot(weighted, .plot_type = "density")
+weighted$plots
 ```
 
 ---
@@ -664,7 +592,7 @@ tidy_autoplot(dist2, .plot_type = "density")
 
 ```r
 # Increase sample size via resampling
-empirical_smooth <- tidy_empirical(.x = data, .num_sims = 10)
+empirical_smooth <- tidy_empirical(.x = data$y, .num_sims = 10)
 ```
 
 ### Issue: Multi-Distribution Plots Cluttered
@@ -676,7 +604,7 @@ empirical_smooth <- tidy_empirical(.x = data, .num_sims = 10)
 
 ```r
 # Interactive helps with clutter
-tidy_autoplot(multi, .plot_type = "density", .interactive = TRUE)
+tidy_multi_dist_autoplot(multi, .interactive = TRUE)
 ```
 
 ---
