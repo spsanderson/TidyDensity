@@ -166,7 +166,7 @@ Mix different distribution families:
 ```{r mixed-family, fig.alt = "Density plot of a mixture combining a normal distribution centered at 5 with a gamma distribution, showing how different distribution families can be combined"}
 # Mix normal and gamma
 normal <- tidy_normal(.n = 100, .mean = 5, .sd = 1)
-gamma <- tidy_gamma(.n = 100, .shape = 2, .rate = 0.5)
+gamma <- tidy_gamma(.n = 100, .shape = 2, .scale = 2)
 
 # Create mixture
 mixed_family <- tidy_mixture_density(
@@ -300,7 +300,16 @@ head(rw)
 ### Random Walk Visualization
 
 ```{r random-walk-plot, fig.alt = "Line plot visualizing multiple random walk paths, with each simulation shown in a different color, illustrating the variability of random walks"}
-tidy_autoplot(rw, .plot_type = "density")
+ggplot(rw, aes(x = x, y = random_walk_value, color = sim_number, group = sim_number)) +
+  geom_line() +
+  labs(
+    title = "Random Walk Simulations",
+    x = "Step",
+    y = "Cumulative Value",
+    color = "Simulation"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
 ```
 
 ### Random Walk Analysis
@@ -348,6 +357,7 @@ multi_beta <- tidy_multi_single_dist(
     .n = 100,
     .shape1 = c(1, 2, 5, 5),
     .shape2 = c(1, 5, 2, 5),
+    .ncp = 0,
     .num_sims = 1,
     .return_tibble = TRUE
   )
@@ -461,13 +471,12 @@ mixture <- tidy_mixture_density(
   .combination_type = "add"
 )
 
-# Extract key statistics from the mixture data
-mixture_stats <- mixture$data |>
-  dplyr::filter(dist_type == "combined") |>
+# Extract key statistics from the mixture density data
+mixture_stats <- mixture$data$dens_tbl |>
   dplyr::summarise(
-    mean = mean(y, na.rm = TRUE),
-    sd = sd(y, na.rm = TRUE),
-    median = median(y, na.rm = TRUE)
+    mean_x = mean(x, na.rm = TRUE),
+    sd_x = sd(x, na.rm = TRUE),
+    median_x = median(x, na.rm = TRUE)
   )
 
 mixture_stats
