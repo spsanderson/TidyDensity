@@ -10,12 +10,23 @@ navbar:
   left:
     - icon: "fa-home"
       href: index.html
-    - text: "Getting Started"
-      href: articles/getting-started.html
+    - text: "Articles"
+      menu:
+        - text: "Getting Started"
+          href: articles/getting-started.html
+        - text: "Advanced Features"
+          href: articles/advanced-features.html
     - text: "Function Reference"
       href: reference/index.html
     - text: "News"
       href: news/index.html
+
+articles:
+  - title: Articles
+    navbar: ~
+    contents:
+      - getting-started
+      - advanced-features
 
 reference:
   -  title: Continuous Distribution Data Generating Functions

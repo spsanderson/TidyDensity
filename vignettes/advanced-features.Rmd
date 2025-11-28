@@ -1,0 +1,527 @@
+---
+title: "Advanced Features"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Advanced Features}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 8,
+  fig.height = 4.5,
+  fig.align = 'center',
+  out.width = '95%',
+  dpi = 100,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r setup}
+library(TidyDensity)
+library(dplyr)
+library(ggplot2)
+```
+
+TidyDensity offers powerful advanced features including mixture models, empirical distributions, random walks, and multi-distribution comparisons.
+
+## Mixture Models
+
+### What are Mixture Models?
+
+Mixture models combine multiple probability distributions to model complex data patterns:
+
+- **Multimodal** distributions (multiple peaks)
+- **Heterogeneous** populations
+- **Complex** real-world phenomena
+
+### Creating Mixture Models
+
+#### Basic Mixture Creation
+
+```{r basic-mixture, fig.alt = "Density plot showing a bimodal mixture distribution created from two normal distributions with means at -2 and 2"}
+# Create individual distributions
+dist1 <- tidy_normal(.n = 100, .mean = -2, .sd = 0.5)
+dist2 <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)
+
+# Create mixture
+mixture <- tidy_mixture_density(
+  .tbl_list = list(dist1, dist2),
+  .mixture_type = "add"
+)
+
+# Visualize
+tidy_autoplot(mixture, .plot_type = "density")
+```
+
+### Mixture Types
+
+TidyDensity supports several mixture types:
+
+1. **Addition Mixture (`"add"`)** - Combines distributions by adding their densities
+2. **Multiplication Mixture (`"multiply"`)** - Multiplies distributions
+3. **Subtraction Mixture (`"subtract"`)** - Subtracts second from first
+4. **Division Mixture (`"divide"`)** - Divides first by second
+5. **Stack Mixture (`"stack"`)** - Stacks distributions vertically
+
+### Complex Mixture Example
+
+```{r three-component-mixture, fig.alt = "Density plot showing a three-component mixture model with peaks at -3, 0, and 3 representing a trimodal distribution"}
+# Three-component mixture
+dist1 <- tidy_normal(.n = 100, .mean = -3, .sd = 0.5)
+dist2 <- tidy_normal(.n = 100, .mean = 0, .sd = 1)
+dist3 <- tidy_normal(.n = 100, .mean = 3, .sd = 0.5)
+
+# Create mixture
+complex_mixture <- tidy_mixture_density(
+  .tbl_list = list(dist1, dist2, dist3),
+  .mixture_type = "add"
+)
+
+# Visualize
+tidy_autoplot(complex_mixture, .plot_type = "density") +
+  labs(title = "Three-Component Mixture Model")
+```
+
+### Weighted Mixtures
+
+Create weighted combinations by adjusting the sample sizes:
+
+```{r weighted-mixture, fig.alt = "Density plot showing a weighted mixture distribution where the left peak at -2 is more prominent than the right peak at 2 due to different sample sizes"}
+# Generate components with different sizes
+dist1 <- tidy_normal(.n = 300, .mean = -2, .sd = 0.5)  # 75% weight
+dist2 <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)   # 25% weight
+
+# Create mixture
+weighted_mixture <- tidy_mixture_density(
+  .tbl_list = list(dist1, dist2),
+  .mixture_type = "add"
+)
+
+tidy_autoplot(weighted_mixture, .plot_type = "density")
+```
+
+### Different Distribution Types
+
+Mix different distribution families:
+
+```{r mixed-family, fig.alt = "Density plot showing a mixture of normal and gamma distributions demonstrating how different distribution families can be combined"}
+# Mix normal and gamma
+normal <- tidy_normal(.n = 100, .mean = 5, .sd = 1)
+gamma <- tidy_gamma(.n = 100, .shape = 2, .rate = 0.5)
+
+# Create mixture
+mixed_family <- tidy_mixture_density(
+  .tbl_list = list(normal, gamma),
+  .mixture_type = "add"
+)
+
+tidy_autoplot(mixed_family, .plot_type = "density")
+```
+
+---
+
+## Empirical Distributions
+
+### What are Empirical Distributions?
+
+Work directly with your observed data without assuming a distribution:
+
+```{r empirical-basic, fig.alt = "Density plot showing the empirical distribution of miles per gallon from the mtcars dataset"}
+# Your observed data
+observed_data <- mtcars$mpg
+
+# Create empirical distribution
+empirical <- tidy_empirical(
+  .x = observed_data,
+  .num_sims = 1
+)
+
+# Visualize
+tidy_autoplot(empirical, .plot_type = "density")
+```
+
+### Multiple Empirical Simulations
+
+Generate multiple resamples:
+
+```{r empirical-multi, fig.alt = "Density plot showing 10 overlapping empirical distribution simulations from the mtcars mpg data demonstrating bootstrap-like resampling"}
+# Multiple bootstrap-like samples
+empirical_multi <- tidy_empirical(
+  .x = observed_data,
+  .num_sims = 10
+)
+
+tidy_autoplot(empirical_multi, .plot_type = "density")
+```
+
+### Comparing Empirical with Theoretical
+
+```{r empirical-theoretical, fig.alt = "Combined density plot comparing the empirical distribution of mtcars mpg data with a fitted theoretical normal distribution"}
+# Observed data
+data <- mtcars$mpg
+
+# Empirical distribution
+empirical <- tidy_empirical(.x = data, .num_sims = 1)
+
+# Fitted theoretical distribution
+theoretical <- tidy_normal(
+  .n = length(data),
+  .mean = mean(data),
+  .sd = sd(data)
+)
+
+# Combine for comparison
+combined <- tidy_combine_distributions(empirical, theoretical)
+
+# Plot
+tidy_combined_autoplot(combined)
+```
+
+### Empirical Bootstrap
+
+Combine empirical with bootstrap:
+
+```{r empirical-bootstrap, fig.alt = "Density plot showing the bootstrap distribution from 2000 resamples of the observed mpg data"}
+# Bootstrap from empirical data
+boot_empirical <- tidy_bootstrap(
+  .x = observed_data,
+  .num_sims = 2000
+)
+
+# Visualize bootstrap distribution
+tidy_autoplot(boot_empirical, .plot_type = "density")
+```
+
+---
+
+## Multi-Distribution Comparison
+
+### Compare Same Distribution with Different Parameters
+
+```{r multi-normal, fig.alt = "Density plot comparing four normal distributions with different means and standard deviations showing how parameters affect shape"}
+# Compare normal distributions with different parameters
+comparison <- tidy_multi_single_dist(
+  .tidy_dist = "tidy_normal",
+  .param_list = list(
+    list(.n = 100, .mean = 0, .sd = 0.5),
+    list(.n = 100, .mean = 0, .sd = 1),
+    list(.n = 100, .mean = 0, .sd = 2),
+    list(.n = 100, .mean = 2, .sd = 1)
+  )
+)
+
+# Visualize
+tidy_autoplot(comparison, .plot_type = "density") +
+  labs(title = "Effect of Parameters on Normal Distribution")
+```
+
+### Compare Different Distributions
+
+```{r multi-dist, fig.alt = "Combined density plot comparing normal, Cauchy, and logistic distributions all centered at 0 with scale 1"}
+# Generate different distributions
+normal <- tidy_normal(.n = 100, .mean = 0, .sd = 1)
+cauchy <- tidy_cauchy(.n = 100, .location = 0, .scale = 1)
+logistic <- tidy_logistic(.n = 100, .location = 0, .scale = 1)
+
+# Combine
+combined <- tidy_combine_distributions(normal, cauchy, logistic)
+
+# Visualize
+tidy_combined_autoplot(combined)
+```
+
+### Systematic Parameter Exploration
+
+```{r gamma-shape, fig.alt = "Density plot showing how the gamma distribution shape changes as the shape parameter varies from 1 to 5"}
+# Explore effect of shape parameter in gamma distribution
+shape_values <- seq(1, 5, by = 1)
+
+param_list <- lapply(shape_values, function(shape) {
+  list(.n = 100, .shape = shape, .rate = 1)
+})
+
+gamma_comparison <- tidy_multi_single_dist(
+  .tidy_dist = "tidy_gamma",
+  .param_list = param_list
+)
+
+tidy_autoplot(gamma_comparison, .plot_type = "density") +
+  labs(title = "Gamma Distribution: Effect of Shape Parameter")
+```
+
+---
+
+## Random Walk Generation
+
+### Basic Random Walk
+
+```{r random-walk, fig.alt = "Line plot showing 5 random walks over 100 steps with each walk displayed in a different color"}
+# Generate random walk
+rw <- tidy_random_walk(
+  .n = 100,           # Number of steps
+  .num_walks = 5,     # Number of walks
+  .sd = 1             # Standard deviation of steps
+)
+
+# Visualize
+tidy_random_walk_autoplot(rw)
+```
+
+### Custom Random Walk
+
+```{r random-walk-large, fig.alt = "Line plot showing 10 random walks over 200 steps with larger step sizes resulting in more volatile paths"}
+# Random walk with larger steps
+large_step_rw <- tidy_random_walk(
+  .n = 200,
+  .num_walks = 10,
+  .sd = 2
+)
+
+tidy_random_walk_autoplot(large_step_rw) +
+  labs(title = "Random Walk with Larger Steps")
+```
+
+### Random Walk Analysis
+
+```{r random-walk-analysis}
+# Analyze random walk endpoints
+rw_analysis <- rw |>
+  group_by(walk_number) |>
+  summarise(
+    final_position = last(cum_sum),
+    max_position = max(cum_sum),
+    min_position = min(cum_sum),
+    range = max(cum_sum) - min(cum_sum)
+  )
+
+rw_analysis
+```
+
+---
+
+## Distribution Combinations
+
+### Combining Multiple Distributions
+
+```{r combine-dist, fig.alt = "Combined density plot showing normal, gamma, and beta distributions overlaid for visual comparison"}
+# Create several distributions
+dist1 <- tidy_normal(.n = 100, .mean = 0, .sd = 1)
+dist2 <- tidy_gamma(.n = 100, .shape = 2, .rate = 1)
+dist3 <- tidy_beta(.n = 100, .shape1 = 2, .shape2 = 5)
+
+# Combine into one tibble
+combined <- tidy_combine_distributions(dist1, dist2, dist3)
+
+# Visualize all together
+tidy_combined_autoplot(combined)
+```
+
+### Multi-Single Distribution Table
+
+Create comparison table for same distribution:
+
+```{r multi-beta, fig.alt = "Density plot comparing four beta distributions with different shape parameters showing various distributional shapes"}
+# Generate multiple parameter sets
+multi <- tidy_multi_single_dist(
+  .tidy_dist = "tidy_beta",
+  .param_list = list(
+    list(.n = 100, .shape1 = 1, .shape2 = 1),
+    list(.n = 100, .shape1 = 2, .shape2 = 5),
+    list(.n = 100, .shape1 = 5, .shape2 = 2),
+    list(.n = 100, .shape1 = 5, .shape2 = 5)
+  )
+)
+
+# Visualize
+tidy_autoplot(multi, .plot_type = "density")
+```
+
+---
+
+## Quantile Normalization
+
+### What is Quantile Normalization?
+
+Transform data to have a specific distribution while preserving ranks:
+
+```{r scale-zero-one}
+# Your data
+data <- c(5, 2, 8, 3, 9, 1, 7, 4, 6)
+
+# Normalize to range [0, 1]
+normalized <- tidy_scale_zero_one_vec(data)
+
+normalized
+```
+
+---
+
+## Advanced Plotting
+
+### Four-Panel Plots
+
+View multiple plot types simultaneously:
+
+```{r four-panel, fig.width = 10, fig.height = 8, fig.alt = "Four-panel plot showing density, probability, quantile, and QQ plots for three normal distribution simulations arranged in a 2x2 grid"}
+library(patchwork)
+
+data <- tidy_normal(.n = 100, .num_sims = 3)
+
+# Create all plot types
+p1 <- tidy_autoplot(data, .plot_type = "density")
+p2 <- tidy_autoplot(data, .plot_type = "probability")
+p3 <- tidy_autoplot(data, .plot_type = "quantile")
+p4 <- tidy_autoplot(data, .plot_type = "qq")
+
+# Combine in 2x2 grid
+(p1 | p2) / (p3 | p4) +
+  plot_annotation(
+    title = "Four-Panel Distribution Analysis",
+    theme = theme(plot.title = element_text(size = 16, face = "bold"))
+  )
+```
+
+---
+
+## Real-World Examples
+
+### Example 1: Modeling Bimodal Data
+
+```{r bimodal-age, fig.alt = "Density plot showing a bimodal age distribution with peaks representing young adults around 25 and older adults around 65"}
+# Simulate bimodal data (two age groups)
+young <- tidy_normal(.n = 200, .mean = 25, .sd = 3)
+old <- tidy_normal(.n = 150, .mean = 65, .sd = 5)
+
+# Create mixture model
+age_distribution <- tidy_mixture_density(
+  .tbl_list = list(young, old),
+  .mixture_type = "add"
+)
+
+# Visualize
+tidy_autoplot(age_distribution, .plot_type = "density") +
+  labs(
+    title = "Age Distribution with Two Peaks",
+    x = "Age (years)",
+    y = "Density"
+  )
+```
+
+### Example 2: Quality Control
+
+```{r quality-control, fig.alt = "Density plot showing quality control distribution with most products clustered tightly around the target value and a few defective products showing higher variation"}
+# Good products (tight distribution)
+# Defective products (wider distribution)
+good <- tidy_normal(.n = 95, .mean = 100, .sd = 2)
+defective <- tidy_normal(.n = 5, .mean = 100, .sd = 10)
+
+# Mixture model
+qc_distribution <- tidy_mixture_density(
+  .tbl_list = list(good, defective),
+  .mixture_type = "add"
+)
+
+tidy_autoplot(qc_distribution, .plot_type = "density") +
+  labs(title = "Product Quality Distribution")
+```
+
+### Example 3: Financial Returns
+
+```{r financial-returns, fig.alt = "Density plot showing financial returns distribution with a normal center and fat tails representing extreme market events"}
+# Normal market (most days)
+# Fat tails (extreme events)
+normal_days <- tidy_normal(.n = 200, .mean = 0.001, .sd = 0.01)
+extreme_events <- tidy_cauchy(.n = 10, .location = 0, .scale = 0.05)
+
+# Model returns
+returns_model <- tidy_mixture_density(
+  .tbl_list = list(normal_days, extreme_events),
+  .mixture_type = "add"
+)
+
+tidy_autoplot(returns_model, .plot_type = "density") +
+  labs(
+    title = "Financial Returns Distribution",
+    subtitle = "With Fat Tails for Extreme Events"
+  )
+```
+
+---
+
+## Advanced Tips and Tricks
+
+### Tip 1: Programmatic Model Generation
+
+```{r programmatic-mixture, fig.alt = "Density plot showing a five-component mixture model with five distinct peaks generated programmatically"}
+# Generate many distributions programmatically
+generate_mixture <- function(n_components) {
+  dist_list <- lapply(1:n_components, function(i) {
+    tidy_normal(.n = 100, .mean = i * 3, .sd = 0.5)
+  })
+  
+  tidy_mixture_density(.tbl_list = dist_list, .mixture_type = "add")
+}
+
+# Create 5-component mixture
+five_component <- generate_mixture(5)
+tidy_autoplot(five_component, .plot_type = "density")
+```
+
+### Tip 2: Custom Mixture Weights
+
+```{r custom-weights, fig.alt = "Density plot showing a weighted mixture with the left component at -2 having 75 percent weight and the right component at 2 having 25 percent weight"}
+# Control relative weights by .n parameter
+heavy_left <- tidy_normal(.n = 300, .mean = -2, .sd = 0.5)  # 75%
+light_right <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)  # 25%
+
+# Create weighted mixture
+weighted <- tidy_mixture_density(
+  .tbl_list = list(heavy_left, light_right),
+  .mixture_type = "add"
+)
+
+tidy_autoplot(weighted, .plot_type = "density")
+```
+
+---
+
+## Troubleshooting
+
+### Issue: Mixture Doesn't Look Right
+
+**Check:**
+
+- Are component distributions on appropriate scales?
+- Are mixture weights (via `.n`) appropriate?
+- Is the mixture type correct?
+
+```{r debug-mixture, fig.alt = "Two density plots showing individual distribution components for debugging mixture models"}
+# Debug by plotting components separately
+p1 <- tidy_autoplot(dist1, .plot_type = "density") + labs(title = "Component 1")
+p2 <- tidy_autoplot(dist2, .plot_type = "density") + labs(title = "Component 2")
+
+library(patchwork)
+p1 | p2
+```
+
+### Issue: Empirical Distribution Too Noisy
+
+**Solution:** Use smoothing or increase observations:
+
+```{r empirical-smooth, fig.alt = "Density plot showing a smoothed empirical distribution created by using 10 simulation resamples"}
+# Increase sample size via resampling
+empirical_smooth <- tidy_empirical(.x = mtcars$mpg, .num_sims = 10)
+tidy_autoplot(empirical_smooth, .plot_type = "density")
+```
+
+---
+
+## Next Steps
+
+- Check out the [Getting Started](getting-started.html) vignette for the basics
+- See the [Function Reference](../reference/index.html) for complete function documentation
