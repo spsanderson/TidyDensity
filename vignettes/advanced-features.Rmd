@@ -25,6 +25,7 @@ knitr::opts_chunk$set(
 library(TidyDensity)
 library(dplyr)
 library(ggplot2)
+library(patchwork)
 ```
 
 TidyDensity offers powerful advanced features including mixture models, empirical distributions, random walks, and multi-distribution comparisons.
@@ -49,13 +50,10 @@ dist1 <- tidy_normal(.n = 100, .mean = -2, .sd = 0.5)
 dist2 <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)
 
 # Create mixture
-mixture <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "add"
-)
+mixture <- tidy_mixture_density(dist1, dist2, .combination_type = "add")
 
-# Visualize
-tidy_autoplot(mixture, .plot_type = "density")
+# Visualize - the function returns a list with $data and $plots
+tidy_autoplot(mixture$data, .plot_type = "density")
 ```
 
 ### Mixture Types
@@ -77,13 +75,10 @@ dist2 <- tidy_normal(.n = 100, .mean = 0, .sd = 1)
 dist3 <- tidy_normal(.n = 100, .mean = 3, .sd = 0.5)
 
 # Create mixture
-complex_mixture <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2, dist3),
-  .mixture_type = "add"
-)
+complex_mixture <- tidy_mixture_density(dist1, dist2, dist3, .combination_type = "add")
 
 # Visualize
-tidy_autoplot(complex_mixture, .plot_type = "density") +
+tidy_autoplot(complex_mixture$data, .plot_type = "density") +
   labs(title = "Three-Component Mixture Model")
 ```
 
@@ -97,12 +92,9 @@ dist1 <- tidy_normal(.n = 300, .mean = -2, .sd = 0.5)  # 75% weight
 dist2 <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)   # 25% weight
 
 # Create mixture
-weighted_mixture <- tidy_mixture_density(
-  .tbl_list = list(dist1, dist2),
-  .mixture_type = "add"
-)
+weighted_mixture <- tidy_mixture_density(dist1, dist2, .combination_type = "add")
 
-tidy_autoplot(weighted_mixture, .plot_type = "density")
+tidy_autoplot(weighted_mixture$data, .plot_type = "density")
 ```
 
 ### Different Distribution Types
@@ -112,15 +104,12 @@ Mix different distribution families:
 ```{r mixed-family, fig.alt = "Density plot showing a mixture of normal and gamma distributions demonstrating how different distribution families can be combined"}
 # Mix normal and gamma
 normal <- tidy_normal(.n = 100, .mean = 5, .sd = 1)
-gamma <- tidy_gamma(.n = 100, .shape = 2, .rate = 0.5)
+gamma_dist <- tidy_gamma(.n = 100, .shape = 2, .rate = 0.5)
 
 # Create mixture
-mixed_family <- tidy_mixture_density(
-  .tbl_list = list(normal, gamma),
-  .mixture_type = "add"
-)
+mixed_family <- tidy_mixture_density(normal, gamma_dist, .combination_type = "add")
 
-tidy_autoplot(mixed_family, .plot_type = "density")
+tidy_autoplot(mixed_family$data, .plot_type = "density")
 ```
 
 ---
@@ -288,6 +277,13 @@ tidy_random_walk_autoplot(large_step_rw) +
 
 ### Random Walk Analysis
 
+Analyze random walk endpoints to understand the distribution of outcomes. The table shows:
+
+- **final_position**: Where each walk ended
+- **max_position**: Highest point reached during the walk
+- **min_position**: Lowest point reached during the walk
+- **range**: Total distance between highest and lowest points
+
 ```{r random-walk-analysis}
 # Analyze random walk endpoints
 rw_analysis <- rw |>
@@ -368,8 +364,6 @@ normalized
 View multiple plot types simultaneously:
 
 ```{r four-panel, fig.width = 10, fig.height = 8, fig.alt = "Four-panel plot showing density, probability, quantile, and QQ plots for three normal distribution simulations arranged in a 2x2 grid"}
-library(patchwork)
-
 data <- tidy_normal(.n = 100, .num_sims = 3)
 
 # Create all plot types
@@ -398,13 +392,10 @@ young <- tidy_normal(.n = 200, .mean = 25, .sd = 3)
 old <- tidy_normal(.n = 150, .mean = 65, .sd = 5)
 
 # Create mixture model
-age_distribution <- tidy_mixture_density(
-  .tbl_list = list(young, old),
-  .mixture_type = "add"
-)
+age_distribution <- tidy_mixture_density(young, old, .combination_type = "add")
 
 # Visualize
-tidy_autoplot(age_distribution, .plot_type = "density") +
+tidy_autoplot(age_distribution$data, .plot_type = "density") +
   labs(
     title = "Age Distribution with Two Peaks",
     x = "Age (years)",
@@ -421,12 +412,9 @@ good <- tidy_normal(.n = 95, .mean = 100, .sd = 2)
 defective <- tidy_normal(.n = 5, .mean = 100, .sd = 10)
 
 # Mixture model
-qc_distribution <- tidy_mixture_density(
-  .tbl_list = list(good, defective),
-  .mixture_type = "add"
-)
+qc_distribution <- tidy_mixture_density(good, defective, .combination_type = "add")
 
-tidy_autoplot(qc_distribution, .plot_type = "density") +
+tidy_autoplot(qc_distribution$data, .plot_type = "density") +
   labs(title = "Product Quality Distribution")
 ```
 
@@ -439,12 +427,9 @@ normal_days <- tidy_normal(.n = 200, .mean = 0.001, .sd = 0.01)
 extreme_events <- tidy_cauchy(.n = 10, .location = 0, .scale = 0.05)
 
 # Model returns
-returns_model <- tidy_mixture_density(
-  .tbl_list = list(normal_days, extreme_events),
-  .mixture_type = "add"
-)
+returns_model <- tidy_mixture_density(normal_days, extreme_events, .combination_type = "add")
 
-tidy_autoplot(returns_model, .plot_type = "density") +
+tidy_autoplot(returns_model$data, .plot_type = "density") +
   labs(
     title = "Financial Returns Distribution",
     subtitle = "With Fat Tails for Extreme Events"
@@ -464,12 +449,12 @@ generate_mixture <- function(n_components) {
     tidy_normal(.n = 100, .mean = i * 3, .sd = 0.5)
   })
   
-  tidy_mixture_density(.tbl_list = dist_list, .mixture_type = "add")
+  do.call(tidy_mixture_density, c(dist_list, list(.combination_type = "add")))
 }
 
 # Create 5-component mixture
 five_component <- generate_mixture(5)
-tidy_autoplot(five_component, .plot_type = "density")
+tidy_autoplot(five_component$data, .plot_type = "density")
 ```
 
 ### Tip 2: Custom Mixture Weights
@@ -480,12 +465,9 @@ heavy_left <- tidy_normal(.n = 300, .mean = -2, .sd = 0.5)  # 75%
 light_right <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)  # 25%
 
 # Create weighted mixture
-weighted <- tidy_mixture_density(
-  .tbl_list = list(heavy_left, light_right),
-  .mixture_type = "add"
-)
+weighted <- tidy_mixture_density(heavy_left, light_right, .combination_type = "add")
 
-tidy_autoplot(weighted, .plot_type = "density")
+tidy_autoplot(weighted$data, .plot_type = "density")
 ```
 
 ---
@@ -505,7 +487,6 @@ tidy_autoplot(weighted, .plot_type = "density")
 p1 <- tidy_autoplot(dist1, .plot_type = "density") + labs(title = "Component 1")
 p2 <- tidy_autoplot(dist2, .plot_type = "density") + labs(title = "Component 2")
 
-library(patchwork)
 p1 | p2
 ```
 
