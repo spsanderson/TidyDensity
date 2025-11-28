@@ -53,7 +53,7 @@ dist2 <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)
 mixture <- tidy_mixture_density(dist1, dist2, .combination_type = "add")
 
 # Visualize - the function returns a list with $data and $plots
-tidy_autoplot(mixture$data, .plot_type = "density")
+mixture$plots$dens_plot
 ```
 
 ### Mixture Types
