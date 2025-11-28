@@ -3,7 +3,6 @@ title: "Advanced Features"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Advanced Features}
-
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
