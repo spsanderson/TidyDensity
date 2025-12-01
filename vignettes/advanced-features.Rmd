@@ -64,7 +64,7 @@ mixture$plots
 
 #### 1. Addition Mixture (`"add"`)
 
-Combines distributions by adding their densities:
+Combines distributions by adding their sample values (element-wise) and then computing the resulting density:
 
 ```{r mixture-add, fig.alt = "Density plot showing an addition mixture of two normal distributions, creating a bimodal pattern with peaks at -2 and 2"}
 mixture_add <- tidy_mixture_density(
