@@ -2,8 +2,9 @@ pandoc: 3.6.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
+  advanced-features: advanced-features.html
   getting-started: getting-started.html
-last_built: 2025-11-06T19:45Z
+last_built: 2025-12-01T18:57Z
 urls:
   reference: https://www.spsanderson.com/TidyDensity/reference
   article: https://www.spsanderson.com/TidyDensity/articles
