@@ -145,13 +145,17 @@ complex_mixture$plots
 Create weighted combinations by adjusting the `.n` parameter:
 
 ```{r weighted-mixture, fig.alt = "Density plot of a weighted bimodal mixture where the left peak at -2 is more prominent (75% weight) than the right peak at 2 (25% weight)"}
-# Generate components with different sizes
+# Generate components
 dist_heavy <- tidy_normal(.n = 300, .mean = -2, .sd = 0.5)  # 75% weight
 dist_light <- tidy_normal(.n = 100, .mean = 2, .sd = 0.5)   # 25% weight
 
-# Create mixture
+# Scale densities by intended weights
+dist_heavy_weighted <- dplyr::mutate(dist_heavy, y = 0.75 * y)
+dist_light_weighted <- dplyr::mutate(dist_light, y = 0.25 * y)
+
+# Create weighted mixture
 weighted_mixture <- tidy_mixture_density(
-  dist_heavy, dist_light,
+  dist_heavy_weighted, dist_light_weighted,
   .combination_type = "add"
 )
 
