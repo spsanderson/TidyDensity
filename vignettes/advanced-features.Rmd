@@ -22,6 +22,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+set.seed(123)
 library(TidyDensity)
 library(dplyr)
 library(ggplot2)
@@ -378,16 +379,19 @@ Transform data to have a specific distribution while preserving ranks:
 
 ```{r quantile-norm}
 # Your data
-data_vec <- c(5, 2, 8, 3, 9, 1, 7, 4, 6)
+data_mat <- matrix(c(5, 2, 8, 3, 9, 1, 7, 4, 6), 3, 3)
 
 # Normalize to range [0, 1]
-normalized <- tidy_scale_zero_one_vec(data_vec)
+normalized <- quantile_normalize(data.frame(data_mat))
 
 # Compare original and normalized
-data.frame(
-  original = data_vec,
-  normalized = round(normalized, 3)
-)
+cat("Original Data: \n")
+print(data_mat)
+cat("\n")
+
+cat("Normalized Data: \n")
+print(normalized)
+cat("\n")
 ```
 
 ## Advanced Plotting
@@ -408,8 +412,7 @@ p4 <- tidy_autoplot(data, .plot_type = "qq")
 # Combine in 2x2 grid
 (p1 | p2) / (p3 | p4) +
   plot_annotation(
-    title = "Four-Panel Distribution Analysis",
-    theme = theme(plot.title = element_text(size = 16, face = "bold"))
+    title = "Four-Panel Distribution Analysis"
   )
 ```
 
@@ -470,7 +473,7 @@ qc_distribution$plots
 ```{r validate-mixture}
 # Create mixture
 mixture <- tidy_mixture_density(
-  dist1, dist2,
+  rnorm(50, -2, 1), rnorm(50, 2, 1),
   .combination_type = "add"
 )
 
@@ -491,6 +494,8 @@ If a mixture doesn't look right, plot the components individually:
 
 ```{r debug-components, fig.alt = "Two density plots showing the individual component distributions before mixing, useful for debugging mixture models"}
 # Debug by plotting components separately
+dist1 <- tidy_normal(.mean = -2)
+dist2 <- tidy_normal(.mean = 2)
 p1 <- tidy_autoplot(dist1, .plot_type = "density") +
   ggtitle("Component 1")
 p2 <- tidy_autoplot(dist2, .plot_type = "density") +
