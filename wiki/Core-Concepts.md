@@ -319,12 +319,13 @@ mvue_estimates <- fit$parameter_tbl |>
 
 ```r
 # Compare multiple distributions
-normal_aic <- util_normal_aic(.x = data)
-gamma_aic <- util_gamma_aic(.x = data)
-lognormal_aic <- util_lognormal_aic(.x = data)
+normal_aic <- util_normal_aic(.x = data$y)
+cauchy_aic <- util_cauchy_aic(.x = data$y)
+logistic_aic <- util_logistic_aic(.x = data$y)
 
 # Choose distribution with lowest AIC
-best_model <- which.min(c(normal_aic, gamma_aic, lognormal_aic))
+best_model <- which.min(c(normal_aic, cauchy_aic, logistic_aic))
+print(best_model)
 ```
 
 ---
