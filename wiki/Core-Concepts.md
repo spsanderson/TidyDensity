@@ -348,6 +348,9 @@ observed_mean <- mean(observed_data)
 
 # P-value: proportion of null dist more extreme than observed
 p_value <- mean(abs(null_dist$y) >= abs(observed_mean))
+
+cat("The mean of observed data is:", observed_mean, "\n")
+cat("The p-value is:", p_value)
 ```
 
 ### Confidence Intervals
