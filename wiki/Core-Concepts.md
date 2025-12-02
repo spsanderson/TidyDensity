@@ -362,7 +362,7 @@ cat("The p-value is:", p_value)
 boot_data <- tidy_bootstrap(.x = observed_data, .num_sims = 2000)
 
 # Calculate 95% CI
-ci <- boot_data %>%
+ci <- boot_data |>
   bootstrap_unnest_tbl() |>
   summarise(
     lower = quantile(y, 0.025),
