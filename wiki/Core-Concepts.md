@@ -282,7 +282,8 @@ fit$parameter_tbl
 
 ```r
 fit <- util_normal_param_estimate(data)
-mle_estimates <- fit$parameter_tbl %>% filter(method == "MLE/MME")
+mle_estimates <- fit$parameter_tbl |>
+   filter(grepl("MME|MLE", method))
 ```
 
 #### Method of Moments Estimation (MME)
