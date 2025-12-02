@@ -397,10 +397,8 @@ cat("Power:", power)
 ### Works with dplyr
 
 ```r
-library(dplyr)
-
-tidy_normal(.n = 100, .num_sims = 5) %>%
-  group_by(sim_number) %>%
+tidy_normal(.n = 100, .num_sims = 5) |>
+  group_by(sim_number) |>
   summarise(
     mean = mean(y),
     sd = sd(y),
