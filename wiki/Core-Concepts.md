@@ -46,21 +46,24 @@ data <- tidy_normal(.n = 100)
 
 **1. Pipeable:**
 ```r
-tidy_normal(.n = 100) %>%
-  filter(y > 0) %>%
+library(TidyDensity)
+library(dplyr)
+
+tidy_normal(.n = 100) |>
+  filter(y > 0) |>
   summarise(mean = mean(y), sd = sd(y))
 ```
 
 **2. Visualization-ready:**
 ```r
-tidy_normal(.n = 100) %>%
+tidy_normal(.n = 100) |>
   tidy_autoplot(.plot_type = "density")
 ```
 
 **3. Analysis-friendly:**
 ```r
-tidy_normal(.n = 100, .num_sims = 10) %>%
-  group_by(sim_number) %>%
+tidy_normal(.n = 100, .num_sims = 10) |>
+  group_by(sim_number) |>
   summarise(mean = mean(y))
 ```
 
@@ -121,7 +124,7 @@ tidy_binomial(.n = 100, .size = 10, .prob = 0.5)
 tidy_normal(.n = 100, .mean = 0, .sd = 1)
 
 # Gamma: Right-skewed
-tidy_gamma(.n = 100, .shape = 2, .rate = 1)
+tidy_gamma(.n = 100, .shape = 2, .scale = 1)
 
 # Uniform: Flat, all values equally likely
 tidy_uniform(.n = 100, .min = 0, .max = 1)
