@@ -84,7 +84,7 @@ R](https://adv-r.hadley.nz) may also be useful for a deeper dive.
           summarise("{prefix}_mean_{suffix}" := mean(!!var))
       }
 
-  Expressions defused with `enquo()` (or tunnelled with `{{`) need not
+  Expressions defused with `enquo()` (or tunnelled with `{{` ) need not
   be simple column names, they can be arbitrarily complex. `as_label()`
   handles those cases gracefully. If your code assumes a simple column
   name, use `as_name()` instead. This is safer because it throws an
