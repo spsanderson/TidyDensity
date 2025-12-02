@@ -434,6 +434,8 @@ data <- tidy_normal(.n = 100, .num_sims = 3)
 wide_data <- data %>%
   select(sim_number, x, y) %>%
   pivot_wider(names_from = sim_number, values_from = y, names_prefix = "sim_")
+
+head(wide_data)
 ```
 
 ### Works with purrr
@@ -444,12 +446,12 @@ library(purrr)
 # Generate multiple distributions
 distributions <- list(
   normal = tidy_normal(.n = 100),
-  gamma = tidy_gamma(.n = 100, .shape = 2, .rate = 1),
+  gamma = tidy_gamma(.n = 100, .shape = 2, .scale = 1),
   beta = tidy_beta(.n = 100, .shape1 = 2, .shape2 = 5)
 )
 
 # Map over distributions
-distributions %>%
+distributions |>
   map(~ summarise(., mean = mean(y), sd = sd(y)))
 ```
 
