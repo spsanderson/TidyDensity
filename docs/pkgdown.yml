@@ -4,8 +4,9 @@ pkgdown_sha: ~
 articles:
   advanced-features: advanced-features.html
   bootstrap-analysis: bootstrap-analysis.html
+  core-concepts: core-concepts.html
   getting-started: getting-started.html
-last_built: 2025-12-02T03:34Z
+last_built: 2025-12-02T19:27Z
 urls:
   reference: https://www.spsanderson.com/TidyDensity/reference
   article: https://www.spsanderson.com/TidyDensity/articles
