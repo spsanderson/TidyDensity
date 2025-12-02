@@ -69,7 +69,7 @@ Generate bootstrap samples in tidy format:
 tidy_bootstrap(
   .x,                    # Your data vector
   .num_sims = 2000,      # Number of bootstrap samples
-  .proportion = 0.8,     # Proportion to sample (default = 1)
+  .proportion = 0.8,     # Proportion to sample (default = 0.8)
   .distribution_type = "continuous"  # continuous or discrete
 )
 ```
