@@ -203,7 +203,7 @@ resample</li>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get basic statistics</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">bootstrap_data</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/bootstrap_unnest_tbl.html">bootstrap_unnest_tbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">bootstrap_data</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/bootstrap_unnest_tbl.html">bootstrap_unnest_tbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">#&gt;   10.40   15.50   19.20   20.12   22.80   33.90</span></span>
 <span></span>
@@ -244,8 +244,8 @@ samples:</p>
 <code class="sourceCode R"><span><span class="co"># Calculate statistics for each bootstrap sample</span></span>
 <span><span class="va">bootstrap_stats</span> <span class="op">&lt;-</span> <span class="va">bootstrap_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/bootstrap_unnest_tbl.html">bootstrap_unnest_tbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sim_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sim_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
 <span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    sd <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
@@ -268,7 +268,7 @@ samples:</p>
 <code class="sourceCode R"><span><span class="co"># Calculate overall statistics from all bootstrap samples</span></span>
 <span><span class="va">overall_stats</span> <span class="op">&lt;-</span> <span class="va">bootstrap_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/bootstrap_unnest_tbl.html">bootstrap_unnest_tbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
 <span>    mean_est <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    sd_est <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    median_est <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
@@ -295,7 +295,7 @@ samples:</p>
 <span></span>
 <span><span class="va">bootstrap_ci</span> <span class="op">&lt;-</span> <span class="va">bootstrap_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/bootstrap_unnest_tbl.html">bootstrap_unnest_tbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
 <span>    lower_ci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">alpha</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>,</span>
 <span>    upper_ci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>,</span>
 <span>    point_estimate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
@@ -314,14 +314,14 @@ samples:</p>
 <code class="sourceCode R"><span><span class="co"># Calculate CI for mean, median, and sd</span></span>
 <span><span class="va">ci_stats</span> <span class="op">&lt;-</span> <span class="va">bootstrap_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/bootstrap_unnest_tbl.html">bootstrap_unnest_tbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sim_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sim_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
 <span>    mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>    sd <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/across.html" class="external-link">across</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html" class="external-link">across</a></span><span class="op">(</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">mean</span>, <span class="va">median</span>, <span class="va">sd</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>        lower <span class="op">=</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.025</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -605,7 +605,7 @@ samples:</p>
 <span>  <span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_bootstrap.html">tidy_bootstrap</a></span><span class="op">(</span><span class="va">data</span>, .num_sims <span class="op">=</span> <span class="va">n_sims_vec</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
 <span>  <span class="va">stats</span> <span class="op">&lt;-</span> <span class="va">boot</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="../reference/bootstrap_unnest_tbl.html">bootstrap_unnest_tbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
 <span>      mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,</span>
 <span>      lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.025</span><span class="op">)</span>,</span>
 <span>      upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">0.975</span><span class="op">)</span></span>
