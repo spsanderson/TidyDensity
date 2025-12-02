@@ -431,8 +431,8 @@ library(tidyr)
 data <- tidy_normal(.n = 100, .num_sims = 3)
 
 # Widen data
-wide_data <- data %>%
-  select(sim_number, x, y) %>%
+wide_data <- data |>
+  select(sim_number, x, y) |>
   pivot_wider(names_from = sim_number, values_from = y, names_prefix = "sim_")
 
 head(wide_data)
