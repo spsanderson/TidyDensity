@@ -46,21 +46,24 @@ data <- tidy_normal(.n = 100)
 
 **1. Pipeable:**
 ```r
-tidy_normal(.n = 100) %>%
-  filter(y > 0) %>%
+library(TidyDensity)
+library(dplyr)
+
+tidy_normal(.n = 100) |>
+  filter(y > 0) |>
   summarise(mean = mean(y), sd = sd(y))
 ```
 
 **2. Visualization-ready:**
 ```r
-tidy_normal(.n = 100) %>%
+tidy_normal(.n = 100) |>
   tidy_autoplot(.plot_type = "density")
 ```
 
 **3. Analysis-friendly:**
 ```r
-tidy_normal(.n = 100, .num_sims = 10) %>%
-  group_by(sim_number) %>%
+tidy_normal(.n = 100, .num_sims = 10) |>
+  group_by(sim_number) |>
   summarise(mean = mean(y))
 ```
 
@@ -121,7 +124,7 @@ tidy_binomial(.n = 100, .size = 10, .prob = 0.5)
 tidy_normal(.n = 100, .mean = 0, .sd = 1)
 
 # Gamma: Right-skewed
-tidy_gamma(.n = 100, .shape = 2, .rate = 1)
+tidy_gamma(.n = 100, .shape = 2, .scale = 1)
 
 # Uniform: Flat, all values equally likely
 tidy_uniform(.n = 100, .min = 0, .max = 1)
@@ -279,7 +282,8 @@ fit$parameter_tbl
 
 ```r
 fit <- util_normal_param_estimate(data)
-mle_estimates <- fit$parameter_tbl %>% filter(method == "MLE/MME")
+mle_estimates <- fit$parameter_tbl |>
+   filter(grepl("MME|MLE", method))
 ```
 
 #### Method of Moments Estimation (MME)
@@ -301,8 +305,9 @@ mle_estimates <- fit$parameter_tbl %>% filter(method == "MLE/MME")
 - Theoretically optimal when available
 
 ```r
-fit <- util_normal_param_estimate(data)
-mvue_estimates <- fit$parameter_tbl %>% filter(method == "MVUE")
+fit <- util_normal_param_estimate(data$y)
+mvue_estimates <- fit$parameter_tbl |>
+   filter(grepl("MVU", method))
 ```
 
 ### Model Selection
@@ -314,12 +319,13 @@ mvue_estimates <- fit$parameter_tbl %>% filter(method == "MVUE")
 
 ```r
 # Compare multiple distributions
-normal_aic <- util_normal_aic(.x = data)
-gamma_aic <- util_gamma_aic(.x = data)
-lognormal_aic <- util_lognormal_aic(.x = data)
+normal_aic <- util_normal_aic(.x = data$y)
+cauchy_aic <- util_cauchy_aic(.x = data$y)
+logistic_aic <- util_logistic_aic(.x = data$y)
 
 # Choose distribution with lowest AIC
-best_model <- which.min(c(normal_aic, gamma_aic, lognormal_aic))
+best_model <- which.min(c(normal_aic, cauchy_aic, logistic_aic))
+print(best_model)
 ```
 
 ---
@@ -342,6 +348,9 @@ observed_mean <- mean(observed_data)
 
 # P-value: proportion of null dist more extreme than observed
 p_value <- mean(abs(null_dist$y) >= abs(observed_mean))
+
+cat("The mean of observed data is:", observed_mean, "\n")
+cat("The p-value is:", p_value)
 ```
 
 ### Confidence Intervals
@@ -353,12 +362,14 @@ p_value <- mean(abs(null_dist$y) >= abs(observed_mean))
 boot_data <- tidy_bootstrap(.x = observed_data, .num_sims = 2000)
 
 # Calculate 95% CI
-ci <- boot_data %>%
-  bootstrap_unnest_tbl() %>%
+ci <- boot_data |>
+  bootstrap_unnest_tbl() |>
   summarise(
     lower = quantile(y, 0.025),
     upper = quantile(y, 0.975)
   )
+
+cat("95% Confidence Interval:", ci$lower, "to", ci$upper)
 ```
 
 ### Power Analysis
@@ -386,10 +397,8 @@ cat("Power:", power)
 ### Works with dplyr
 
 ```r
-library(dplyr)
-
-tidy_normal(.n = 100, .num_sims = 5) %>%
-  group_by(sim_number) %>%
+tidy_normal(.n = 100, .num_sims = 5) |>
+  group_by(sim_number) |>
   summarise(
     mean = mean(y),
     sd = sd(y),
@@ -422,9 +431,11 @@ library(tidyr)
 data <- tidy_normal(.n = 100, .num_sims = 3)
 
 # Widen data
-wide_data <- data %>%
-  select(sim_number, x, y) %>%
+wide_data <- data |>
+  select(sim_number, x, y) |>
   pivot_wider(names_from = sim_number, values_from = y, names_prefix = "sim_")
+
+head(wide_data)
 ```
 
 ### Works with purrr
@@ -435,12 +446,12 @@ library(purrr)
 # Generate multiple distributions
 distributions <- list(
   normal = tidy_normal(.n = 100),
-  gamma = tidy_gamma(.n = 100, .shape = 2, .rate = 1),
+  gamma = tidy_gamma(.n = 100, .shape = 2, .scale = 1),
   beta = tidy_beta(.n = 100, .shape1 = 2, .shape2 = 5)
 )
 
 # Map over distributions
-distributions %>%
+distributions |>
   map(~ summarise(., mean = mean(y), sd = sd(y)))
 ```
 
