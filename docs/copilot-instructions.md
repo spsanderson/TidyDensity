@@ -170,7 +170,7 @@ gamma_data <- tidy_gamma(.n = 50, .shape = 2, .rate = 1)
 2.  Follow existing pattern from `R/random-tidy-normal.R`
 3.  Add corresponding documentation with `@examples`
 4.  Update NAMESPACE via
-    [`devtools::document()`](https://rdrr.io/pkg/devtools/man/document.html)
+    [`devtools::document()`](https://devtools.r-lib.org/reference/document.html)
 5.  Add parameter estimation in `R/est-param-[name].R`
 6.  Add statistics table in `R/stats-[name]-tbl.R`
 
@@ -179,7 +179,7 @@ gamma_data <- tidy_gamma(.n = 50, .shape = 2, .rate = 1)
 1.  Edit the relevant R file in `R/`
 2.  Update documentation if needed
 3.  Run
-    [`devtools::document()`](https://rdrr.io/pkg/devtools/man/document.html)
+    [`devtools::document()`](https://devtools.r-lib.org/reference/document.html)
     to update man pages
 4.  Test with example code
 5.  Run `R CMD check` to validate
