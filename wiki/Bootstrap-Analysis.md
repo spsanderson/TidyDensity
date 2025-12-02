@@ -53,7 +53,7 @@ Generate bootstrap samples in tidy format:
 tidy_bootstrap(
   .x,                    # Your data vector
   .num_sims = 2000,      # Number of bootstrap samples
-  .proportion = 1,       # Proportion to sample (default = 1)
+  .proportion = 0.8,       # Proportion to sample (default = 1)
   .distribution_type = "continuous"  # continuous or discrete
 )
 ```
@@ -62,9 +62,7 @@ tidy_bootstrap(
 
 Returns a tidy tibble with:
 - `sim_number` - Bootstrap sample identifier
-- `x` - Observation index
-- `y` - Bootstrapped value
-- Additional density, probability, and quantile columns
+- `bootstrap_samples` - List column of bootstrap samples of `.x` 
 
 ---
 
@@ -75,6 +73,7 @@ Returns a tidy tibble with:
 ```r
 library(TidyDensity)
 library(dplyr)
+library(NNS)
 
 # Your data
 data <- mtcars$mpg
@@ -92,21 +91,22 @@ head(bootstrap_data)
 ### Visualizing Bootstrap Distribution
 
 ```r
-# Density plot of bootstrap distribution
-tidy_autoplot(bootstrap_data, .plot_type = "density")
+# Density plot of bootstrap distribution Cumulative Mean
+bootstrap_stat_plot(bootstrap_data, .value = y, .stat = "cmean")
 
-# Probability plot
-tidy_autoplot(bootstrap_data, .plot_type = "probability")
+# Cumulative Harmonic Mean
+bootstrap_stat_plot(bootstrap_data, .value = y, .stat = "chmean")
 
-# Quantile plot
-tidy_autoplot(bootstrap_data, .plot_type = "quantile")
+# Show Groups
+bootstrap_stat_plot(bootstrap_data, .value = y, .stat = "cmean",
+.show_groups = TRUE)
 ```
 
 ### Quick Statistics
 
 ```r
 # Get basic statistics
-summary(bootstrap_data$y)
+summary(bootstrap_data |> bootstrap_unnest_tbl() |> pull(y))
 
 # Count simulations
 length(unique(bootstrap_data$sim_number))
@@ -132,12 +132,10 @@ head(unnested)
 ### Calculating Bootstrap Statistics
 
 ```r
-library(dplyr)
-
 # Calculate statistics for each bootstrap sample
-bootstrap_stats <- bootstrap_data %>%
-  bootstrap_unnest_tbl() %>%
-  group_by(sim_number) %>%
+bootstrap_stats <- bootstrap_data |>
+  bootstrap_unnest_tbl() |>
+  group_by(sim_number) |>
   summarise(
     mean = mean(y),
     median = median(y),
@@ -155,14 +153,14 @@ hist(bootstrap_stats$mean, main = "Bootstrap Distribution of Mean")
 
 ```r
 # Calculate overall statistics from all bootstrap samples
-overall_stats <- bootstrap_data %>%
-  bootstrap_unnest_tbl() %>%
+overall_stats <- bootstrap_data |>
+  bootstrap_unnest_tbl() |>
   summarise(
-    mean_est = mean(y),
+    mean_est = NNS.moments(y)[["mean"]],
     sd_est = sd(y),
     median_est = median(y),
-    skewness = moments::skewness(y),
-    kurtosis = moments::kurtosis(y)
+    skewness = NNS.moments(y)[["skewness"]],
+    kurtosis = NNS.moments(y)[["kurtosis"]]
   )
 
 overall_stats
@@ -181,8 +179,8 @@ Most common and intuitive method:
 ci_level <- 0.95
 alpha <- 1 - ci_level
 
-bootstrap_ci <- bootstrap_data %>%
-  bootstrap_unnest_tbl() %>%
+bootstrap_ci <- bootstrap_data |>
+  bootstrap_unnest_tbl() |>
   summarise(
     lower_ci = quantile(y, alpha/2),
     upper_ci = quantile(y, 1 - alpha/2),
@@ -196,26 +194,26 @@ bootstrap_ci
 
 ```r
 # Calculate CI for mean, median, and sd
-ci_stats <- bootstrap_data %>%
-  bootstrap_unnest_tbl() %>%
-  group_by(sim_number) %>%
+ci_stats <- bootstrap_data |>
+  bootstrap_unnest_tbl() |>
+  group_by(sim_number) |>
   summarise(
     mean = mean(y),
     median = median(y),
     sd = sd(y)
-  ) %>%
+  ) |>
   summarise(
     across(
-      everything(),
+      c(mean, median, sd),
       list(
-        lower = ~quantile(., 0.025),
-        estimate = ~mean(.),
-        upper = ~quantile(., 0.975)
+        lower = ~ unname(quantile(.x, 0.025)),
+        estimate = ~ unname(mean(.x)),
+        upper = ~ unname(quantile(.x, 0.975))
       )
     )
   )
 
-ci_stats
+glimpse(ci_stats)
 ```
 
 ### Bias-Corrected Accelerated (BCa) Intervals
@@ -243,16 +241,15 @@ boot.ci(boot_result, type = "bca")
 library(ggplot2)
 
 # Create visualization
-bootstrap_data %>%
-  bootstrap_unnest_tbl() %>%
+unnested |>
   ggplot(aes(x = y)) +
   geom_density(fill = "lightblue", alpha = 0.5) +
-  geom_vline(xintercept = quantile(bootstrap_data$y, 0.025), 
+  geom_vline(xintercept = unname(quantile(unnested$y, 0.025)), 
              linetype = "dashed", color = "red") +
-  geom_vline(xintercept = quantile(bootstrap_data$y, 0.975), 
+  geom_vline(xintercept = unname(quantile(unnested$y, 0.975)), 
              linetype = "dashed", color = "red") +
-  geom_vline(xintercept = mean(bootstrap_data$y), 
-             linetype = "solid", color = "darkblue", size = 1) +
+  geom_vline(xintercept = mean(unnested$y), 
+             linetype = "solid", color = "darkblue", linewidth = 1) +
   labs(
     title = "Bootstrap Distribution with 95% CI",
     x = "Bootstrap Statistic",
@@ -271,8 +268,8 @@ Add density calculations to bootstrap data:
 
 ```r
 # Augment with density information
-augmented_density <- bootstrap_data %>%
-  tidy_bootstrap_density_augment()
+augmented_density <- bootstrap_data |>
+  bootstrap_density_augment()
 
 head(augmented_density)
 ```
@@ -283,8 +280,9 @@ Add cumulative probability:
 
 ```r
 # Augment with probability information
-augmented_prob <- bootstrap_data %>%
-  tidy_bootstrap_p_augment()
+augmented_prob <- bootstrap_data |>
+  bootstrap_unnest_tbl() |>
+  bootstrap_p_augment(y)
 
 head(augmented_prob)
 ```
@@ -295,8 +293,9 @@ Add quantile information:
 
 ```r
 # Augment with quantile information
-augmented_quantile <- bootstrap_data %>%
-  tidy_bootstrap_q_augment()
+augmented_quantile <- |>
+  bootstrap_unnest_tbl() |>
+  bootstrap_q_augment(y)
 
 head(augmented_quantile)
 ```
@@ -409,12 +408,12 @@ stratified_bootstrap <- function(data, group_var, value_var, n_sims = 2000) {
   results <- list()
   
   for (i in 1:n_sims) {
-    boot_sample <- data %>%
-      group_by({{ group_var }}) %>%
-      slice_sample(prop = 1, replace = TRUE) %>%
+    boot_sample <- data |>
+      group_by({{ group_var }}) |>
+      slice_sample(prop = 1, replace = TRUE) |>
       ungroup()
     
-    results[[i]] <- boot_sample %>%
+    results[[i]] <- boot_sample |>
       summarise(mean_value = mean({{ value_var }}))
   }
   
@@ -422,8 +421,8 @@ stratified_bootstrap <- function(data, group_var, value_var, n_sims = 2000) {
 }
 
 # Example
-library(dplyr)
 boot_strat <- stratified_bootstrap(mtcars, am, mpg, n_sims = 1000)
+head(boot_strat)
 ```
 
 ---
@@ -436,30 +435,35 @@ boot_strat <- stratified_bootstrap(mtcars, am, mpg, n_sims = 1000)
 library(patchwork)
 
 # Generate bootstrap data
-boot_data <- tidy_bootstrap(mtcars$mpg, .num_sims = 2000)
+boot_data <- tidy_bootstrap(mtcars$mpg, .num_sims = 2000) |>
+  bootstrap_unnest_tbl()
 
 # Create multiple plots
-p1 <- tidy_autoplot(boot_data, .plot_type = "density")
-p2 <- tidy_autoplot(boot_data, .plot_type = "probability")
-p3 <- tidy_autoplot(boot_data, .plot_type = "quantile")
-p4 <- tidy_autoplot(boot_data, .plot_type = "qq")
+p1 <- ggplot(aes(x = y), data = boot_data) +
+  geom_density(fill = "lightgreen", alpha = 0.5) +
+  labs(title = "Density Plot", x = "Value", y = "Density") +
+  theme_minimal()
+p2 <- ggplot(aes(x = y), data = boot_data) +
+  stat_ecdf(aes(x = y), geom = "step", color = "blue") +
+  labs(title = "Probability Plot", x = "Value", y = "Cumulative Probability") +
+  theme_minimal()
+p3 <- ggplot(aes(x = 1:nrow(boot_data), y = sort(y)), data = boot_data) +
+  geom_point(color = "purple") +
+  labs(title = "Quantile Plot", x = "Theoretical Quantiles", y = "Sample Quantiles") +
+  theme_minimal()
+p4 <- ggplot(aes(sample = y), data = boot_data) +
+  stat_qq(color = "orange") +
+  stat_qq_line(color = "red") +
+  labs(title = "QQ Plot", x = "Theoretical Quantiles", y = "Sample Quantiles") +
+  theme_minimal()
 
 # Combine
 (p1 | p2) / (p3 | p4)
 ```
 
-### Interactive Bootstrap Visualization
-
-```r
-# Interactive plot
-tidy_autoplot(boot_data, .plot_type = "density", .interactive = TRUE)
-```
-
 ### Custom Visualization with CI
 
 ```r
-library(ggplot2)
-
 # Calculate statistics
 ci <- quantile(boot_data$y, c(0.025, 0.5, 0.975))
 
@@ -551,7 +555,7 @@ Bootstrap assumes independent observations:
 
 ```r
 # If time series or spatial data, consider block bootstrap
-# or other specialized methods
+# or other specialized methods like those in the NNS library
 
 # For independent data:
 bootstrap_data <- tidy_bootstrap(data, .num_sims = 2000)
@@ -597,8 +601,6 @@ sd(data) / mean(data)  # Coefficient of variation
 **Solution:** Use bias-corrected methods
 
 ```r
-library(boot)
-
 # BCa intervals correct for bias
 boot_result <- boot(data, function(d, i) mean(d[i]), R = 2000)
 boot.ci(boot_result, type = "bca")
