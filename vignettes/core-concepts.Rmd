@@ -22,11 +22,11 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-set.seed(123)
 library(TidyDensity)
 library(dplyr)
 library(ggplot2)
 library(patchwork)
+library(withr)
 ```
 
 Understanding the fundamental concepts behind TidyDensity will help you use the package effectively.
@@ -256,12 +256,10 @@ p3 <- tidy_autoplot(data, .plot_type = "quantile") +
 ### Setting Seeds for Reproducibility
 
 ```{r seeds-reproducibility}
-# Set seed for reproducible results
-set.seed(123)
-data1 <- tidy_normal(.n = 10)
+# Use withr::with_seed() for reproducible results
+data1 <- withr::with_seed(123, tidy_normal(.n = 10))
 
-set.seed(123)
-data2 <- tidy_normal(.n = 10)
+data2 <- withr::with_seed(123, tidy_normal(.n = 10))
 
 # data1 and data2 are identical
 all.equal(data1$y, data2$y)
@@ -346,9 +344,8 @@ fit$parameter_tbl
 - Used to compare distributions
 
 ```{r model-selection}
-# Generate some data
-set.seed(42)
-data_y <- rnorm(100, mean = 5, sd = 2)
+# Generate some data with local seed
+data_y <- withr::with_seed(42, rnorm(100, mean = 5, sd = 2))
 
 # Compare multiple distributions
 normal_aic <- util_normal_aic(.x = data_y)
@@ -373,20 +370,18 @@ cat("Best model:", best_model, "\n")
 
 ```{r hypothesis-testing}
 # Test if sample mean differs from 0
-set.seed(456)
-observed_data <- rnorm(100, mean = 0.5, sd = 1)
+observed_data <- withr::with_seed(456, rnorm(100, mean = 0.5, sd = 1))
 
-# Generate null distribution
-null_dist <- tidy_normal(.n = 100, .mean = 0, .sd = 1, .num_sims = 1000)
+# Generate null distribution with local seed
+null_dist <- withr::with_seed(789, tidy_normal(.n = 100, .mean = 0, .sd = 1, .num_sims = 1000))
 
 # Calculate test statistic
 observed_mean <- mean(observed_data)
 
 # Calculate null means for each simulation
-library(dplyr)
 null_means <- null_dist |>
-  dplyr::group_by(sim_number) |>
-  dplyr::summarise(sim_mean = mean(y), .groups = "drop")
+  group_by(sim_number) |>
+  summarise(sim_mean = mean(y), .groups = "drop")
 
 # P-value: proportion of null means more extreme than observed
 p_value <- mean(abs(null_means$sim_mean) >= abs(observed_mean))
@@ -507,7 +502,7 @@ Understanding these four functions is key to working with distributions.
 Use MLE for large samples, MVUE for small samples, compare with AIC.
 
 ### 4. Reproducibility Matters
-Always set seed for reproducible random number generation.
+Use `withr::with_seed()` for reproducible random number generation with explicit scope.
 
 ### 5. Visualization is Essential
 Always plot your data and fitted distributions to validate assumptions.
