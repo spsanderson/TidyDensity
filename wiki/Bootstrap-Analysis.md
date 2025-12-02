@@ -53,7 +53,7 @@ Generate bootstrap samples in tidy format:
 tidy_bootstrap(
   .x,                    # Your data vector
   .num_sims = 2000,      # Number of bootstrap samples
-  .proportion = 0.8,       # Proportion to sample (default = 1)
+  .proportion = 0.8,       # Proportion to sample (default = 0.8)
   .distribution_type = "continuous"  # continuous or discrete
 )
 ```
@@ -91,7 +91,7 @@ head(bootstrap_data)
 ### Visualizing Bootstrap Distribution
 
 ```r
-# Density plot of bootstrap distribution Cumulative Mean
+# Plot of bootstrap distribution Cumulative Mean
 bootstrap_stat_plot(bootstrap_data, .value = y, .stat = "cmean")
 
 # Cumulative Harmonic Mean
@@ -155,13 +155,16 @@ hist(bootstrap_stats$mean, main = "Bootstrap Distribution of Mean")
 # Calculate overall statistics from all bootstrap samples
 overall_stats <- bootstrap_data |>
   bootstrap_unnest_tbl() |>
-  summarise(
-    mean_est = NNS.moments(y)[["mean"]],
-    sd_est = sd(y),
-    median_est = median(y),
-    skewness = NNS.moments(y)[["skewness"]],
-    kurtosis = NNS.moments(y)[["kurtosis"]]
-  )
+  reframe({
+    moments <- NNS.moments(y)
+    tibble(
+      mean_est = moments[["mean"]],
+      sd_est = sd(y),
+      median_est = median(y),
+      skewness = moments[["skewness"]],
+      kurtosis = moments[["kurtosis"]]
+    )
+  })
 
 overall_stats
 ```
@@ -293,7 +296,7 @@ Add quantile information:
 
 ```r
 # Augment with quantile information
-augmented_quantile <- |>
+augmented_quantile <- bootstrap_data |>
   bootstrap_unnest_tbl() |>
   bootstrap_q_augment(y)
 
