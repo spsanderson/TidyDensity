@@ -40,6 +40,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="../articles/advanced-features.html">Advanced Features</a></li>
+    <li><a class="dropdown-item" href="../articles/bootstrap-analysis.html">Bootstrap Analysis</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Function Reference</a></li>
@@ -235,8 +236,8 @@ parameter:</p>
 <span><span class="va">dist_light</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_normal.html">tidy_normal</a></span><span class="op">(</span>.n <span class="op">=</span> <span class="fl">100</span>, .mean <span class="op">=</span> <span class="fl">2</span>, .sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>   <span class="co"># 25% weight</span></span>
 <span></span>
 <span><span class="co"># Scale densities by intended weights</span></span>
-<span><span class="va">dist_heavy_weighted</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">dist_heavy</span>, y <span class="op">=</span> <span class="fl">0.75</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
-<span><span class="va">dist_light_weighted</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">dist_light</span>, y <span class="op">=</span> <span class="fl">0.25</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">dist_heavy_weighted</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">dist_heavy</span>, y <span class="op">=</span> <span class="fl">0.75</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">dist_light_weighted</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html" class="external-link">mutate</a></span><span class="op">(</span><span class="va">dist_light</span>, y <span class="op">=</span> <span class="fl">0.25</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create weighted mixture</span></span>
 <span><span class="va">weighted_mixture</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidy_mixture_density.html">tidy_mixture_density</a></span><span class="op">(</span></span>
@@ -434,9 +435,9 @@ distribution:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Analyze random walk endpoints</span></span>
 <span><span class="va">rw_analysis</span> <span class="op">&lt;-</span> <span class="va">rw</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sim_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
-<span>    final_position <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html" class="external-link">last</a></span><span class="op">(</span><span class="va">random_walk_value</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sim_number</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>    final_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/nth.html" class="external-link">last</a></span><span class="op">(</span><span class="va">random_walk_value</span><span class="op">)</span>,</span>
 <span>    max_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">random_walk_value</span><span class="op">)</span>,</span>
 <span>    min_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">random_walk_value</span><span class="op">)</span>,</span>
 <span>    range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">random_walk_value</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">random_walk_value</span><span class="op">)</span></span>
@@ -555,7 +556,7 @@ ranks:</p>
 <span></span>
 <span><span class="co"># Combine in 2x2 grid</span></span>
 <span><span class="op">(</span><span class="va">p1</span> <span class="op">|</span> <span class="va">p2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">p3</span> <span class="op">|</span> <span class="va">p4</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html" class="external-link">plot_annotation</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/patchwork/man/plot_annotation.html" class="external-link">plot_annotation</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Four-Panel Distribution Analysis"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="advanced-features_files/figure-html/four-panel-1.png" class="r-plt" alt="Four-panel display showing density, probability, quantile, and Q-Q plots for normal distribution simulations, providing a comprehensive view of the distribution characteristics" width="95%" style="display: block; margin: auto;"></p>
@@ -639,7 +640,7 @@ ranks:</p>
 <span></span>
 <span><span class="co"># Extract key statistics from the mixture density data</span></span>
 <span><span class="va">mixture_stats</span> <span class="op">&lt;-</span> <span class="va">mixture</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">dens_tbl</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
 <span>    mean_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    sd_x <span class="op">=</span> <span class="fu">sd</span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    median_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
