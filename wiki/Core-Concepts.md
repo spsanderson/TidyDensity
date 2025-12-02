@@ -305,8 +305,9 @@ mle_estimates <- fit$parameter_tbl |>
 - Theoretically optimal when available
 
 ```r
-fit <- util_normal_param_estimate(data)
-mvue_estimates <- fit$parameter_tbl %>% filter(method == "MVUE")
+fit <- util_normal_param_estimate(data$y)
+mvue_estimates <- fit$parameter_tbl |>
+   filter(grepl("MVU", method))
 ```
 
 ### Model Selection
