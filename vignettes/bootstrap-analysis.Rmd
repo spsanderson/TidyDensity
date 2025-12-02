@@ -26,6 +26,7 @@ set.seed(123)
 library(TidyDensity)
 library(dplyr)
 library(ggplot2)
+library(patchwork)
 ```
 
 Bootstrap resampling is a powerful statistical technique for robust inference. 
@@ -359,8 +360,6 @@ abline(v = cor_original, col = "blue", lwd = 2)
 ### Multiple Visualizations
 
 ```{r multiple-viz, fig.alt = "Four-panel display showing density plot, probability (ECDF) plot, sorted values plot, and Q-Q plot for bootstrap samples, providing comprehensive visualization of bootstrap distribution characteristics"}
-library(patchwork)
-
 # Generate bootstrap data
 boot_data <- tidy_bootstrap(mtcars$mpg, .num_sims = 2000) |>
   bootstrap_unnest_tbl()
@@ -433,8 +432,7 @@ Check stability with different numbers of simulations:
 # Check stability with different numbers of simulations
 n_sims_vec <- c(500, 1000, 2000)
 convergence <- data.frame(
-
-n_sims = n_sims_vec,
+  n_sims = n_sims_vec,
   mean_est = NA,
   ci_lower = NA,
   ci_upper = NA
