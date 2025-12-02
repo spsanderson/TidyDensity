@@ -382,9 +382,14 @@ null_dist <- tidy_normal(.n = 100, .mean = 0, .sd = 1, .num_sims = 1000)
 # Calculate test statistic
 observed_mean <- mean(observed_data)
 
-# P-value: proportion of null dist more extreme than observed
-p_value <- mean(abs(null_dist$y) >= abs(observed_mean))
+# Calculate null means for each simulation
+library(dplyr)
+null_means <- null_dist |>
+  dplyr::group_by(sim_number) |>
+  dplyr::summarise(sim_mean = mean(y), .groups = "drop")
 
+# P-value: proportion of null means more extreme than observed
+p_value <- mean(abs(null_means$sim_mean) >= abs(observed_mean))
 cat("The mean of observed data is:", observed_mean, "\n")
 cat("The p-value is:", p_value, "\n")
 ```
