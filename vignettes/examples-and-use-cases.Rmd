@@ -26,6 +26,7 @@ set.seed(123)
 library(TidyDensity)
 library(dplyr)
 library(ggplot2)
+library(patchwork)
 ```
 
 Real-world examples demonstrating TidyDensity in action across various domains and applications.
@@ -409,8 +410,6 @@ ggplot(control_data, aes(x = time, y = value)) +
 ### Example 10: Disease Outbreak Modeling
 
 ```{r disease-outbreak, fig.alt = "Two-panel display showing (1) a time series of daily disease cases with observed counts as points and the expected rate as a red dashed line, and (2) a density plot of the case distribution during the peak outbreak period fitted with a Poisson distribution"}
-library(patchwork)
-
 # Model daily case counts with Poisson distribution
 days <- 1:90
 baseline_rate <- 5
