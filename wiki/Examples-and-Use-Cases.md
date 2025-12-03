@@ -48,7 +48,7 @@ best_dist <- aic_comparison[which.min(aic_comparison$AIC), ]
 print(paste("Best fitting distribution:", best_dist$Distribution))
 
 # Visualize best fit
-gamma_fit$combined_data_tbl %>%
+gamma_fit$combined_data_tbl |>
   tidy_combined_autoplot() +
   labs(title = "Customer Purchase Distribution",
        subtitle = paste("Best fit:", best_dist$Distribution),
