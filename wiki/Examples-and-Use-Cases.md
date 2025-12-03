@@ -200,7 +200,7 @@ results_df <- data.frame(
   Distribution = names(aic_results),
   AIC = aic_results,
   Delta_AIC = aic_results - min(aic_results)
-) %>%
+) |>
   arrange(AIC)
 
 print(results_df)
@@ -229,10 +229,10 @@ var_995 <- quantile(returns, 0.005)
 # Bootstrap for VaR confidence intervals
 boot_returns <- tidy_bootstrap(.x = returns, .num_sims = 2000)
 
-boot_var <- boot_returns %>%
-  bootstrap_unnest_tbl() %>%
-  group_by(sim_number) %>%
-  summarise(var_95 = quantile(y, 0.05)) %>%
+boot_var <- boot_returns |>
+  bootstrap_unnest_tbl() |>
+  group_by(sim_number) |>
+  summarise(var_95 = quantile(y, 0.05)) |>
   ungroup()
 
 var_ci <- quantile(boot_var$var_95, c(0.025, 0.975))
@@ -325,8 +325,8 @@ USL <- 106 # Upper specification limit
 
 # Fit distribution
 fit <- util_normal_param_estimate(measurements, .auto_gen_empirical = TRUE)
-mean_est <- fit$parameter_tbl$mean[1]
-sd_est <- fit$parameter_tbl$shape_est[1]
+mean_est <- fit$parameter_tbl$mu[1]
+sd_est <- fit$parameter_tbl$stan_dev[1]
 
 # Calculate Cp and Cpk
 Cp <- (USL - LSL) / (6 * sd_est)
@@ -354,7 +354,7 @@ if (Cpk >= 1.33) {
 }
 
 # Visualize
-fit$combined_data_tbl %>%
+fit$combined_data_tbl |>
   tidy_combined_autoplot() +
   geom_vline(xintercept = LSL, color = "red", linetype = "dashed") +
   geom_vline(xintercept = USL, color = "red", linetype = "dashed") +
