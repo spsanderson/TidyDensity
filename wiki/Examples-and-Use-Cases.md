@@ -575,7 +575,7 @@ fit$combined_data_tbl %>%
 ```r
 # Add bootstrap confidence intervals
 boot <- tidy_bootstrap(.x = your_data, .num_sims = 2000)
-boot %>%
+boot |>
   bootstrap_unnest_tbl() %>%
   summarise(
     lower = quantile(y, 0.025),
