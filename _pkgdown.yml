@@ -14,12 +14,14 @@ navbar:
       menu:
         - text: "Getting Started"
           href: articles/getting-started.html
-        - text: "Core Concepts"
-          href: articles/core-concepts.html
         - text: "Advanced Features"
           href: articles/advanced-features.html
         - text: "Bootstrap Analysis"
           href: articles/bootstrap-analysis.html
+        - text: "Core Concepts"
+          href: articles/core-concepts.html
+        - text: "Examples and Use Cases"
+          href: articles/examples-and-use-cases.html
     - text: "Function Reference"
       href: reference/index.html
     - text: "News"

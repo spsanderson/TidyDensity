@@ -5,8 +5,9 @@ articles:
   advanced-features: advanced-features.html
   bootstrap-analysis: bootstrap-analysis.html
   core-concepts: core-concepts.html
+  examples-and-use-cases: examples-and-use-cases.html
   getting-started: getting-started.html
-last_built: 2025-12-02T19:41Z
+last_built: 2025-12-03T03:09Z
 urls:
   reference: https://www.spsanderson.com/TidyDensity/reference
   article: https://www.spsanderson.com/TidyDensity/articles
