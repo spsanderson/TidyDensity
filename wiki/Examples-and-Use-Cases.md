@@ -115,8 +115,8 @@ dist_after <- tidy_empirical(.x = after, .num_sims = 1)
 
 # Combine for visualization
 combined <- bind_rows(
-  dist_before %>% mutate(period = "Before"),
-  dist_after %>% mutate(period = "After")
+  dist_before |> mutate(period = "Before"),
+  dist_after |> mutate(period = "After")
 )
 
 # Plot
@@ -166,7 +166,7 @@ calculate_power <- function(n, effect) {
 }
 
 # Run for a few key combinations (subset for speed)
-key_combos <- power_results[c(1, 50, 100, 150, 200), ]
+key_combos <- power_results[c(1, 50, 100, 150, 200), ] |> na.omit()
 key_combos$power <- mapply(calculate_power, 
                            key_combos$sample_size,
                            key_combos$effect_size)
