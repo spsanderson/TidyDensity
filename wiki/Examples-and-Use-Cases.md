@@ -48,7 +48,7 @@ best_dist <- aic_comparison[which.min(aic_comparison$AIC), ]
 print(paste("Best fitting distribution:", best_dist$Distribution))
 
 # Visualize best fit
-gamma_fit$combined_data_tbl %>%
+gamma_fit$combined_data_tbl |>
   tidy_combined_autoplot() +
   labs(title = "Customer Purchase Distribution",
        subtitle = paste("Best fit:", best_dist$Distribution),
@@ -115,8 +115,8 @@ dist_after <- tidy_empirical(.x = after, .num_sims = 1)
 
 # Combine for visualization
 combined <- bind_rows(
-  dist_before %>% mutate(period = "Before"),
-  dist_after %>% mutate(period = "After")
+  dist_before |> mutate(period = "Before"),
+  dist_after |> mutate(period = "After")
 )
 
 # Plot
@@ -166,7 +166,7 @@ calculate_power <- function(n, effect) {
 }
 
 # Run for a few key combinations (subset for speed)
-key_combos <- power_results[c(1, 50, 100, 150, 200), ]
+key_combos <- power_results[c(1, 50, 100, 150, 200), ] |> na.omit()
 key_combos$power <- mapply(calculate_power, 
                            key_combos$sample_size,
                            key_combos$effect_size)
@@ -200,7 +200,7 @@ results_df <- data.frame(
   Distribution = names(aic_results),
   AIC = aic_results,
   Delta_AIC = aic_results - min(aic_results)
-) %>%
+) |>
   arrange(AIC)
 
 print(results_df)
@@ -229,10 +229,10 @@ var_995 <- quantile(returns, 0.005)
 # Bootstrap for VaR confidence intervals
 boot_returns <- tidy_bootstrap(.x = returns, .num_sims = 2000)
 
-boot_var <- boot_returns %>%
-  bootstrap_unnest_tbl() %>%
-  group_by(sim_number) %>%
-  summarise(var_95 = quantile(y, 0.05)) %>%
+boot_var <- boot_returns |>
+  bootstrap_unnest_tbl() |>
+  group_by(sim_number) |>
+  summarise(var_95 = quantile(y, 0.05)) |>
   ungroup()
 
 var_ci <- quantile(boot_var$var_95, c(0.025, 0.975))
@@ -325,8 +325,8 @@ USL <- 106 # Upper specification limit
 
 # Fit distribution
 fit <- util_normal_param_estimate(measurements, .auto_gen_empirical = TRUE)
-mean_est <- fit$parameter_tbl$mean[1]
-sd_est <- fit$parameter_tbl$shape_est[1]
+mean_est <- fit$parameter_tbl$mu[1]
+sd_est <- fit$parameter_tbl$stan_dev[1]
 
 # Calculate Cp and Cpk
 Cp <- (USL - LSL) / (6 * sd_est)
@@ -354,7 +354,7 @@ if (Cpk >= 1.33) {
 }
 
 # Visualize
-fit$combined_data_tbl %>%
+fit$combined_data_tbl |>
   tidy_combined_autoplot() +
   geom_vline(xintercept = LSL, color = "red", linetype = "dashed") +
   geom_vline(xintercept = USL, color = "red", linetype = "dashed") +
@@ -435,7 +435,7 @@ ggplot(outbreak_data, aes(x = day, y = cases)) +
   theme_minimal()
 
 # Peak analysis
-poisson_fit$combined_data_tbl %>%
+poisson_fit$combined_data_tbl |>
   tidy_combined_autoplot() +
   labs(title = "Peak Period Case Distribution",
        x = "Daily Cases",
@@ -515,7 +515,7 @@ uniform_source <- function(n) runif(n, 0, 1)
 # Generate for different sample sizes
 results <- lapply(sample_sizes, function(n) {
   means <- demonstrate_clt(uniform_source, n, n_samples)
-  tidy_empirical(.x = means, .num_sims = 1) %>%
+  tidy_empirical(.x = means, .num_sims = 1) |>
     mutate(sample_size = n)
 })
 
@@ -567,7 +567,7 @@ fit <- get(paste0("util_", best, "_param_estimate"))(
   .auto_gen_empirical = TRUE
 )
 
-fit$combined_data_tbl %>%
+fit$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
@@ -575,8 +575,8 @@ fit$combined_data_tbl %>%
 ```r
 # Add bootstrap confidence intervals
 boot <- tidy_bootstrap(.x = your_data, .num_sims = 2000)
-boot %>%
-  bootstrap_unnest_tbl() %>%
+boot |>
+  bootstrap_unnest_tbl() |>
   summarise(
     lower = quantile(y, 0.025),
     upper = quantile(y, 0.975)
