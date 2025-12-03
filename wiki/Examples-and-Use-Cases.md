@@ -435,7 +435,7 @@ ggplot(outbreak_data, aes(x = day, y = cases)) +
   theme_minimal()
 
 # Peak analysis
-poisson_fit$combined_data_tbl %>%
+poisson_fit$combined_data_tbl |>
   tidy_combined_autoplot() +
   labs(title = "Peak Period Case Distribution",
        x = "Daily Cases",
@@ -515,7 +515,7 @@ uniform_source <- function(n) runif(n, 0, 1)
 # Generate for different sample sizes
 results <- lapply(sample_sizes, function(n) {
   means <- demonstrate_clt(uniform_source, n, n_samples)
-  tidy_empirical(.x = means, .num_sims = 1) %>%
+  tidy_empirical(.x = means, .num_sims = 1) |>
     mutate(sample_size = n)
 })
 
@@ -567,7 +567,7 @@ fit <- get(paste0("util_", best, "_param_estimate"))(
   .auto_gen_empirical = TRUE
 )
 
-fit$combined_data_tbl %>%
+fit$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
@@ -576,7 +576,7 @@ fit$combined_data_tbl %>%
 # Add bootstrap confidence intervals
 boot <- tidy_bootstrap(.x = your_data, .num_sims = 2000)
 boot |>
-  bootstrap_unnest_tbl() %>%
+  bootstrap_unnest_tbl() |>
   summarise(
     lower = quantile(y, 0.025),
     upper = quantile(y, 0.975)
