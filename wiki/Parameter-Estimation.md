@@ -304,7 +304,7 @@ data <- rnorm(100, mean = 50, sd = 10)
 fit <- util_normal_param_estimate(data, .auto_gen_empirical = TRUE)
 
 # Plot combined (empirical + fitted)
-fit$combined_data_tbl %>%
+fit$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
@@ -314,7 +314,7 @@ fit$combined_data_tbl %>%
 library(ggplot2)
 
 # Get the plot
-p <- fit$combined_data_tbl %>%
+p <- fit$combined_data_tbl |>
   tidy_combined_autoplot()
 
 # Customize
