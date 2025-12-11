@@ -231,7 +231,7 @@ estimates <- util_gamma_param_estimate(sample_data, .auto_gen_empirical = TRUE)
 estimates$parameter_tbl
 
 # Visualize fit
-estimates$combined_data_tbl %>%
+estimates$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
