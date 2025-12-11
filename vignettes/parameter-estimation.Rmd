@@ -337,21 +337,21 @@ tidy_autoplot(theoretical, .plot_type = "qq")
 
 ```{r residual-analysis, fig.alt = "Residual plot showing the difference between observed and expected values plotted against fitted values, with a reference line at zero"}
 # Calculate residuals
-empirical <- tidy_empirical(.x = data, .num_sims = 1)
-fitted <- tidy_normal(.n = length(data), .mean = estimated_mean, .sd = estimated_sd)
+# For a normal distribution, the expected value for each observation is the fitted mean
+expected <- rep(estimated_mean, length(data))
 
 # Compare values
 comparison <- data.frame(
   observed = data,
-  expected = fitted$y[1:length(data)],
-  residual = data - fitted$y[1:length(data)]
+  expected = expected,
+  residual = data - expected
 )
 
 # Plot residuals
 ggplot(comparison, aes(x = expected, y = residual)) +
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  labs(title = "Residual Plot", x = "Fitted Values", y = "Residuals")
+  labs(title = "Residual Plot", x = "Fitted Mean", y = "Residuals")
 ```
 
 ## Statistics Tables
