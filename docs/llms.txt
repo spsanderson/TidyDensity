@@ -761,3 +761,5 @@ Utility Functions
   Cases](https://www.spsanderson.com/TidyDensity/articles/examples-and-use-cases.md):
 - [Getting Started with
   TidyDensity](https://www.spsanderson.com/TidyDensity/articles/getting-started.md):
+- [Parameter
+  Estimation](https://www.spsanderson.com/TidyDensity/articles/parameter-estimation.md):
