@@ -32,7 +32,7 @@ All parameter estimation functions follow this pattern:
 ```r
 util_[distribution]_param_estimate(
   .x,                           # Your data vector
-  .auto_gen_empirical = TRUE    # Auto-generate comparison plots
+  .auto_gen_empirical = TRUE    # Auto-generate comparison data
 )
 ```
 
@@ -160,11 +160,11 @@ result$parameter_tbl
 
 **Output:**
 ```
-# A tibble: 2 × 7
-  dist_type samp_size   min   max  mean method   shape_est
-  <chr>         <int> <dbl> <dbl> <dbl> <chr>        <dbl>
-1 Gaussian         32  10.4  33.9  20.1 MLE/MME      6.03
-2 Gaussian         32  10.4  33.9  20.1 MVUE         6.10
+# A tibble: 2 × 8
+  dist_type samp_size   min   max method              mu stan_dev shape_ratio
+  <chr>         <int> <dbl> <dbl> <chr>            <dbl>    <dbl>       <dbl>
+1 Gaussian         32  10.4  33.9 EnvStats_MME_MLE  20.1     5.93        3.39
+2 Gaussian         32  10.4  33.9 EnvStats_MVUE     20.1     6.03        3.33
 ```
 
 ### Understanding the Output
@@ -172,18 +172,16 @@ result$parameter_tbl
 The function returns a list with several components:
 
 ```r
-names(result)
-# [1] "parameter_tbl"       # Parameter estimates
-# [2] "combined_data_tbl"   # Empirical + fitted data
-# [3] "empirical_tbl"       # Original data
-# [4] "fitted_tbl"          # Fitted distribution data
+names(result$parameter_tbl)
+[1] "dist_type"   "samp_size"   "min"         "max"         "method"      "mu"         
+[7] "stan_dev"    "shape_ratio"
 ```
 
 ### Visualizing the Fit
 
 ```r
 # Plot empirical vs fitted distribution
-result$combined_data_tbl %>%
+result$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
@@ -233,7 +231,7 @@ estimates <- util_gamma_param_estimate(sample_data, .auto_gen_empirical = TRUE)
 estimates$parameter_tbl
 
 # Visualize fit
-estimates$combined_data_tbl %>%
+estimates$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
@@ -288,7 +286,7 @@ aic_comparison[order(aic_comparison$AIC), ]
 
 ```r
 # Use util_distribution_comparison for automated comparison
-comparison <- util_distribution_comparison(.x = data)
+comparison <- tidy_distribution_comparison(.x = data)
 
 # This function tests multiple distributions and returns AIC values
 comparison
@@ -306,7 +304,7 @@ data <- rnorm(100, mean = 50, sd = 10)
 fit <- util_normal_param_estimate(data, .auto_gen_empirical = TRUE)
 
 # Plot combined (empirical + fitted)
-fit$combined_data_tbl %>%
+fit$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
@@ -316,7 +314,7 @@ fit$combined_data_tbl %>%
 library(ggplot2)
 
 # Get the plot
-p <- fit$combined_data_tbl %>%
+p <- fit$combined_data_tbl |>
   tidy_combined_autoplot()
 
 # Customize
@@ -343,14 +341,14 @@ n <- length(data)
 # Generate fitted distributions
 fitted_normal <- tidy_normal(
   .n = n,
-  .mean = normal_fit$parameter_tbl$mean[1],
-  .sd = normal_fit$parameter_tbl$shape_est[1]
+  .mean = normal_fit$parameter_tbl$mu[1],
+  .sd = normal_fit$parameter_tbl$stan_dev[1]
 )
 
 fitted_gamma <- tidy_gamma(
   .n = n,
   .shape = gamma_fit$parameter_tbl$shape[1],
-  .rate = gamma_fit$parameter_tbl$rate[1]
+  .scale = gamma_fit$parameter_tbl$scale[1]
 )
 
 # Plot separately or combine
@@ -376,8 +374,8 @@ data <- mtcars$mpg
 bootstrap_params <- function(data, indices) {
   sample_data <- data[indices]
   est <- util_normal_param_estimate(sample_data, .auto_gen_empirical = FALSE)
-  c(mean = est$parameter_tbl$mean[1], 
-    sd = est$parameter_tbl$shape_est[1])
+  c(mean = est$parameter_tbl$mu[1], 
+    sd = est$parameter_tbl$stan_dev[1])
 }
 
 # Perform bootstrap
@@ -399,8 +397,8 @@ data <- rnorm(100, mean = 50, sd = 10)
 fit <- util_normal_param_estimate(data, .auto_gen_empirical = FALSE)
 
 # Extract parameters
-estimated_mean <- fit$parameter_tbl$mean[1]
-estimated_sd <- fit$parameter_tbl$shape_est[1]
+estimated_mean <- fit$parameter_tbl$mu[1]
+estimated_sd <- fit$parameter_tbl$stan_dev[1]
 
 # Kolmogorov-Smirnov test
 ks.test(data, "pnorm", mean = estimated_mean, sd = estimated_sd)
@@ -438,7 +436,6 @@ comparison <- data.frame(
 )
 
 # Plot residuals
-library(ggplot2)
 ggplot(comparison, aes(x = expected, y = residual)) +
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
@@ -457,13 +454,16 @@ Get summary statistics for fitted distributions:
 # Pattern: util_[distribution]_stats_tbl()
 
 # For normal distribution
-util_normal_stats_tbl(.mean = 50, .sd = 10)
+util_normal_stats_tbl(tidy_normal()) |>
+  glimpse()
 
 # For gamma distribution  
-util_gamma_stats_tbl(.shape = 2, .rate = 0.5)
+util_gamma_stats_tbl(tidy_gamma()) |>
+  glimpse()
 
 # For Poisson distribution
-util_poisson_stats_tbl(.lambda = 5)
+util_poisson_stats_tbl(tidy_poisson()) |>
+  glimpse()
 ```
 
 **Output includes:**
@@ -486,7 +486,7 @@ util_poisson_stats_tbl(.lambda = 5)
 fit <- util_normal_param_estimate(data, .auto_gen_empirical = TRUE)
 
 # Always plot the comparison
-fit$combined_data_tbl %>%
+fit$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
@@ -532,7 +532,8 @@ message("Best fitting distribution: ", best_dist)
 
 # 1. Visual check
 fit <- util_normal_param_estimate(data, .auto_gen_empirical = TRUE)
-fit$combined_data_tbl %>% tidy_combined_autoplot()
+fit$combined_data_tbl |>
+  tidy_combined_autoplot()
 
 # 2. QQ plot
 tidy_normal(.n = length(data), .mean = mean(data), .sd = sd(data)) %>%
@@ -579,7 +580,8 @@ if (normal_aic < lognormal_aic) {
 }
 
 # Visualize final fit
-best_fit$combined_data_tbl %>% tidy_combined_autoplot()
+best_fit$combined_data_tbl |>
+  tidy_combined_autoplot()
 ```
 
 ---
@@ -620,7 +622,8 @@ boxplot(data)
 
 ```r
 # Check fit quality with multiple distributions
-util_distribution_comparison(.x = data)
+comparison <- tidy_distribution_comparison(.x = data)
+comparison
 ```
 
 ---
