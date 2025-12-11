@@ -286,7 +286,7 @@ aic_comparison[order(aic_comparison$AIC), ]
 
 ```r
 # Use util_distribution_comparison for automated comparison
-comparison <- util_distribution_comparison(.x = data)
+comparison <- tidy_distribution_comparison(.x = data)
 
 # This function tests multiple distributions and returns AIC values
 comparison
