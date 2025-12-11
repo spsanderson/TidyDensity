@@ -22,6 +22,8 @@ navbar:
           href: articles/core-concepts.html
         - text: "Examples and Use Cases"
           href: articles/examples-and-use-cases.html
+        - text: "Parameter Estimation"
+          href: articles/parameter-estimation.html
     - text: "Function Reference"
       href: reference/index.html
     - text: "News"
