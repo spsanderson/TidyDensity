@@ -397,8 +397,8 @@ data <- rnorm(100, mean = 50, sd = 10)
 fit <- util_normal_param_estimate(data, .auto_gen_empirical = FALSE)
 
 # Extract parameters
-estimated_mean <- fit$parameter_tbl$mean[1]
-estimated_sd <- fit$parameter_tbl$shape_est[1]
+estimated_mean <- fit$parameter_tbl$mu[1]
+estimated_sd <- fit$parameter_tbl$stan_dev[1]
 
 # Kolmogorov-Smirnov test
 ks.test(data, "pnorm", mean = estimated_mean, sd = estimated_sd)
@@ -436,7 +436,6 @@ comparison <- data.frame(
 )
 
 # Plot residuals
-library(ggplot2)
 ggplot(comparison, aes(x = expected, y = residual)) +
   geom_point() +
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
@@ -455,13 +454,16 @@ Get summary statistics for fitted distributions:
 # Pattern: util_[distribution]_stats_tbl()
 
 # For normal distribution
-util_normal_stats_tbl(.mean = 50, .sd = 10)
+util_normal_stats_tbl(tidy_normal()) |>
+  glimpse()
 
 # For gamma distribution  
-util_gamma_stats_tbl(.shape = 2, .rate = 0.5)
+util_gamma_stats_tbl(tidy_gamma()) |>
+  glimpse()
 
 # For Poisson distribution
-util_poisson_stats_tbl(.lambda = 5)
+util_poisson_stats_tbl(tidy_poisson()) |>
+  glimpse()
 ```
 
 **Output includes:**
@@ -484,7 +486,7 @@ util_poisson_stats_tbl(.lambda = 5)
 fit <- util_normal_param_estimate(data, .auto_gen_empirical = TRUE)
 
 # Always plot the comparison
-fit$combined_data_tbl %>%
+fit$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
@@ -530,7 +532,8 @@ message("Best fitting distribution: ", best_dist)
 
 # 1. Visual check
 fit <- util_normal_param_estimate(data, .auto_gen_empirical = TRUE)
-fit$combined_data_tbl %>% tidy_combined_autoplot()
+fit$combined_data_tbl |>
+  tidy_combined_autoplot()
 
 # 2. QQ plot
 tidy_normal(.n = length(data), .mean = mean(data), .sd = sd(data)) %>%
