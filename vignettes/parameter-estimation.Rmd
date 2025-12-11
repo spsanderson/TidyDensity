@@ -500,7 +500,7 @@ if (normal_aic < lognormal_aic) {
 - Missing values
 - Inappropriate distribution choice
 
-```{r issue-params}
+```{r issue-params, fig.alt = "Histogram and boxplot of data for diagnostic purposes, showing data distribution and identifying potential outliers"}
 # Data diagnostics
 summary(data)
 hist(data, main = "Histogram of Data", xlab = "Value")
