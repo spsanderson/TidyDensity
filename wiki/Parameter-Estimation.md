@@ -160,11 +160,11 @@ result$parameter_tbl
 
 **Output:**
 ```
-# A tibble: 2 × 7
-  dist_type samp_size   min   max  mean method   shape_est
-  <chr>         <int> <dbl> <dbl> <dbl> <chr>        <dbl>
-1 Gaussian         32  10.4  33.9  20.1 MLE/MME      6.03
-2 Gaussian         32  10.4  33.9  20.1 MVUE         6.10
+# A tibble: 2 × 8
+  dist_type samp_size   min   max method              mu stan_dev shape_ratio
+  <chr>         <int> <dbl> <dbl> <chr>            <dbl>    <dbl>       <dbl>
+1 Gaussian         32  10.4  33.9 EnvStats_MME_MLE  20.1     5.93        3.39
+2 Gaussian         32  10.4  33.9 EnvStats_MVUE     20.1     6.03        3.33
 ```
 
 ### Understanding the Output
@@ -172,18 +172,16 @@ result$parameter_tbl
 The function returns a list with several components:
 
 ```r
-names(result)
-# [1] "parameter_tbl"       # Parameter estimates
-# [2] "combined_data_tbl"   # Empirical + fitted data
-# [3] "empirical_tbl"       # Original data
-# [4] "fitted_tbl"          # Fitted distribution data
+names(result$parameter_tbl)
+[1] "dist_type"   "samp_size"   "min"         "max"         "method"      "mu"         
+[7] "stan_dev"    "shape_ratio"
 ```
 
 ### Visualizing the Fit
 
 ```r
 # Plot empirical vs fitted distribution
-result$combined_data_tbl %>%
+result$combined_data_tbl |>
   tidy_combined_autoplot()
 ```
 
