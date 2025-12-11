@@ -580,7 +580,8 @@ if (normal_aic < lognormal_aic) {
 }
 
 # Visualize final fit
-best_fit$combined_data_tbl %>% tidy_combined_autoplot()
+best_fit$combined_data_tbl |>
+  tidy_combined_autoplot()
 ```
 
 ---
@@ -621,7 +622,8 @@ boxplot(data)
 
 ```r
 # Check fit quality with multiple distributions
-util_distribution_comparison(.x = data)
+comparison <- tidy_distribution_comparison(.x = data)
+comparison
 ```
 
 ---
