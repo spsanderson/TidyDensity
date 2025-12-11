@@ -32,7 +32,7 @@ All parameter estimation functions follow this pattern:
 ```r
 util_[distribution]_param_estimate(
   .x,                           # Your data vector
-  .auto_gen_empirical = TRUE    # Auto-generate comparison plots
+  .auto_gen_empirical = TRUE    # Auto-generate comparison data
 )
 ```
 
