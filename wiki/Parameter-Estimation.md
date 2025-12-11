@@ -341,14 +341,14 @@ n <- length(data)
 # Generate fitted distributions
 fitted_normal <- tidy_normal(
   .n = n,
-  .mean = normal_fit$parameter_tbl$mean[1],
-  .sd = normal_fit$parameter_tbl$shape_est[1]
+  .mean = normal_fit$parameter_tbl$mu[1],
+  .sd = normal_fit$parameter_tbl$stan_dev[1]
 )
 
 fitted_gamma <- tidy_gamma(
   .n = n,
   .shape = gamma_fit$parameter_tbl$shape[1],
-  .rate = gamma_fit$parameter_tbl$rate[1]
+  .scale = gamma_fit$parameter_tbl$scale[1]
 )
 
 # Plot separately or combine
@@ -374,8 +374,8 @@ data <- mtcars$mpg
 bootstrap_params <- function(data, indices) {
   sample_data <- data[indices]
   est <- util_normal_param_estimate(sample_data, .auto_gen_empirical = FALSE)
-  c(mean = est$parameter_tbl$mean[1], 
-    sd = est$parameter_tbl$shape_est[1])
+  c(mean = est$parameter_tbl$mu[1], 
+    sd = est$parameter_tbl$stan_dev[1])
 }
 
 # Perform bootstrap
